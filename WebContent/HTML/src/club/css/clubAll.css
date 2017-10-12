@@ -1,0 +1,10 @@
+	ul.pagination {
+ 	 display: table;
+ 	 margin: 0 auto;
+}
+
+img {
+max-width:550px;
+_width:expression(this.width>550?"550px":this.width); 
+height:auto;
+}

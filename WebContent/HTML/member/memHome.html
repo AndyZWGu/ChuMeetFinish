@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Head BEGIN -->
+
+<head>
+    <meta charset="utf-8">
+    <title>ChuMeet! 會員頁面</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="shortcut icon" href="../chumeet_icon.ico">
+
+    <!-- Fonts START -->
+    <!--  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">-->
+    <!--  <link href="http://fonts.googleapis.com/earlyaccess/notosanstc.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Fonts END -->
+    <!-- 全站統一CSS 不要亂動，動了要跟全組說 -->
+
+    <!-- Global styles START -->
+    <link href="../assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/pages/css/base.css" rel="stylesheet">
+    <!-- Global styles END -->
+
+    <!-- Page level plugin styles START -->
+    <link href="../assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="../assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="../assets/pages/css/animate.css" rel="stylesheet">
+    <!-- Page level plugin styles END -->
+
+    <!-- Theme styles START -->
+    <link href="../assets/pages/css/components.css" rel="stylesheet">
+    <link href="../assets/corporate/css/style.css" rel="stylesheet">
+    <link href="../assets/corporate/css/style-responsive.css" rel="stylesheet">
+    <link href="../assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
+    <!-- Theme styles END -->
+
+    <!--  my styles  -->
+    <!--@@@@@@@@@@@@@@@@@@@@@@@@@@ 自己的CSS用連結寫到這邊 @@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+    <!--!!!!!!!!!!!!!!!!!!!!!!!!!! 放在最後一行優先權越高 !!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <!--#################### 單頁CSS路徑統一放在/src/xxx/css/xxx.css ###########-->
+    <!--%%%%%%%%%%%%%%%%%% 第一行可以刪掉，那是activity(也就是敏道的活動頁)專用的CSS %%%%%-->
+    <link href="../src/act/css/act.css" rel="stylesheet">
+    <link href="../src/member/css/memHome.css" rel="stylesheet">
+</head>
+<!-- Body BEGIN -->
+
+<body class="">
+
+    <!-- Head END -->
+    <!-- BEGIN TOP BAR 2-->
+    <div class="pre-header">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN TOP BAR LEFT PART -->
+                <div class="col-md-6 col-sm-6 additional-shop-info">
+                    <ul class="list-unstyled list-inline">
+                        <li><span><strong>ChuMeet</strong></span></li>
+                        <li><span>Nice to meet you <i class="fa fa-smile-o" aria-hidden="true"></i></span></li>
+                    </ul>
+                </div>
+                <!-- END TOP BAR LEFT PART -->
+                <!-- BEGIN TOP BAR MENU -->
+                <div class="col-md-6 col-sm-6 additional-nav">
+                    <ul class="list-unstyled list-inline pull-right">
+                        <li><span>哈囉，剛哥！　</span> <a href="../page-reg-page.html"><i class="fa fa-cog" aria-hidden="true"></i>會員設定</a></li>
+                        <li><a href="../page-login.html"><i class="fa fa-sign-out" aria-hidden="true"></i>登出</a></li>
+                        <li><a href="../page-reg-page.html"><i class="fa fa-envelope-o" aria-hidden="true"></i>消息</a></li>
+                    </ul>
+                </div>
+                <!-- END TOP BAR MENU -->
+            </div>
+        </div>
+    </div>
+    <!-- END TOP BAR 2-->
+
+    <!-- BEGIN HEADER -->
+    <div class="header">
+        <div class="container">
+            <div class="site-logo">
+                <a href="../新增資料夾/index.html"><img class="navlogo" src="../assets/pages/img/nav/navlogo_w-01.png" alt="ChuMeet"></a>
+            </div>
+            <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+            <!-- BEGIN NAVIGATION -->
+            <div class="header-navigation pull-right font-transform-inherit">
+                <ul>
+                    <li class="dropdown"> <a href="../新增資料夾/index.html"> 揪咪首頁 </a> </li>
+                    <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;"> 活動廣場 </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../act/act.html">綜合推薦</a></li>
+                            <li><a href="../新增資料夾/index.html">依興趣</a></li>
+                            <li><a href="../新增資料夾/index.html">依所在地</a></li>
+                            <li><a href="../新增資料夾/index.html">社團活動</a></li>
+                            <li><a href="../新增資料夾/index.html">政府藝文活動</a></li>
+                            <li><a href="../新增資料夾/index.html">周末特調</a></li>
+                            <li><a href="../新增資料夾/index.html">熱門標籤</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;"> 社團大廳 </a> </li>
+                    <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;"> 商城 </a> </li>
+                    <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;"> 服務中心 </a> </li>
+                </ul>
+            </div>
+            <!-- END NAVIGATION -->
+        </div>
+    </div>
+    <!-- Header END -->
+
+    <!--主頁面要修改的都在這下面-->
+    <div class="main">
+        <div class="container">
+            <div class="row profile">
+                <div class="col-md-3 wow fadeInLeft" data-wow-delay=".05s" data-wow-duration=".1">
+                    <div class="profile-sidebar">
+                        <!-- SIDEBAR USERPIC -->
+                        <div class="profile-userpic"> <img src="../src/member/img/avatar/default-avatar.png" class="" alt=""> </div>
+                        <!-- END SIDEBAR USERPIC -->
+                        <!-- SIDEBAR USER TITLE -->
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name"> 喵星人 </div>
+                            <div class="profile-usertitle-level"> 剛加入的初心者 </div>
+                        </div>
+                        <div class="row overvie">
+                            <div class="col-md-4 user-pad text-center glyphicon glyphicon-star-empty">
+                                <h5>跟隨</h5>
+                                <h4>9,527</h4>
+                            </div>
+                            <div class="col-md-4 user-pad text-center glyphicon glyphicon-user">
+                                <h5>好友數</h5>
+                                <h4>486</h4>
+                            </div>
+                            <div class="col-md-4 user-pad text-center glyphicon glyphicon-thumbs-up">
+                                <h5>評分數</h5>
+                                <h4>6,666</h4>
+                            </div>
+                        </div>
+                        <!-- END SIDEBAR USER TITLE -->
+                        <!-- SIDEBAR MENU -->
+                        <div class="profile-usermenu">
+                            <div class="row text-center pt">
+                                <hr> 持有Pt點數:
+                                <p>3,345,678</p>
+                            </div>
+                            <ul class="nav">
+                                <li class="active">
+                                    <a href="memHome.html"> <i class="fa fa-home" aria-hidden="true"></i> 首頁 </a>
+                                </li>
+                                <li>
+                                    <a href="＃"> <i class="fa fa-calendar" aria-hidden="true"></i> 行事曆 </a>
+                                </li>
+                                <li>
+                                    <a href="＃"> <i class="fa fa-envelope-o" aria-hidden="true"></i> 收件夾 </a>
+                                </li>
+                                <li>
+                                    <a href="memNF.html"> <i class="fa fa-comments-o" aria-hidden="true"></i> 我的動態 </a>
+                                </li>
+                                <li>
+                                    <a href="＃"> <i class="fa fa-users" aria-hidden="true"></i> 社群管理 </a>
+                                </li>
+                                <li>
+                                    <a href="memLevel.html"> <i class="fa fa-level-up" aria-hidden="true"></i> 等級/積分 </a>
+                                </li>
+                                <li>
+                                    <a href="memAch.html"> <i class="fa fa-trophy" aria-hidden="true"></i> 成就 </a>
+                                </li>
+                                <li>
+                                    <a href="＃"> <i class="fa fa-gift" aria-hidden="true"></i> 獎賞 </a>
+                                </li>
+                                <li> <a href="memOpinion.html"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 評價 </a> </li>
+                                <li>
+                                    <a href="memInfo.html"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 基本資訊 </a>
+                                </li>
+                                <li>
+                                    <a href="memSetting.html"> <i class="fa fa-cog" aria-hidden="true"></i>個人頁面設定 </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- END MENU -->
+                    </div>
+                </div>
+                <div class="col-md-9 wow fadeInRight" data-wow-delay=".05s" data-wow-duration=".1">
+                    <div class="row profile-content blog-item">
+                        <h2>關於我</h2>
+                        <div class="introduction">
+                            狗本大隊長,你以為你躲起來就找不到你了嗎，沒有用的。你是那樣拉風的男人，不管在什麼地方，就好像漆黑中的螢火蟲一樣，是那樣的鮮明，那樣的出眾
+                        </div>
+                        <hr class="colorgraph">
+                        <!--********************活動********************-->
+                        <h2>活動足跡</h2>
+                        <!-- BEGIN SIDEBAR & CONTENT -->
+                        <!-- BEGIN CONTENT -->
+                        <div class="col-md-12 col-sm-12">
+                            <div class="content-page">
+                                <div class="row">
+
+                                    <!--      1st card          -->
+                                    <div class="ec wow fadeInLeft" data-wow-delay=".05s" data-wow-duration=".1">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4">
+                                                <a href="actItem.html"><img alt="Person Of Interest" class="img-responsive img-rounded" src="../src/act/img/eventSamples/POI.jpg"></a>
+                                            </div>
+
+                                            <div class="col-md-8 col-sm-8">
+                                                <h2><a href="actItem.html">一起看Person Of Interest</a></h2>
+                                                <ul class="event-info">
+                                                    <li><i class="fa fa-calendar"></i> 2017/7/30起 每周五晚上8:00-9:00</li>
+                                                    <li><i class="fa fa-map-marker"></i><a href="#">線上</a></li>
+                                                    <li><i class="fa fa-users"></i>222</li>
+                                                    <li><i class="fa fa-user"></i><a href="#">breadcan</a></li>
+
+                                                </ul>
+                                                <div class="ecContent">
+                                                    <p>《疑犯追蹤》（Person of Interest），是美國CBS電視台製作的犯罪電視影集，由強納森·諾蘭（Jonathan Nolan）與J·J·亞柏拉罕（J. J. Abrams）共同打造出劇情架構，全五季共103集。哈洛·芬奇為政府開發了一套稱作「機器」（The Machine），可偵測恐怖攻擊的大規模監控電腦系統。它可預測「有計畫或謀略策劃的犯罪」，諸如911事件之類的大型恐怖攻擊災難，並提供情報讓有關當局防範未然。
+                                                    </p>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="col-sm-4">
+            <a class="more" href="actItem.html">詳細資訊 <i class="icon-angle-right"></i></a></span>
+
+
+                                                    <span class="col-sm-8 ecbtn">
+            <button type="button" class="btn btn-primary mybtns"><i class="fa fa-star" aria-hidden="true"></i> 已追蹤</button>
+            <button type="button" class="btn btn-success mybtns"><i class="fa fa-check-circle" aria-hidden="true"></i> 已參加</button>
+            </span>
+                                                </div>
+                                                <div class="blog-tags">
+                                                    <li><a href="#"><i class="fa fa-tags"></i>線上</a></li>
+                                                    <li><a href="#"><i class="fa fa-tag"></i>專業</a></li>
+                                                    <li><a href="#"><i class="fa fa-tag"></i>技術宅</a></li>
+                                                    <li><a href="#"><i class="fa fa-tag"></i>帥</a></li>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--  end of 1st card         -->
+                                    <!--  end of 1st card         -->
+                                    <hr class="event-post-sep">
+
+
+                                    <!--      2st card          -->
+                                    <div class="ec wow fadeInLeft" data-wow-delay=".2s" data-wow-duration=".3">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4">
+                                                <a href="#"><img alt="Chulee合唱團" class="img-responsive img-rounded" src="../src/act/img/eventSamples/glee.jpg"></a>
+                                            </div>
+
+                                            <div class="col-md-8 col-sm-8">
+                                                <h2><a href="../event-item.html">Chulee合唱團</a></h2>
+                                                <ul class="event-info">
+                                                    <li><i class="fa fa-calendar"></i> 2017/7/30起 每周三晚上8:00-9:00</li>
+                                                    <li><i class="fa fa-map-marker"></i><a href="#">桃園市中壢區</a></li>
+                                                    <li><i class="fa fa-users"></i>17</li>
+                                                    <li><i class="fa fa-user"></i><a href="#">breadcan</a></li>
+
+                                                </ul>
+                                                <div class="ecContent">
+                                                    <p>Chulee合唱團是一個美國電視音樂劇兼青春喜劇，由《整形春秋》的創作人萊恩·墨菲等創作，2009年起開始在福斯電視網播放，故事圍繞著學校裡的"New Directions" Glee Club及其團員而展開。本劇獲得專業評論普遍的正面評價。本劇於2015年3月20日全劇終，共六季。</p>
+                                                </div>
+
+                                                <div class="row">
+                                                    <span class="col-sm-4">
+<a class="more" href="../event-item.html">詳細資訊 <i class="icon-angle-right"></i></a></span>
+
+
+                                                    <span class="col-sm-8 ecbtn">
+<button type="button" class="btn btn-default mybtns"><i class="fa fa-star-o" aria-hidden="true"></i> 追蹤活動</button>
+<button type="button" class="btn btn-default mybtns"><i class="fa fa-check-circle-o" aria-hidden="true"></i> 我要參加</button>
+</span>
+                                                </div>
+                                                <div class="blog-tags">
+                                                    <li><a href="#"><i class="fa fa-tags"></i>唱歌</a></li>
+                                                    <li><a href="#"><i class="fa fa-tag"></i>專業</a></li>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--  end of 2st card         -->
+                                    <!--      3nd card          -->
+                                    <div class="ec wow fadeInLeft" data-wow-delay=".2s" data-wow-duration=".3">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4">
+                                                <a href="#"><img alt="sample" class="img-responsive img-rounded" src="../src/act/img/eventSamples/Cap-Commandos.jpg"></a>
+                                            </div>
+
+                                            <div class="col-md-8 col-sm-8">
+                                                <h2><a href="../event-item.html">Howling Commandos</a></h2>
+                                                <ul class="event-info">
+                                                    <li><i class="fa fa-calendar"></i> 2017/7/30 20:46</li>
+                                                    <li><i class="fa fa-map-marker"></i><a href="#">桃園市中壢區</a></li>
+                                                    <li><i class="fa fa-users"></i>87</li>
+                                                    <li><i class="fa fa-user"></i><a href="#">breadcan</a></li>
+                                                </ul>
+                                                <div class="ecContent">
+                                                    <p>inline test failed sammmple</p>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="col-sm-4">
+					<a class="more" href="../event-item.html">詳細資訊 <i class="icon-angle-right"></i></a></span>
+
+
+                                                    <span class="col-sm-8 ecbtn">
+						<button type="button" class="btn btn-primary mybtns"><i class="fa fa-star" aria-hidden="true"></i> 已追蹤</button>
+						<button type="button" class="btn btn-info mybtns"><i class="fa fa-check-circle-o" aria-hidden="true"></i> 我要參加</button>
+				</span>
+                                                </div>
+                                                <div class="blog-tags">
+                                                    <li><a href="#"><i class="fa fa-tags"></i>影視</a></li>
+                                                    <li><a href="#"><i class="fa fa-tag"></i>帥哥</a></li>
+                                                    <li><a href="#"><i class="fa fa-tag"></i>二戰</a></li>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--  ============== end of 3nd card  ==============   -->
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END CONTENT -->
+                        <!-- END SIDEBAR & CONTENT -->
+                        <!--********************活動********************-->
+                        <hr class="colorgraph">
+                        <!--**************************留言板**************************-->
+                        <h2>留言板</h2>
+                        <div class="comments wow fadeInRight" data-wow-delay=".05s" data-wow-duration=".1">
+                            <div class="media">
+                                <a href="javascript:;" class="pull-left">
+                                    <img src="../src/member/img/avatar/default-avatar.png" alt="" class="media-object">
+                                    <p>喵星人</p>
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">歡迎留言<span>5天前 / <input type="button" value="回復" class="btn btn-success btn-sm"></span></h4>
+                                    <p>想回或想說甚麼都歡迎囉~</p>
+                                    <!-- Nested media object -->
+                                    <div class="media">
+                                        <a href="javascript:;" class="pull-left">
+                                            <img src="../src/member/img/dog-wtf.jpg" alt="" class="media-object">
+                                            <p>狗本大隊長</p>
+                                        </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">ㄟㄟ <span>三小時前 / </span></h4>
+                                            <p>邀請你了!記得我好友喔~</p>
+                                            <div class="col-sm-12 text-right">
+                                                <input type="button" value="檢舉" class="btn btn-danger btn-xs">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end media-->
+                                    <div class="media">
+                                        <a href="javascript:;" class="pull-left">
+                                            <img src="../src/member/img/god.jpg" alt="" class="media-object">
+                                            <p>鸚鵡兄弟</p>
+                                        </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">跟你說 <span>一小時前o / </span></h4>
+                                            <p>鸚鵡seafood最厲害!讚!</p>
+                                            <div class="col-sm-12 text-right">
+                                                <input type="button" value="檢舉" class="btn btn-danger btn-xs">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end media-->
+                                </div>
+                            </div>
+                            <!--end media-->
+                            <div class="media">
+                                <a href="javascript:;" class="pull-left">
+                                    <img src="../src/member/img/dog-wtf.jpg" alt="" class="media-object">
+                                    <p>狗本大隊長</p>
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">安安 <span>July 25,2017 / <input type="button" value="回復" class="btn btn-success btn-sm"></span></h4>
+                                    <p>路過到此一遊</p>
+                                    <div class="col-sm-12 text-right">
+                                        <input type="button" value="檢舉" class="btn btn-danger btn-xs">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end media-->
+                        </div>
+                        <!--**************************留言版喔喔**************************-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+    <!--主頁面要修改的都在這上面-->
+
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN COPYRIGHT -->
+                <div class="col-md-2 col-sm-2">
+                    <ul class="social-footer list-unstyled list-inline pull-left">
+                        <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+                <!-- END COPYRIGHT -->
+                <!-- BEGIN PAYMENTS -->
+                <div class="col-md-8 col-sm-8 padding-top-10">
+                    <ul class="list-inline text-center">
+                        <a href="javascript:;">隱私權政策</a> | <a href="javascript:;">使用條約</a> | <a href="javascript:;">關於我們</a> | <a href="javascript:;">使用導覽</a> | <a href="javascript:;">捐款贊助</a> | <a href="javascript:;">網站回饋</a> | <a href="javascript:;">Ｑ＆Ａ</a>                        | <a href="javascript:;">聯絡資訊</a>
+                    </ul>
+                </div>
+                <!-- END PAYMENTS -->
+                <!-- BEGIN POWERED -->
+                <div class="col-md-2 col-sm-2 pull-right padding-top-10">
+                    <span class="powered">2017 ©  <a href="#">chumeet.com</a></span>
+                </div>
+                <!-- END POWERED -->
+            </div>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+
+    <!-- Load javascripts at bottom, this will reduce page load time -->
+    <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
+    <!--[if lt IE 9]>
+    <script src="assets/plugins/respond.min.js"></script>
+    <![endif]-->
+    <script src="../assets/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!--自己複製一分改寫-->
+    <!--<script src="../assets/corporate/scripts/back-to-top.js" type="text/javascript"></script> -->
+    <script src="../src/member/js/back-to-top.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+
+    <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+    <!--@@@@@@@@@@@@@@@@@@@@@@@@@ 頁面專屬JS，JS擺在最後有益身心健康，可以刪改 @@@@@@@@@@@@@@@@@@@@@@@@-->
+    <script src="../assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
+    <!-- pop up -->
+    <script src="../assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="../assets/corporate/scripts/layout.js" type="text/javascript"></script>
+    <script src="../assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            Layout.init();
+            Layout.initOWL();
+            Layout.initTwitter();
+            Layout.initNavScrolling();
+        });
+    </script>
+    <script src="../assets/plugins/components/wow.min.js" type="text/javascript"></script>
+
+    <!-- END PAGE LEVEL JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+
+</html>

@@ -1,0 +1,70 @@
+
+/* CSS Document */
+.wd80{
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 3%;
+}
+
+.topst{
+	color: red;
+	
+}
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none !important;
+}
+/*NAV BAR*/
+/*img*/
+
+/*div*/
+.site-logo {
+	font-size: 23px;
+	font-weight: 400;
+    display: inline-block;
+    height: 100%;
+    white-space: nowrap;
+    text-align: center;
+}
+.site-logo img{
+	max-height: 1.8em;
+}
+.eventFloat {
+    position: fixed;
+    top: 50%;
+
+/*    opacity: .6;*/
+	font-size: 2em;
+
+	}
+
+.eventFloar span{
+	display: block;
+}
+
+/*NAV BAR END*/
+
+
+.main {
+	width: 80vw;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.footer {
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	top:calc(50% - 20px);
+}
+
+.footer .footerlist{
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	top:calc(50% - 20px);
+}
+

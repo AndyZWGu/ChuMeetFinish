@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Head BEGIN --><head>
+<meta charset="utf-8">
+<title>ChuMeet! 活動頁面</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="shortcut icon" href="../chumeet_icon.ico">
+
+<!-- Fonts START -->
+<!--  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">-->
+<!--  <link href="http://fonts.googleapis.com/earlyaccess/notosanstc.css" rel="stylesheet" type="text/css">-->
+
+
+<!-- Fonts END -->
+<!-- 全站統一CSS 不要亂動，動了要跟全組說 -->
+
+<!-- Global styles START -->
+<link href="../assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="../assets/pages/css/base.css" rel="stylesheet">
+<!-- Global styles END -->
+
+<!-- Page level plugin styles START -->
+<link href="../assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+<link href="../assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+<link href="../assets/pages/css/animate.css" rel="stylesheet">
+<!-- Page level plugin styles END -->
+
+<!-- Theme styles START -->
+<link href="../assets/pages/css/components.css" rel="stylesheet">
+<link href="../assets/corporate/css/style.css" rel="stylesheet">
+<link href="../assets/corporate/css/style-responsive.css" rel="stylesheet">
+<link href="../assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
+<!-- Theme styles END -->
+
+<!--  my styles  -->
+<!--@@@@@@@@@@@@@@@@@@@@@@@@@@ 自己的CSS用連結寫到這邊 @@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+<!--社團的-->
+<link href="../src/club/css/clubfirst.css" rel="stylesheet">
+
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!! 放在最後一行優先權越高 !!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+<!--#################### 單頁CSS路徑統一放在/src/xxx/css/xxx.css ###########-->
+<!--%%%%%%%%%%%%%%%%%% 第一行可以刪掉，那是activity(也就是敏道的活動頁)專用的CSS %%%%%-->
+<link href="../src/club/css/act.css" rel="stylesheet">
+</head>
+<!-- Head END -->
+
+<!-- Body BEGIN -->
+<body class="corporate">
+
+<!-- BEGIN TOP BAR 2-->
+<div class="pre-header">
+  <div class="container">
+    <div class="row"> 
+      <!-- BEGIN TOP BAR LEFT PART -->
+      <div class="col-md-6 col-sm-6 additional-shop-info">
+        <ul class="list-unstyled list-inline">
+          <li><span><strong>ChuMeet</strong></span></li>
+          <li><span>Nice to meet you <i class="fa fa-smile-o" aria-hidden="true"></i></span> </li>
+          <li><a href="actStart.html"><span class="topst"> 開始揪團吧！ </span></a></li>
+        </ul>
+        
+
+      </div>
+   
+      <!-- END TOP BAR LEFT PART --> 
+      <!-- BEGIN TOP BAR MENU -->
+      <div class="col-md-6 col-sm-6 additional-nav">
+        <ul class="list-unstyled list-inline pull-right">
+          <li><span>哈囉，剛哥！　</span> <a href="../member/setting.html"><i class="fa fa-cog" aria-hidden="true"></i>設定</a></li>
+          <li><a href="../member/logout.html"><i class="fa fa-sign-out" aria-hidden="true"></i>登出</a></li>
+          <li><a href="../member/mail.html"><i class="fa fa-envelope-o" aria-hidden="true"></i>消息</a></li>
+        </ul>
+      </div>
+      <!-- END TOP BAR MENU --> 
+    </div>
+  </div>
+</div>
+<!-- END TOP BAR 2--> 
+
+
+
+
+    <!-- BEGIN HEADER -->
+    <div class="header">
+      <div class="container">
+        <a class="site-logo" href="index.html"><img src="../assets/LOGO/ChuMeet_NavLogo_25.png" alt="ChuMeet"></a>
+
+        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+        
+        
+    <!-- BEGIN NAVIGATION -->
+    <div class="header-navigation pull-right font-transform-inherit">
+      <ul>
+    <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="../member/memNF.html"> 會員中心 </a></li>
+        <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="../act/act.html"> 活動廣場 </a>
+          <ul class="dropdown-menu">
+            <li><a href="../act/act.html">我的活動</a></li>
+            <li><a href="../act/act.html">揪咪推薦</a></li>
+            <li><a href="../act/act.html">政府藝文活動</a></li>
+            <li><a href="../act/act.html">周末特調</a></li>
+            <li><a href="../act/act.html">熱門標籤</a></li>
+            <li><a href="../act/act.html">活動分類</a></li>
+            <li><a href="../act/act.html">揪揪地圖</a></li>
+        </ul>
+        </li>
+        <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="club_ALL.html"> 社團大廳 </a>
+              <ul class="dropdown-menu">
+            <li><a href="club_ALL.html">我的社團</a></li>
+            <li><a href="club_ALL.html">社團推薦</a></li>
+            <li><a href="club_ALL.html">社團地圖</a></li>
+        </ul>  
+            
+        </li>
+
+            <!-- BEGIN TOP SEARCH -->
+            <li class="menu-search">
+              <span class="sep"></span>
+              <i class="fa fa-search search-btn"></i>
+              <div class="search-box">
+                <form action="#">
+                  <div class="input-group">
+                    <input type="text" placeholder="Search" class="form-control">
+                    <span class="input-group-btn">
+                      <button class="btn btn-primary" type="submit">Search</button>
+                    </span>
+                  </div>
+                </form>
+              </div> 
+            </li>
+            <!-- END TOP SEARCH -->
+          
+          </ul>
+        </div>
+        <!-- END NAVIGATION -->
+      </div>
+    </div>
+   
+<!-- Header END -->
+
+<!--主頁面要修改的都在這下面-->
+<div class="main">
+  <div class="container">
+    <div class="row">
+  <!--社團名稱開始-->
+      <div class="col-md-12 col-sm-12">
+          <ul class="breadcrumb">
+            <li><a href="../index.html">ChuMeet!</a></li>
+            <li><a href="javascript:;">搜索社團</a></li>
+            <li class="active">社團首頁</li>
+          </ul>
+      </div>
+      <div class="col-md-12 col-sm-12">
+        <h1>亂彈吉他社</h1>
+      </div>
+<!--名稱結束--> 
+
+<!--左邊開始-->
+      <div class="col-xs-12 col-sm-3">
+        <div class="row">   
+            <ul class="tabbable actl-tabbable">
+                <li><a href="#tab_3" data-toggle="tab">社團首頁</a></li>
+                <li><a href="#tab_3" data-toggle="tab">社團成員</a></li>
+                <li class="active"><a href="#tab_3" data-toggle="tab">社團相簿</a></li>
+                <li><a href="#tab_3" data-toggle="tab">社團公告</a></li>
+                <li><a href="#tab_1" data-toggle="tab">社團活動</a></li>
+                <li><a href="#tab_2" data-toggle="tab">管理社團</a></li>
+            </ul>
+        </div>
+      </div>
+<!--左邊結束-->
+
+
+<!--中間開始-->
+     
+  <div class="col-xs-12 col-sm-6">
+    <!--picture-->
+		  <div class="thumbnail">
+  			<a href="../src/club/img/music.jpg" target="_blank" >
+  			  <img src="../src/club/img/music.jpg" alt="Nature" class="clubImg" >
+  			  <div class="caption">
+  			  </div>
+  			</a>
+		  </div>  
+    <!--pictureEND-->
+    <!--middleIcon-->
+<div class="col-xs-12 col-sm-12">
+    <div class="blog-item-img">
+      <ul class="blog-info">
+        <li><i class="fa fa-user"></i>Hank</li>
+        <li><i class="fa fa-users"></i>222</li>
+        <li><i class="fa fa-comments"></i> 17</li>
+        <li><i class="fa fa-tags"></i> 音樂, 校園, 專業</li>
+      </ul>
+    </div> 
+</div>
+
+<!--uploadBTN-->
+<div class="col-xs-12 col-sm-12"> 
+
+    <div class="col-xs-12 col-sm-3">
+    <form>
+        <span id="fileselector">
+            <label class="btn btn-default" for="upload-file-selector">
+                <input id="upload-file-selector" type="file">
+                <i class="fa_icon icon-upload-alt margin-correction"></i>更換照片
+            </label>
+        </span>
+    </form>       
+    </div>
+
+    <div class="col-xs-12 col-sm-6">
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">社團開放設定
+         <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+          <li><a href="#">開放</a></li>
+          <li><a href="#">審核</a></li>
+          <li><a href="#">隱藏</a></li>
+          <!--<li class="divider"></li><li><a href="#">About Us</a></li>有需要格線再用-->
+          </ul>
+    </div>      
+    </div>
+
+</div>
+    <!--middIconEND-->
+    <!--intro-->
+    <div class="col-xs-12 col-sm-12"> 
+              <p>1.  社團由來
+    《木吉他社》的前身為《樂樂社》，從86年成立至今已第19屆了，乃是由一群熱愛音樂，熱愛吉他的大學生們共同所創立的社團。希望能夠藉由一顆熱誠的心，帶領大家經歷一場豐富的音樂享受，在大學時代裡能夠留下美好的回憶，共同打造出氣宇非凡的「木吉他社」。</p>
+   
+              <p>2.  宗旨（為什麼要成立社團）
+木吉他是最普遍也最方便的自彈自唱樂器，在民歌時代最常見也最容易聯想到的就是民歌手揹著一把看起來普通的木吉他，騎著摩托車到各民歌西餐廳駐唱，插著音箱，緩緩一撥絃，深情的道出一句歌詞，就能夠震懾住全場目光，這是屬於吉他的獨特魅力。
+    現今還是有許多人對吉他相當嚮往也充滿興趣，除了自己買本吉他教學課本、買支吉他，自己自學外，最簡單也最實惠的方式就是加入社團。在社團裡，我們除了教你怎麼學會正確的吉他彈法，怎麼把吉他學得更好，還會傳授你許多關於音樂上的知識。而社團幹部的親切隨和更能讓大家感受到社團的溫暖哦！</p>
+ 
+              <p>3.  目標
+短程：
+    近期的規劃是希望先能夠讓各個幹部認知到自己的責任與職責所在，可以為自己所處理的事情做負責，培養責任心，然後再慢慢的進入狀況、熟悉狀況、適應狀況，最後順利步上軌道。幹部間要達到互相合作、協調、冷靜溝通，建立革命情感，一起努力為社團付出。社員間，希望能夠慢慢藉由相互指導、發問或是經由一些社團活動，慢慢培養出社團間的情感。幹部與社員間，要抱持互相尊重及信任的態度，幹部應該熱情、親切的主動指導新生，而社員如果有任何疑問應該謙虛且禮貌的提出，培養出溫暖的社團大家庭。
+ 
+中程：
+    承襲並保有上屆舊有傳統的活動，能夠順利的舉辦成功，並一屆比一屆精采絕倫，活動內容能夠更加進步與多元化，不斷的傳承下去。培養每個社員都能夠克服緊張壓力，上台表演的能力。所以，應該多舉辦一些對外的活動表演，這點可以先由社內的定期檢定與活動成果發表以及校內的街頭演出來累積實力，並請老師或是評審來給予鼓勵及建議，使之能夠一邊培養臨場表現一邊提升自我能力。
+              </p>
+    </div>
+    <!--introEND-->
+
+    <!--mb-->
+  <div class="col-xs-12 col-sm-12"> 
+	<div class="blog-item">
+      <h2>留言板</h2>
+      <div class="comments">
+        <div class="media">                    
+          <a href="javascript:;" class="pull-left">
+          	<img src="../assets/pages/img/people/img1-small.jpg" alt="" class="media-object">
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">Media heading <span>5 hours ago / <a href="javascript:;">Reply</a></span>
+            </h4>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <!-- Nested media object -->
+            <div class="media">
+              <a href="javascript:;" class="pull-left">
+              <img src="../assets/pages/img/people/img2-small.jpg" alt="" class="media-object">
+              </a>
+              <div class="media-body">
+                <h4 class="media-heading">Media heading <span>17 hours ago / <a href="javascript:;">Reply</a></span></h4>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              </div>
+            </div>
+            <!--end media-->                      
+            <div class="media">
+              <a href="javascript:;" class="pull-left">
+              <img src="../assets/pages/img/people/img3-small.jpg" alt="" class="media-object">
+              </a>
+              <div class="media-body">
+                <h4 class="media-heading">Media heading <span>2 days ago / <a href="javascript:;">Reply</a></span></h4>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              </div>
+            </div>
+            <!--end media-->
+          </div>
+        </div>
+        <!--end media-->
+        <div class="media">
+          <a href="javascript:;" class="pull-left">
+          <img src="../assets/pages/img/people/img4-small.jpg" alt="" class="media-object">
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">Media heading <span>July 25,2013 / <a href="javascript:;">Reply</a></span></h4>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          </div>
+                      
+          <link rel="shortcut icon" sizes="196x196" href="https://secure.meetupstatic.com/s/img/9470973077939494/logo/swarm/m_swarm_196x196.png" />
+                      
+        </div>
+        <!--end media-->
+      </div>
+
+      <div class="post-comment padding-top-40">
+        <h3>社團留言</h3>
+        <form role="form">
+          <div class="form-group">
+            <textarea class="form-control" rows="8"></textarea>
+          </div>
+          <p><button class="btn btn-primary" type="submit">提交</button></p>
+        </form>
+      </div>                                 
+	</div>
+  </div>
+    <!--mbEND-->
+
+    
+  </div>    
+<!--中間結束-->
+
+
+<!--右邊開始-->
+      <div class="col-xs-12 col-sm-3 ">
+                <!-- BEGIN BTN-->            
+					<div>
+						<button class="btn btn-block btn-primary">退出社團</button>
+						<button class="btn btn-block btn-success">創立社團活動</button>
+					</div>
+               	<!-- END BTN--> 
+                <!-- BEGIN BLOG PHOTOS STREAM -->
+                  <div class="blog-photo-stream margin-bottom-20">
+                    <h2>社團成員</h2>
+                    <ul class="list-unstyled">
+                      <li><a href="javascript:;"><img alt="" src="../assets/pages/img/people/img5-small.jpg"></a></li>
+                      <li><a href="javascript:;"><img alt="" src="../assets/pages/img/works/img1.jpg"></a></li>
+                      <li><a href="javascript:;"><img alt="" src="../assets/pages/img/people/img4-large.jpg"></a></li>
+                      <li><a href="javascript:;"><img alt="" src="../assets/pages/img/works/img6.jpg"></a></li>
+                      <li><a href="javascript:;"><img alt="" src="../assets/pages/img/pics/img1-large.jpg"></a></li>
+                      <li><a href="javascript:;"><img alt="" src="../assets/pages/img/pics/img2-large.jpg"></a></li>
+                      <li><a href="javascript:;"><img alt="" src="../assets/pages/img/works/img3.jpg"></a></li>
+                      <li><a href="javascript:;"><img alt="" src="../assets/pages/img/people/img2-large.jpg"></a></li>
+                    </ul>                    
+                  </div>
+                  <!-- END BLOG PHOTOS STREAM -->
+                  <!-- BEGIN RECENT NEWS -->                            
+                  <h2>社團公告</h2>
+                  <div class="recent-news margin-bottom-10">
+                    <div class="row margin-bottom-10">
+                     
+                      <div class="col-md-3">
+                        <img class="img-responsive" alt="" src="../assets/pages/img/people/img2-large.jpg"> 
+                      </div>
+                      
+                      <div class="col-md-9 recent-news-inner">
+                        <h3><a href="javascript:;">Letiusto gnissimos</a></h3>
+                        <p>本星期暫停活動</p>
+                      </div> 
+                                             
+                    </div>
+                    <div class="row margin-bottom-10">
+                      <div class="col-md-3">
+                        <img class="img-responsive" alt="" src="../assets/pages/img/people/img1-large.jpg">                        
+                      </div>
+                      <div class="col-md-9 recent-news-inner">
+                        <h3><a href="javascript:;">Deiusto anissimos</a></h3>
+                        <p>這星期期開始收社費,快點繳錢啊,不然我要殺人啦</p>
+                      </div>                        
+                    </div>
+                    <div class="row margin-bottom-10">
+                      <div class="col-md-3">
+                        <img class="img-responsive" alt="" src="../assets/pages/img/people/img3-large.jpg">                        
+                      </div>
+                      <div class="col-md-9 recent-news-inner">
+                        <h3><a href="javascript:;">Tesiusto baissimos</a></h3>
+                        <p>拾獲吉他一把,快拿3000元來贖回</p>
+                      </div>		              
+                    </div>
+                    
+					<div class="col-md-12">
+					<div class="moreBtn">
+					<button>more</button>
+					</div>
+					</div>   
+                    
+                    <!--start member news -->
+                    <h2>成員異動</h2>
+                    <div class="row margin-bottom-10">
+                      <div class="col-md-3">
+                        <img class="img-responsive" alt="" src="../assets/pages/img/people/img3-large.jpg">                        
+                      </div>
+                      <div class="col-md-9 recent-news-inner">
+                        <h3><a href="javascript:;">Tesiusto baissimos</a></h3>
+                        <p>加入社團</p>
+                      </div>		              
+                    </div>
+                    
+                    <div class="row margin-bottom-10">
+                      <div class="col-md-3">
+                        <img class="img-responsive" alt="" src="../assets/pages/img/people/img3-large.jpg">                        
+                      </div>
+                      <div class="col-md-9 recent-news-inner">
+                        <h3><a href="javascript:;">Tesiusto baissimos</a></h3>
+                        <p>加入社團</p>
+                      </div>		              
+                    </div>
+                    
+                    <div class="row margin-bottom-10">
+                      <div class="col-md-3">
+                        <img class="img-responsive" alt="" src="../assets/pages/img/people/img3-large.jpg">                        
+                      </div>
+                      <div class="col-md-9 recent-news-inner">
+                        <h3><a href="javascript:;">Tesiusto baissimos</a></h3>
+                        <p>加入社團</p>
+                      </div>		              
+                    </div>
+                    
+                    
+                     <!--end member news -->
+                    <!--社團最近活動-->
+                    <h2>最新活動</h2>
+                    <!--活動1-->
+                    <div class="row margin-bottom-10">
+                      <div class="col-md-3">
+                        <img class="img-responsive" alt="" src="../assets/pages/img/people/img3-large.jpg">                        
+                      </div>
+                      <div class="col-md-9 recent-news-inner">
+                        <h3><a href="javascript:;">成果發表</a></h3>
+                        <p>2017年12月12日</p>
+                      </div>                  
+                    </div>
+                    <!--活動2-->
+                    <div class="row margin-bottom-10">
+                      <div class="col-md-3">
+                        <img class="img-responsive" alt="" src="../assets/pages/img/people/img3-large.jpg">                        
+                      </div>
+                      <div class="col-md-9 recent-news-inner">
+                        <h3><a href="javascript:;">熱音社社遊請踴躍參加</a></h3>
+                        <p>2017年12月12日</p>
+                      </div>                  
+                    </div>
+          <div class="col-md-12">
+          <div class="moreBtn">
+          <button>more</button>
+          </div>
+          </div>
+                    <!--END社團最近活動-->
+                  </div>
+                  <!-- END RECENT NEWS -->                            
+      </div>
+<!--右邊結束-->
+    </div>
+  </div>
+</div>  
+<!--主頁面要修改的都在這上面-->
+
+
+<!-- BEGIN FOOTER --> 
+
+   
+       <!-- BEGIN FOOTER -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <!-- BEGIN COPYRIGHT -->
+          <div class="col-md-2 col-sm-2">
+            <ul class="social-footer list-unstyled list-inline pull-left">
+              <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+            </ul>  
+          </div>
+          <!-- END COPYRIGHT -->
+          <!-- BEGIN PAYMENTS -->
+          <div class="col-md-8 col-sm-8 padding-top-10">
+            <ul class="list-inline text-center">
+ 			 <a href="javascript:;">隱私權政策</a> | <a href="javascript:;">使用條約</a> | <a href="javascript:;">關於我們</a> | <a href="javascript:;">使用導覽</a> | <a href="javascript:;">捐款贊助</a> | <a href="javascript:;">網站回饋</a> | <a href="javascript:;">Ｑ＆Ａ</a> | <a href="javascript:;">聯絡資訊</a>
+            </ul>  
+          </div>
+          <!-- END PAYMENTS -->
+          <!-- BEGIN POWERED -->
+          <div class="col-md-2 col-sm-2 pull-right padding-top-10">
+            <span class="powered">2017 ©  <a href="#">chumeet.com</a></span>
+          </div>
+          <!-- END POWERED -->
+        </div>
+      </div>
+    </div>
+    <!-- END FOOTER -->
+   
+
+<!-- Load javascripts at bottom, this will reduce page load time --> 
+<!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) --> 
+<!--[if lt IE 9]>
+    <script src="assets/plugins/respond.min.js"></script>
+    <![endif]--> 
+<!--<script src="../assets/plugins/jquery.wow.min.js" type="text/javascript"></script>-->
+<!--<script src="../assets/plugins/components/wow.min.js" type="text/javascript"></script>-->
+<script src="../assets/plugins/jquery.min.js" type="text/javascript"></script> 
+<!--<script src="../assets/plugins/jquery-migrate.min.js" type="text/javascript"></script> -->
+<script src="../assets/plugins/jquery.wow.min.js" type="text/javascript"></script> 
+<script src="../assets/plugins/jquery.smooth-scroll.js" type="text/javascript"></script> 
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> 
+<script src="../assets/corporate/scripts/back-to-top.js" type="text/javascript"></script> 
+<!-- END CORE PLUGINS --> 
+
+<!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) --> 
+<!--@@@@@@@@@@@@@@@@@@@@@@@@@ 頁面專屬JS，JS擺在最後有益身心健康，可以刪改 @@@@@@@@@@@@@@@@@@@@@@@@-->
+<script>
+	//社團的
+	
+</script>
+
+<!--<script src="../assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script> pop up  -->
+<script src="../assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script> 
+<script src="../assets/corporate/scripts/layout.js" type="text/javascript"></script> 
+<script type="text/javascript">
+        jQuery(document).ready(function() {
+            Layout.init();    
+            Layout.initOWL();
+            Layout.initTwitter();
+            Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
+            Layout.initNavScrolling();
+        });
+    </script> 
+<script src="../assets/plugins/components/wow.min.js" type="text/javascript"></script> 
+
+<!-- END PAGE LEVEL JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

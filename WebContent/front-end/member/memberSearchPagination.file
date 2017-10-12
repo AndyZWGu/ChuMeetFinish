@@ -1,0 +1,18 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+            <div class="row">
+                <div class=" col-xs-offset-5 col-md-6 col-sm-6">
+                    <ul class="pagination pull-center">
+                      <%if (rowsPerPage<rowNumber) {%>
+                        		<li><a href="<%=request.getContextPath()%>/front-end/member/memberSearch.do?whichPage=1">«</a></li>
+                        <%for (int i=1; i<=pageNumber; i++){%>
+                        	<%if(i==whichPage){%>
+           						<li><span><%=i%></span></li>
+           					<%} else {%>
+           						<li><a href="<%=request.getContextPath()%>/front-end/member/memberSearch.do?whichPage=<%=i%>"><%=i%></a></li>
+           					<%}%>
+        				<%}%> 
+                        		<li><a href="<%=request.getContextPath()%>/front-end/member/memberSearch.do?whichPage=<%=pageNumber%>">»</a></li>
+  						<%}%>  
+                    </ul>
+                </div>
+            </div>

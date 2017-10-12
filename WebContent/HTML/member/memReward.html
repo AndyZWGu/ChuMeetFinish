@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Head BEGIN -->
+
+<head>
+    <meta charset="utf-8">
+    <title>ChuMeet! 會員頁面</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="shortcut icon" href="../chumeet_icon.ico">
+
+    <!-- Fonts START -->
+    <!--  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">-->
+    <!--  <link href="http://fonts.googleapis.com/earlyaccess/notosanstc.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Fonts END -->
+    <!-- 全站統一CSS 不要亂動，動了要跟全組說 -->
+
+    <!-- Global styles START -->
+    <link href="../assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/pages/css/base.css" rel="stylesheet">
+    <!-- Global styles END -->
+
+    <!-- Page level plugin styles START -->
+    <link href="../assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="../assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="../assets/pages/css/animate.css" rel="stylesheet">
+    <!-- Page level plugin styles END -->
+
+    <!-- Theme styles START -->
+    <link href="../assets/pages/css/components.css" rel="stylesheet">
+    <link href="../assets/corporate/css/style.css" rel="stylesheet">
+    <link href="../assets/corporate/css/style-responsive.css" rel="stylesheet">
+    <link href="../assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
+    <!-- Theme styles END -->
+
+    <!--  my styles  -->
+    <!--@@@@@@@@@@@@@@@@@@@@@@@@@@ 自己的CSS用連結寫到這邊 @@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+    <!--!!!!!!!!!!!!!!!!!!!!!!!!!! 放在最後一行優先權越高 !!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <!--#################### 單頁CSS路徑統一放在/src/xxx/css/xxx.css ###########-->
+    <!--%%%%%%%%%%%%%%%%%% 第一行可以刪掉，那是activity(也就是敏道的活動頁)專用的CSS %%%%%-->
+
+    <link href="../src/member/css/memHome.css" rel="stylesheet">
+</head>
+<!-- Body BEGIN -->
+
+<body class="">
+
+    <!-- Head END -->
+    <!-- BEGIN TOP BAR 2-->
+    <div class="pre-header">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN TOP BAR LEFT PART -->
+                <div class="col-md-6 col-sm-6 additional-shop-info">
+                    <ul class="list-unstyled list-inline">
+                        <li><span><strong>ChuMeet</strong></span></li>
+                        <li><span>Nice to meet you <i class="fa fa-smile-o" aria-hidden="true"></i></span></li>
+                    </ul>
+                </div>
+                <!-- END TOP BAR LEFT PART -->
+                <!-- BEGIN TOP BAR MENU -->
+                <div class="col-md-6 col-sm-6 additional-nav">
+                    <ul class="list-unstyled list-inline pull-right">
+                        <li><span>哈囉，剛哥！　</span> <a href="../page-reg-page.html"><i class="fa fa-cog" aria-hidden="true"></i>會員設定</a></li>
+                        <li><a href="../page-login.html"><i class="fa fa-sign-out" aria-hidden="true"></i>登出</a></li>
+                        <li><a href="../page-reg-page.html"><i class="fa fa-envelope-o" aria-hidden="true"></i>消息</a></li>
+                    </ul>
+                </div>
+                <!-- END TOP BAR MENU -->
+            </div>
+        </div>
+    </div>
+    <!-- END TOP BAR 2-->
+
+    <!-- BEGIN HEADER -->
+    <div class="header">
+        <div class="container">
+            <div class="site-logo">
+                <a href="../新增資料夾/index.html"><img class="navlogo" src="../assets/pages/img/nav/navlogo_w-01.png" alt="ChuMeet"></a>
+            </div>
+            <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+            <!-- BEGIN NAVIGATION -->
+            <div class="header-navigation pull-right font-transform-inherit">
+                <ul>
+                    <li class="dropdown"> <a href="../新增資料夾/index.html"> 揪咪首頁 </a> </li>
+                    <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;"> 活動廣場 </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../act/act.html">綜合推薦</a></li>
+                            <li><a href="../新增資料夾/index.html">依興趣</a></li>
+                            <li><a href="../新增資料夾/index.html">依所在地</a></li>
+                            <li><a href="../新增資料夾/index.html">社團活動</a></li>
+                            <li><a href="../新增資料夾/index.html">政府藝文活動</a></li>
+                            <li><a href="../新增資料夾/index.html">周末特調</a></li>
+                            <li><a href="../新增資料夾/index.html">熱門標籤</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;"> 社團大廳 </a> </li>
+                    <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;"> 商城 </a> </li>
+                    <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;"> 服務中心 </a> </li>
+                </ul>
+            </div>
+            <!-- END NAVIGATION -->
+        </div>
+    </div>
+    <!-- Header END -->
+
+    <!--主頁面要修改的都在這下面-->
+    <div class="main">
+        <div class="container">
+            <div class="row profile">
+                <div class="col-md-3">
+                    <div class="profile-sidebar">
+                        <!-- SIDEBAR USERPIC -->
+                        <div class="profile-userpic"> <img src="../src/member/img/avatar/default-avatar.png" class="" alt=""> </div>
+                        <!-- END SIDEBAR USERPIC -->
+                        <!-- SIDEBAR USER TITLE -->
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name"> 喵星人 </div>
+                            <div class="profile-usertitle-level"> 剛加入的初心者 </div>
+                        </div>
+                        <div class="row overvie">
+                            <div class="col-md-4 user-pad text-center glyphicon glyphicon-star-empty">
+                                <h5>跟隨</h5>
+                                <h4>9,527</h4>
+                            </div>
+                            <div class="col-md-4 user-pad text-center glyphicon glyphicon-user">
+                                <h5>好友數</h5>
+                                <h4>486</h4>
+                            </div>
+                            <div class="col-md-4 user-pad text-center glyphicon glyphicon-thumbs-up">
+                                <h5>評分數</h5>
+                                <h4>6,666</h4>
+                            </div>
+                        </div>
+                        <!-- END SIDEBAR USER TITLE -->
+                        <!-- SIDEBAR MENU -->
+                        <div class="profile-usermenu">
+                            <div class="row text-center pt">
+                                <hr> 持有Pt點數:
+                                <p>3,345,678</p>
+                            </div>
+                            <ul class="nav">
+                                <li>
+                                    <a href="memHome.html"> <i class="glyphicon glyphicon-home"></i> 首頁 </a>
+                                </li>
+                                <li>
+                                    <a href="memLevel.html"> <i class="glyphicon glyphicon-tint"></i> 我的動態 </a>
+                                </li>
+                                <li>
+                                    <a href="memLevel.html"> <i class="glyphicon glyphicon-road"></i> 等級/積分 </a>
+                                </li>
+                                <li>
+                                    <a href="memInfo.html"> <i class="glyphicon glyphicon-user"></i> 基本資訊 </a>
+                                </li>
+                                <li>
+                                    <a href="memAch.html"> <i class="glyphicon glyphicon-flag"></i> 成就 </a>
+                                </li>
+                                <li> <a href="memOpinion.html"><i class="glyphicon glyphicon-thumbs-up"></i> 評價 </a> </li>
+                                <li>
+                                    <a href="memSetting.html"> <i class="glyphicon glyphicon-cog"></i> 個人頁面設定 </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- END MENU -->
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <!--  statitics -->
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-8">
+                                            <i class="fa fa-envelope-o fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-4 text-right">
+                                            <p class="announcement-heading">未讀3件</p>
+                                            <p class="announcement-text"></p>
+                                            <!--	<p class="announcement-text">Users</p> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div class="panel-footer announcement-bottom">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <button type="button" class="btn btn-info btn-sm"> 收件夾 </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="panel panel-danger">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-8">
+                                            <i class="fa fa-diamond fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-4 text-right">
+                                            <p class="announcement-heading">今日+45</p>
+                                            <p class="announcement-text"></p>
+                                            <!-- <p class="announcement-text"> Items</p> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div class="panel-footer announcement-bottom">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <button type="button" class="btn btn-primary btn-sm"> 使用揪點 </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="panel panel-warning">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-8">
+                                            <i class="fa fa-users fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-4 text-right">
+                                            <p class="announcement-heading">未讀6件</p>
+                                            <p class="announcement-text"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div class="panel-footer announcement-bottom">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <button type="button" class="btn btn-warning btn-sm"> 管理社群 </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-8">
+                                            <i class="fa fa-comments fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <p class="announcement-heading">未讀2條</p>
+                                            <p class="announcement-text"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div class="panel-footer announcement-bottom">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <button type="button" class="btn btn-success btn-sm"> 聊天 </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                    <!--  statitics -->
+
+                    <div class="row profile-content blog-item">
+
+                        <!--********************會員獎賞********************-->
+                        <h1 class="text-center">揪點兌換</h1>
+                        <hr class="colorgraph">
+                        <div class="row">
+                            <div class=" col-xs-offset-1 col-sm-10">
+                                <form action="#" class="content-search-view2 achForm">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="尋找獎賞">
+                                        <span class="input-group-btn">
+                                                    <button type="submit" class="btn btn-primary">搜尋</button>
+                                                </span>
+                                    </div>
+                                </form>
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="#home">全部</a></li>
+                                    <li><a data-toggle="tab" href="#menu1">已達成</a></li>
+                                    <li><a data-toggle="tab" href="#menu2">未達成</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div id="home" class="tab-pane fade in active">
+                                        <div class="container-fluid bg-3 text-center reward">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <img src="../src/index/avatar/1.jpg" alt="Image" class="img-responsive thumbnail">
+                                                    <p>Lorem ipsum..</p>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <img src="../src/index/avatar/1.jpg" alt="Image" class="img-responsive thumbnail">
+                                                    <p>Lorem ipsum..</p>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <img src="../src/index/avatar/1.jpg" alt="Image" class="img-responsive thumbnail">
+                                                    <p>Lorem ipsum..</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="menu1" class="tab-pane fade">
+
+                                    </div>
+                                    <div id="menu2" class="tab-pane fade">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--********************會員獎賞********************-->
+                        <!--分頁-->
+                        <div class="row">
+                            <div class=" col-xs-offset-4 col-md-6 col-sm-6">
+                                <ul class="pagination pull-center">
+                                    <li><a href="javascript:;">«</a></li>
+                                    <li><a href="javascript:;">1</a></li>
+                                    <li><span>2</span></li>
+                                    <li><a href="javascript:;">3</a></li>
+                                    <li><a href="javascript:;">4</a></li>
+                                    <li><a href="javascript:;">5</a></li>
+                                    <li><a href="javascript:;">»</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--分頁-->
+
+                        <hr class="colorgraph">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+    <!--主頁面要修改的都在這上面-->
+
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN COPYRIGHT -->
+                <div class="col-md-2 col-sm-2">
+                    <ul class="social-footer list-unstyled list-inline pull-left">
+                        <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+                <!-- END COPYRIGHT -->
+                <!-- BEGIN PAYMENTS -->
+                <div class="col-md-8 col-sm-8 padding-top-10">
+                    <ul class="list-inline text-center">
+                        <a href="javascript:;">隱私權政策</a> | <a href="javascript:;">使用條約</a> | <a href="javascript:;">關於我們</a> | <a href="javascript:;">使用導覽</a> | <a href="javascript:;">捐款贊助</a> | <a href="javascript:;">網站回饋</a> | <a href="javascript:;">Ｑ＆Ａ</a>                        | <a href="javascript:;">聯絡資訊</a>
+                    </ul>
+                </div>
+                <!-- END PAYMENTS -->
+                <!-- BEGIN POWERED -->
+                <div class="col-md-2 col-sm-2 pull-right padding-top-10">
+                    <span class="powered">2017 ©  <a href="#">chumeet.com</a></span>
+                </div>
+                <!-- END POWERED -->
+            </div>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+
+    <!-- Load javascripts at bottom, this will reduce page load time -->
+    <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
+    <!--[if lt IE 9]>
+    <script src="assets/plugins/respond.min.js"></script>
+    <![endif]-->
+    <script src="../assets/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!--自己複製一分改寫-->
+    <!--<script src="../assets/corporate/scripts/back-to-top.js" type="text/javascript"></script> -->
+    <script src="../src/member/js/back-to-top.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+
+    <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+    <!--@@@@@@@@@@@@@@@@@@@@@@@@@ 頁面專屬JS，JS擺在最後有益身心健康，可以刪改 @@@@@@@@@@@@@@@@@@@@@@@@-->
+    <script src="../assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
+    <!-- pop up -->
+    <script src="../assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="../assets/corporate/scripts/layout.js" type="text/javascript"></script>
+    <script src="../assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            Layout.init();
+            Layout.initOWL();
+            Layout.initTwitter();
+            Layout.initNavScrolling();
+        });
+    </script>
+    <script src="../assets/plugins/components/wow.min.js" type="text/javascript"></script>
+
+    <!-- END PAGE LEVEL JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+
+</html>

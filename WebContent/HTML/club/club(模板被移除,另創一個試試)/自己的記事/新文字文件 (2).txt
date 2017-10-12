@@ -1,0 +1,7 @@
+<style>
+ul.pagination {
+  display: table;
+  margin: 0 auto;
+}
+
+</style>

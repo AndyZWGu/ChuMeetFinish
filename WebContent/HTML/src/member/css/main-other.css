@@ -1,0 +1,135 @@
+/* CSS Document */
+
+body {
+background-color:#F1F3FA;
+}
+/* Profile container */
+.profile {
+	margin: 20px 0;
+}
+/* Profile sidebar */
+.profile-sidebar {
+	padding: 20px 0 10px 0;
+	background:#FA396F;
+	color: #fff!important;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+.profile-userpic img {
+	float: none;
+	margin: 0 auto;
+	width: 50%;
+	height: 50%;
+	-webkit-border-radius: 50% !important;
+	-moz-border-radius: 50% !important;
+	border-radius: 50% !important;
+}
+.profile-usertitle {
+	text-align: center;
+	margin-top: 20px;
+}
+.profile-usertitle-name {
+	color:yellow;
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 7px;
+}
+.profile-usertitle-level {
+	text-transform: uppercase;
+	color: darkblue;
+	font-size: 12px;
+	font-weight:bold;
+	margin-bottom: 15px;
+}
+.profile-userbuttons {
+	text-align: center;
+	margin-top: 10px;
+}
+.profile-userbuttons .btn {
+	text-transform: uppercase;
+	font-size: 11px;
+	font-weight: 600;
+	padding: 6px 15px;
+	margin-right: 5px;
+}
+.profile-userbuttons .btn:last-child {
+	margin-right: 0px;
+}
+.profile-usermenu {
+	margin-top: 30px;
+}
+.profile-usermenu ul li {
+	border-bottom: 1px solid #f0f4f7;
+}
+.profile-usermenu ul li:last-child {
+	border-bottom: none;
+}
+.profile-usermenu ul li a {
+	color: #93a3b5;
+	font-size: 14px;
+	font-weight: 400;
+}
+.profile-usermenu ul li a i {
+	margin-right: 8px;
+	font-size: 14px;
+}
+.profile-usermenu ul li a:hover {
+	background-color: #fafcfd;
+	color: #E02222;
+}
+.profile-usermenu ul li.active {
+	border-bottom: none;
+}
+.profile-usermenu ul li.active a {
+	color: #e02222;
+	background-color: #f6f9fb;
+	border-left: 2px solid #5b9bd1;
+	margin-left: -2px;
+}
+.overvie {
+	 color: #fff!important;
+}
+.user-pad {
+}
+.overvie h5 {
+	font-weight: bold!important;
+	font-weight: 300;
+	margin-top: 15px;
+	margin: 10px 0 0 0;
+}
+.overvie h4 {
+	font-weight: bold!important;
+	font-size: 20px;
+	margin-top: 0;
+}
+/* Profile Content */
+.profile-content {
+	padding: 20px;
+	background-color: #FA396F;
+	color: #fff!important;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px
+}
+div.tags {
+	background-color: #F1F3FA;
+	border-radius: 10px;
+	color: black;
+	padding: 10px 10px 10px 10px;
+}
+div.tags:hover {
+	background-color: #f6f9fb;
+	color: #e02222;
+}
+.introduction {
+	font-size: 18px;
+}
+.introduction h1 {
+	font-weight: bold;
+}
+.introduction h4 {
+	font-weight:normal;
+}

@@ -1,0 +1,293 @@
+﻿body {
+  padding-top: 3.6em;
+}
+
+/*橫列1*/
+nav .btn-group {
+  margin: 0.8rem 2rem 0 0;
+}
+
+@media(max-width: 48em){
+  nav .btn-group {
+    position: absolute;
+    top: 0;
+    right: 4em;
+  }
+}
+
+/*橫列2*/
+section#intro-header {
+  background-image: url(../../pages/img/works/wallpaper.jpg);
+  background-size: cover;
+}
+
+section#intro-header .wrap-headline {
+  position: relative;
+  padding-top: 20%;
+  padding-bottom: 20%;
+}
+
+section#intro-header h1,
+section#intro-header h2 {
+  color: #FFF;
+}
+
+section#intro-header h2 {
+  font-size: 1.5rem;
+}
+
+section#intro-header hr {
+  width: 10%;
+}
+
+section#intro-header .btn-default {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+}
+
+#nav-menu {
+  margin-right: 1rem;
+}
+/*熱門分類(懶人包)*/
+.card {
+    border: 0.1rem solid #e5e5e5;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    background-color:white;
+    display:block;
+}
+.hscroll-content>li, .inlineblockList>li {
+    display: inline-block;
+    padding-right: 8px;
+}
+  	.bounds {
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 840px;
+    padding: 24px 16px 8px;
+    width: 100%;
+}
+#homeActivities .button--activity {
+    display: -webkit-inline-box;
+    display: -moz-inline-box;
+    display: inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: horizontal;
+    box-orient: horizontal;
+    -webkit-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    -webkit-box-pack: center;
+    box-pack: center;
+    -webkit-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    -ms-flex-align: center;
+    -webkit-transition: background .15s;
+    transition: background .15s;
+    border: 1px solid rgba(0,0,0,.12);
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    font-size: 16px;
+    min-height: 36px;
+    outline: 0;
+    padding: 0 16px;
+    vertical-align: middle;
+    color: rgba(0,0,0,.87)!important;
+    font-weight: 500;
+    background: rgba(0,0,0,.05);
+    border-width: 0;
+    line-height: 2.5;
+    border-radius: 8px;
+    }
+    #homeActivities .button--activity, #homeActivities .button--activity svg {
+    stroke: transparent;
+    fill: rgba(0,0,0,.87)!important;
+}
+.bounds--sideHeader, .bounds--wide {
+    max-width: 1100px;
+}
+.hscroll-content {
+    box-sizing: content-box;
+    white-space: nowrap;
+}
+/*活動分類*/
+.gridList-item {
+    border: 0.1rem solid #e5e5e5;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    background-color:white;
+    display:block;
+}
+/*橫列3 與 橫列4*/
+section#about img {
+  margin-top: 6.5rem;
+  margin-bottom: 5rem;
+}
+
+section#about h3 {
+  margin-top: 10rem;
+}
+
+/*橫列5 與 橫列6*/
+section#features {
+  background-color: #eef2f5;
+  border-top: 0.1rem solid #e9e9e9;
+  border-bottom: 0.1rem solid #e9e9e9;
+}
+
+section#features * {
+  color: #657C8E;
+}
+
+section#features .feature {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  text-align: center;
+}
+
+section#features .glyphicon {
+  font-size: 2rem;
+}
+
+section#features .glyphicon-heart {
+  color: #E04C4C;
+}
+
+section#features .feature-tag {
+  max-width: 10.7em;
+  display: inline-block;
+  text-align: left;
+  margin-left: 1.5em;
+  font-size: 1.7rem;
+}
+
+/*橫列7 與 橫列8*/
+section#pricing .center-block {
+  width: 90%
+}
+
+section#pricing h3.price-headline {
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+}
+
+section#pricing .white-text {
+  color: #FFF;
+}
+
+section#pricing thead .success {
+  background-color: #78CFBF;
+}
+
+section#pricing thead .info {
+  background-color: #3EC6E0;
+}
+
+section#pricing thead .danger {
+  background-color: #E3536C;
+}
+
+section#pricing tbody .success {
+  background-color: #82DACA;
+}
+
+section#pricing tbody .info {
+  background-color: #53CFE9;
+}
+
+section#pricing tbody .danger {
+  background-color: #EB6379;
+}
+
+/* 橫列9 - 電子報 */
+section#newsletter {
+  border-top: 1px solid #E0E0E0;
+  padding-top: 3.2em;
+  margin-top: 2em;
+}
+
+section#newsletter h4 {
+  padding: 1em;
+}
+
+section#newsletter form {
+  padding: 1em;
+  margin-top: 2em;
+  margin-bottom: 5.5em;
+}
+
+/* 頁尾 */
+footer {
+  background-color: #191919;
+  color: #ADADAD;
+  margin-top: 3em;
+}
+
+footer h5,
+footer img {
+  margin-top: 5em;
+  font-weight: bold;
+}
+
+footer address {
+  margin-top: 5em;
+  margin-bottom: 5em;
+  color: #5A5A5A;
+}
+
+footer ul {
+  margin-bottom: 5em;
+}
+
+footer address strong {
+  color: #ADADAD;
+  display: block;
+  padding-bottom: 0.62em;
+}
+
+footer a {
+  font-weight: 300;
+  color: #5A5A5A;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: #FFF;
+}
+
+/* team 部份 */
+section#team ul {
+  margin: 5rem 0;
+}
+
+section#team li {
+  margin: 0 5rem;
+}
+
+section#team h5 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/*聯絡頁面*/
+section#contact form {
+  padding-top: 9rem;
+  padding-bottom: 3rem;
+}
+
+.hidden-element {
+  display: none;
+}

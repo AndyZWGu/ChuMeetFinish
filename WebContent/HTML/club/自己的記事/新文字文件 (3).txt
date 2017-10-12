@@ -1,0 +1,6 @@
+<!--ªÀ¹Îªº-->
+<style type="text/css">	
+	p{font-size:16px!important;}	
+</style>	
+<link href="../src/act/css/act.css" rel="stylesheet">
+</head>

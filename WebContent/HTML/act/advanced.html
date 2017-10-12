@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Responsive Crop. Advanced demos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        
+<script src="../assets/plugins/jquery.min.js" type="text/javascript"></script> 
+        <script src="../src/act/js/rcrop.min.js" ></script>
+        <link href="act_assets/css/rcrop.css" media="screen" rel="stylesheet" type="text/css">
+
+        <style>
+
+            #image-4-wrapper .rcrop-outer-wrapper{
+                opacity: .75;
+            }
+            #image-4-wrapper .rcrop-outer{
+                background: #000
+            }
+            #image-4-wrapper .rcrop-croparea-inner{
+                border: 1px dashed #fff;
+            }
+            
+            #image-4-wrapper .rcrop-handler-corner{
+                width:12px;
+                height: 12px;
+                background: none;
+                border : 0 solid #51aeff;
+            }
+            #image-4-wrapper .rcrop-handler-top-left{
+                border-top-width: 4px;
+                border-left-width: 4px;
+                top:-2px;
+                left:-2px
+            }
+            #image-4-wrapper .rcrop-handler-top-right{
+                border-top-width: 4px;
+                border-right-width: 4px;
+                top:-2px;
+                right:-2px
+            }
+            #image-4-wrapper .rcrop-handler-bottom-right{
+                border-bottom-width: 4px;
+                border-right-width: 4px;
+                bottom:-2px;
+                right:-2px
+            }
+            #image-4-wrapper .rcrop-handler-bottom-left{
+                border-bottom-width: 4px;
+                border-left-width: 4px;
+                bottom:-2px;
+                left:-2px
+            }
+            #image-4-wrapper .rcrop-handler-border{
+                display: none;
+            }
+            
+            #image-4-wrapper .clayfy-touch-device.clayfy-handler{
+                background: none;
+                border : 0 solid #51aeff;
+                border-bottom-width: 6px;
+                border-right-width: 6px;
+            }
+            
+            #update{
+                margin: 10px 0 0 60px ;
+                padding: 10px 20px;
+            }
+            
+            #cropped-original, #cropped-resized{
+                padding: 20px;
+                border: 4px solid #ddd;
+                min-height: 60px;
+                margin-top: 20px;
+            }
+            #cropped-original img, #cropped-resized img{
+                margin: 5px;
+            }
+
+            
+        </style>
+        
+        <script>
+            $(document).ready(function(){
+                $('#image-4').rcrop({
+                    minSize : [150,100],
+                    preserveAspectRatio : true,
+                    grid : false,
+                    
+                    preview : {
+                        display: true,
+                        size : [150,100],
+                    }
+                });
+                
+                
+            });
+        </script>
+        
+    </head>
+    <body>
+        <main>
+<div class="container">
+                <div class="image-wrapper" id="image-4-wrapper">
+                    <img id="image-4" src="rcrop-master/demos/images/demo.jpg">
+
+            </div>
+</div>
+        </main>
+    </body>
+</html>
