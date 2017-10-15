@@ -64,4 +64,7 @@ public class ClubMBService {
 	public List<ClubMBVO> findByClubID(Integer clubID){
 		return dao.findByClubID(clubID);
 	}
+	
+	
+
 }

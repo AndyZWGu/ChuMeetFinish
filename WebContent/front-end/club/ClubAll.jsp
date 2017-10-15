@@ -44,87 +44,168 @@
 
 
 	<!--主頁面要修改的都在這下面-->
-	<div class="main">
-		<div class="container">
-			<ul class="breadcrumb">
-				<li><a href="index.html">首頁</a></li>
-				<li class="active">社團推薦</li>
-			</ul>
+	<c:if test="${memVO!=null}">
+		<div class="main">
+			<div class="container">
+				<ul class="breadcrumb">
+					<li><a
+						href="<%=request.getContextPath()%>/front-end/index.jsp">首頁</a></li>
+					<li class="active">社團推薦</li>
+				</ul>
 
 
 
 
-			<%@ include file="page1.file"%>
-			<div class="row clearfix">
-				<div class="col-sm-12 col-md-8 column">
-					<div class="row clearfix">
+				<%@ include file="page1.file"%>
+				<div class="row clearfix">
+					<div class="col-sm-8 col-md-8 column">
+						<div class="row clearfix">
 
 
 
-						<c:forEach var="clubVO" items="${list}" begin="<%=pageIndex%>"
-							end="<%=pageIndex+rowsPerPage-1%>">
-							<div class="col-sm-6 col-md-4 column">
-								<div class="mix-inner">
+							<c:forEach var="clubVO" items="${list}" begin="<%=pageIndex%>"
+								end="<%=pageIndex+rowsPerPage-1%>" varStatus="status">
+								<c:if test="${status.index!=0}">
+									<div class="col-sm-6 col-md-4 column">
+										<div class="mix-inner">
 
-									<!-- 						 			<div style="width:250px;height:100px;"> -->
-									<img
-										style="width:200px;height:120px;_height:expression(this.height < 120 ?
-										120px" :
-										this.width);" src="<%=request.getContextPath()%>/front-end/club/Photo.do?clubID=${clubVO.clubID}"
-										class="img-responsive thumbnail">
-									<!--                                     </div>  -->
-									<div class="mix-details">
+											<!-- 						 			<div style="width:250px;height:100px;"> -->
+											<img
+												style="width:200px;height:120px;_height:expression(this.height < 120 ?
+										120px"
+												:
+												this.width);" src="<%=request.getContextPath()%>/front-end/club/Photo.do?clubID=${clubVO.clubID}"
+												class="img-responsive thumbnail">
+											<!--                                     </div>  -->
+											<div class="mix-details">
 
-										<a
-											href="<%=request.getContextPath()%>/front-end/club/clubAll.do?clubID=${clubVO.clubID}&action=toClubOne">
-											<h4>${clubVO.clubName}</h4>
-										</a>
-										<%--                                            <p><c:out value="${clubVO.clubContent}" default=""/></p> --%>
+												<div class="col-sm-6">
+													<p>${clubVO.clubName}</p>
+												</div>
+												<div class="col-sm-6">
+													<a class="btn btn-sm btn-primary"
+														href="<%=request.getContextPath()%>/front-end/club/clubAll.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubOne">
+														詳情</a>
+												</div>
+
+
+												<%--                                            <p><c:out value="${clubVO.clubContent}" default=""/></p> --%>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-						</c:forEach>
+								</c:if>
+							</c:forEach>
 
 
 
 
-					</div>
-					<!--行div結束-->
+						</div>
+						<!--行div結束-->
 
 
-					<!--畫面是小的時候有問題 -->
-					<ul class="pagination col-md-12 column">
-						<%@ include file="page2.file"%>
-					</ul>
-
-
-				</div>
-
-
-
-
-				<div class="col-md-4 column">
-					<div class="sidebar">
-
-
-						<input type="button"
-							onclick="javascript:location.href='<%=request.getContextPath()%>/front-end/club/ClubAdd.jsp?action=addClub'"
-							value="建立社團" class="btn btn-block btn-primary"></input>
-
-						<ul class="nav sidebar-categories margin-bottom-40">
-							<li class="active"><a href="index.html">綜合推薦</a></li>
-							<li><a href="index.html">依分類</a></li>
-							<li><a href="index.html">依興趣</a></li>
-							<li><a href="index.html">依所在地</a></li>
+						<!--畫面是小的時候有問題 -->
+						<ul class="pagination col-md-8 column">
+							<%@ include file="page2.file"%>
 						</ul>
+
+
 					</div>
+
+
+
+
+					<div class="col-md-4 column">
+						<div class="sidebar">
+
+
+							<input type="button"
+								onclick="javascript:location.href='<%=request.getContextPath()%>/front-end/club/ClubAdd.jsp?action=addClub'"
+								value="建立社團" class="btn btn-block btn-primary"></input> <br>
+							<br>
+							<h3>找尋您感興趣的社團?</h3>
+							<img class="thumbnail img-responsive"
+								src="<%=request.getContextPath()%>/HTML/src/club/img/addClub.jpg"
+								alt="">
+							<h3>或者試試建立社團來玩吧！</h3>
+							<img class="thumbnail img-responsive"
+								src="<%=request.getContextPath()%>/HTML/src/club/img/addClub2.jpg"
+								alt="">
+							<!-- 						<ul class="nav sidebar-categories margin-bottom-40"> -->
+							<!-- 							<li class="active"><a href="index.html">綜合推薦</a></li> -->
+							<!-- 							<li><a href="index.html">依分類</a></li> -->
+							<!-- 							<li><a href="index.html">依興趣</a></li> -->
+							<!-- 							<li><a href="index.html">依所在地</a></li> -->
+							<!-- 						</ul> -->
+						</div>
+					</div>
+
+
 				</div>
-
-
 			</div>
 		</div>
-	</div>
+	</c:if>
+	<c:if test="${memVO==null}">
+		<div class="main">
+			<div class="container">
+				<ul class="breadcrumb">
+					<li><a href="index.html">首頁</a></li>
+					<li class="active">社團推薦</li>
+				</ul>
 
+
+
+
+				<%@ include file="page1.file"%>
+				<div class="row clearfix">
+					<div class="col-sm-12 col-md-12 column">
+						<div class="row clearfix">
+
+
+
+							<c:forEach var="clubVO" items="${list}" begin="<%=pageIndex%>"
+								end="<%=pageIndex+rowsPerPage-1%>" varStatus="status">
+								<c:if test="${status.index!=0}">
+									<div class="col-sm-6 col-md-4 column">
+										<div class="mix-inner">
+
+											<!-- 						 			<div style="width:250px;height:100px;"> -->
+											<img
+												style="width:200px;height:120px;_height:expression(this.height < 120 ?
+										120px"
+												:
+												this.width);" src="<%=request.getContextPath()%>/front-end/club/Photo.do?clubID=${clubVO.clubID}"
+												class="img-responsive thumbnail">
+											<!--                                     </div>  -->
+											<div class="mix-details">
+
+												<h4>${clubVO.clubName}(登入享有更多功能)</h4>
+
+												<%--                                            <p><c:out value="${clubVO.clubContent}" default=""/></p> --%>
+											</div>
+										</div>
+									</div>
+								</c:if>
+							</c:forEach>
+
+
+
+
+						</div>
+						<!--行div結束-->
+
+
+						<!--畫面是小的時候有問題 -->
+						<ul class="pagination col-md-12 column">
+							<%@ include file="page2.file"%>
+						</ul>
+
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</c:if>
 	<!--主頁面要修改的都在這上面-->
 
 

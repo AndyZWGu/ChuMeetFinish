@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+	
+    <!-- 一個persistence.xml 中可以設定多個 Persistence Unit ， 每個 Persistence Unit 可當作是一個資料庫連結設定 -->
+    <!-- <persistence-unit name="emp"> 的 name 名稱即作為 Persistence Unit 的識別名稱 -->
+    <!-- 見 JPAUtil.java的第10行 呼叫此 Persistence Unit 的識別名稱 emp -->
+    
+<!--     感覺好像一個資料庫，可以註冊多個單元 -->
+	<persistence-unit name="acttt" transaction-type="RESOURCE_LOCAL">
+
+<!-- 本來是讀映射檔，現在改讀JAVA VO -->
+        <class>com.act.act.model.Act_VO</class>
+		<class>com.act.actMem.model.ActMemVO</class>
+		<class>com.act.actPOI.model.ActPOIVO</class>
+		<class>com.poi.model.POIVO</class>
+		<class>com.member.model.MemberHVO</class>
+		
+		<properties>
+			
+			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+			<property name="javax.persistence.jdbc.user" value="BA103G2" />
+			<property name="javax.persistence.jdbc.password" value="a123" />
+			
+<!-- 		<property name="hibernate.connection.datasource">java:/comp/env/jdbc/BA103G2DB</property> -->
+			
+			
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			
+		
+		</properties>
+		
+	</persistence-unit>
+
+
+</persistence>

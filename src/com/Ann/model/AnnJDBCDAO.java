@@ -9,8 +9,8 @@ public class AnnJDBCDAO implements AnnDAO_interface{
 
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String userid = "servlet";
-	String passwd = "123456";
+	String userid = "BA103G2";
+	String passwd = "a123";
 
 	private static final String INSERT_STMT = 
 		"INSERT INTO ann (annID,adminID,annName,annContent,annDate) VALUES (annID_seq.NEXTVAL, ?, ?, ?, ?)";
@@ -188,8 +188,8 @@ public class AnnJDBCDAO implements AnnDAO_interface{
 				annVO = new AnnVO();
 				annVO.setAnnID(rs.getInt(1));
 				annVO.setAdminID(rs.getInt(1));
-				annVO.setAnnContent(rs.getString("job"));
-				annVO.setAnnDate(rs.getTimestamp("hiredate"));
+				annVO.setAnnContent(rs.getString("annContent"));
+				annVO.setAnnDate(rs.getTimestamp("annDate"));
 				
 				
 			}
@@ -298,13 +298,13 @@ public class AnnJDBCDAO implements AnnDAO_interface{
 
 //		// �s�W
 //		AnnVO annVO1 = new AnnVO();
-//		annVO1.setAdminID(2);
+//		annVO1.setAdminID(3);
 //		annVO1.setAnnName("MANAGER");
 //		annVO1.setAnnContent("MANAGER");
 //		annVO1.setAnnDate(java.sql.Timestamp.valueOf("2005-01-01 10:10:10"));
 //		
 //		dao.insert(annVO1);
-//
+
 //		// �ק�
 //		AnnVO annVO2 = new AnnVO();
 //		annVO2.setAnnID(2);

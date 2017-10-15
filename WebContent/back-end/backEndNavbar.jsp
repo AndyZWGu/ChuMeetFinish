@@ -3,6 +3,9 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.admin.model.*"%>
 <%@ page import="com.admPril.model.*"%>
+<% 
+	AdminVO adminVO = (AdminVO) session.getAttribute("adminVO");
+%>
 <nav class="navbar navbar-transparent ">
 			<div class="container-fluid">
 				<div class="navbar-header">

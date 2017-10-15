@@ -180,8 +180,8 @@ public class AnnDAO implements AnnDAO_interface{
 					annVO = new AnnVO();
 					annVO.setAnnID(rs.getInt(1));
 					annVO.setAdminID(rs.getInt(1));
-					annVO.setAnnContent(rs.getString("job"));
-					annVO.setAnnDate(rs.getTimestamp("hiredate"));
+					annVO.setAnnContent(rs.getString("annContent"));
+					annVO.setAnnDate(rs.getTimestamp("annDate"));
 					
 					
 				}

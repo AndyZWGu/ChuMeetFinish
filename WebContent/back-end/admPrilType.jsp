@@ -111,8 +111,8 @@ session.setAttribute("page", "admin");
 			<div class="container">
 				
 				<ul class="nav nav-tabs">
-					<li><a data-toggle="tab" href="admin.jsp">管理員資料</a></li>
-					<li class="active"><a data-toggle="tab" href="admPrilType.jsp">管理員權限</a></li>
+					<li><a  href="admin.jsp">管理員資料</a></li>
+					<li class="active"><a  href="admPrilType.jsp">管理員權限</a></li>
 
 				</ul>
 

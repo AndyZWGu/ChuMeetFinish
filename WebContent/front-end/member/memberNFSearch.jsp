@@ -27,6 +27,10 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.0/sweetalert2.min.css"
 	rel="stylesheet">
+	
+	<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.0/sweetalert2.min.css"
+	rel="stylesheet">
 
 </head>
 <!-- Head END -->
@@ -43,7 +47,7 @@
 	<!-- Header END -->
 
 	<!--主頁面要修改的都在這下面-->
-	<div class="main">
+	<div class="main content">
 				<div class=" col-sm-12 col-md-12 text-center">
 					<h1>會員動態</h1>
 				</div>
@@ -52,10 +56,10 @@
 					<div class="content-page">
 						<form action="<%=request.getContextPath()%>/front-end/member/memberNFSearch.do" method="post" class="content-search-view2">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="尋找動態" name="">
+								<input type="text" class="form-control" placeholder="尋找動態" name="nfTitle">
 								<span class="input-group-btn">
 									<button type="submit" class="btn btn-primary">搜尋</button>
-									<input type="hidden" name="action" value="memNameSearch">
+									<input type="hidden" name="action" value="memNFNameSearch">
 								</span>
 
 							</div>
@@ -87,10 +91,13 @@
 					data-wow-delay=".05s" data-wow-duration=".1">
 					<c:forEach items="${memNFSearchList}" var="memNFSearchList" varStatus="status">
 						<div class="wall">
-						<c:if test="${memNFSearchList.memID != memVO.memID}">
+						<c:if test="${memVO==null}">
+							<a class="article" id="login">
+						</c:if>
+						<c:if test="${memNFSearchList.memID != memVO.memID && memVO!=null}">
 							<a class="article" href="<%=request.getContextPath()%>/front-end/member/guestNF.do?memNFID=${memNFSearchList.memNFID}&memID=${memNFSearchList.memID}">
 						</c:if>
-						<c:if test="${memNFSearchList.memID == memVO.memID}">
+						<c:if test="${memNFSearchList.memID == memVO.memID && memVO!=null}">
 							<a class="article" href="<%=request.getContextPath()%>/front-end/member/memberNF.do?memNFID=${memNFSearchList.memNFID}">
 						</c:if>  
 								<img src="<%=request.getContextPath()%>/front-end/member/memberNFSearch/avatar.do?memID=${memNFSearchList.memID}&memNFID=${memNFSearchList.memNFID}" />
@@ -119,6 +126,9 @@
 		src="<%=request.getContextPath()%>/HTML/src/member/js/jaliswall.js"></script>
 		<script
 		src="<%=request.getContextPath()%>/HTML/src/member/js/bootstrap-datepicker.min.js"></script>
+			<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.0/sweetalert2.min.js"
+		type="text/javascript"></script>
 	<!-- 共用Js -->
 	<script type="text/javascript">
 		$(function() {
@@ -129,6 +139,13 @@
 		$('.input-daterange input').each(function() {
 			$(this).datepicker('clearDates');
 		});
+		//***************************沒登入按鈕***************************
+		$(document).ready(function(){
+		    $('#login').click(function(){
+		    	swal ( "您未登入會員" ,  "請先登入會員,享有更多功能！" ,  "error" );
+		    });
+		});
+		
 	</script>
 </body>
 <!-- END BODY -->

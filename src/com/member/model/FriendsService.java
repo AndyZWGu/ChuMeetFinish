@@ -50,9 +50,10 @@ public class FriendsService {
 		return friendsVO;
 	}
 
-	public void deleteFriends(Integer friMem1) {
-		dao.delete(friMem1);
+	public void deleteFriends(Integer friMem1,Integer friMem2) {
+		dao.delete(friMem1,friMem2);
 	}
+
 
 	public FriendsVO getOneFriends(Integer friMem1,Integer friMem2) {
 		return dao.findByPrimaryKey(friMem1,friMem2);
@@ -66,8 +67,5 @@ public class FriendsService {
 		return dao.getAll();
 	}
 	
-	public List<FriendsVO> getAll(Map<String, String[]> map) {
-		return dao.getAll(map);
-	}
 
 }

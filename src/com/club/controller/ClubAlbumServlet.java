@@ -14,6 +14,7 @@ import com.clubAlbum.model.ClubAlbumVO;
 import com.clubImg.model.ClubImgVO;
 import com.clubMB.model.ClubMBService;
 import com.clubMB.model.ClubMBVO;
+import com.clubMem.model.ClubMemService;
 import com.clubMem.model.ClubMemVO;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 5 * 1024 * 1024, maxRequestSize = 5 * 5 * 1024 * 1024)
@@ -29,26 +30,38 @@ public class ClubAlbumServlet extends HttpServlet {
 
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
-
+		System.out.println("ClubAlbumServlet");
 		
 				//跳轉到觀看IMG頁面
 				 if ("toClubImg".equals(action)){
+System.out.println("toClubImg");					 
 				String clubID = req.getParameter("clubID");	//傳進來的是字串轉成數字
 				String clubAlbumID = req.getParameter("clubAlbumID");
-					
+						
+				Integer  memID = Integer.parseInt(req.getParameter("memID"));		
 				/***************************2.開始查詢資料*****************************************/
+				ClubMemService clubMemSvc = new ClubMemService();
+				ClubMemVO clubMemVO = clubMemSvc.getOneClubMem(Integer.parseInt(clubID),memID);
 				ClubService clubSvc = new ClubService();
 				ClubVO clubVO = clubSvc.findByPrimaryKey(Integer.parseInt(clubID));
+
 				ClubAlbumService clubAlbumSvc = new ClubAlbumService();
 				List<ClubImgVO> clubImglist = clubAlbumSvc.getClubImgByClubAlbumID(Integer.parseInt(clubAlbumID));
+							
 				ClubAlbumVO clubAlbumVO = clubAlbumSvc.getOneClubAlbum(Integer.parseInt(clubAlbumID));
-	
+
 				
 				/***************************3.查詢完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("clubVO", clubVO); // 資料庫取出的empVO物件,存入req
 				req.setAttribute("clubImglist", clubImglist); // 資料庫取出的empVO物件,存入req
 				req.setAttribute("clubAlbumVO", clubAlbumVO); // 資料庫取出的empVO物件,存入req
+				req.setAttribute("clubMemVO", clubMemVO); // 單一社員資料
+				
+				System.out.println("clubMemVO"+clubMemVO);
+				
 				String url = "/front-end/club/ClubImg.jsp";
+
+
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交 listOneClub.jsp
 				successView.forward(req, res);
 	
@@ -57,14 +70,18 @@ public class ClubAlbumServlet extends HttpServlet {
 		 
 				 //跳轉到增加相簿頁面
 				 if ("toClubAlbumAdd".equals(action)){
-				String clubID = req.getParameter("clubID");	//傳進來的是字串轉成數字
-		
-			
+	 
+				Integer  clubID = Integer.parseInt(req.getParameter("clubID"));	
+				System.out.println("toClubAlbumAdd1");		
+				Integer  memID = Integer.parseInt(req.getParameter("memID"));	
+	
 				/***************************2.開始查詢資料*****************************************/
 				ClubService clubSvc = new ClubService();
-				ClubVO clubVO = clubSvc.findByPrimaryKey(Integer.parseInt(clubID));
+				ClubVO clubVO = clubSvc.findByPrimaryKey(clubID);
 
-		
+System.out.println("clubID"+clubID);
+
+System.out.println("memID"+memID);	
 				/***************************3.查詢完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("clubVO", clubVO); // 資料庫取出的empVO物件,存入req
 				String url = "/front-end/club/ClubAlbumAdd.jsp";
@@ -79,7 +96,7 @@ public class ClubAlbumServlet extends HttpServlet {
 		 
 		 
 		  if ("getAlbumAdd".equals(action)) { // 來自addEmp.jsp的請求  
-
+System.out.println("getAlbumAddmemID");
 				List<String> errorMsgs = new LinkedList<String>();
 				// Store this set in the request scope, in case we need to
 				// send the ErrorPage view.
@@ -89,18 +106,9 @@ public class ClubAlbumServlet extends HttpServlet {
 					/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
 
 					String clubAlbumName= req.getParameter("clubAlbumName").trim();					
-				
-					Integer memID = null;
-					try {
-						memID = 1;
-					} catch (NumberFormatException e) {
-						memID = 1;
-						errorMsgs.add("ID請填數字.");
-					}
-
-					String clubID1=req.getParameter("clubID").trim();
-					Integer clubID =  Integer.parseInt(clubID1);
-	
+					Integer  memID = Integer.parseInt(req.getParameter("memID"));	
+					Integer  clubID = Integer.parseInt(req.getParameter("clubID"));
+		
 		 			Timestamp clubAlbumDate = new Timestamp(System.currentTimeMillis()); 
 
 					Integer clubAlbumStatus = 1;
@@ -111,7 +119,7 @@ public class ClubAlbumServlet extends HttpServlet {
 					clubAlbumVO.setClubAlbumName(clubAlbumName);
 					clubAlbumVO.setClubAlbumDate(clubAlbumDate);
 					clubAlbumVO.setClubAlbumStatus(clubAlbumStatus);
-					System.out.println(clubAlbumDate);
+System.out.println("getAlbumAddmemID"+memID);
 	
 					// Send the use back to the form, if there were errors
 					if (!errorMsgs.isEmpty()) {
@@ -127,6 +135,8 @@ public class ClubAlbumServlet extends HttpServlet {
 					ClubAlbumService clubAlbumSvc = new ClubAlbumService();
 					clubAlbumVO = clubAlbumSvc.addClubAlbum(clubID,memID,clubAlbumDate,clubAlbumName,clubAlbumStatus);
 					
+					ClubMemService clubMemSvc = new ClubMemService();
+					ClubMemVO clubMemVO = clubMemSvc.getOneClubMem(clubID,memID);
 					/***************************3.新增完成,準備轉交(Send the Success view)***********/
 					String url = "/front-end/club/clubOne.do?action=toClubAlbum&clubID="+clubID;
 					RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllEmp.jsp

@@ -23,6 +23,9 @@
 <link
 	href="<%=request.getContextPath()%>/HTML/src/member/css/memHome.css"
 	rel="stylesheet">
+	<link
+	href="<%=request.getContextPath()%>/HTML/src/member/css/memberChatRoom.css"
+	rel="stylesheet">
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.0/sweetalert2.min.css"
 	rel="stylesheet">
@@ -77,6 +80,11 @@
 				<!-- 社群管理 -->
 				<c:if test="${checkedSidbar == 'memCommunity'}">
 					<c:import url="/front-end/member/memberCommunityContent.jsp">
+					</c:import>
+				</c:if>
+				<!-- 聊天室 -->
+				<c:if test="${checkedSidbar == 'memChatRoom'}">
+					<c:import url="/front-end/member/memberChatRoomContent.jsp">
 					</c:import>
 				</c:if>
 				<!-- 等級 -->

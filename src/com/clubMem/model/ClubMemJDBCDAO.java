@@ -18,16 +18,16 @@ public class ClubMemJDBCDAO implements ClubMemDAO_interface {
 	
 	private static final String UPDATE = "UPDATE clubMem set clubMemType=? ,clubMemJoinDate=?, clubMemStatus=? where clubID = ? and memID = ?";
 
-	//以下自己加的
+	//浠ヤ笅鑷繁鍔犵殑
 	private static final String GET_ALL_CLUBMEM_STMT = "SELECT memID , clubID, clubMemType, clubMemJoinDate,clubMemStatus FROM clubMem where clubID = ?";
 
-	//變更會員TYPE為:1社長2.幹部3.一般
+	//璁婃洿鏈冨摗TYPE鐐�:1绀鹃暦2.骞归儴3.涓�鑸�
 	private static final String changeType = "UPDATE clubMem set clubMemType=? where clubID = ? and memID = ?";
 	
-	//變更已退出的會員再加入
+	//璁婃洿宸查��鍑虹殑鏈冨摗鍐嶅姞鍏�
 	private static final String update_ClubMem_Status = "UPDATE clubMem set clubMemStatus=? where clubID = ? and memID = ?";
 
-	//找某會員有參加那些社團
+	//鎵炬煇鏈冨摗鏈夊弮鍔犻偅浜涚ぞ鍦�
 	private static final String FIND_ALL_JOIN_CLUB = "SELECT memID , clubID, clubMemType, clubMemJoinDate,clubMemStatus FROM clubMem where memID = ? and clubmemstatus=1";
 	
 	@Override
@@ -147,7 +147,7 @@ public class ClubMemJDBCDAO implements ClubMemDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// deptVO 也稱為 Domain objects
+				// deptVO 涔熺ū鐐� Domain objects
 				clubMemVO = new ClubMemVO();
 				clubMemVO.setClubID(rs.getInt("clubID"));
 				clubMemVO.setMemID(rs.getInt("memID"));
@@ -271,7 +271,7 @@ public class ClubMemJDBCDAO implements ClubMemDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// deptVO 也稱為 Domain objects
+				// deptVO 涔熺ū鐐� Domain objects
 				clubMemVO = new ClubMemVO();
 				clubMemVO.setClubID(rs.getInt("clubID"));
 				clubMemVO.setMemID(rs.getInt("memID"));
@@ -369,7 +369,7 @@ public class ClubMemJDBCDAO implements ClubMemDAO_interface {
 	
 	
 	
-	//改社團成員狀態還沒做
+	//鏀圭ぞ鍦樻垚鍝＄媭鎱嬮倓娌掑仛
 //	@Override
 //	public void updateClubMemStatus(Integer memID, Integer clubID) {
 //
@@ -492,7 +492,7 @@ public class ClubMemJDBCDAO implements ClubMemDAO_interface {
 
 		ClubMemJDBCDAO dao = new ClubMemJDBCDAO();
 
-		// 新增OK
+		// 鏂板OK
 //		ClubMemVO clubMemVO1 = new ClubMemVO();
 //		clubMemVO1.setClubID(7);
 //		clubMemVO1.setMemID(3);
@@ -502,7 +502,7 @@ public class ClubMemJDBCDAO implements ClubMemDAO_interface {
 
 		
 		
-		// 修改OK
+		// 淇敼OK
 //		ClubMemVO clubMemVO2 = new ClubMemVO();
 //		clubMemVO2.setClubMemType(3);
 //		clubMemVO2.setClubMemJoinDate(java.sql.Date.valueOf("2017-07-30"));
@@ -511,10 +511,10 @@ public class ClubMemJDBCDAO implements ClubMemDAO_interface {
 //		dao.update(clubMemVO2);
 
 
-		// 刪除還沒做
+		// 鍒櫎閭勬矑鍋�
 		//dao.delete(30);
 
-		// 查詢OK
+		// 鏌ヨOK
 //		ClubMemVO clubMemVO3 = dao.findByPrimaryKey(1,1);
 //		System.out.print(clubMemVO3.getClubID() + ",");
 //		System.out.print(clubMemVO3.getMemID() + ",");
@@ -523,7 +523,7 @@ public class ClubMemJDBCDAO implements ClubMemDAO_interface {
 //		System.out.print(clubMemVO3.getClubMemStatus() + ",");
 //		System.out.println("---------------------");
 
-		// 查詢部門OK
+		// 鏌ヨ閮ㄩ杸OK
 //		List<ClubMemVO> list = dao.getAll();
 //		for (ClubMemVO aClubMem : list) {
 //			System.out.print(aClubMem.getClubID() + ",");
@@ -535,7 +535,7 @@ public class ClubMemJDBCDAO implements ClubMemDAO_interface {
 
 
 		
-		// 查詢某部門的員工還沒
+		// 鏌ヨ鏌愰儴闁�鐨勫摗宸ラ倓娌�
 //		Set<EmpVO> set = dao.getEmpsByDeptno(10);
 //		for (EmpVO aEmp : set) {
 //			System.out.print(aEmp.getEmpno() + ",");
@@ -548,7 +548,7 @@ public class ClubMemJDBCDAO implements ClubMemDAO_interface {
 //			System.out.println();
 //		}
 		
-//		查詢某社團成員
+//		鏌ヨ鏌愮ぞ鍦樻垚鍝�
 //		List<ClubMemVO> list = dao.getAll();
 //		for (ClubMemVO aClubMem : list) {
 //			System.out.print(aClubMem.getClubID() + ",");
@@ -560,7 +560,7 @@ public class ClubMemJDBCDAO implements ClubMemDAO_interface {
 		
 		
 		
-//		查詢某成員加入那些社團
+//		鏌ヨ鏌愭垚鍝″姞鍏ラ偅浜涚ぞ鍦�
 		List<ClubMemVO> list = dao.getAllJoinClub(1);
 		for (ClubMemVO aClubMem : list) {
 			System.out.print(aClubMem.getClubID() + ",");
@@ -574,6 +574,24 @@ public class ClubMemJDBCDAO implements ClubMemDAO_interface {
 		
 		
 		
+		
+	}
+
+	@Override
+	public void updateClubMemType(ClubMemVO clubMemVO) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void changeMemStatus(ClubMemVO clubMemVO) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exitMemStatus(ClubMemVO clubMemVO) {
+		// TODO Auto-generated method stub
 		
 	}
 

@@ -238,6 +238,10 @@ public class MemberService {
 		return dao.getAll();
 	}
 	
+	public List<MemberVO> getAllByHot() {
+		return dao.getAllByHot();
+	}
+	
 	public List<MemberVO> getAll(Map<String, String[]> map) {
 		return dao.getAll(map);
 	}

@@ -30,11 +30,18 @@ public class ClubMemDAO implements ClubMemDAO_interface {
 
 	//抓某個社團所有成員
 		private static final String GET_ALL_CLUBMEM_STMT = "SELECT memID , clubID, clubMemType,to_char(clubMemJoinDate,'yyyy-mm-dd hh:mm:ss') clubMemJoinDate,clubMemStatus FROM clubMem where clubID = ?";
-	//變更會員TYPE為:1社長2.幹部3.一般
+	//變更會員TYPE為:3社長2.幹部1.一般
 		private static final String changeType = "UPDATE clubMem set clubMemType=? where clubID = ? and memID = ?";
 
 	//找某會員有參加那些社團
 		private static final String FIND_ALL_JOIN_CLUB = "SELECT memID , clubID, clubMemType, clubMemJoinDate,clubMemStatus FROM clubMem where memID = ? and clubmemstatus=1";
+		
+		//變更會員TYPE為:3社長2.幹部1.一般
+		private static final String UPDATE_CLUBMEMTYPE = "UPDATE clubMem set clubMemType=? where clubID = ? and memID = ?";	
+		
+		private static final String CHANGEMEMSTATUS = "UPDATE clubMem set clubMemStatus=? where clubID = ? and memID = ?";
+		
+		private static final String EXITMEMSTATUS = "UPDATE clubMem set clubMemStatus=? where clubID = ? and memID = ?";
 		
 		Timestamp utildate;
 		  public static Timestamp nowTimestamp(){
@@ -424,8 +431,135 @@ public class ClubMemDAO implements ClubMemDAO_interface {
 	
 	
 	
+	//以下新作的
+	
+	@Override
+	public void updateClubMemType(ClubMemVO clubMemVO) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+
+			con = ds.getConnection();
+
+			pstmt = con.prepareStatement(UPDATE_CLUBMEMTYPE);
+
+			pstmt.setInt(1, clubMemVO.getClubMemType());
+			
+			pstmt.setInt(2, clubMemVO.getClubID());
+
+			pstmt.setInt(3, clubMemVO.getMemID());
+			
+			pstmt.executeUpdate();
+
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+
+	}
 	
 	
+	
+	
+	@Override
+	public void changeMemStatus(ClubMemVO clubMemVO) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(CHANGEMEMSTATUS);
+			pstmt.setInt(1, clubMemVO.getClubMemStatus());
+			pstmt.setInt(2, clubMemVO.getClubID());
+			pstmt.setInt(3, clubMemVO.getMemID());
+			pstmt.executeUpdate();
+
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+
+	}
+	
+	
+	
+	
+	@Override
+	public void exitMemStatus(ClubMemVO clubMemVO) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(CHANGEMEMSTATUS);
+			pstmt.setInt(1, clubMemVO.getClubMemStatus());
+			pstmt.setInt(2, clubMemVO.getClubID());
+			pstmt.setInt(3, clubMemVO.getMemID());
+			pstmt.executeUpdate();
+
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+
+	}
 	
 	
 	

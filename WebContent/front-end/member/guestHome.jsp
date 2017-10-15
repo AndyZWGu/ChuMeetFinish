@@ -4,14 +4,21 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="javax.servlet.http.HttpSession"%>
 <%@ page import="com.member.model.*"%>
+<%@ page import="com.club.model.*"%>
+<%@ page import="com.clubMem.model.*"%>
 <%@ page import="java.util.*"%>
 <%
 	MemberVO guestVO = (MemberVO) session.getAttribute("guestVO");
 	MemberVO memVO = (MemberVO) session.getAttribute("memVO");
 	String account = (String) session.getAttribute("account");
+	//是否為好友,對應顯示權限畫面與按鈕
 	Integer memPriv = (Integer) request.getAttribute("memPriv");
 	List<MemMBVO> memMBList = (List) request.getAttribute("memMBList");
 	List<MemberVO> mbMemNameList = (List) request.getAttribute("mbMemNameList");
+
+	//會員參加社團
+	ClubMemService clubMemSvc = new ClubMemService();
+	List<ClubMemVO> memAllJoinClublist = (List<ClubMemVO>) request.getAttribute("memAllJoinClublist");
 %>
 <html>
 
@@ -105,46 +112,65 @@
 							<!-- SIDEBAR BUTTONS -->
 							<div class="profile-userbuttons row">
 								<div class="col-sm-12 col-me-12">
-									<form id="form1" action="#">
 										<hr>
 										<h3>會員專屬</h3>
 										<div class="form-group">
-										<a href="<%=request.getContextPath()%>/front-end/member/guestNF.do?memID=${guestVO.memID}">
-											<input type="button"
+											<a
+												href="<%=request.getContextPath()%>/front-end/member/guestNF.do?memID=${guestVO.memID}">
+												<input type="button"
 												class="form-control btn btn-primary btn-sm" value="查看動態"
-												name="guestNF"></input></a>
+												name="guestNF"></input>
+											</a>
 										</div>
 										<div class="form-group">
+											<form id="addFollow" method="post">
 											<input id="follow" type="button"
 												class="form-control btn btn-warning btn-sm" value="追隨"
-												name="follow"></input>
+												name="follow"/>
+												<input type="hidden" name="action" value="addFollow"/>
+											</form>
 										</div>
+										<c:if test="${memPriv==1}">
 										<div class="form-group">
+											<input class="btn btn-success btn-sm" value="已成為好友"  disabled/>
+										</div>
+										</c:if>
+										<c:if test="${memPriv==2}">
+										<div class="form-group">
+											<input class="btn btn-success btn-sm" value="送出申請中"  disabled/>
+										</div>
+										</c:if>
+										<c:if test="${memPriv==0}">
+										<div class="form-group">
+											<form id="addFriend" method="post">
 											<input id="friend" type="button"
 												class="form-control btn btn-success btn-sm" value="加好友"
-												name="friends"></input>
+												name="friends"/>
+												<input type="hidden" name="action" value="addFriend"/>
+												<input type="hidden" name="friMem1" value="${guestVO.memID}"/>
+												<input type="hidden" name="friMem2" value="${memVO.memID}"/>
+												<input type="hidden" name="memID" value="${guestVO.memID}"/>
+											</form>
 										</div>
+										</c:if>
 										<div class="form-group">
+										<form id="addMail" method="post">
 											<input id="email" type="button"
 												class="form-control btn btn-info btn-sm" value="站內信"
-												name="email"></input>
+												name="email"/>
+												<input type="hidden" name="action" value="addMail"/>
+												<input type="hidden" name="receiver" value="${guestVO.memID}"/>
+												<input type="hidden" name="author" value="${memVO.memID}"/>
+										</form>
 										</div>
-										<button id="commit1" type="submit"
-											class="form-control btn btn-default">Submit</button>
-									</form>
 								</div>
 								<div class="col-sm-12 col-me-12">
-									<form id="form2" action="post">
-										<div class="form-group">
-											<input id="blacklist" type="button"
-												class="form-control btn btn-danger btn-sm" value="設為黑名單"></input>
-										</div>
+									<form id="addReport" method="post">
 										<div class="form-group">
 											<input id="report" type="button"
 												class="form-control btn btn-danger btn-sm" value="檢舉"></input>
+												<input type="hidden" name="action" value="addReport"/>
 										</div>
-										<button id="commit2" type="submit"
-											class="form-control btn btn-default">Submit</button>
 									</form>
 								</div>
 								<!-- <button id="follow" type="button" class="btn btn-warning btn-sm">追隨</button>
@@ -160,8 +186,7 @@
 					</div>
 				</div>
 				<!--**************************隱私權判斷範圍(不開)**************************-->
-				<c:if
-					test="${guestVO.memPriv==0 || guestVO.memPriv==1&&memPriv==0}">
+				<c:if test="${guestVO.memPriv==0 || memPriv==0 || memPriv==2}">
 					<div class="col-md-9 wow fadeInRight" data-wow-delay=".05s"
 						data-wow-duration=".1">
 						<div class="row profile-content blog-item text-center">
@@ -172,8 +197,7 @@
 					</div>
 				</c:if>
 				<!--**************************隱私權判斷範圍(開或是好友)**************************-->
-				<c:if
-					test="${guestVO.memPriv==2 || guestVO.memPriv==1&&memPriv==1}">
+				<c:if test="${guestVO.memPriv==2 || guestVO.memPriv==1&&memPriv==1}">
 					<div class="col-md-9 wow fadeInRight" data-wow-delay=".05s"
 						data-wow-duration=".1">
 						<!--  statitics -->
@@ -189,9 +213,8 @@
 							<!-- BEGIN CONTENT -->
 							<div class="col-md-12 col-sm-12">
 								<ul class="nav nav-tabs">
-									<li class="active"><a data-toggle="tab" href="#home">參加中的活動</a></li>
-									<li><a data-toggle="tab" href="#act">參加的社團</a></li>
-									<li><a data-toggle="tab" href="#club">追蹤</a></li>
+									<li class="active"><a data-toggle="tab" href="#act">參加中的活動</a></li>
+									<li><a data-toggle="tab" href="#club">參加的社團</a></li>
 								</ul>
 
 								<div class="tab-content">
@@ -224,30 +247,51 @@
 										</div>
 									</div>
 									<div id="club" class="tab-pane fade">
-										<div class="container-fluid bg-3 text-center reward">
+										<div class="container-fluid text-center reward">
 											<div class="row">
-												<div class="col-sm-4">
-													<img
-														src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${memVO.memID}"
-														alt="Image" class="img-responsive thumbnail">
-													<p>Lorem ipsum..</p>
-												</div>
-												<div class="col-sm-4">
-													<img
-														src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${memVO.memID}"
-														alt="Image" class="img-responsive thumbnail">
-													<p>Lorem ipsum..</p>
-												</div>
-												<div class="col-sm-4">
-													<img
-														src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${memVO.memID}"
-														alt="Image" class="img-responsive thumbnail">
-													<p>Lorem ipsum..</p>
-												</div>
-												<div class="row">
-													<a href="http://www.google.com"><input type="button"
-														class="btn btn-primary" value="看更多"></a>
-												</div>
+												<table class="table table-striped custab">
+													<thead>
+														<tr>
+															<!--             <th>ID</th> -->
+															<th class="text-center">社團名稱</th>
+															<th class="text-center">成員等級</th>
+															<th class="text-center">動作</th>
+															<th class="text-center">加入日期</th>
+														</tr>
+													</thead>
+													<jsp:useBean id="clubSvc" scope="page"
+														class="com.club.model.ClubService" />
+													<c:forEach var="clubMemVO" items="${memAllJoinClublist}">
+														<tr>
+															<td>${clubSvc.findByPrimaryKey(clubMemVO.getClubID()).clubName}</td>
+															<c:if test="${clubMemVO.clubMemType==1}">
+																<td>一般社團成員</td>
+															</c:if>
+															<c:if test="${clubMemVO.clubMemType==2}">
+																<td>社團幹部</td>
+															</c:if>
+															<c:if test="${clubMemVO.clubMemType==3}">
+																<td>社長</td>
+															</c:if>
+															<td class="text-center"><a
+																class='btn btn-info btn-xs'
+																href="<%=request.getContextPath()%>/front-end/club/clubAll.do?clubID=${clubMemVO.clubID}&memID=${memVO.memID}&action=toClubOne"><span
+																	class="glyphicon glyphicon-edit"></span> 前往</a> <%--                 <c:if test="${clubMemVO.clubMemStatus==1 }"> --%>
+															</td>
+
+															<td>${clubMemVO.clubMemJoinDate}</td>
+															<%--                 </c:if> --%>
+															<%--                 		<%if(clubMemVO.getClubMemStatus()==1){%> --%>
+															<!-- 						<button  class="btn btn-block btn-success" data-toggle="modal" data-target="#exampleModal"> -->
+															<!-- 						退出社團 -->
+															<!-- 						</button>		 -->
+															<%--  						 <%}%> --%>
+
+
+
+														</tr>
+													</c:forEach>
+													</table>
 											</div>
 										</div>
 									</div>
@@ -300,30 +344,31 @@
 								</c:forEach>
 								<!--**************************留言功能**************************-->
 								<c:if test="${account != null}">
-								<div class="post-comment padding-top-40">
-									<h3>留言</h3>
-									<form role="form" method="post"
-										action="<%=request.getContextPath()%>/front-end/member/guestHome.do?memID=${guestVO.memID}">
-										<div class="form-group">
-											<h4>內容</h4>
-											<textarea class="form-control" rows="2" name="comment"></textarea>
-										</div>
-										<p>
-											<button class="btn btn-primary" type="submit">提交</button>
-											<input type="hidden" name="action" value="comment">
-										</p>
-									</form>
-								</div>
+									<div class="post-comment padding-top-40">
+										<h3>留言</h3>
+										<form role="form" method="post"
+											action="<%=request.getContextPath()%>/front-end/member/guestHome.do?memID=${guestVO.memID}">
+											<div class="form-group">
+												<h4>內容</h4>
+												<textarea class="form-control" rows="2" name="comment"></textarea>
+											</div>
+											<p>
+												<button class="btn btn-primary" type="submit">提交</button>
+												<input type="hidden" name="action" value="comment">
+											</p>
+										</form>
+									</div>
 							</div>
-							</c:if>
-							<!--**************************留言版喔喔**************************-->
-						</div>
-					</div>
 				</c:if>
-				<!--**************************隱私權判斷範圍**************************-->
+				<!--**************************留言版喔喔**************************-->
 			</div>
 		</div>
-		<br> <br>
+		</c:if>
+		<!--**************************隱私權判斷範圍**************************-->
+	</div>
+	</div>
+	<br>
+	<br>
 	</div>
 	<!--主頁面要修改的都在這上面-->
 
@@ -418,37 +463,12 @@
 													+ '</pre>',
 											confirmButtonText : '完成'
 										})
-										email = result;
+										mail = result;
 										resuit("email");
 									}, function() {
 										swal.resetDefaults()
 									})
 				})
-		//***************************設為黑名單按鈕***************************
-		$('#blacklist').on('click', function() {
-			swal({
-				title : '黑名單',
-				text : "您將把該會員加入黑名單",
-				type : 'warning',
-				showCancelButton : true,
-				confirmButtonColor : '#3085d6',
-				cancelButtonColor : '#d33',
-				confirmButtonText : '確定',
-				cancelButtonText : '取消',
-				confirmButtonClass : 'btn btn-danger',
-				cancelButtonClass : 'btn',
-				buttonsStyling : false
-			}).then(function() {
-				swal('加入成功!', '您已將該會員加入黑名單中.', 'success')
-				resuit("blacklist");
-			}, function(dismiss) {
-				// dismiss can be 'cancel', 'overlay',
-				// 'close', and 'timer'
-				if (dismiss === 'cancel') {
-					swal('已取消', '點擊OK返回 :)', 'error')
-				}
-			})
-		})
 		//***************************檢舉按鈕***************************
 		$('#report').on(
 				'click',
@@ -489,39 +509,44 @@
 			if (e == "follow") {
 				// alert("追隨");
 				setTimeout(function() {
-					form1.submit();
+					addFollow.submit();
 				}, 1000);
 			}
 			if (e == "friend") {
 				// alert("好友");
 				setTimeout(function() {
-					form1.submit();
-				}, 1000);
+					addFriend.submit();
+				}, 2000);
 			}
 			if (e == "email") {
+				var element1 = document.createElement("input"); 
+				element1.value=mail[0];
+			    element1.name="mailTitle";
+			    var element2 = document.createElement("input"); 
+				element2.value=mail[1];
+			    element2.name="mailContent";
+			    addMail.appendChild(element1);
+			    addMail.appendChild(element2);
 				// alert("郵件資料為" + email);
 				setTimeout(function() {
-					form1.submit();
-				}, 1000);
-			}
-			if (e == "blacklist") {
-				// alert("黑名單");
-				setTimeout(function() {
-					form1.submit();
-				}, 1000);
+					addMail.submit();
+				}, 2000);
 			}
 			if (e == "report") {
 				// alert("檢舉資料為" + report);
 				setTimeout(function() {
-					form1.submit();
-				}, 1000);
+					addReport.submit();
+				}, 2000);
 			}
 		}
 
 		function init() {
-			var email = null;
+			var mail = null;
 			var reoprt = null;
-			document.getElementById
+			var addFriend =document.getElementById("addFriend");
+			var addFollow =document.getElementById("addFollow");
+			var addMail =document.getElementById("addMail");
+			var addReport =document.getElementById("addReport");
 		}
 		window.onload = init;
 	</script>

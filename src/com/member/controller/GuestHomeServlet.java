@@ -19,6 +19,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.club.model.ClubService;
+import com.club.model.ClubVO;
+import com.clubMem.model.ClubMemService;
+import com.clubMem.model.ClubMemVO;
 import com.member.model.*;
 
 /**
@@ -47,7 +51,21 @@ public class GuestHomeServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		Integer memID = Integer.parseInt(req.getParameter("memID"));
+		System.out.println("demo");
+		//找會員參加的社團
+	 	Integer memID= new Integer(req.getParameter("memID").trim());
+		/***************************2.開始查詢資料*****************************************/
+		ClubService clubSvc = new ClubService();		
+		ClubMemService clubMemSvc = new ClubMemService();
+		List<ClubVO> clublist = clubSvc.getAll();			
+		
+		List<ClubMemVO> memAllJoinClublist = clubMemSvc.getAllJoinClub(memID);				
+		/***************************3.查詢完成,準備轉交(Send the Success view)*************/
+		req.setAttribute("clublist", clublist); 
+		req.setAttribute("memAllJoinClublist", memAllJoinClublist);	
+		
+		//
+		//Integer memID = Integer.parseInt(req.getParameter("memID"));
 		// System.out.println(memID);
 		HttpSession session = req.getSession();
 		if (session.getAttribute("guestVO") != null) {
@@ -62,12 +80,13 @@ public class GuestHomeServlet extends HttpServlet {
 		FriendsVO friVO = friSvc.getOneFriends(memVO.getMemID(), guestVO.getMemID());
 		FriendsVO friVO2 = friSvc.getOneFriends(guestVO.getMemID(),memVO.getMemID());
 		if(friVO==null||friVO2==null){
-			session.setAttribute("memPriv", 0);
+			req.setAttribute("memPriv",0);
 		} else if(friVO.getFriendType().contains("好友") && friVO2.getFriendType().contains("好友")){
-			session.setAttribute("memPriv", 1);
-		} else {
-			session.setAttribute("memPriv", 0);
-		}
+			req.setAttribute("memPriv",1);
+		} 
+		if(friVO2!=null && friVO2.getFriendType().contains("申請中")){
+			req.setAttribute("memPriv",2);
+		} 
 		// 找首頁動態
 		MemNFService nfSvc = new MemNFService();
 		MemMBService mbSvc = new MemMBService();
@@ -118,6 +137,34 @@ public class GuestHomeServlet extends HttpServlet {
 			// System.out.println(list.getMemID());
 		}
 		req.setAttribute("mbMemNameList", mbMemNameList);
+		
+		
+		/**左邊一般按鈕**/
+		if ("addFriend".equals(action)) {
+			System.out.println("加好友！！！");
+			String friMem1 = req.getParameter("friMem1");
+			String friMem2 = req.getParameter("friMem2");
+			friSvc.addMember(Integer.valueOf(friMem1), Integer.valueOf(friMem2), "申請中", nowTimestamp());
+		}
+		if ("addFollow".equals(action)) {
+			System.out.println("加追隨！！！");
+		}
+		if ("addMail".equals(action)) {
+			System.out.println("加寄一封站內信！！！");
+			String mailTitle = req.getParameter("mailTitle");
+			//System.out.println("郵件標題"+mailTitle);
+			String mailContent = req.getParameter("mailContent");
+			//System.out.println("郵件內容"+mailContent);
+			MemMailService mailSvc = new MemMailService();
+			String receiver = req.getParameter("receiver");
+			String author = req.getParameter("author");
+			mailSvc.addMail(Integer.valueOf(receiver), Integer.valueOf(author), mailTitle, nowTimestamp(), mailContent);
+			
+		}
+		if ("addReport".equals(action)) {
+			System.out.println("檢舉！！！");
+		}
+		
 		// 轉址用
 		String url = "/front-end/member/guestHome.jsp";
 		RequestDispatcher successView = req.getRequestDispatcher(url);

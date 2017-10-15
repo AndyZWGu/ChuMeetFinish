@@ -80,11 +80,11 @@
             <!--/////////////////////////////////////////////////////////////////////////////-->
             <div class="container">
 
-            <h2><strong>會員管理</strong></h2>
+       
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#home">會員資料管理</a></li>
-                    <li><a data-toggle="tab" href="#menu1">獎賞管理</a></li>
-                    <li><a data-toggle="tab" href="#menu2">成就管理</a></li>
+                                
+                    <li class="active"><a  href="adminReward.jsp">獎賞管理</a></li>
+                    <li><a  href="adminAch.jsp">成就管理</a></li>
                 </ul>
 
                 <form class="navbar-form navbar-right" role="search">
@@ -97,7 +97,7 @@
                 </form>
                 <div class="tab-content">
                     <div class="tab-pane fade in active">
-                        <h2>獎賞管理</h2>
+                      
                         <table class="table table-hove">
                             <thead>
                                 <tr class="bg-danger">

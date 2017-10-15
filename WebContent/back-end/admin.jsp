@@ -114,9 +114,9 @@
 			<div class="container">
 				
 				<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="admin.jsp">管理員資料</a>
+					<li class="active"><a  href="admin.jsp">管理員資料</a>
 					</li>
-					<li><a data-toggle="tab" href="admPrilType.jsp">管理員權限</a></li>
+					<li><a  href="admPrilType.jsp">管理員權限</a></li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search">
 					<div class="form-group  is-empty">

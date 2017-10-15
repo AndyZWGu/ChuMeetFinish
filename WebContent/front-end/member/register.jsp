@@ -68,7 +68,7 @@
 
                                 <div class="form-group col-md-6 col-sm-6">
                                     <label for="LocBorn">出生地</label>
-                                    <select class="form-control" id="LocBorn" name="memLocLive">
+                                    <select class="form-control" id="LocBorn" name="memLocBorn">
 									<option></option>
 									<option>臺北市</option>
 									<option>基隆市</option>

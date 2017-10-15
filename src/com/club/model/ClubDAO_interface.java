@@ -33,6 +33,8 @@ public interface ClubDAO_interface {
           public void clubChange(ClubVO clubVO);
 
           public void clubChangeIfNotPhoto(ClubVO clubVO);
+          
+          public void clubChangeClubMem(ClubVO clubVO);
 
- 
+          public void deleteClub(ClubVO clubVO);
 }

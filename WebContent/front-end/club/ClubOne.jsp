@@ -6,7 +6,8 @@
 <%@ page import="com.clubNews.model.*"%>
 <%@ page import="com.clubMem.model.*"%>
 <%@ page import="java.util.*"%>
-
+<%@ page import="com.member.model.*"%>
+<%@ page import="com.member.model.*"%>
 <%
 
 ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
@@ -14,11 +15,32 @@ ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
 ClubMBService clubMBSvc = new ClubMBService();
 List<ClubMBVO> clubMBlist = (List<ClubMBVO>) request.getAttribute("clubMBlist");
 pageContext.setAttribute("clubMBlist",clubMBlist);
+// 找會員名字
+MemberService memSvc=new MemberService();
+List<MemberVO> mbMemNameList=new ArrayList<MemberVO>();
+for(ClubMBVO list:clubMBlist){
+	mbMemNameList.add(memSvc.getOneMember(list.getMemID()));
+}
+request.setAttribute("mbMemNameList",mbMemNameList);
+
+//找社團會員
+ClubMemService clubMemSvc = new ClubMemService();
+List<ClubMemVO> clubMemlist = (List) request.getAttribute("clubMemlist");
+pageContext.setAttribute("clubMemlist",clubMemlist);
+
 
 
 
 ClubNewsService clubNewsSvc = new ClubNewsService();
 List<ClubNewsVO> clubNewslist = (List<ClubNewsVO>) request.getAttribute("clubNewslist");
+//找公告名字
+List<MemberVO> newsMemNameList=new ArrayList<MemberVO>();
+for(ClubNewsVO list1:clubNewslist){
+	newsMemNameList.add(memSvc.getOneMember(list1.getMemID()));
+}
+request.setAttribute("newsMemNameList",newsMemNameList);
+
+
 
 // 找尋單一社團成員的資料
 ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
@@ -61,14 +83,14 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
         <!-- Header END -->
 
 <!--主頁面要修改的都在這下面-->
-<div class="">
+<div class="content">
   <div class="container">
     <div class="row">
 <!--社團名稱開始-->
       <div class="col-md-12 col-sm-12">
           <ul class="breadcrumb">
-            <li><a href="../index.html">ChuMeet!</a></li>
-            <li><a href="<%=request.getContextPath()%>/front-end/club/ClubAll.jsp">搜索社團</a></li>
+            <li><a href="<%=request.getContextPath()%>/front-end/index.jsp">首頁</a></li>
+            <li><a href="<%=request.getContextPath()%>/front-end/club/ClubAll.jsp">社團推薦</a></li>
             <li class="active">社團首頁</li>
           </ul>
       </div>
@@ -82,13 +104,13 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
         <div class="row">   
             <ul class="tabbable actl-tabbable">
             	<%if(  (clubMemVO.getClubMemType()==1||clubMemVO.getClubMemType()==2||clubMemVO.getClubMemType()==3)&&clubMemVO.getClubMemStatus()==1   ){%>   
-                <li class="active"><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=toClubOne">社團首頁</a></li>
-                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=toClubMem">社團成員</a></li>
-                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=toClubAlbum">社團相簿</a></li>
-                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=toClubNews">社團公告</a></li>
+                <li class="active"><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubOne">社團首頁</a></li>
+                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubMem">社團成員</a></li>
+                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubAlbum">社團相簿</a></li>
+                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubNews">社團公告</a></li>
                 <li><a href="#tab_1" data-toggle="tab">社團活動</a></li>
                 <%if(  clubMemVO.getClubMemType()==3&&clubMemVO.getClubMemStatus()==1   ){%>   
-                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=updateClub" >管理社團</a></li>
+                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=updateClub" >管理社團</a></li>
                 <%}%> 
             	<%}%> 
             </ul>
@@ -110,10 +132,10 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
 		<div class="col-xs-12 col-sm-12">
 		    <div class="blog-item-img">
 		      <ul class="blog-info">
-		        <li><i class="fa fa-user"></i>${clubVO.clubmemID}</li>  <!-- 要幫我查到會員名稱 -->       
-		       <li><i class="fa fa-users"></i><c:out value="${clubMemlist.size()}"/></li>
-		        <li><i class="fa fa-comments"></i> 17</li>
-		        <li><i class="fa fa-tags"></i> 音樂, 校園, 專業</li>
+<%-- 		        <li><i class="fa fa-user"></i>${clubVO.clubmemID}</li>  <!-- 要幫我查到會員名稱 -->        --%>
+		       <li><i class="fa fa-users"></i><c:out value="成員數:${clubMemlist.size()}"/></li>
+<!-- 		        <li><i class="fa fa-comments"></i> 17</li> -->
+<!-- 		        <li><i class="fa fa-tags"></i> 音樂, 校園, 專業</li> -->
 		      </ul>
 		    </div> 
 		</div>
@@ -139,16 +161,21 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
       <div class="comments">
 <%--       		<%@ include file="page1ClubMB.file" %>  --%>
 <%--       		<c:forEach var="clubMBVO" items="${clubMBlist}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>"> --%>
-      		<c:forEach var="clubMBVO" items="${clubMBlist}">
+      		
+      		<c:forEach var="clubMBVO" items="${clubMBlist}" varStatus="status">
         <div class="media">                    
           <a href="javascript:;" class="pull-left">
-          	<img src="../assets/pages/img/people/img1-small.jpg" alt="" class="media-object">
+          	<img src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${clubMBVO.memID}" alt="" class="media-object">
           </a>
           <div class="media-body">
+           
+ 
+              <h4 class="media-heading">${mbMemNameList[status.index].memName}<span>${clubMBVO.clubMBDate}</span>
+            </h4>         
+           
           
-          
-            <h4 class="media-heading">${clubMBVO.memID}<span>${clubMBVO.clubMBDate}</span>
-            </h4>
+<%--             <h4 class="media-heading">${clubMBVO.memID}<span>${clubMBVO.clubMBDate}</span> --%>
+<!--             </h4> -->
 
      
             <p>${clubMBVO.clubMBContent}</p>
@@ -170,6 +197,7 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
 		          </div>
 		
 				  <div>
+				  	<input type="hidden"  name="memID" value="${memVO.memID}">
 					<input type="hidden"  name="clubID" value="${clubVO.clubID}">
 					<input type="hidden"  name="action" value="addOneClubMB">
 					<input type="submit" value="送出" class="btn btn-block btn-primary">						
@@ -192,104 +220,113 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
 <!--右邊開始-->
       <div class="col-xs-12 col-sm-3 ">
                 <!-- BEGIN BTN-->   
-  
+<%-- <%if(  (clubMemVO.getClubMemType()==1||clubMemVO.getClubMemType()==2||clubMemVO.getClubMemType()==3)&&clubMemVO.getClubMemStatus()==1   ){%> --%>
                 	<div>
 <%--                 		<%if(clubMemVO.getClubMemType()==1){%> --%>
+
+<c:if test="${memVO!=null}">
 					 	<%if(clubMemVO.getClubMemType()==0||clubMemVO.getClubMemStatus()==0){%>
-						<button class="btn btn-block btn-primary" onclick="javascript:location.href='<%=request.getContextPath()%>/front-end/club/clubMem.do?clubID=${clubVO.clubID}&action=joinClub'" value="加入社團" class="btn btn-block btn-primary">加入社團</button>
+					
+						<button class="btn btn-block btn-primary" onclick="javascript:location.href='<%=request.getContextPath()%>/front-end/club/clubMem.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=joinClub'" value="加入社團" class="btn btn-block btn-primary">加入社團</button>
   						 <%}%>
+</c:if>					 
 <%-- 						<%} %>	 --%>
 <%-- 						<button class="btn btn-block btn-success"onclick="javascript:location.href='<%=request.getContextPath()%>/club/clubMem.do?clubID=${clubVO.clubID}&action=quitClub'" value="退出社團" class="btn btn-block btn-primary">退出社團</button> --%>
 						<!-- Button trigger modal -->
 						
 					 	<%if(clubMemVO.getClubMemStatus()==1){%>
+					 	<c:if test="${memVO.memID!=clubVO.clubmemID }">
 						<button  class="btn btn-block btn-success" data-toggle="modal" data-target="#exampleModal">
 						退出社團
-						</button>		
+						</button>	
+						</c:if>	
  						 <%}%>
+ 						 
+ 						<%if(clubMemVO.getClubMemStatus()==1){%>
+					 	<c:if test="${memVO.memID==clubVO.clubmemID }">
+						<button  class="btn btn-block btn-success" >
+						如要退出請先變更社長
+						</button>	
+						</c:if>	
+ 						 <%}%> 
+ 						 
 
 						<%if(  (clubMemVO.getClubMemType()==2||clubMemVO.getClubMemType()==3)&&clubMemVO.getClubMemStatus()==1   ){%>
 						<button class="btn btn-block btn-success">創立社團活動</button>
 						<%} %>	
 					</div>
-					
+<%-- <% }%>					 --%>
                	<!-- END BTN--> 
+               	 <!-- BEGIN BLOG PHOTOS STREAM -->
+                  <div class="blog-photo-stream margin-bottom-20">
+                    <h2>社長</h2>
+                    
+                    <ul class="list-unstyled">
+                       <c:if test="${clubVO.clubmemID == memVO.memID}">
+                      		<li><a href="<%=request.getContextPath()%>/front-end/member/memberHome.do"><img alt="" src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${clubVO.clubmemID}"></a></li>
+                      	</c:if>
+                      <c:if test="${clubVO.clubmemID != memVO.memID}">
+                      	<li><a href="<%=request.getContextPath()%>/front-end/member/guestHome.do?memID=${clubVO.clubmemID}"><img alt="" src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${clubVO.clubmemID}"></a></li>
+                      </c:if>
+                    </ul>                    
+                  </div>
+                  <!-- END BLOG PHOTOS STREAM -->
                 <!-- BEGIN BLOG PHOTOS STREAM -->
                   <div class="blog-photo-stream margin-bottom-20">
                     <h2>社團成員</h2>
                     <ul class="list-unstyled">
-                      <li><a href="javascript:;"><img alt="" src="../assets/pages/img/people/img5-small.jpg"></a></li>
-                      <li><a href="javascript:;"><img alt="" src="../assets/pages/img/works/img1.jpg"></a></li>
-                      <li><a href="javascript:;"><img alt="" src="../assets/pages/img/people/img4-large.jpg"></a></li>
-                      <li><a href="javascript:;"><img alt="" src="../assets/pages/img/works/img6.jpg"></a></li>
-                      <li><a href="javascript:;"><img alt="" src="../assets/pages/img/pics/img1-large.jpg"></a></li>
-                      <li><a href="javascript:;"><img alt="" src="../assets/pages/img/pics/img2-large.jpg"></a></li>
-                      <li><a href="javascript:;"><img alt="" src="../assets/pages/img/works/img3.jpg"></a></li>
-                      <li><a href="javascript:;"><img alt="" src="../assets/pages/img/people/img2-large.jpg"></a></li>
+                    <c:forEach var="clubMemlist" items="${clubMemlist}">
+
+                    	<c:if test="${clubMemlist.memID == memVO.memID && clubMemlist.clubMemStatus==1}">
+                      		<li><a href="<%=request.getContextPath()%>/front-end/member/memberHome.do"><img alt="" src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${clubMemlist.memID}"></a></li>
+                      	</c:if>
+                      	<c:if test="${clubMemlist.memID != memVO.memID && clubMemlist.clubMemStatus==1}">
+                      		<li><a href="<%=request.getContextPath()%>/front-end/member/guestHome.do?memID=${clubMemlist.memID}"><img alt="" src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${clubMemlist.memID}"></a></li>
+                      	</c:if>
+
+                      </c:forEach>
                     </ul>                    
                   </div>
                   <!-- END BLOG PHOTOS STREAM -->
                   <!-- BEGIN RECENT NEWS -->                            
-                  <h2>社團公告</h2>
+                  
          
                   <div class="recent-news margin-bottom-10">
 <%if(  (clubMemVO.getClubMemType()==1||clubMemVO.getClubMemType()==2||clubMemVO.getClubMemType()==3)&&clubMemVO.getClubMemStatus()==1   ){%>                  
-           <c:forEach var="clubNewsVO" items="${clubNewslist}" >   
+           <h2>社團公告</h2>
+           <c:forEach var="clubNewsVO" items="${clubNewslist}" varStatus="status" >   
                     <div class="row margin-bottom-10">
           
                       <div class="col-md-3">
-                        <img class="img-responsive" alt="" src="../assets/pages/img/people/img2-large.jpg"> 
+                        <img class="img-responsive" alt="" src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${clubNewsVO.memID}"> 
                       </div>
                       
                       <div class="col-md-9 recent-news-inner">
-                        <h3><a href="javascript:;">${clubNewsVO.memID}</a></h3>
+                      
+                      
+                      <h3><a href="javascript:;">${newsMemNameList[status.index].memName}</a></h3>
+<%--                         <h3><a href="javascript:;">${clubNewsVO.memID}</a></h3> --%>
                         <p>${clubNewsVO.clubNewsTitle}</p>
                       </div> 
                                              
                     </div>
           </c:forEach>
+          
+          			<div class="col-md-12">
+					<div class="moreBtn text-right">
+					<a class="btn btn-sm btn-primary" href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubNews">more</a>
+					</div>
+					</div>  
+          
 <%}%>
 
                     
-					<div class="col-md-12">
-					<div class="moreBtn">
-					<button>more</button>
-					</div>
-					</div>   
                     
                     <!--start member news -->
-                    <h2>成員異動</h2>
-                    <div class="row margin-bottom-10">
-                      <div class="col-md-3">
-                        <img class="img-responsive" alt="" src="../assets/pages/img/people/img3-large.jpg">                        
-                      </div>
-                      <div class="col-md-9 recent-news-inner">
-                        <h3><a href="javascript:;">Tesiusto baissimos</a></h3>
-                        <p>加入社團</p>
-                      </div>		              
-                    </div>
-                    
-
-                    
+  
                      <!--end member news -->
                     <!--社團最近活動-->
-                    <h2>最新活動</h2>
-                    <!--活動1-->
-                    <div class="row margin-bottom-10">
-                      <div class="col-md-3">
-                        <img class="img-responsive" alt="" src="../assets/pages/img/people/img3-large.jpg">                        
-                      </div>
-                      <div class="col-md-9 recent-news-inner">
-                        <h3><a href="javascript:;">社遊</a></h3>
-                        <p>2017年12月12日</p>
-                      </div>                  
-                    </div>
 
-          <div class="col-md-12">
-          <div class="moreBtn">
-          <button>more</button>
-          </div>
-          </div>
                     <!--END社團最近活動-->
                   </div>
                   <!-- END RECENT NEWS -->                            

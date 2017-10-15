@@ -40,6 +40,7 @@ ClubImgVO clubImgVO = (ClubImgVO) request.getAttribute("clubImgVO");
         <!-- Header END -->
 
         <!--主頁面要修改的都在這下面-->
+        <div class="content">
         <div class="container">
             <div class="row">
                 <div class=" col-xs-offset-0 col-md-12 col-sm-12">
@@ -72,7 +73,7 @@ ClubImgVO clubImgVO = (ClubImgVO) request.getAttribute("clubImgVO");
                                 </div>
                                 
                                 <div class="form-group">
-                                    <input type="text" class="form-control input-sm" id="clubImgID" name="clubImgID" 
+                                    <input type="hidden" class="form-control input-sm" id="clubImgID" name="clubImgID" 
                                     value="${clubImgVO.clubImgID}" /> 
  
                                 </div>
@@ -80,7 +81,7 @@ ClubImgVO clubImgVO = (ClubImgVO) request.getAttribute("clubImgVO");
 
                        	        <div class="form-group">
                                     <input type="hidden" class="form-control input-sm" id="memID" name="memID" 
-                                    value="${clubVO.clubID}" /> 
+                                    value="${memVO.memID}" /> 
                                 </div>
 
 
@@ -116,6 +117,7 @@ ClubImgVO clubImgVO = (ClubImgVO) request.getAttribute("clubImgVO");
                     <!--=============================================================================================-->
                 </div>
             </div>
+        </div>
         </div>
 
 

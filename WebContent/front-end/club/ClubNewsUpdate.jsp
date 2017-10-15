@@ -68,7 +68,7 @@ ClubNewsVO clubNewsVO = (ClubNewsVO) request.getAttribute("clubNewsVO");
 
 <!-- BEGIN CONTENT -->
 
-      
+ <div class="content">
 <div  class="col-xs-12 col-sm-6">      
 <fORM METHOD="post" ACTION="clubNews.do" name="form3">
       <div class="post-comment padding-top-40">
@@ -86,8 +86,8 @@ ClubNewsVO clubNewsVO = (ClubNewsVO) request.getAttribute("clubNewsVO");
                                 </div>  
                                 
                                 <div class="form-group col-md-12 col-sm-12">
-                                    <input type="hidden" class="form-control input-sm" id="clubID" name="memID" 
-                                    value="1" /> 
+                                    <input type="hidden" class="form-control input-sm" id="memID" name="memID" 
+                                    value="${memVO.memID }" /> 
                                 </div>       
         
 					          <div class="form-group">
@@ -104,7 +104,7 @@ ClubNewsVO clubNewsVO = (ClubNewsVO) request.getAttribute("clubNewsVO");
     </div>    
 </fORM>
 </div>      
-
+</div>
         
 
 

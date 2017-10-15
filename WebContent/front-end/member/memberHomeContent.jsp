@@ -19,72 +19,7 @@
 		<hr class="colorgraph">
 		<!--********************首頁********************-->
 		<!-- BEGIN CONTENT -->
-		<div class="col-md-12 col-sm-12">
-			<ul class="nav nav-tabs">
-				<li class="active"><a data-toggle="tab" href="#home">參加中的活動</a></li>
-				<li><a data-toggle="tab" href="#act">參加的社團</a></li>
-			</ul>
 
-			<div class="tab-content">
-				<div id="act" class="tab-pane fade in active">
-					<div class="container-fluid bg-3 text-center reward">
-						<div class="row">
-							<div class="col-sm-4">
-								<img
-									src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${memVO.memID}"
-									alt="Image" class="img-responsive thumbnail">
-								<p>Lorem ipsum..</p>
-							</div>
-							<div class="col-sm-4">
-								<img
-									src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${memVO.memID}"
-									alt="Image" class="img-responsive thumbnail">
-								<p>Lorem ipsum..</p>
-							</div>
-							<div class="col-sm-4">
-								<img
-									src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${memVO.memID}"
-									alt="Image" class="img-responsive thumbnail">
-								<p>Lorem ipsum..</p>
-							</div>
-							<div class="row">
-								<a href="http://www.google.com"><input type="button"
-									class="btn btn-primary" value="看更多"></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="club" class="tab-pane fade">
-					<div class="container-fluid bg-3 text-center reward">
-						<div class="row">
-							<div class="col-sm-4">
-								<img
-									src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${memVO.memID}"
-									alt="Image" class="img-responsive thumbnail">
-								<p>Lorem ipsum..</p>
-							</div>
-							<div class="col-sm-4">
-								<img
-									src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${memVO.memID}"
-									alt="Image" class="img-responsive thumbnail">
-								<p>Lorem ipsum..</p>
-							</div>
-							<div class="col-sm-4">
-								<img
-									src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${memVO.memID}"
-									alt="Image" class="img-responsive thumbnail">
-								<p>Lorem ipsum..</p>
-							</div>
-							<div class="row">
-								<a href="http://www.google.com"><input type="button"
-									class="btn btn-primary" value="看更多"></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<hr class="colorgraph">
-		</div>
 		<!-- END CONTENT -->
 		<!--********************首頁********************-->
 		<!--**************************留言板**************************-->

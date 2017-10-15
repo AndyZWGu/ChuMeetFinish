@@ -41,7 +41,7 @@ ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
 </c:import>
 
         <!-- Header END -->
-
+<div class="content">
         <!--主頁面要修改的都在這下面-->
         <div class="container">
             <div class="row">
@@ -71,7 +71,7 @@ ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
 
                        	        <div class="form-group">
                                     <input type="hidden" class="form-control input-sm" id="memID" name="memID" 
-                                    value="${clubVO.clubID}" /> 
+                                    value="${memVO.memID}" /> 
                                 </div>
 
 
@@ -92,11 +92,11 @@ ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
 
 
 <!-- 應該從這也可以上傳相片,等基本做完再來用 -->
-                                <div class="form-group col-md-12 col-sm-12">
-                                    <label for="photo">社團照片*</label>
-                                    <input type="file" id="photo" name="clubPic">
-                                    <p class="help-block">請上傳一張社團照片</p>
-                                </div>
+<!--                                 <div class="form-group col-md-12 col-sm-12"> -->
+<!--                                     <label for="photo">社團照片*</label> -->
+<!--                                     <input type="file" id="photo" name="clubPic"> -->
+<!--                                     <p class="help-block">請上傳一張社團照片</p> -->
+<!--                                 </div> -->
 
 
                                 
@@ -112,7 +112,7 @@ ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
                 </div>
             </div>
         </div>
-
+</div>
   <!-- BEGIN FOOTER -->
 <c:import url="/front-end/footer.jsp">
 </c:import>

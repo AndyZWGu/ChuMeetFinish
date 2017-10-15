@@ -18,6 +18,12 @@
       <!-- BEGIN NAVIGATION -->
       <div class="header-navigation pull-right font-transform-inherit">
         <ul>
+          <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="<%=request.getContextPath()%>/member/memNF.html"> 網站資訊 </a>
+            <ul class="dropdown-menu">
+              <li><a href="<%=request.getContextPath()%>/front-end/ann.jsp">公告</a></li>
+              <li><a href="<%=request.getContextPath()%>/front-end/ad.jsp">廣告優惠</a></li>
+            </ul>
+          </li>
           <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="<%=request.getContextPath()%>/member/memNF.html"> 會員中心 </a>
             <ul class="dropdown-menu">
               <li><a href="<%=request.getContextPath()%>/front-end/member/memberSearch.do">搜尋會員</a></li>
@@ -26,13 +32,9 @@
           </li>
           <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="<%=request.getContextPath()%>/act/act.html"> 活動廣場 </a>
             <ul class="dropdown-menu">
-              <li><a href="<%=request.getContextPath()%>/front-end/act/act.jsp">我的活動</a></li>
-              <li><a href="<%=request.getContextPath()%>/front-end/act/act.jsp">揪咪推薦</a></li>
-              <li><a href="<%=request.getContextPath()%>/front-end/act/act.jsp">政府藝文活動</a></li>
-              <li><a href="<%=request.getContextPath()%>/front-end/act/act.jsp">周末特調</a></li>
-              <li><a href="<%=request.getContextPath()%>/front-end/act/act.jsp">熱門標籤</a></li>
-              <li><a href="<%=request.getContextPath()%>/front-end/act/actPOI.jsp">活動分類</a></li>
-              <li><a href="<%=request.getContextPath()%>/front-end/act/actMap.jsp">揪揪地圖</a></li>
+              <li><a href="<%=request.getContextPath()%>/front-end/act/MemAllAct.jsp">我的活動</a></li>
+              <li><a href="<%=request.getContextPath()%>/front-end/act/actList.jsp">揪咪推薦</a></li>
+              <li><a href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryWks">周末特調</a></li>
             </ul>
           </li>
           <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="<%=request.getContextPath()%>/club/club_ALL.html"> 社團大廳 </a>

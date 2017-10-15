@@ -16,7 +16,9 @@ MemberVO memVO= (MemberVO)session.getAttribute("memVO"); //登入帳號的所有
           <ul class="list-unstyled list-inline">
             <li><span><strong>ChuMeet</strong></span></li>
             <li><span>Nice to meet you <i class="fa fa-smile-o" aria-hidden="true"></i></span> </li>
-            <li><a href="<%=request.getContextPath()%>/front-end/act/actStart.jsp"><span class="topst"> 開始揪團吧！ </span></a></li>
+            <c:if test="${account!=null}" var="loginStatus2" scope="session" > 
+            	<li><a href="<%=request.getContextPath()%>/front-end/act/actStart.jsp"><span class="topst"> 開始揪團吧！ </span></a></li>
+            </c:if>
           </ul>
 
 

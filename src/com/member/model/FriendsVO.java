@@ -30,7 +30,7 @@ public class FriendsVO implements java.io.Serializable {
 		return friendDate;
 	}
 	public void setFriendDate(Timestamp friendDate) {
-		friendDate = friendDate;
+		this.friendDate = friendDate;
 	}
 	
 }

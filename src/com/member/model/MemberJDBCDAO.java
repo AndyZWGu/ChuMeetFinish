@@ -355,7 +355,7 @@ public class MemberJDBCDAO implements MemberDAO_interface {
 
 		MemberJDBCDAO dao = new MemberJDBCDAO();
 
-		// 新增
+		// 鏂板
 		MemberVO memberVO2 = new MemberVO();
 		memberVO2.setMemEmail("ggpower@hotmail.com");
 		memberVO2.setMemPw("PPww");
@@ -379,17 +379,17 @@ public class MemberJDBCDAO implements MemberDAO_interface {
 		memberVO2.setMemLoginNum(5);
 		memberVO2.setMemLocBorn(null);
 		memberVO2.setMemLocLive(null);
-		memberVO2.setMemInt("歡迎歡迎");
+		memberVO2.setMemInt("姝¤繋姝¤繋");
 		memberVO2.setMemLong(1.2);
 		memberVO2.setMemLat(3.4);
 		memberVO2.setMemPriv(1);
 		memberVO2.setMemStatus(1);
 		dao.insert(memberVO2);
 
-//		// 更新
+//		// 鏇存柊
 //		MemberVO MemberVO2 = new MemberVO();
 //		MemberVO2.setEmpno(7001);
-//		MemberVO2.setEname("鍚虫案蹇�2");
+//		MemberVO2.setEname("閸氳櫕妗堣箛锟�2");
 //		MemberVO2.setJob("MANAGER2");
 //		MemberVO2.setHiredate(java.sql.Date.valueOf("2002-01-01"));
 //		MemberVO2.setSal(new Double(20000));
@@ -397,10 +397,10 @@ public class MemberJDBCDAO implements MemberDAO_interface {
 //		MemberVO2.setDeptno(20);
 //		dao.update(MemberVO2);
 
-		// 刪除
+		// 鍒櫎
 //		dao.delete(7014);
 
-		// 查詢特定一筆
+		// 鏌ヨ鐗瑰畾涓�绛�
 //		MemberVO memberVO3 = dao.findByPrimaryKey(1);
 //		System.out.print(memberVO3.getMemID() + ",");
 //		System.out.print(memberVO3.getMemEmail() + ",");
@@ -425,7 +425,7 @@ public class MemberJDBCDAO implements MemberDAO_interface {
 //		System.out.print(memberVO3.getMemStatus());
 //		System.out.println("---------------------");
 
-		//查詢全部
+		//鏌ヨ鍏ㄩ儴
 //		List<MemberVO> list = dao.getAll();
 //		for (MemberVO member : list) {
 //			System.out.print(member.getMemID() + ",");
@@ -474,6 +474,12 @@ public class MemberJDBCDAO implements MemberDAO_interface {
 
 	@Override
 	public List<MemberVO> getAll(Map<String, String[]> map) {
+		return null;
+	}
+
+	@Override
+	public List<MemberVO> getAllByHot() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

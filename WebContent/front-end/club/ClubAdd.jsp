@@ -61,11 +61,13 @@ ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
                         
                             <FORM METHOD="post" ACTION="clubAll.do" name="form2" enctype="multipart/form-data">
 							<!--建立人ID=進入的會員參數 -->
-                       	        <div class="form-group">
-                                    <input type="hidden" class="form-control input-sm" id="clubmemID" name="clubmemID" 
-                                    value="${clubVO.getClubID} }" /> 
-                                </div>
+
                        	
+                       	
+                      			<div class="form-group">
+                                    <input type="hidden" class="form-control input-sm" id="clubmemID" name="clubmemID" 
+                                    value="${memVO.memID}" /> 
+                                </div>
                        	
 
                                 <div class="form-group col-md-12 col-sm-12">
@@ -124,6 +126,7 @@ ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
                                 <div class="form-group col-md-12 col-sm-12 text-center">
                                     <input type="submit" value="新增" class="btn btn-primary">
                                     <input type="hidden" name="action" value="getAdd">
+                                    
                                 </div>
                                 <div class="form-group col-md-12 col-sm-12 text-right"><input type="button" value="傳說小按鈕" class="btn btn-danger btn-sm" id="lenged"></div>
                             </form>

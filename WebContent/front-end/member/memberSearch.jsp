@@ -21,6 +21,8 @@
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!! 放在最後一行優先權越高 !!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 <!--#################### 單頁CSS路徑統一放在/src/xxx/css/xxx.css ###########-->
 <!--%%%%%%%%%%%%%%%%%% 第一行可以刪掉，那是activity(也就是敏道的活動頁)專用的CSS %%%%%-->
+<link href="<%=request.getContextPath()%>/HTML/src/index/index-byAGu.css" rel="stylesheet">
+  <link href="<%=request.getContextPath()%>/HTML/assets/pages/css/slider.css" rel="stylesheet">
 <link
 	href="<%=request.getContextPath()%>/HTML/src/member/css/memSerach.css"
 	rel="stylesheet">
@@ -45,7 +47,7 @@
 	<!-- Header END -->
 
 	<!--主頁面要修改的都在這下面-->
-	<div class="main">
+	<div class="main content">
 		<div class="container">
 			<div class="row">
 				<div class=" col-sm-12 col-md-12 text-center">
@@ -68,16 +70,16 @@
 								<input type="text" class="input-sm form-control" name="end"
 									placeholder="結束日" />
 							</div> -->
-							<h6>生日</h6>
-								<input type="date" class="input-sm form-control" placeholder="生日"
-									name="memBD">
-							<h6>加入時間範圍</h6>
-							<div class="input-daterange input-group" id="datepicker">
-								<input type="text" class="input-sm form-control" name="start"
-									placeholder="起始日" /> <span class="input-group-addon">to</span>
-								<input type="text" class="input-sm form-control" name="end"
-									placeholder="結束日" />
-							</div>
+								<h6>生日</h6>
+								<input type="date" class="input-sm form-control"
+									placeholder="生日" name="memBD">
+								<h6>加入時間範圍</h6>
+								<div class="input-daterange input-group" id="datepicker">
+									<input type="text" class="input-sm form-control" name="start"
+										placeholder="起始日" /> <span class="input-group-addon">to</span>
+									<input type="text" class="input-sm form-control" name="end"
+										placeholder="結束日" />
+								</div>
 							</div>
 							<div class="input-group">
 								<h6>追蹤數：</h6>
@@ -198,24 +200,40 @@
 						</form>
 						<%@ include file="memberSearchPageMessage.file"%>
 						<c:forEach items="${memSearchList}" var="memSearch"
-							begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>" varStatus="status">
+							begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>"
+							varStatus="status">
 
 							<div class="search-result-item col-sm-12 col-md-12">
 								<div class="col-sm-3 col-md-3">
 									<img
 										src="<%=request.getContextPath()%>/front-end/member/memberSearch/avatar.do?memID=${memSearch.memID}"
 										class="thumbnail" alt="Cinque Terre" width="100" height="100">
+											<c:if test="${memSearch.memID == memVO.memID && memVO!=null}">
+											<h1>本人!!</h1>
+												<a class="btn btn-primary" href="<%=request.getContextPath()%>/front-end/member/memberHome.do">我家的小屋</a>
+											</c:if>
+											<c:if test="${memSearch.memID != memVO.memID && memVO!=null}">
+												<a class="btn btn-primary" href="<%=request.getContextPath()%>/front-end/member/guestHome.do?memID=${memSearch.memID}">前往小屋</a>
+											</c:if>
 								</div>
 								<div class="col-sm-9 col-md-9">
 									<h4>
-										<c:if test="${memSearch.memID != memVO.memID}">
-											<a href="<%=request.getContextPath()%>/front-end/member/guestHome.do?memID=${memSearch.memID}">${memSearch.memName}</a>
-										</c:if>
-										<c:if test="${memSearch.memID == memVO.memID}">
-											<a href="<%=request.getContextPath()%>/front-end/member/memberHome.do">${memSearch.memName}</a>
-										</c:if>
+											<p>姓名:${memSearch.memName}</p>
+											<c:if test="${memSearch.memGender==0}">
+												<p>性別:妹子</p>
+											</c:if>
+											<c:if test="${memSearch.memGender==1}">
+												<p>性別:男</p>
+											</c:if>
+											<c:if test="${memSearch.memLocLive!=null}">
+												<p>居住:~${memSearch.memLocLive}~的人類</p>
+											</c:if>
+											<hr>
+											<p>${memSearch.memInt}</p>
+											<hr>
+											<p>登入次數:${memSearch.memLoginNum}</p>
+											<p>加入揪咪時間:${memSearch.memJoinDate}</p>
 									</h4>
-									<p>${memSearch.memInt}</p>
 								</div>
 							</div>
 						</c:forEach>
@@ -253,13 +271,14 @@
 	<c:import url="/front-end/publicJS.jsp">
 	</c:import>
 	<!-- 共用Js -->
-			<script src="<%=request.getContextPath()%>/HTML/src/member/js/bootstrap-datepicker.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/HTML/src/member/js/bootstrap-datepicker.min.js"></script>
 	<script type="text/javascript">
 		$('.input-daterange input').each(function() {
 			$(this).datepicker('clearDates');
 		});
 	</script>
-	
+
 </body>
 <!-- END BODY -->
 

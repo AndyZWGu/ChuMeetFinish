@@ -2,8 +2,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.club.model.*"%>
+<%@ page import="com.clubMB.model.*"%>
+<%@ page import="com.clubNews.model.*"%>
+<%@ page import="com.clubMem.model.*"%>
+<%@ page import="java.util.*"%>
 <%
 ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
+
 %>
 
 
@@ -38,6 +43,7 @@ ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
         <!-- Header END -->
 
         <!--主頁面要修改的都在這下面-->
+        <div class="content">
         <div class="container">
             <div class="row">
                 <div class=" col-xs-offset-0 col-md-12 col-sm-12">
@@ -64,6 +70,12 @@ ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
                         
                         
                             <FORM METHOD="post" ACTION="clubOne.do" name="form1" enctype="multipart/form-data">
+                            
+                      			<div class="form-group">
+                                    <input type="hidden" class="form-control input-sm" id="memID" name="memID" 
+                                    value="${memVO.memID}" /> 
+                                </div>
+                            
                             
 								<!-- 社團ID -->
                        	        <div class="form-group col-md-12 col-sm-12">
@@ -99,24 +111,6 @@ ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
                                 </select>
                                 </div>
                                 
-  
-                                
-<!--                                 <div class="form-group col-md-12 col-sm-12"> -->
-<!--                                     <label for="clubPOI">社團類別*</label> -->
-<!--                                <select class="form-control" id="clubPOI"> -->
-<!--                                     <option value="sports ">運動</option> -->
-<!--                                     <option value="learning">學習</option> -->
-<!--                                     <option value="eat">餐聚 </option> -->
-<!--                                     <option value="Arts">藝文</option> -->
-<!--                                     <option value="moive">電影</option> -->
-<!--                                     <option value="game">電競</option> -->
-<!--                                     <option value="outdoors">戶外</option> -->
-<!--                                     <option value="pets">寵物</option> -->
-<!--                                     <option value="others">其他</option> -->
-<!--                                 </select> -->
-<!--                                 </div> -->
-                                
-
 
                                 <div class="form-group col-md-12 col-sm-12">
                                     <label for="photo">變更社團照片*</label>
@@ -134,6 +128,7 @@ ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
                                 
                                 <div class="form-group col-md-12 col-sm-12 text-center">
                                     <input type="submit" value="更新" class="btn btn-primary">
+                                    
                                     <input type="hidden" name="action" value="getOne_For_Update">
                                 </div>
                                 <div class="form-group col-md-12 col-sm-12 text-right"><input type="button" value="傳說小按鈕" class="btn btn-danger btn-sm" id="lenged"></div>
@@ -144,7 +139,7 @@ ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
                 </div>
             </div>
         </div>
-
+</div>
   <!-- BEGIN FOOTER -->
 <c:import url="/front-end/footer.jsp">
 </c:import>

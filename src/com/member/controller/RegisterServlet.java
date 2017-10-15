@@ -106,16 +106,18 @@ public class RegisterServlet extends HttpServlet {
 				// 大頭照用
 				byte[] byteAvatar = getAvatarByPart(req);
 				// 註冊呼叫Service調用Dao
-				MemberVO memVO = memSvc.addMember(memEmail, memPw, 0, 1, 0, 50, memName, memGender, timestampMemBD, memPhone,
+				memSvc.addMember(memEmail, memPw, 0, 1, 0, 50, memName, memGender, timestampMemBD, memPhone,
 						byteAvatar, today, 1, memLocBorn, memLocLive, memInt, 0.0, 0.0, 2, 1);
 				// 自動登入
+				MemberVO memVO = memSvc.getMemberByMemEmail(memEmail);
+				System.out.println(memVO.getMemID());
 				session.setAttribute("memVO", memVO);
 				session.setAttribute("account", memVO.getMemEmail());
 				//自動首頁發表第一篇動態作為收集留言之用途
 				MemNFService nfSvc = new MemNFService();
 				nfSvc.addNFtoHome(memVO.getMemID(),"歡迎加入揪咪大家庭","本動態作為第一次加入並且限定會員首頁顯示及留言之作用", null, today, 0);//隱藏Status=2作為辨識用
 				//回首頁
-				res.sendRedirect("/ChuMeetWebsite/front-end/index.jsp");
+				res.sendRedirect("/ChuMeetWebsiteFinish/front-end/index.jsp");
 				/*************************** 其他可能的錯誤處理 *************************************/
 			} catch (Exception e) {
 				errorMsgs.add("無法取得資料:" + e.getMessage());

@@ -64,6 +64,52 @@ public class ClubMemService {
 	}
 	
 	
+	//以下新作的
+	public ClubMemVO updateClubMemType(Integer clubID,Integer memID,Integer clubMemType) {
+
+		ClubMemVO clubMemVO = new ClubMemVO();
+		clubMemVO.setClubID(clubID);
+		clubMemVO.setMemID(memID);
+		clubMemVO.setClubMemType(clubMemType);
+		dao.updateClubMemType(clubMemVO);
+System.out.println("ClubMemVOServicrOK");
+		return clubMemVO;
+	}
+	
+	
+	public ClubMemVO changeMemStatus(Integer clubID,Integer memID,Integer clubMemStatus) {
+
+		ClubMemVO clubMemVO = new ClubMemVO();
+		clubMemVO.setClubID(clubID);
+		clubMemVO.setMemID(memID);
+		clubMemVO.setClubMemStatus(clubMemStatus);
+System.out.println("ClubMemVOServicr1");		
+		dao.changeMemStatus(clubMemVO);
+System.out.println("ClubMemVOServicrOK");
+		return clubMemVO;
+	}
+	
+	
+	
+	
+	public ClubMemVO exitMemStatus(Integer clubID,Integer memID,Integer clubMemStatus) {
+
+		ClubMemVO clubMemVO = new ClubMemVO();
+		clubMemVO.setClubID(clubID);
+		clubMemVO.setMemID(memID);
+		clubMemVO.setClubMemStatus(clubMemStatus);
+System.out.println("ClubMemVOServicr1");		
+		dao.changeMemStatus(clubMemVO);
+System.out.println("ClubMemVOServicrOK");
+		return clubMemVO;
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

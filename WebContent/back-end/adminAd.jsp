@@ -95,13 +95,17 @@
 				<!--/////////////////////////////////////////////////////////////////////////////-->
 				<div class="container">
 
-					<h2>
-						<strong>網站管理</strong>
-					</h2>
+					
 					<ul class="nav nav-tabs">
-						<li class="active"><a data-toggle="tab" href="#home">廣告管理</a></li>
-						<li><a data-toggle="tab" href="#menu1">公告管理</a></li>
-						<li><a data-toggle="tab" href="#menu2">網站資訊管理</a></li>
+						 <li >
+                        <a href="info.jsp">網站資訊</a>
+                    </li>
+                    <li>
+                        <a href="adminAnn.jsp">公告管理</a>
+                    </li>
+                    <li class="active">
+                        <a  href="adminAd.jsp">廣告管理</a>
+                    </li>
 					</ul>
 					<div class="tab-content">
 						<div id="home" class="tab-pane fade in active">
@@ -125,7 +129,7 @@
 							</form>
 							<div class="tab-content">
 								<div class="tab-pane fade in active">
-									<h2>廣告管理</h2>
+								
 									<table class="table table-hover">
 										<thead>
 											<tr class="bg-danger">

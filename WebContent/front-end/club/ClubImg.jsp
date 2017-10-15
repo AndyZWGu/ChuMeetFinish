@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ page import="java.util.*"%>
+<%@ page import="com.clubMem.model.*"%>
 <%@ page import="com.club.model.*"%>
 <%@ page import="com.clubImg.model.*"%>
 <%@ page import="com.clubAlbum.model.*"%>
@@ -17,6 +18,8 @@ ClubAlbumVO clubAlbumVO = (ClubAlbumVO) request.getAttribute("clubAlbumVO");
 List<ClubImgVO> clubImglist = (List<ClubImgVO>)request.getAttribute("clubImglist");
 // request.setAttribute("clubImglist",clubImglist);
 
+
+ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
 %>
 
 
@@ -58,15 +61,14 @@ List<ClubImgVO> clubImglist = (List<ClubImgVO>)request.getAttribute("clubImglist
 <!-- BEGIN CONTENT -->
 
 
-<div class="main">
+<div class="main content">
 <!-- BEGIN CONTENT -->
 <!-- BEGIN LEFT SIDEBAR -->            
       <div class="container">
         <ul class="breadcrumb">
-            <li><a href="../index.html">ChuMeet!</a></li>
-            <li><a href="javascript:;">搜索社團</a></li>
-            <li><a href="javascript:;">社團首頁</a></li>
-            <li><a href="javascript:;">社團相簿</a></li>
+            <li><a href="<%=request.getContextPath()%>/front-end/index.jsp">首頁</a></li>
+            <li><a href="<%=request.getContextPath()%>/front-end/club/ClubAll.jsp">社團推薦</a></li>
+            <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubAlbum">社團相簿</a></li>
 			<li class="active">社團照片</li>
         </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
@@ -83,11 +85,11 @@ List<ClubImgVO> clubImglist = (List<ClubImgVO>)request.getAttribute("clubImglist
           				<div class="row">
           					<div class="col-xs-12 col-sm-6">
           						
-          						<input type ="button"  class="btn btn-block btn-primary" style="width:80px;height:30px;""  onclick="javascript:location.href='<%=request.getContextPath()%>/front-end/club/clubImg.do?clubID=${clubVO.clubID}&clubAlbumID=${clubAlbumVO.clubAlbumID}&action=toClubImgAdd'"  value="新增相片" ></input>
+          						<input type ="button"  class="btn btn-block btn-primary" style="width:80px;height:30px;""  onclick="javascript:location.href='<%=request.getContextPath()%>/front-end/club/clubImg.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&clubAlbumID=${clubAlbumVO.clubAlbumID}&action=toClubImgAdd'"  value="新增相片" ></input>
           					</div>
-          					<div class="col-xs-12 col-sm-6">
-          						<button class="btn btn-block btn-success" style="width:80px;height:30px;">刪除相片</button>
-          					</div>
+<!--           					<div class="col-xs-12 col-sm-6"> -->
+<!--           						<button class="btn btn-block btn-success" style="width:80px;height:30px;">刪除相片</button> -->
+<!--           					</div> -->
           				</div>   				
           			</div>
 
@@ -99,15 +101,16 @@ List<ClubImgVO> clubImglist = (List<ClubImgVO>)request.getAttribute("clubImglist
                 <!-- BEGIN change -->  
 <div class="container">
   <div class="row">
-<c:forEach var="clubImgVO" items="${clubImglist}">  
-      <div class="col-lg-3 col-sm-4 col-xs-6">
+<c:forEach var="clubImgVO" items="${clubImglist}"> 
+<c:if test="${clubImgVO.clubImgStatus!=0}"> 
+      <div class="col-lg-4 col-sm-4 col-xs-4">
         <div class="clubcCard">
           <a title="${clubImgVO.clubImgContent}      創立日期:${clubImgVO.clubImgDate} "  href="#">
           
 
           	<img class="thumbnail img-responsive" src="<%=request.getContextPath()%>/front-end/club/clubAlbumImg.do?clubImgID=${clubImgVO.clubImgID}" class="img-responsive">
 			 <center><h2>${clubImgVO.clubImgContent}</h2></center>
-			 
+<%if( (clubMemVO.getClubMemType()==2||clubMemVO.getClubMemType()==3)&&clubMemVO.getClubMemStatus()==1   ){%>  			 
 			<!-- 修改按鈕 -->
 			<div class="form-group col-md-6 col-sm-6 text-center">
 			  <div><input type ="button"  class="btn btn-primary"  onclick="javascript:location.href='<%=request.getContextPath()%>/front-end/club/clubImg.do?clubID=${clubVO.clubID}&clubAlbumID=${clubAlbumVO.clubAlbumID}&clubImgID=${clubImgVO.clubImgID}&action=toClubImgUpdate'"  value="修改" ></input></div>
@@ -121,10 +124,11 @@ List<ClubImgVO> clubImglist = (List<ClubImgVO>)request.getAttribute("clubImglist
 			         <input type="hidden" name="clubAlbumID" value="${clubAlbumVO.clubAlbumID}">
 			         <input type="hidden" name="clubImgID" value="${clubImgVO.clubImgID}">
 			    	 <input type="hidden" name="clubID" value="${clubVO.clubID}">  
+			    	 <input type="hidden" name="memID" value="${memVO.memID}">  
 			      </div>
 			 </form>
 			 </div>
-
+<% }%>
 
 			
 
@@ -133,6 +137,7 @@ List<ClubImgVO> clubImglist = (List<ClubImgVO>)request.getAttribute("clubImglist
           </a>
         </div>
       </div>
+</c:if>      
 </c:forEach>
 
       

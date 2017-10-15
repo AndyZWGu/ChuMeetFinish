@@ -1,0 +1,258 @@
+/*custom font*/
+@import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+/* General body settings */
+.map_canvas * {
+				overflow:visible;
+	}
+
+/*form styles*/
+#msform {
+    text-align: center;
+    position: relative;
+    margin-top: 2em;
+}
+
+#msform fieldset {
+    background: #FFFFFF;
+    border: 0 none;
+    border-radius: 0px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    width: 90%;
+    margin: 0 5% 5%;
+	height: 750px;
+
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+    display: none;
+}
+
+
+
+/*buttons*/
+#msform .action-button {
+    width: 100px;
+    background: #EEC0C6;
+    font-weight: bold;
+    color: #CC5A71;
+    border: #F0B0B1 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+
+
+#msform .action-button-previous {
+    width: 100px;
+    background: #eeeeee;
+    font-weight: bold;
+    color: #CC5A71;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+
+/*headings*/
+.fs-title {
+    font-size: 3.5em;
+    text-transform: uppercase;
+    color: #FF934F;
+	margin-top: .3em;
+    margin-bottom: 10px;
+    letter-spacing: .1em;
+    font-weight: bold;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/*progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+	margin-left: auto;
+	margin-right: auto;
+	text-align:  center;
+}
+
+#progressbar li {
+    list-style-type: none;
+    color: darkred;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 20%;
+    float: left;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 24px;
+    height: 24px;
+    line-height: 26px;
+    display: block;
+    font-size: 12px;
+    color: antiquewhite;
+    background: #E58C8A;
+    border-radius: 25px;
+    margin: 0 auto 10px auto;
+}
+
+/*progressbar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: darkred;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1; /*put it behind the numbers*/
+}
+
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before, #progressbar li.active:after {
+    background: #388697;
+    color: white;
+}
+
+
+/* Not relevant to this form */
+.dme_link {
+    margin-top: 30px;
+    text-align: center;
+}
+.dme_link a {
+    background: #FFF;
+    font-weight: bold;
+    color: #ee0979;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 5px 25px;
+    font-size: 12px;
+}
+
+.dme_link a:hover, .dme_link a:focus {
+    background: #C5C5F1;
+    text-decoration: none;
+}
+
+
+
+/* inputsp */
+
+.btn span.glyphicon {    			
+	opacity: 0;				
+}
+.btn.active span.glyphicon {				
+	opacity: 1;				
+}
+*,
+:before,
+:after {
+  box-sizing: border-box;
+}
+
+
+.inputSp .group {
+  position: relative;
+  margin-top: 2em;
+  margin-bottom: 3em;
+}
+
+.inputSp .is textarea {
+  resize: none;
+}
+
+.inputSp input.is,
+.inputSp textarea.is{
+  background: none;
+  color: #444444;
+  font-size: 18px;
+  padding: 1em;
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-width:0;
+  border-color: white;
+/*  border-bottom: 1px solid #c6c6c6;*/
+}
+.inputSp input.is :focus,
+.inputSp textarea.is :focus {
+  outline: none;
+}
+.inputSp input:focus ~ label.la, 
+.inputSp input:valid ~ label.la,
+.inputSp textarea:focus ~ label.la,
+.inputSp textarea:valid ~ label.la {
+  top: -14px;
+  font-size: 14px;
+  color: #445E93;
+}
+.inputSp input:focus ~ .bar:before,
+.inputSp textarea:focus ~ .bar:before {
+  background-color: #FCB0B3;
+  width: 100%;
+/*	@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+}
+
+.inputSp input[type="password"] {
+  letter-spacing: 0.3em;
+}
+
+.inputSp label.la{
+  color: #445E93;
+  font-size: 20px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  -webkit-transition: 300ms ease all;
+  transition: 300ms ease all;
+}
+
+.inputSp .bar {
+  position: relative;
+  display: block;
+  width: 100%;
+  background: #FCECC9;
+}
+.inputSp .bar:before {
+  content: "";
+  height: 2px;
+  width: 100%;
+  bottom: 0px;
+  position: absolute;
+  background: #FCECC9;
+  -webkit-transition: 300ms ease all;
+  transition: 300ms ease all;
+  left: 0%;
+}
+

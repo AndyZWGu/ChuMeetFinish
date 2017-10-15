@@ -81,13 +81,12 @@
             <!--/////////////////////////////////////////////////////////////////////////////-->
             <div class="container">
 
-             <h2><strong>檢舉管理</strong></h2>
+          
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#home">會員檢舉管理</a></li>
-                    <li><a data-toggle="tab" href="#menu1">留言/相片檢舉管理</a></li>
-                    <li><a data-toggle="tab" href="#menu2">相簿檢舉管理</a></li>
-                    <li><a data-toggle="tab" href="#menu2">活動/社團檢舉管理</a></li>
-                                      
+                   <li><a  href="adminMemTicket.jsp">會員檢舉管理</a></li>
+                    <li><a  href="adminmbImgTicket.jsp">留言/相片檢舉管理</a></li>
+                    <li class="active"><a  href="adminAlbumTicket.jsp">相簿檢舉管理</a></li>
+                    <li><a  href="actClubTicket.jsp">活動/社團檢舉管理</a></li>           
                 </ul>
 
 
@@ -101,7 +100,7 @@
                 </form>
                 <div class="tab-content">
                     <div class="tab-pane fade in active">
-                        <h2>相簿檢舉管理</h2>
+                    
                         <table class="table  table-hover">
                             <thead>
                             <tr class="bg-danger">

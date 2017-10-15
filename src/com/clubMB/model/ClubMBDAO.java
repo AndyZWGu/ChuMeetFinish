@@ -29,6 +29,7 @@ public class ClubMBDAO implements ClubMBDAO_interface {
 
 	private static final String GET_ONE_CLUB_MB_STMT = "SELECT clubMBID,clubID,memID,clubMBContent,to_char(clubMBDate,'yyyy-mm-dd hh:mm:ss') clubMBDate,clubMBStatus FROM clubMB where clubID = ? order by clubMBID desc";
 
+//	private static final String GET_MEMNAME_BY_MEMID_STMT = "SELECT memName FROM member where memID = ?";
 	@Override
 	public void insert(ClubMBVO clubMBVO) {
 
@@ -338,6 +339,7 @@ public class ClubMBDAO implements ClubMBDAO_interface {
 	
 	
 	
+
 	
 	
 	

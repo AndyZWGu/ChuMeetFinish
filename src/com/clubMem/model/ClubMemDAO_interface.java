@@ -33,4 +33,13 @@ public interface ClubMemDAO_interface {
 	
 	//找某會員有參加那些社團
 	public List<ClubMemVO> getAllJoinClub(Integer memID);
+
+	//以下新作的
+	//變更會員TYPE為:3社長2.幹部1.一般
+	public void updateClubMemType(ClubMemVO clubMemVO);
+	
+	public void changeMemStatus(ClubMemVO clubMemVO);
+	
+	public void exitMemStatus(ClubMemVO clubMemVO);
+	
 }

@@ -51,12 +51,18 @@ public class ClubDAO implements ClubDAO_interface {
 				"SELECT clubMBID,clubID,memID,clubMBContent,to_char(clubMBDate,'yyyy-mm-dd hh:mm:ss') clubMBDate,clubMBStatus FROM clubMB where clubID=? order by clubMBID desc";
 	
 		private static final String GET_ClubMem_ByClubID_STMT = 
-				"SELECT  clubID ,memID ,clubMemType,to_char(clubMemJoinDate,'yyyy-mm-dd hh:mm:ss') clubMemJoinDate FROM clubMem where clubID=? order by clubID";
+				"SELECT  * FROM clubMem where clubID=? and clubMemStatus=1 order by clubID";
 
 		private static final String CLUBCHANGE = 
 				"UPDATE club set clubName=?, clubTypeID=?, clubContent=?, clubPhoto=? where clubID = ?";
 		private static final String CLUBCHANGE_IF_NOT_PHOTO = 
 				"UPDATE club set clubName=?, clubTypeID=?, clubContent=? where clubID = ?";
+		
+		private static final String CLUBCHANGECLUBMEM = 
+				"UPDATE club set clubmemID=? where clubID = ?";
+			
+		private static final String DELETECLUB = 
+				"UPDATE club set clubStatus=? where clubID = ?";
 		
 		
 		Timestamp utildate;
@@ -628,6 +634,7 @@ public class ClubDAO implements ClubDAO_interface {
 				clubMemVO.setMemID(rs.getInt("memID"));
 				clubMemVO.setClubMemType(rs.getInt("clubMemType"));
 				clubMemVO.setClubMemJoinDate(rs.getTimestamp("clubMemJoinDate"));
+				clubMemVO.setClubMemStatus(rs.getInt("clubMemStatus"));
 				list.add(clubMemVO); // Store the row in the vector
 			}
 
@@ -749,6 +756,95 @@ public class ClubDAO implements ClubDAO_interface {
 		}
 
 	}
+	
+	
+	
+	
+	@Override
+	public void clubChangeClubMem(ClubVO clubVO) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(CLUBCHANGECLUBMEM );
+
+			pstmt.setInt(1, clubVO.getClubmemID());
+			pstmt.setInt(2, clubVO.getClubID());
+
+			pstmt.executeUpdate();
+
+			// Handle any driver errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+
+	}
+	
+	
+	
+	
+	
+	
+	@Override
+	public void deleteClub(ClubVO clubVO) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(DELETECLUB);
+
+			pstmt.setInt(1, clubVO.getClubStatus());
+			pstmt.setInt(2, clubVO.getClubID());
+
+			pstmt.executeUpdate();
+
+			// Handle any driver errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+
+	}
+
 	
 	
 	

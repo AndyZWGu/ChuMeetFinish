@@ -1,0 +1,125 @@
+*,
+:before,
+:after {
+  box-sizing: border-box;
+}
+
+
+.inputSp .group {
+  position: relative;
+  margin: 45px 0;
+}
+
+.inputSp textarea {
+  resize: none;
+}
+
+.inputSp input,
+.inputSp textarea {
+  background: none;
+  color: #c6c6c6;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 320px;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #c6c6c6;
+}
+.inputSp input:focus,
+.inputSp textarea:focus {
+  outline: none;
+}
+.inputSp input:focus ~ label, 
+.inputSp input:valid ~ label,
+.inputSp textarea:focus ~ label,
+.inputSp textarea:valid ~ label {
+  top: -14px;
+  font-size: 12px;
+  color: #2196f3;
+}
+.inputSp input:focus ~ .bar:before,
+.inputSp textarea:focus ~ .bar:before {
+  width: 320px;
+}
+
+.inputSp input[type="password"] {
+  letter-spacing: 0.3em;
+}
+
+.inputSp label {
+  color: #c6c6c6;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  -webkit-transition: 300ms ease all;
+  transition: 300ms ease all;
+}
+
+.inputSp .bar {
+  position: relative;
+  display: block;
+  width: 0;
+  background: #000000;
+}
+.inputSp .bar:before {
+  content: "";
+  height: 2px;
+  width: 80%;
+  bottom: 0px;
+  position: absolute;
+  background: #2196f3;
+  -webkit-transition: 300ms ease all;
+  transition: 300ms ease all;
+  left: 0%;
+}
+
+.inputSp .btn {
+  background: #fff;
+  color: #959595;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.inputSp .btn:hover {
+  color: #8b8b8b;
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
+}
+.inputSp .btn.btn-link {
+  background: #2196f3;
+  color: #d3eafd;
+}
+.inputSp .btn.btn-link:hover {
+  background: #0d8aee;
+  color: #deeffd;
+}
+.inputSp .btn.btn-submit {
+  background: #2196f3;
+  color: #bce0fb;
+}
+.inputSp .btn.btn-submit:hover {
+  background: #0d8aee;
+  color: #deeffd;
+}
+.inputSp .btn.btn-cancel {
+  background: #eee;
+}
+.inputSp .btn.btn-cancel:hover {
+  background: #e1e1e1;
+  color: #8b8b8b;
+}
+
+.inputSp .btn-box {
+  text-align: center;
+  margin: 50px 0;
+}

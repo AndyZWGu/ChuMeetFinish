@@ -8,7 +8,7 @@
   <script src="<%=request.getContextPath()%>/HTML/assets/plugins/jquery.smooth-scroll.js" type="text/javascript"></script>
   <script src="<%=request.getContextPath()%>/HTML/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
   <script src="<%=request.getContextPath()%>/HTML/assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-  <script src="<%=request.getContextPath()%>/HTML/assets/corporate/scripts/back-to-top-outer.js " type="text/javascript "></script>
+  
   <!-- END CORE PLUGINS -->
 
   <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->

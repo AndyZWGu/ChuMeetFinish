@@ -142,7 +142,27 @@ public class ClubService {
 	}
 	
 	
+	public ClubVO clubChangeClubMem(Integer clubID,Integer clubmemID) {
 
+		ClubVO clubVO = new ClubVO();
+		clubVO.setClubID(clubID);
+		clubVO.setClubmemID(clubmemID);
+		dao.clubChangeClubMem(clubVO);
+
+		return clubVO;
+	}
+	
+	
+	
+	//刪除社團
+	public ClubVO deleteClub(Integer clubID,Integer clubStatus) {
+
+		ClubVO clubVO = new ClubVO();
+		clubVO.setClubID(clubID);
+		clubVO.setClubStatus(clubStatus);
+		dao.deleteClub(clubVO);
+		return clubVO;
+	}
 	
 	
 }

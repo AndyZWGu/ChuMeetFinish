@@ -290,6 +290,7 @@ a:hover {
 
 .btn-primary {
 	background: #e94d1c;
+	color: white !important;
 }
 .btn-primary:hover,
 .btn-primary:focus,

@@ -19,8 +19,7 @@
 	String isPhone = (String) request.getAttribute("isPhone");
 	String memMBNum = (String) request.getAttribute("memMBNum");
 %>
-<div class="col-md-3 wow" data-wow-delay=".05s"
-	data-wow-duration=".1">
+<div class="col-md-3">
 	<div class="profile-sidebar">
 		<!-- SIDEBAR USERPIC -->
 		<div class="profile-userpic">
@@ -55,12 +54,12 @@
 		<!-- END SIDEBAR USER TITLE -->
 		<!-- SIDEBAR MENU -->
 		<div class="profile-usermenu">
-			<div class="row text-center pt">
+			<%-- <div class="row text-center pt">
 				<hr>
 				持有Pt點數:
 				<p>${memVO.memPt}</p>
 				<hr>
-			</div>
+			</div> --%>
 			<ul class="nav">
 				<c:choose>
 					<c:when test="${checkedSidbar == 'memHome'}">
@@ -73,7 +72,7 @@
 					href="<%=request.getContextPath()%>/front-end/member/memberHome.do">
 						<i class="fa fa-home" aria-hidden="true"></i> 首頁
 				</a></li>
-				<c:choose>
+				<%-- <c:choose>
 					<c:when test="${checkedSidbar == 'memCalendar'}">
 						<li class="active">
 					</c:when>
@@ -83,7 +82,7 @@
 				</c:choose><a
 					href="<%=request.getContextPath()%>/front-end/member/memberCalendar.do">
 						<i class="fa fa-calendar" aria-hidden="true"></i> 行事曆
-				</a></li>
+				</a> --%></li>
 				<c:choose>
 					<c:when test="${checkedSidbar == 'memMail'}">
 						<li class="active">
@@ -118,13 +117,24 @@
 						<i class="fa fa-users" aria-hidden="true"></i> 社群管理
 				</a></li>
 				<c:choose>
-					<c:when test="${checkedSidbar == 'memLv'}">
+					<c:when test="${checkedSidbar == 'memChatRoom'}">
 						<li class="active">
 					</c:when>
 					<c:otherwise>
             			<li>
          			</c:otherwise>
 				</c:choose><a
+					href="<%=request.getContextPath()%>/front-end/member/memberChatRoomContent.do">
+						<i class="fa fa-weixin" aria-hidden="true"></i> 聊天室
+				</a></li>
+				<c:choose>
+					<c:when test="${checkedSidbar == 'memLv'}">
+						<li class="active">
+					</c:when>
+					<c:otherwise>
+            			<li>
+         			</c:otherwise>
+				</c:choose><%-- <a
 					href="<%=request.getContextPath()%>/front-end/member/memberLv.do">
 						<i class="fa fa-level-up" aria-hidden="true"></i> 等級/積分
 				</a></li>
@@ -167,7 +177,7 @@
 					<c:otherwise>
             			<li>
          			</c:otherwise>
-				</c:choose><a
+				</c:choose> --%><a
 					href="<%=request.getContextPath()%>/front-end/member/memberInfo.do">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i> 基本資訊
 				</a></li>

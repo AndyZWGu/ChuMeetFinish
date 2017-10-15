@@ -62,7 +62,7 @@
 							<li>
 						</c:otherwise>
 					</c:choose>
-					<a href="<%=request.getContextPath()%>/back-end/ann.jsp"><i
+					<a href="<%=request.getContextPath()%>/back-end/adminInfo.jsp"><i
 						class="material-icons">person</i>
 						<p>
 							<strong>網站管理</strong>
@@ -114,7 +114,7 @@
 					<a href="<%=request.getContextPath()%>/back-end/adminReward.jsp"><i
 						class="material-icons text-gray">face</i>
 						<p>
-							<strong>成就與獎賞管理</strong>
+							<strong>獎賞與成就管理</strong>
 						</p></a>
 					</li>
 				</c:if>

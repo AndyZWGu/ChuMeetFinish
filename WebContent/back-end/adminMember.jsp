@@ -82,11 +82,7 @@
             <div class="container">
 
            
-                <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#home">會員資料管理</a></li>
-                    <li><a data-toggle="tab" href="#menu1">獎賞管理</a></li>
-                    <li><a data-toggle="tab" href="#menu2">成就管理</a></li>
-                </ul>
+               
                 <div class="tab-content">
                     <div id="home" class="tab-pane fade in active">
 
@@ -136,7 +132,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button class="btn btn-success">新增</button>
+                        
                     </div>
                 </div>
             </div>

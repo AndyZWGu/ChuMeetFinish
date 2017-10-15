@@ -9,4 +9,5 @@ public interface ClubMBDAO_interface {
           public ClubMBVO findByPrimaryKey(Integer clubMBID);
           public List<ClubMBVO> getAll();
           public List<ClubMBVO> findByClubID(Integer clubID);
+
 }

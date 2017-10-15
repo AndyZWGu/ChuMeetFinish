@@ -26,6 +26,7 @@
   <link href="<%=request.getContextPath()%>/HTML/assets/pages/css/slider.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/HTML/src/club/css/clubfirst.css" rel="stylesheet">
 <link href="<%=request.getContextPath()%>/HTML/src/club/css/act.css" rel="stylesheet">
+
 </head>
 <!-- Head END -->
     <!-- Body BEGIN -->
@@ -38,7 +39,6 @@
   <c:import url="/front-end/header.jsp">
 </c:import>
 <!-- Header END -->
-
    
 
 
@@ -48,20 +48,19 @@
 <!-- BEGIN CONTENT -->
 
 
-<div class="">
+<div class="content">
 	
 <!-- BEGIN CONTENT -->
 <!-- BEGIN LEFT SIDEBAR -->            
       <div class="container">
        
-        <ul class="breadcrumb">
-                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=toClubOne">社團首頁</a></li>
-                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=toClubMem">社團成員</a></li>
-                <li class="active"><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=toClubAlbum">社團相簿</a></li>
-                <li><a href="#tab_3" data-toggle="tab">社團公告</a></li>
-                <li><a href="#tab_1" data-toggle="tab">社團活動</a></li>
-                <li><a href="#tab_2" data-toggle="tab">管理社團</a></li>
-        </ul>
+                             <div class="col-md-12 col-sm-12">
+          <ul class="breadcrumb">
+            <li><a href="<%=request.getContextPath()%>/front-end/index.jsp">首頁</a></li>
+            <li><a href="<%=request.getContextPath()%>/front-end/club/ClubAll.jsp">社團推薦</a></li>
+            <li class="active">社團相簿</li>
+          </ul>
+      </div>
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
           <!-- BEGIN CONTENT -->
@@ -69,19 +68,19 @@
           <div class="col-md-12 col-sm-12">
           		<div class="row">
           			<div class="col-xs-12 col-sm-10">
-          				<h1>熱音社</h1>
+          				<h1>${clubVO.clubName}</h1>
           			</div>
           			<div class="col-xs-12 col-sm-2">
           			
           				<div class="row">        					
           					<div class="col-xs-12 col-sm-6">
-          						<input type ="button" class="btn btn-block btn-primary" style="width:80px;height:30px;""  onclick="javascript:location.href='<%=request.getContextPath()%>/front-end/club/clubAlbum.do?clubID=${clubVO.clubID}&action=toClubAlbumAdd'"  value="新增相簿" ></input>
+          						<input type ="button" class="btn btn-block btn-primary" style="width:80px;height:30px;""  onclick="javascript:location.href='<%=request.getContextPath()%>/front-end/club/clubAlbum.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubAlbumAdd'"  value="新增相簿" ></input>
           					</div>
           					
   
-          					<div class="col-xs-12 col-sm-6">
-          						<button class="btn btn-block btn-success" style="width:80px;height:30px;">刪除相簿</button>
-          					</div>
+<!--           					<div class="col-xs-12 col-sm-6"> -->
+<!--           						<button class="btn btn-block btn-success" style="width:80px;height:30px;">刪除相簿</button> -->
+<!--           					</div> -->
           				</div>   				
           			</div>
 			  </div>
@@ -95,16 +94,16 @@
                 <div class="col-xs-12 col-sm-3">
             <ul class="tabbable actl-tabbable">
             	<%if(  (clubMemVO.getClubMemType()==1||clubMemVO.getClubMemType()==2||clubMemVO.getClubMemType()==3)&&clubMemVO.getClubMemStatus()==1   ){%>   
-                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=toClubOne">社團首頁</a></li>
-                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=toClubMem">社團成員</a></li>
-                <li class="active"><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=toClubAlbum">社團相簿</a></li>
-                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=toClubNews">社團公告</a></li>
+                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubOne">社團首頁</a></li>
+                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubMem">社團成員</a></li>
+                <li class="active"><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubAlbum">社團相簿</a></li>
+                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubNews">社團公告</a></li>
                 <li><a href="#tab_1" data-toggle="tab">社團活動</a></li>
                 <%if(  clubMemVO.getClubMemType()==3&&clubMemVO.getClubMemStatus()==1   ){%>   
-                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=updateClub" >管理社團</a></li>
+                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=updateClub" >管理社團</a></li>
                 <%}%> 
             	<%}%> 
-            </ul> 
+            </ul>
                 </div>
       <!--左邊結束-->
     
@@ -114,17 +113,18 @@
 <c:forEach var="clubAlbumVO" items="${clubAlbumlist}" > 
       <div class="col-lg-4 col-sm-6 col-xs-6">
         <div class="clubcCard">
-          <a title="Image 2" href="#">
-          
           
 <%--           <img class="thumbnail img-responsive" src="<%=request.getContextPath()%>/club/clubAlbumImg.do?clubImgID=${clubImgVO.clubImgID}" class="img-responsive"> --%>
 
-<img class="thumbnail img-responsive" src="../src/club/img/img/c.jpg" class="img-responsive">
+<img style="width:200px;height:120px;_height:expression(this.height < 120 ?
+										120px" :
+										this.width);"
+										class="thumbnail img-responsive" src="<%=request.getContextPath()%>/front-end/club/AlbumCover.do?clubAlbumID=${clubAlbumVO.clubAlbumID}">
 <%-- <!--暫時沒改 --> <img src="<%=request.getContextPath()%>/club/clubAlbumImg.do?clubImgID=1&clubAlbumID=${clubAlbumVO.clubAlbumID}" class="img-responsive"> --%>
 <%--失敗如何找ClubImgID最小 		 <img src="<%=request.getContextPath()%>/club/clubAlbumCover.do?clubImgID=${clubImgVO.clubImgID}&clubAlbumID=${clubAlbumVO.clubAlbumID}" class="img-responsive"> --%>
-           	</a>
+
 <!--以下相簿名稱  -->           	
-			<a href="<%=request.getContextPath()%>/front-end/club/clubAlbum.do?clubID=${clubVO.clubID}&action=toClubImg&clubAlbumID=${clubAlbumVO.clubAlbumID}">${clubAlbumVO.clubAlbumName}</a>
+			<a href="<%=request.getContextPath()%>/front-end/club/clubAlbum.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubImg&clubAlbumID=${clubAlbumVO.clubAlbumID}"><strong>${clubAlbumVO.clubAlbumName}</strong></a>
           
         </div>
       </div>
@@ -134,16 +134,7 @@
    
       
       <!--分頁-->
-      <hr class="event-post-sep"> 
-                  <ul class="pagination">
-                    <li><a href="javascript:;">上一頁</a></li>
-                    <li><a href="javascript:;">1</a></li>
-                    <li><a href="javascript:;">2</a></li>
-                    <li class="active"><a href="javascript:;">3</a></li>
-                    <li><a href="javascript:;">4</a></li>
-                    <li><a href="javascript:;">5</a></li>
-                    <li><a href="javascript:;">下一頁</a></li>
-                  </ul>
+
 	  <!--分頁結束--> 
 </div>              
 

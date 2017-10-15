@@ -7,6 +7,7 @@
 <%@ page import="com.clubNews.model.*"%>
 <%@ page import="com.clubMB.model.*"%>
 <%@ page import="com.clubAlbum.model.*"%>
+<%@ page import="com.member.model.*"%>
 <%
 
 
@@ -15,6 +16,15 @@ ClubNewsService clubNewsSvc = new ClubNewsService();
 List<ClubNewsVO> clubNewslist = (List<ClubNewsVO>) request.getAttribute("clubNewslist");
 request.setAttribute("clubNewslist",clubNewslist);
 // List<ClubMBVO> clubMBlist = (List<ClubMBVO>) request.getAttribute("clubMBlist");
+//找公告名字
+
+MemberService memSvc=new MemberService();
+List<MemberVO> newsMemNameList=new ArrayList<MemberVO>();
+for(ClubNewsVO list1:clubNewslist){
+	newsMemNameList.add(memSvc.getOneMember(list1.getMemID()));
+}
+request.setAttribute("newsMemNameList",newsMemNameList);
+
 
 // 找尋單一社團成員的資料
 ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
@@ -62,7 +72,7 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
 <!-- BEGIN CONTENT -->
 
 
-<div class="">	
+<div class="content">	
 <!-- BEGIN CONTENT -->
 <!-- BEGIN LEFT SIDEBAR -->            
       <div class="container">
@@ -70,11 +80,19 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
           <!-- BEGIN CONTENT -->
+                                <div class="col-md-12 col-sm-12">
+          <ul class="breadcrumb">
+            <li><a href="<%=request.getContextPath()%>/front-end/index.jsp">首頁</a></li>
+            <li><a href="<%=request.getContextPath()%>/front-end/club/ClubAll.jsp">社團推薦</a></li>
+            <li class="active">社團公告</li>
+          </ul>
+      </div>
+          
           <!-- title -->
           <div class="col-md-12 col-sm-12">
           		<div class="row">
           			<div class="col-xs-12 col-sm-10">
-          				<h1>熱音社</h1>
+          				<h1>${clubVO.clubName}</h1>
           			</div>
 			  	</div>
           </div>     
@@ -90,18 +108,18 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
 
 		      <div class="col-xs-12 col-sm-3">
 		        <div class="row">   
-		            <ul class="tabbable actl-tabbable">
-		            	<%if(  (clubMemVO.getClubMemType()==1||clubMemVO.getClubMemType()==2||clubMemVO.getClubMemType()==3)&&clubMemVO.getClubMemStatus()==1   ){%>   
-		                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=toClubOne">社團首頁</a></li>
-		                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=toClubMem">社團成員</a></li>
-		                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=toClubAlbum">社團相簿</a></li>
-		                <li class="active"><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=toClubNews">社團公告</a></li>
-		                <li><a href="#tab_1" data-toggle="tab">社團活動</a></li>
-		                <%if(  clubMemVO.getClubMemType()==3&&clubMemVO.getClubMemStatus()==1   ){%>   
-		                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?clubID=${clubVO.clubID}&action=updateClub" >管理社團</a></li>
-		                <%}%> 
-		            	<%}%> 
-		            </ul>
+            <ul class="tabbable actl-tabbable">
+            	<%if(  (clubMemVO.getClubMemType()==1||clubMemVO.getClubMemType()==2||clubMemVO.getClubMemType()==3)&&clubMemVO.getClubMemStatus()==1   ){%>   
+                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubOne">社團首頁</a></li>
+                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubMem">社團成員</a></li>
+                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubAlbum">社團相簿</a></li>
+                <li class="active"><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubNews">社團公告</a></li>
+                <li><a href="#tab_1" data-toggle="tab">社團活動</a></li>
+                <%if(  clubMemVO.getClubMemType()==3&&clubMemVO.getClubMemStatus()==1   ){%>   
+                <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=updateClub" >管理社團</a></li>
+                <%}%> 
+            	<%}%> 
+            </ul>
 		        </div>
 		      </div>
 <!--左邊結束-->
@@ -115,7 +133,7 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
       <h2>社團公告</h2>      
       <div class="comments">
       
-
+<%if(  (clubMemVO.getClubMemType()==2||clubMemVO.getClubMemType()==3)  &&clubMemVO.getClubMemStatus()==1   ){%>  	
 <FORM METHOD="post" ACTION="clubNews.do" name="form3">
       <div class="post-comment padding-top-40">
         <h3>新增公告</h3>
@@ -126,31 +144,17 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
           </div>
 					<div>
 						<input type="hidden"  name="clubID" value="${clubVO.clubID}">
+						<input type="hidden"  name="memID" value="${memVO.memID}">
 						<input type="hidden"  name="action" value="addClubNews">
 						<input type="submit" value="送出" class="btn btn-block btn-primary">						
 					</div>
         </form>
       </div>    
 </FORM><br>
-<!-- <FORM METHOD="post" ACTION="clubNews.do" name="form3"> -->
-<!--       <div class="post-comment padding-top-40"> -->
-<!--         <h3>新增公告</h3> -->
-<!--         <form role="form"> -->
-<!--           <div class="form-group"> -->
-<!--           	公告標題:<input type="text"  name="clubNewsTitle"><br><br> -->
-<!--             	<textarea class="form-control" rows="8" name="clubNewsContent" ></textarea> -->
-<!--           </div> -->
-<!-- 					<div> -->
-<%-- 						<input type="hidden"  name="clubID" value="${clubVO.clubID}"> --%>
-<!-- 						<input type="hidden"  name="action" value="addClubNews"> -->
-<!-- 						<input type="submit" value="送出" class="btn btn-block btn-primary">						 -->
-<!-- 					</div> -->
-<!--         </form> -->
-<!--       </div>     -->
-<!-- </FORM><br> -->
+<% }%>
 
 	    <%@include file="page1ClubNews.file" %>       
-      	<c:forEach var="clubNewsVO" items="${clubNewslist}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
+      	<c:forEach var="clubNewsVO" items="${clubNewslist}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>" varStatus="status">
 
 <!--         <div class="media">                     -->
 
@@ -160,15 +164,15 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
 
          		 <div class="media-body">
           			<div class="row">	
-	          			<div class="col-xs-4 col-sm-2"><a href="javascript:;" class="pull-left"><img src="../assets/pages/img/people/img1-small.jpg" alt="" class="media-object"> </a></div>
-	          			
-	          			<div class="col-xs-4 col-sm-4"><h3 class="media-heading">${clubNewsVO.clubNewsTitle}</h3></div>
+	          			<div class="col-xs-4 col-sm-2"><a href="javascript:;" class="pull-left"><img src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${clubNewsVO.memID}" alt="" class="media-object"> </a></div>
+	          			<div class="col-xs-4 col-sm-2"><h3 class="media-heading">${newsMemNameList[status.index].memName}</h3></div>
+	          			<div class="col-xs-4 col-sm-2"><h3 class="media-heading">${clubNewsVO.clubNewsTitle}</h3></div>
 	          			
 	          			<div class="col-xs-4 col-sm-2"><h4 class="media-heading"><p>${clubNewsVO.clubNewsDate}</p></h4></div>
 	          			
 	           			<div class="col-xs-4 col-sm-2">
 	           			<%if(  (clubMemVO.getClubMemType()==2||clubMemVO.getClubMemType()==3)  &&clubMemVO.getClubMemStatus()==1   ){%>  	
-	           			<input type ="button" style="width:80px;height:30px;" class="btn btn-block btn-primary" style="width:80px;height:30px;""  onclick="javascript:location.href='<%=request.getContextPath()%>/club/clubNews.do?clubID=${clubVO.clubID}&clubNewsID=${clubNewsVO.clubNewsID}&action=clubNewsUpdate'"  value="變更公告" ></input>
+	           			<input type ="button" style="width:80px;height:30px;" class="btn btn-block btn-primary" style="width:80px;height:30px;""  onclick="javascript:location.href='<%=request.getContextPath()%>/front-end/club/clubNews.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&clubNewsID=${clubNewsVO.clubNewsID}&action=clubNewsUpdate'"  value="變更公告" ></input>
 	           			<%}%>
 	           			</div>  
 	           			  
@@ -182,7 +186,7 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
 								         <input type="submit" value="刪除公告" class="btn btn-block btn-success">
 								         <input type="hidden" name="action" value="deleteOneNews">
 								         <input type="hidden" name="clubNewsID" value="${clubNewsVO.clubNewsID}">
-								         <input type="hidden" name="memID" value="${clubMemVO.memID}">
+								         <input type="hidden" name="memID" value="${memVO.memID}">
 								    	 <input type="hidden" name="clubID" value="${clubVO.clubID}">  
 								  </div>
 							</form>	
@@ -192,7 +196,7 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
 					 <hr>        		 
          		 <div class="col-xs-12 col-sm-12"><h3>公告內容:</h3></div>
        			 <div class="col-xs-12 col-sm-12"><h3>${clubNewsVO.clubNewsContent}</h3></div>
-      			 <div class="col-xs-12 col-sm-12"><h3>${clubNewsVO.clubNewsID}</h3></div>
+
          		 </div>
 
         </div>

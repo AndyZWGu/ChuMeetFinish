@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.member.model.MemberHVO" table="member" >
+        
+        <id name="memID" column="memID">
+            <generator class="sequence" >
+       	       <param name="sequence">mem_seq</param>
+            </generator>  
+        </id>
+
+		<property name="memEmail" column="memEmail" />
+		<property name="memPW" column="memPW" />
+		<property name="memberType" column="memberType" />
+		<property name="memLv" column="memLv" />
+		<property name="memExp" column="memExp" />
+		<property name="memPt" column="memPt" />
+		<property name="memName" column="memName" />
+		<property name="memGender" column="memGender" />
+		<property name="memBD" column="memBD" />
+		<property name="memPhone" column="memPhone" />
+		<property name="memAvatar" column="memAvatar" />
+		<property name="memJoinDate" column="memJoinDate" />
+		<property name="memLoginNum" column="memLoginNum" />
+		<property name="memLocBorn" column="memLocBorn" />
+		<property name="memLocLive" column="memLocLive" />
+		<property name="memInt" column="memInt" />
+		<property name="memLong" column="memLong" />
+		<property name="memLat" column="memLat" />
+		<property name="memPriv" column="memPriv" />
+		<property name="memStatus" column="memStatus" />
+
+		<set name="actMems" table="actMem" lazy="false" cascade="all"  inverse="true" order-by="actJoinDate asc">			
+			<key>
+				<column name="memID" />
+			</key>
+			<one-to-many class="com.act.actMem.model.ActMemVO" />
+		</set>
+
+    </class>
+</hibernate-mapping>
+

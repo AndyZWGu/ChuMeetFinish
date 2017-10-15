@@ -87,6 +87,9 @@ public class MemberHomeServlet extends HttpServlet {
 		if ("/memberCommunity.do".equals(membertURI.toString())) {
 			session.setAttribute("checkedSidbar", "memCommunity");
 		}
+		if ("/memberChatRoom.do".equals(membertURI.toString())) {
+			session.setAttribute("checkedSidbar", "memChatRoom");
+		}
 		if ("/memberLv.do".equals(membertURI.toString())) {
 			session.setAttribute("checkedSidbar", "memLv");
 		}
@@ -150,7 +153,7 @@ public class MemberHomeServlet extends HttpServlet {
 		friendsNum = 0;
 		followNum = 0;
 		for (FriendsVO list : friendsList) {
-			if (list.getFriendType().contains("追蹤")) {
+			if (list.getFriendType().contains("追隨")) {
 				followNum++;
 			}
 			if (list.getFriendType().contains("好友")) {
@@ -416,23 +419,90 @@ public class MemberHomeServlet extends HttpServlet {
 		/******************** 社群管理 ********************/
 		if (session.getAttribute("checkedSidbar") == "memCommunity") {
 			System.out.println("這裡是社群管理");
-
-			// Map
-			Map<String, String[]> friMap = new HashMap<String, String[]>();
-			String[] MailMemIDs = new String[2];
-			MailMemIDs[0] = memVO.getMemID().toString();
-			friMap.put("friMem1", MailMemIDs);
-			// list
-			List<FriendsVO> memFriList = friSvc.getAll(friMap);
-			req.setAttribute("memFriList", memFriList);
-			// mamNameList
-			List<MemberVO> friMemNameList = new ArrayList<MemberVO>();
-			MemberService memSvc = new MemberService();
-			for (FriendsVO list : memFriList) {
-				friMemNameList.add(memSvc.getOneMember(list.getFriMem2()));
+			//申請者同意他,取消他,取消好友,取消追隨
+			String action = req.getParameter("action");
+			if(action!=null){
+				String friMem1 = req.getParameter("friMem1");
+				String friMem2 = req.getParameter("friMem2");
+				if("success".equals(action)){
+					FriendsVO friVO = friSvc.getOneFriends(Integer.valueOf(friMem1), Integer.valueOf(friMem2));
+					friVO.setFriendType(friVO.getFriendType().replace("申請中", ""));
+					friSvc.updateMember(Integer.valueOf(friMem1), Integer.valueOf(friMem2), friVO.getFriendType()+",好友", nowTimestamp());
+					friSvc.addMember(Integer.valueOf(friMem2), Integer.valueOf(friMem1), friVO.getFriendType()+",好友", nowTimestamp());
+				}
+				if("cancel".equals(action)){
+					FriendsVO friVO = friSvc.getOneFriends(Integer.valueOf(friMem1), Integer.valueOf(friMem2));
+					friVO.setFriendType(friVO.getFriendType().replace("申請中", ""));
+					friSvc.deleteFriends(Integer.valueOf(friMem1),Integer.valueOf(friMem2));
+				}
+				if("cancelFri".equals(action)){
+					FriendsVO friVO = friSvc.getOneFriends(Integer.valueOf(friMem1), Integer.valueOf(friMem2));
+					friVO.setFriendType(friVO.getFriendType().replace("好友", ""));
+					//friSvc.updateMember(Integer.valueOf(friMem1), Integer.valueOf(friMem2), friVO.getFriendType()+",取消", nowTimestamp());
+					//friSvc.updateMember(Integer.valueOf(friMem2), Integer.valueOf(friMem1), friVO.getFriendType()+",取消", nowTimestamp());
+					friSvc.deleteFriends(Integer.valueOf(friMem1),Integer.valueOf(friMem2));
+					friSvc.deleteFriends(Integer.valueOf(friMem2),Integer.valueOf(friMem1));
+				}
+				if("cancelFollow".equals(action)){
+					FriendsVO friVOGetFriendType = friSvc.getOneFriends(Integer.valueOf(friMem1), Integer.valueOf(friMem2));
+					//System.out.println("替換前"+friVOGetFriendType.getFriendType());
+					friVOGetFriendType.setFriendType(friVOGetFriendType.getFriendType().replace("追隨", " "));
+					//System.out.println("替換後"+friVOGetFriendType.getFriendType());
+					friSvc.updateMember(Integer.valueOf(friMem1), Integer.valueOf(friMem2), friVOGetFriendType.getFriendType(), nowTimestamp());
+				}
 			}
-			req.setAttribute("friMemNameList", friMemNameList);
+			// Map
+//			Map<String, String[]> friMap = new HashMap<String, String[]>();
+//			String[] friMemIDs = new String[2];
+//			friMemIDs[0] = String.valueOf(memVO.getMemID());
+//			friMap.put("friMem1", friMemIDs);
+			
+			//  
+			
+			//  撈出來的該會員全部社群list
+			List<FriendsVO> memFriList = friSvc.getAllFriends(memVO.getMemID());
+			//申請中
+			List<FriendsVO> toBeFriList = new ArrayList<FriendsVO>();
+			List<MemberVO> toBeFriMemNameList = new ArrayList<MemberVO>();
+			//好友
+			List<FriendsVO> isFriList = new ArrayList<FriendsVO>();
+			List<MemberVO> isFriMemNameList = new ArrayList<MemberVO>();
+			//追隨列表
+			List<FriendsVO> followFriList = new ArrayList<FriendsVO>();
+			List<MemberVO> followFriMemNameList = new ArrayList<MemberVO>();
+			MemberService memSvc = new MemberService();
+			for(FriendsVO list : memFriList){
+				//System.out.println(list.getFriendType());
+				if(list.getFriendType().contains("申請中")){
+					toBeFriList.add(list);
+					toBeFriMemNameList.add(memSvc.getOneMember(list.getFriMem2()));
+				}
+				if(list.getFriendType().contains("好友")){
+					isFriList.add(list);
+					isFriMemNameList.add(memSvc.getOneMember(list.getFriMem2()));
+				}
+				if(list.getFriendType().contains("追隨")){
+					followFriList.add(list);
+					followFriMemNameList.add(memSvc.getOneMember(list.getFriMem2()));
+				}
+			}
+			req.setAttribute("memFriList", memFriList);
+			req.setAttribute("toBeFriList", toBeFriList);
+			req.setAttribute("isFriList", isFriList);
+			req.setAttribute("toBeFriMemNameList", toBeFriMemNameList);
+			req.setAttribute("isFriMemNameList", isFriMemNameList);
+			req.setAttribute("followFriList", followFriList);
+			req.setAttribute("followFriMemNameList", followFriMemNameList);
 
+			// 轉址用
+			String url = "/front-end/member/memberHome.jsp";
+			RequestDispatcher successView = req.getRequestDispatcher(url);
+			successView.forward(req, res);
+			return;
+		}
+		/******************** 社群管理 ********************/
+		if (session.getAttribute("checkedSidbar") == "memChatRoom") {
+			System.out.println("這裡是聊天室");
 			// 轉址用
 			String url = "/front-end/member/memberHome.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url);

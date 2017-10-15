@@ -175,6 +175,15 @@
     <servlet-name>MemberCommunityServlet</servlet-name>
     <url-pattern>/front-end/member/memberCommunity.do</url-pattern>
   </servlet-mapping>
+   <!-- 聊天室 -->
+  <servlet>
+    <servlet-name>MemberChatRoomServlet</servlet-name>
+    <servlet-class>com.member.controller.MemberChatRoomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberChatRoomServlet</servlet-name>
+    <url-pattern>/front-end/member/memberChatRoomContent.do</url-pattern>
+  </servlet-mapping> 
   <!-- 等級 -->
   <servlet>
     <servlet-name>MemberLvServlet</servlet-name>
@@ -229,7 +238,6 @@
     <servlet-name>MemberSettingServlet</servlet-name>
     <url-pattern>/front-end/member/memberSetting.do</url-pattern>
   </servlet-mapping>
-  <!-- /////////////////////////////////////////////////////////////////////////// -->
   <!-- **********搜尋會員********** -->
   <servlet>
     <servlet-name>MemberSearchServlet</servlet-name>
@@ -239,7 +247,6 @@
     <servlet-name>MemberSearchServlet</servlet-name>
     <url-pattern>/front-end/member/memberSearch.do</url-pattern>
   </servlet-mapping>
-  <!-- /////////////////////////////////////////////////////////////////////////// -->
   <!-- **********會員動態首頁********** -->
   <servlet>
     <servlet-name>MemberNFSearchServlet</servlet-name>
@@ -249,7 +256,6 @@
     <servlet-name>MemberNFSearchServlet</servlet-name>
     <url-pattern>/front-end/member/memberNFSearch.do</url-pattern>
   </servlet-mapping>
-  <!-- /////////////////////////////////////////////////////////////////////////// -->
   <!-- **********會員大頭貼獲取********** -->
   <servlet>
     <servlet-name>GuestAvatarServlet</servlet-name>
@@ -335,6 +341,14 @@
     <url-pattern>/front-end/club/Photo.do</url-pattern>
   </servlet-mapping>
   <servlet>
+  <servlet-name>ClubCover</servlet-name>
+    <servlet-class>com.Img.controller.AlbumCover</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClubCover</servlet-name>
+    <url-pattern>/front-end/club/AlbumCover.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>ClubAlbumImg</servlet-name>
     <servlet-class>com.Img.controller.ClubAlbumImg</servlet-class>
   </servlet>
@@ -366,6 +380,38 @@
     <servlet-name>ClubMemServlet</servlet-name>
     <url-pattern>/front-end/club/clubMem.do</url-pattern>
   </servlet-mapping>
+     <!-- /////////////////////////////////////////////////////////////////////////// -->
+   <!-- /////////////////////////////////活動/////////////////////////////////////// -->
+      <!-- ********************Act Start************************* -->
+  	<servlet>
+		<servlet-name>ActServlet</servlet-name>
+		<servlet-class>com.act.act.controller.ActServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ActServlet</servlet-name>
+		<url-pattern>/front-end/act/act.do</url-pattern>
+	</servlet-mapping>
+<!-- ********************Act END************************* -->
+<!-- ********************Actm Start************************* -->
+  	<servlet>
+		<servlet-name>ActMemServlet</servlet-name>
+		<servlet-class>com.act.act.controller.ActMemServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ActMemServlet</servlet-name>
+		<url-pattern>/front-end/act/actm.do</url-pattern>
+	</servlet-mapping>
+<!-- ********************Actm END************************* -->
+<!-- ********************ImgStart************************* -->
+  	<servlet>
+		<servlet-name>showIMG</servlet-name>
+		<servlet-class>com.gen.tool.bytesToImg</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>showIMG</servlet-name>
+		<url-pattern>/img/showIMG</url-pattern>
+	</servlet-mapping>
+<!-- ********************Act END************************* -->
    <!-- /////////////////////////////////////////////////////////////////////////// -->
    <!-- /////////////////////////////////管理員/////////////////////////////////////// -->
      <servlet>
@@ -394,7 +440,7 @@
   </servlet-mapping>
     <servlet>
     <servlet-name>AnncontrollerServlet</servlet-name>
-    <servlet-class>com.ann.controller.AnnServlet</servlet-class>
+    <servlet-class>com.Ann.controller.AnnServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AnncontrollerServlet</servlet-name>

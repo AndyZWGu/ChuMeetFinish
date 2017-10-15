@@ -1,0 +1,352 @@
+/* CSS Document */
+
+.poicnt:before{
+   content: '\f02b';
+   font-family: FontAwesome;
+   font-weight: normal;
+   font-style: normal;
+   margin: 0px .8em 0px 8px;
+	color: #FF934F;
+   text-decoration:none;
+}
+.event-tags_st .selectPOIs ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.event-tags_st .selectPOIs li {
+  position: relative;
+  margin: 0 16px 7px 0;
+  display: inline-block;
+}
+.event-tags_st .selectPOIs li a {
+  color: #555;
+  background: #fefefe;
+  display: inline-block; 
+  padding: 3px .5em 3px .5em;
+	border: 1px dotted #BFCBC2;
+	border-radius: .3em;
+}
+.event-tags_st .selectPOIs li a:hover {
+  color: #000000;
+  background: #F6F5AE;
+  text-decoration: none;
+}
+.event-tags_st .selectPOIs li a:hover i {
+  color: #F24236;
+}
+.event-tags_st .selectPOIs li i {
+  color: #FF934F;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+
+
+.mt1em{
+	margin-top: 1em;
+}
+
+.pac-container {
+    z-index: 1051 !important;
+}
+
+hr.actstarthr{
+    border-width: 2px;
+	margin-top: .5em;
+	margin-bottom: .5em;
+}
+
+html {
+  overflow: scroll;
+  height: 100%;
+}
+body {
+  overflow: auto;
+  height: 100%;
+}
+	.modal-login.modal-dialog {
+		margin-top: 10%;
+	}
+    .form-control {
+        box-shadow: none;
+        border-color: #ddd;
+    }
+    .form-control:focus {
+		border-color: #FCB0B3;
+        box-shadow: 0 0 8px rgba(251,110,157,0.4);
+	}
+	.modal-login {
+        color: #434343;
+		width: 500px;
+	}
+	.modal-login .modal-content {
+		padding: 20px;
+		border-radius: 1px;
+		border: none;
+		overflow-y: auto;
+        position: relative;
+	}
+	.modal-login .modal-header {
+		border-bottom: none;
+	}
+	.modal-login h4 {
+		text-align: center;
+		font-size: 22px;
+        margin-bottom: -10px;
+	}
+    .modal-login .avatar {
+        color: #fff;
+		margin: 0 auto;
+        text-align: center;
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		z-index: 9;
+		background: #FCB0B3;
+		padding: 15px;
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	}
+    .modal-login .avatar i {
+        font-size: 62px;
+    }
+	.modal-login .form-control, .modal-login .btn {
+		min-height: 40px;
+		border-radius: 1px; 
+        transition: all 0.5s;
+	}    
+	.modal-login .hint-text {
+		text-align: center;
+		padding-top: 10px;
+	}
+	.modal-login .close {
+        position: absolute;
+		top: 15px;
+		right: 15px;
+	}
+	.modal-login .btn {
+		background: #FCB0B3;
+		border: none;
+		line-height: normal;
+	}
+	.modal-login .btn:hover, .modal-login .btn:focus {
+		background: #7EB2DD;
+	}
+	.modal-login .hint-text a {
+		color: #999;
+	}
+	.trigger-btn {
+		margin: 100px auto;
+	}
+
+
+
+
+.startLeft{
+	width: 50%; 
+	float: left; 
+	margin-bottom: 2em; 
+	padding: 1em 1em 1em 2em;
+}
+
+.startRight{
+	width: 50%; 
+	height: auto;
+	float: right;
+}
+.startRight img{
+	width: auto; 
+	height: 750px;
+	float: right;
+}
+
+
+.hns{
+	visibility: hidden;
+	display: none;
+}
+
+
+
+.nav>li>a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+.form-inline .pp{
+	width: 10em;
+}
+
+
+input, label, span{
+	outline: none!important;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.custom-file-upload:hover {
+    color: #444;
+    background: #F7D4DE;
+    border-color: #F7D4DE;
+    text-decoration: none;
+	cursor: pointer;
+}
+
+/**/
+      .cropit-preview {
+        background-color: #f8f8f8;
+        background-size: cover;
+        border: 0px solid #ccc;
+        border-radius: 3px;
+        margin-top: 7px;
+        width: 360px;
+        height: 270px;
+
+      }
+
+      .cropit-preview-image-container {
+        cursor: move;
+
+      }
+
+      .image-size-label {
+        margin-top: 10px;
+      }
+
+      #result {
+        margin-top: 10px;
+/*        width: 900px;*/
+      }
+
+      #result-data {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+      }
+
+input[type=range].cropit-image-zoom-input{
+	transform: rotate(-90deg);  
+	width: 270px;   
+	height: 10px;
+	margin: 0;
+	transform-origin:  180px -180px;
+	vertical-align: middle;
+}
+
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #D2E366;
+  border-radius: 1px;
+  border: 0px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 0px solid #E3DEE2;
+  height: 15px;
+  width: 15px;
+  border-radius: 14px;
+  background: #FFD5AB;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -6px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #D2E366;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #D2E366;
+  border-radius: 1px;
+  border: 0px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 0px solid #E3DEE2;
+  height: 15px;
+  width: 15px;
+  border-radius: 14px;
+  background: #FFD5AB;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #D2E366;
+  border: 0px solid #000000;
+  border-radius: 2px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #D2E366;
+  border: 0px solid #000000;
+  border-radius: 2px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 0px 0px 0px #000000;
+  border: 0px solid #E3DEE2;
+  height: 15px;
+  width: 15px;
+  border-radius: 14px;
+  background: #FFD5AB;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #D2E366;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #D2E366;
+}
+/**/
+
+
+.warningText{
+	color: mediumvioletred;
+	margin-bottom: .3em;
+	}
+
+
+/*start map*/
+
+.map_canvas { 
+  width: 100%; 
+  height: 300px; 
+  margin: 10px 20px 10px 0;
+}
+
+#multiple li { 
+  cursor: pointer; 
+  text-decoration: underline; 
+}
+
+/*end map*/
+
+
+

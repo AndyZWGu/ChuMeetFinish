@@ -40,7 +40,7 @@
 		<hr class="colorgraph">
               
 		<!--**************************分頁**************************-->
-		<div class="row">
+<!-- 		<div class="row">
 
 			<div class=" col-xs-offset-4 col-md-6 col-sm-6">
 				<ul class="pagination pull-center">
@@ -53,7 +53,7 @@
 					<li><a href="javascript:;">»</a></li>
 				</ul>
 			</div>
-		</div>
+		</div> -->
 		<!--**************************分頁**************************-->
 		</div>
 </ul> 

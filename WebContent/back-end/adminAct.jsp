@@ -120,15 +120,11 @@ session.setAttribute("page", "act");
             <!--/////////////////////////////////////////////////////////////////////////////-->
             <!--/////////////////////////////////////////////////////////////////////////////-->
             <div class="container">
-                <h2><strong>活動管理</strong></h2>
-                <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#home">活動列表</a></li>
-                    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-                    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-                </ul>
+             
+               
                 <div class="tab-content">
                     <div id="home" class="tab-pane fade in active">
-                        <h3>活動列表</h3>
+                      
                         <table class="table  table-hover">
                             <thead>
                                 <tr class="bg-danger">

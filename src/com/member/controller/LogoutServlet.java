@@ -59,7 +59,7 @@ public class LogoutServlet extends HttpServlet {
 				HttpSession session = req.getSession();
 				session.removeAttribute("account");
 				session.removeAttribute("memVO");
-				res.sendRedirect("../index.jsp");
+				res.sendRedirect("/ChuMeetWebsiteFinish/front-end/index.jsp");
 
 				/***************************其他可能的錯誤處理*************************************/
 			} catch (Exception e) {

@@ -4,15 +4,25 @@ Template Name: Metronic - Responsive Website Template build with Twitter Bootstr
 
 @import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
 
+html {
+
+/* height: 100%; */
+
+}
+
 /* General body settings */
 body { 
 	color: #3e4d5c; 
 	direction: ltr;
 	font: 400 16px 'Noto Sans TC', 'Open Sans', Arial, sans-serif;
 	background: #fff;
-	height:100%;
+/* 	min-height: 100%;
+	display: flex;
+flex-direction: column; */
 }
-
+.content {
+min-height: calc(100vh - 70px);
+}
 /***
 General typography 
 ***/
@@ -435,7 +445,7 @@ Header and header elements
 
 /* FIX styles BEGIN */
 .page-header-fixed .header {
-	position: fixed !important;
+	/* position: fixed !important; */
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -1707,7 +1717,7 @@ Pre-Footer and pre-footer elements
 	color: #fff;
 	font-size: 12px;
 	padding: 15px 0;
-	margin-top :100px;
+	margin-top :0px;
 	bottom:0;
 }
 .footer-light {

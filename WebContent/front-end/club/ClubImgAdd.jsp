@@ -2,8 +2,10 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.club.model.*"%>
-<%@ page import="com.clubAlbum.model.*"%>
-
+<%@ page import="com.clubMB.model.*"%>
+<%@ page import="com.clubNews.model.*"%>
+<%@ page import="com.clubMem.model.*"%>
+<%@ page import="java.util.*"%>
 <%
 ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
 
@@ -40,7 +42,7 @@ ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
 
     <!-- Body BEGIN -->
 
-    <body class="chumeet">
+    <body class="content">
 
         <!-- BEGIN TOP BAR 2-->
         <div class="pre-header">
@@ -168,7 +170,7 @@ ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
 
                        	        <div class="form-group">
                                     <input type="hidden" class="form-control input-sm" id="memID" name="memID" 
-                                    value="${clubVO.clubID}" /> 
+                                    value="${memVO.memID}" /> 
                                 </div>
 
 

@@ -32,7 +32,7 @@ public class FriendsDAO implements FriendsDAO_interface {
 		private static final String GET_ONE_STMT = 
 			"SELECT * FROM friends where friMem1 = ? and friMem2 = ?";
 		private static final String DELETE = 
-			"DELETE FROM friends where friMem1 = ?";
+			"DELETE FROM friends where friMem1 = ? and friMem2 = ?";
 		private static final String UPDATE = 
 			"UPDATE friends set friendType= ?,friendDate=? where friMem1 = ? and friMem2=?";
 
@@ -121,7 +121,7 @@ public class FriendsDAO implements FriendsDAO_interface {
 	}
 
 	@Override
-	public void delete(Integer friMem1) {
+	public void delete(Integer friMem1,Integer friMem2) {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -132,7 +132,7 @@ public class FriendsDAO implements FriendsDAO_interface {
 			pstmt = con.prepareStatement(DELETE);
 
 			pstmt.setInt(1, friMem1);
-
+			pstmt.setInt(2, friMem2);
 			pstmt.executeUpdate();
 
 			// Handle any driver errors
@@ -158,6 +158,7 @@ public class FriendsDAO implements FriendsDAO_interface {
 		}
 
 	}
+	
 
 	@Override
 	public FriendsVO findByPrimaryKey(Integer friMem1,Integer friMem2) {
@@ -272,8 +273,8 @@ public class FriendsDAO implements FriendsDAO_interface {
 	}
 
 	@Override
-	public List<FriendsVO> getAll(Map<String, String[]> map) {
-		List<FriendsVO> list = new ArrayList<FriendsVO>();
+	public List<FriendsVO> getAllMap(Map<String, String[]> map) {
+		List<FriendsVO> list = null;
 		FriendsVO friendsVO = null;
 	
 		Connection con = null;
@@ -292,8 +293,8 @@ public class FriendsDAO implements FriendsDAO_interface {
 	
 			while (rs.next()) {
 				friendsVO = new FriendsVO();
-				friendsVO.setFriMem1(rs.getInt("memID1"));
-				friendsVO.setFriMem2(rs.getInt("memID2"));
+				friendsVO.setFriMem1(rs.getInt("friMem1"));
+				friendsVO.setFriMem2(rs.getInt("friMem2"));
 				friendsVO.setFriendType(rs.getString("friendType"));
 				friendsVO.setFriendDate(rs.getTimestamp("friendDate"));
 				list.add(friendsVO); // Store the row in the list
@@ -384,5 +385,12 @@ public class FriendsDAO implements FriendsDAO_interface {
 		}
 		return list;
 	}
+
+	@Override
+	public List<FriendsVO> getAll(Map<String, String[]> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
 

@@ -35,7 +35,7 @@ public class ClubNewsServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
 		
-
+		System.out.println("AA");	
      	
 //新增一個公告
 	      if ("addClubNews".equals(action)) { // 來自addEmp.jsp的請求  
@@ -47,9 +47,9 @@ public class ClubNewsServlet extends HttpServlet {
 
 				try {
 					/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
-					System.out.println("AA");
+			
 					Integer clubID = new Integer(req.getParameter("clubID").trim());
-					Integer memID =1;
+					Integer  memID = Integer.parseInt(req.getParameter("memID"));
 					String clubNewsTitle = req.getParameter("clubNewsTitle").trim();
 					String clubNewsContent = req.getParameter("clubNewsContent").trim();
 					Timestamp clubNewsDate = new Timestamp(System.currentTimeMillis());
@@ -63,7 +63,15 @@ public class ClubNewsServlet extends HttpServlet {
 					clubNewsVO.setClubNewsContent(clubNewsContent);
 					clubNewsVO.setClubNewsDate(clubNewsDate);
 					clubNewsVO.setClubNewsStatus(clubNewsStatus);
+
 					
+System.out.println("addClubNews的"+clubID);	
+System.out.println("addClubNews的"+memID);
+System.out.println("addClubNews的"+clubNewsTitle);
+System.out.println("addClubNews的"+clubNewsContent);
+System.out.println("addClubNews的"+clubNewsDate);
+System.out.println("addClubNews的"+clubNewsStatus);
+System.out.println("addClubNews的"+actID);
 
 					// Send the use back to the form, if there were errors
 					if (!errorMsgs.isEmpty()) {
@@ -118,11 +126,12 @@ public class ClubNewsServlet extends HttpServlet {
 	      
 	      
 	      
-//clubNewsUpdate跳轉變更頁面
+//clubNewsUpdate變更頁面
 		 if ("clubNewsUpdate".equals(action)){
+System.out.println("clubNewsUpdate");			 
 			 	Integer clubID = Integer.parseInt(req.getParameter("clubID"));	//傳進來的是字串轉成數字
 			 	Integer clubNewsID = Integer.parseInt(req.getParameter("clubNewsID"));	
-				Integer memID =1;
+			 	Integer  memID = Integer.parseInt(req.getParameter("memID"));
 				/***************************2.開始查詢資料*****************************************/
 
 				//社團資料
@@ -134,7 +143,7 @@ public class ClubNewsServlet extends HttpServlet {
 				//拿到一個社團成員
 				ClubMemService clubMemSvc = new ClubMemService();
 				ClubMemVO clubMemVO = clubMemSvc.getOneClubMem(clubID,memID);
-System.out.println("A"+clubMemVO.getClubID()+clubMemVO.getMemID());
+
 				List<ClubMBVO> clubMBlist =clubSvc.getClubMBByClubID(clubID);					
 				List<ClubMemVO> clubMemlist = clubSvc.getClubMemByClubID(clubID);
 				List<ClubNewsVO> clubNewslist =clubSvc.getClubNewsByClubID(clubID); 
@@ -165,17 +174,15 @@ System.out.println("A"+clubMemVO.getClubID()+clubMemVO.getMemID());
 	      
 //clubNews拿到變更社團NEWS完跳回原頁面
 		  if ("getOneNews_For_Update".equals(action)){
-				String clubNewsID1 = req.getParameter("clubNewsID");	
-				String clubID1 = req.getParameter("clubID");	//傳進來的是字串轉成數字
-				String memID1 = req.getParameter("memID");
+			   Integer  clubNewsID = Integer.parseInt(req.getParameter("clubNewsID"));	
+				Integer  memID = Integer.parseInt(req.getParameter("memID"));
+				Integer  clubID = Integer.parseInt(req.getParameter("clubID"));
 				Timestamp clubNewsDate = new Timestamp(System.currentTimeMillis()); 
 				String clubNewsTitle = req.getParameter("clubNewsTitle").trim();		
 				String clubNewsContent = req.getParameter("clubNewsContent").trim();
 				Integer actID=1;
-	
-				Integer clubNewsID = Integer.parseInt(clubNewsID1);
-				Integer clubID = Integer.parseInt(clubID1);
-				Integer memID = Integer.parseInt(memID1);
+
+			
 				Integer clubNewsStatus = 1;	
 			
 				ClubNewsVO clubNewsVO = new ClubNewsVO();
@@ -187,7 +194,12 @@ System.out.println("A"+clubMemVO.getClubID()+clubMemVO.getMemID());
 				clubNewsVO.setActID(actID);
 				clubNewsVO.setClubNewsStatus(clubNewsStatus);
 				
-		
+System.out.println("clubNews拿到變更社團NEWS完跳回原頁面clubNewsID"+clubNewsID);
+System.out.println("clubNews拿到變更社團NEWS完跳回原頁面clubID"+clubID);
+System.out.println("clubNews拿到變更社團NEWS完跳回原頁面memID"+memID);
+System.out.println("clubNews拿到變更社團NEWS完跳回原頁面clubNewsTitle"+clubNewsTitle);
+System.out.println("clubNews拿到變更社團NEWS完跳回原頁面clubNewsContent"+clubNewsContent);
+System.out.println("clubNews拿到變更社團NEWS完跳回原頁面actID"+actID);
 		
 				
 				/***************************2.開始修改資料*****************************************/
@@ -224,13 +236,11 @@ System.out.println("A"+clubMemVO.getClubID()+clubMemVO.getMemID());
 	      
 	      
 //clubNews刪除,變更社團NEWS完跳回原頁面
-		  if ("deleteOneNews".equals(action)){
-				String clubNewsID1 = req.getParameter("clubNewsID");	
-				String clubID1 = req.getParameter("clubID");
-		
-				Integer clubNewsID = Integer.parseInt(clubNewsID1);
-				Integer clubID = Integer.parseInt(clubID1);
-				Integer memID =1;
+		  if ("deleteOneNews".equals(action)){	
+				Integer  clubNewsID = Integer.parseInt(req.getParameter("clubNewsID"));
+				Integer  clubID = Integer.parseInt(req.getParameter("clubID"));
+				Integer  memID = Integer.parseInt(req.getParameter("memID"));
+
 				Integer clubNewsStatus = 0;	
 				
 				ClubNewsVO clubNewsVO = new ClubNewsVO();

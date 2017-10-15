@@ -8,8 +8,6 @@ public interface FriendsDAO_interface {
 
 	public void update(FriendsVO friendsVO);
 
-	// pk̎��һ��
-	public void delete(Integer friMem1);
 
 	public List<FriendsVO> getAll();
 
@@ -22,5 +20,11 @@ public interface FriendsDAO_interface {
 
 	//特定好友詳情
 	FriendsVO findByPrimaryKey(Integer friMem1, Integer friMem2);
+
+	public List<FriendsVO> getAllMap(Map<String, String[]> map);
+
+	public void delete(Integer friMem1, Integer friMem2);
+
+
 
 }

@@ -33,11 +33,11 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 		"UPDATE club set clubmemID=?, clubName=?, clubTypeID=?, clubContent=?, clubPhoto=?, clubStartDate=?, clubStatus=?, clubLong=?, clubLat=? where clubID = ?";
 
 
-	//浠ヤ笅鑷繁鍔�
+	//娴犮儰绗呴懛顏勭箒閸旓拷
 	private static final String GET_ClubAlbums_ByClubID_STMT = 
 			"SELECT clubAlbumID,clubID,memID,to_char(clubAlbumDate,'yyyy-mm-dd hh:mm:ss') clubAlbumDate,clubAlbumName,clubAlbumStatus FROM clubAlbum where clubID=? order by clubAlbumID desc";
 	
-	//鑷繁鍔�
+	//閼奉亜绻侀崝锟�
 	private static final String GET_ClubNews_ByClubID_STMT = 
 			"SELECT clubNewsID,clubID,memID,to_char(clubNewsDate,'yyyy-mm-dd hh:mm:ss') clubNewsDate,clubNewsTitle,clubNewsContent,actID,clubNewsStatus FROM clubNews where clubID=? order by clubNewsID desc";
 	private static final String GET_ClubMB_ByClubID_STMT = 
@@ -59,7 +59,7 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 	       return stp;
 	  }
 	
-//鏀硅嚜澧�	  
+//閺�纭呭殰婢э拷	  
 	@Override
 	public Integer insert(ClubVO clubVO) {
 
@@ -87,7 +87,7 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 			pstmt.executeUpdate();
 
 			
-			//鎺樺彇灏嶆噳鐨勮嚜澧炰富閸靛��
+			//閹烘ê褰囩亸宥嗗櫝閻ㄥ嫯鍤滄晶鐐板瘜闁搁潧锟斤拷
 			ResultSet rsKeys = pstmt.getGeneratedKeys();
 			ResultSetMetaData rsmd = rsKeys.getMetaData();
 			int columnCount = rsmd.getColumnCount();
@@ -96,7 +96,7 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 			if (rsKeys.next()) {
 					for (int i = 1; i <= columnCount; i++) {
 						key = rsKeys.getInt(i);
-						System.out.println("鑷涓婚嵉鍊�(i=" + i + ") = " + key +"(鍓涙柊澧炴垚鍔熺殑鍝″伐绶ㄨ櫉)");
+						System.out.println("閼奉亜顤冩稉濠氬祲閸婏拷(i=" + i + ") = " + key +"(閸撴稒鏌婃晶鐐村灇閸旂喓娈戦崫鈥充紣缁躲劏娅�)");
 
 					}
 			}
@@ -135,7 +135,7 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 	
 	
 	
-//	//鏈敼鑷
+//	//閺堫亝鏁奸懛顏勵杻
 //	@Override
 //	public void insert(ClubVO clubVO) {
 //
@@ -310,7 +310,7 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVo 涔熺ū鐐� Domain objects
+				// empVo 娑旂喓奴閻愶拷 Domain objects
 				clubVO = new ClubVO();
 				clubVO.setClubID(rs.getInt("clubID"));
 				clubVO.setClubmemID(rs.getInt("clubmemID"));			
@@ -376,7 +376,7 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVO 涔熺ū鐐� Domain objects
+				// empVO 娑旂喓奴閻愶拷 Domain objects
 				clubVO = new ClubVO();
 				clubVO.setClubID(rs.getInt("clubID"));
 				clubVO.setClubmemID(rs.getInt("clubMemID"));
@@ -431,7 +431,7 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 	
 	
 	
-	//鑷繁鍔�
+	//閼奉亜绻侀崝锟�
 	@Override
 	public List<ClubAlbumVO> getClubAlbumsByClubID(Integer clubID) {
 		List<ClubAlbumVO> list = new ArrayList<ClubAlbumVO>();
@@ -495,7 +495,7 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 	}
 	
 	
-	//鑷繁鍔�
+	//閼奉亜绻侀崝锟�
 	@Override
 	public List<ClubMBVO> getClubMBByClubID(Integer clubID) {
 		List<ClubMBVO> list = new ArrayList<ClubMBVO>();
@@ -561,7 +561,7 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 	
 	
 	
-	//鑷繁鍔�
+	//閼奉亜绻侀崝锟�
 		@Override
 		public List<ClubNewsVO> getClubNewsByClubID(Integer clubID) {
 			List<ClubNewsVO> list = new ArrayList<ClubNewsVO>();
@@ -630,7 +630,7 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 		
 		
 		
-		//鑷繁鍔�
+		//閼奉亜绻侀崝锟�
 		@Override
 		public List<ClubMemVO> getClubMemByClubID(Integer clubID) {
 			List<ClubMemVO> list = new ArrayList<ClubMemVO>();
@@ -755,14 +755,14 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 
 		ClubJDBCDAO dao = new ClubJDBCDAO();
 
-		// 鏂板OK
+		// 閺傛澘顤僌K
 //		ClubVO clubVO1 = new ClubVO();
 //		clubVO1.setClubmemID(7);
-//		clubVO1.setClubName("闅ㄤ究鎵撴墦");
+//		clubVO1.setClubName("闂呫劋绌堕幍鎾村ⅵ");
 //		clubVO1.setClubTypeID(1);
-//		clubVO1.setClubContent("瀹夊畨鎮ㄥソ");
+//		clubVO1.setClubContent("鐎瑰鐣ㄩ幃銊ャ偨");
 //		
-//		byte[] pic1=getByteArray("C:\\Users\\simpl\\Desktop\\ChuMeet锛積bsite\\club\\image\\music.jpg");
+//		byte[] pic1=getByteArray("C:\\Users\\simpl\\Desktop\\ChuMeet閿涚bsite\\club\\image\\music.jpg");
 //		System.out.println(pic1.length);
 //		clubVO1.setClubPhoto(pic1);
 //		
@@ -772,15 +772,15 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 //		clubVO1.setClubLat(1.000007);
 //		dao.insert(clubVO1);
 
-		// 淇敼OK
+		// 娣囶喗鏁糘K
 //		ClubVO clubVO2 = new ClubVO();
 //		clubVO2.setClubID(9);
 //		clubVO2.setClubmemID(9);
-//		clubVO2.setClubName("鍚崇JAVA!!!!!!!!!");
+//		clubVO2.setClubName("閸氬磭顨AVA!!!!!!!!!");
 //		clubVO2.setClubTypeID(2);
-//		clubVO2.setClubContent("瑕嚜鎺堣RRRRRRRRRRRRR");
+//		clubVO2.setClubContent("鐟曨亣鍤滈幒鍫ｎ�慠RRRRRRRRRRRR");
 //		
-//		byte[] pic1=getByteArray("C:\\Users\\simpl\\Desktop\\ChuMeet锛積bsite\\club\\image\\music.jpg");
+//		byte[] pic1=getByteArray("C:\\Users\\simpl\\Desktop\\ChuMeet閿涚bsite\\club\\image\\music.jpg");
 //		System.out.println(pic1.length);
 //	
 //		
@@ -792,10 +792,10 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 //		clubVO2.setClubLat(20.121416);
 //		dao.update(clubVO2);
 
-		// 鍒櫎
+		// 閸掝亪娅�
 //		dao.delete(10);
 //
-		// 鏌ヨOK
+		// 閺屻儴顭縊K
 //		ClubVO clubVO3 = dao.findByPrimaryKey(2);
 //		System.out.print(clubVO3.getClubID() + ",");
 //		System.out.print(clubVO3.getClubmemID() + ",");
@@ -811,7 +811,7 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 //		System.out.println(clubVO3.getClubLat());
 //		System.out.println("---------------------");
 
-		// 鏌ヨOK
+		// 閺屻儴顭縊K
 //		List<ClubVO> list = dao.getAll();
 //		for (ClubVO aClub : list) {
 //			System.out.print(aClub.getClubID() + ",");
@@ -830,7 +830,7 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 //		}
 		
 		
-		//鑷繁鍔犵殑
+		//閼奉亜绻侀崝鐘垫畱
 //		List<ClubAlbumVO> list = dao.getClubAlbumsByClubID(1);
 //		for (ClubAlbumVO aClubAlbum : list) {
 //			System.out.print(aClubAlbum.getClubAlbumID() + ",");
@@ -842,7 +842,7 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 //			System.out.println();
 //		}
 		
-		//鑷繁鍔犵殑
+		//閼奉亜绻侀崝鐘垫畱
 //		List<ClubNewsVO> list = dao.getClubNewsByClubID(1);
 //		for (ClubNewsVO aClubNews : list) {
 //			System.out.print(aClubNews.getClubNewsID() + ",");
@@ -876,13 +876,13 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 //		}
 		
 		
-//		// 淇敼OK
+//		// 娣囶喗鏁糘K
 //		ClubVO clubVO2 = new ClubVO();
 //		clubVO2.setClubID(5);
-//		clubVO2.setClubName("鍚崇JAVA!!!!!!!!!");
+//		clubVO2.setClubName("閸氬磭顨AVA!!!!!!!!!");
 //		clubVO2.setClubTypeID(2);
-//		clubVO2.setClubContent("瑕嚜鎺堣RRRRRRRRRRRRR");
-//		byte[] pic2=getByteArray("C:\\Users\\simpl\\Desktop\\ChuMeet锛積bsite\\club\\image\\music.jpg");
+//		clubVO2.setClubContent("鐟曨亣鍤滈幒鍫ｎ�慠RRRRRRRRRRRR");
+//		byte[] pic2=getByteArray("C:\\Users\\simpl\\Desktop\\ChuMeet閿涚bsite\\club\\image\\music.jpg");
 //		clubVO2.setClubPhoto(pic2);
 //		dao.clubChange(clubVO2);
 //		
@@ -896,13 +896,25 @@ public class ClubJDBCDAO implements ClubDAO_interface {
 		FileInputStream fin=new FileInputStream(new File(path));
 		byte [] buffer=new byte[fin.available()];
 		int bytes_read;
-		while((bytes_read=fin.read(buffer))!=-1){   //-1浠ｈ〃娓告鏈夊線涓嬬Щ,鏈夋澅瑗�
+		while((bytes_read=fin.read(buffer))!=-1){   //-1娴狅綀銆冨〒鍛婎灴閺堝绶氭稉瀣�,閺堝婢呯憲锟�
 		}
 		return buffer;
 	}
 
 	@Override
 	public void clubChangeIfNotPhoto(ClubVO clubVO) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void clubChangeClubMem(ClubVO clubVO) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteClub(ClubVO clubVO) {
 		// TODO Auto-generated method stub
 		
 	}

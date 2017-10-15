@@ -4,7 +4,7 @@
 <%@ page import="com.admin.model.*"%>
 <%@ page import="com.admPril.model.*"%>
 <%
-session.setAttribute("page", "act");
+session.setAttribute("page", "achReward");
  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -82,11 +82,11 @@ session.setAttribute("page", "act");
             <!--/////////////////////////////////////////////////////////////////////////////-->
             <div class="container">
 
-            <h2><strong>會員管理</strong></h2>
+            
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#home">會員資料管理</a></li>
-                    <li><a data-toggle="tab" href="#menu1">獎賞管理</a></li>
-                    <li><a data-toggle="tab" href="#menu2">成就管理</a></li>
+                    
+                    <li><a  href="adminReward.jsp">獎賞管理</a></li>
+                    <li class="active"><a  href="adminAch.jsp">成就管理</a></li>
                 </ul>
 
 
@@ -100,7 +100,7 @@ session.setAttribute("page", "act");
                 </form>
                 <div class="tab-content">
                     <div class="tab-pane fade in active">
-                        <h2>成就管理</h2>
+                      
                         <table class="table  table-hover">
                             <thead>
                                 <tr class="bg-danger">
