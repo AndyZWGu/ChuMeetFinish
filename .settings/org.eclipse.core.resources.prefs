@@ -71,3 +71,5 @@ encoding//src/com/member/model/MemberDAO.java=UTF-8
 encoding//src/com/member/model/MemberDAO_interface.java=UTF-8
 encoding//src/com/member/model/MemberJDBCDAO.java=UTF-8
 encoding//src/filters/EncodingFilter.java=UTF-8
+encoding/<project>=UTF-8
+separateDerivedEncodings=true
