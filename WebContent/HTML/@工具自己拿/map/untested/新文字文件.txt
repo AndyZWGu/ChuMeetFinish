@@ -1,1 +1,0 @@
-httpwww.jqueryscript.netplussearch.phpkeyword=map&searchtype=titlekeyword&channeltype=0&orderby=&kwtype=0&pagesize=10&typeid=0&TotalResult=82&PageNo=2
