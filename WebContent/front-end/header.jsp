@@ -20,8 +20,9 @@
         <ul>
           <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="<%=request.getContextPath()%>/member/memNF.html"> 網站資訊 </a>
             <ul class="dropdown-menu">
-              <li><a href="<%=request.getContextPath()%>/front-end/ann.jsp">公告</a></li>
-              <li><a href="<%=request.getContextPath()%>/front-end/ad.jsp">廣告優惠</a></li>
+              <li><a href="<%=request.getContextPath()%>/front-end/info/ann.jsp">公告</a></li>
+              <li><a href="<%=request.getContextPath()%>/front-end/info/ad.do">廣告優惠</a></li>
+              <li><a href="<%=request.getContextPath()%>/front-end/info/faq.jsp">F&Q</a></li>
             </ul>
           </li>
           <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="<%=request.getContextPath()%>/member/memNF.html"> 會員中心 </a>

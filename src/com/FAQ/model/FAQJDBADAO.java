@@ -9,8 +9,8 @@ public class FAQJDBADAO implements FAQDAO_interface{
 	
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String userid = "servlet";
-	String passwd = "123";
+	String userid = "BA103G2";
+	String passwd = "a123";
 
 	private static final String INSERT_STMT = 
 		"INSERT INTO faq(faqID,faqTitle,faqContent,faqDate) VALUES ( ?, ?, ?, ?)";
@@ -302,23 +302,23 @@ public class FAQJDBADAO implements FAQDAO_interface{
 //		dao.insert(faqVO1);
 
 		// �ק�
-		FAQVO faqVO2 = new FAQVO();
-		faqVO2.setFAQID(5);
-		faqVO2.setFAQTitle("MANAGER");
-		faqVO2.setFAQContent("456");
-		faqVO2.setFAQDate(java.sql.Timestamp.valueOf("2005-01-01 10:10:10"));
-		
-		dao.update(faqVO2);
+//		FAQVO faqVO2 = new FAQVO();
+//		faqVO2.setFAQID(5);
+//		faqVO2.setFAQTitle("MANAGER");
+//		faqVO2.setFAQContent("456");
+//		faqVO2.setFAQDate(java.sql.Timestamp.valueOf("2005-01-01 10:10:10"));
+//		
+//		dao.update(faqVO2);
 
 		// �R��
 	//dao.delete(5);
 
 		// �d��
-		FAQVO faqVO3 = dao.findByPrimaryKey(2);
-		System.out.print(faqVO3.getFAQID() + ",");
-		System.out.print(faqVO3.getFAQTitle() + ",");
-		System.out.print(faqVO3.getFAQContent() + ",");
-		System.out.print(faqVO3.getFAQDate() + ",");
+//		FAQVO faqVO3 = dao.findByPrimaryKey(2);
+//		System.out.print(faqVO3.getFAQID() + ",");
+//		System.out.print(faqVO3.getFAQTitle() + ",");
+//		System.out.print(faqVO3.getFAQContent() + ",");
+//		System.out.print(faqVO3.getFAQDate() + ",");
 		
 		
 		System.out.println("---------------------");

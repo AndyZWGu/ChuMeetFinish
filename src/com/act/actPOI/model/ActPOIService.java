@@ -1,9 +1,6 @@
 package com.act.actPOI.model;
 
 import java.util.List;
-
-import com.act.act.model.Act_VO;
-
 public class ActPOIService {
 
 		private ActPOIDAO_interface dao;
@@ -14,18 +11,14 @@ public class ActPOIService {
 
 
 	    //++POI
-	    public void insert(ActPOIVO actPOIVO){
-	    	
+	    public void insert(Integer actID, Integer POIID){
+	    	dao.insert(actID, POIID);
 	    };
 	    //--POI
 
 		
-		public List<String> getPOIByActID(Integer actID) {
+		public List<Integer> getPOIByActID(Integer actID) {
 			return dao.getPOIByActID(actID);
-		}
-
-		public  List<Act_VO> getActByPOIID(Integer POIID) {
-			return dao.getActByPOIID(POIID);
 		}
 
 		public void delete(Integer actID) {

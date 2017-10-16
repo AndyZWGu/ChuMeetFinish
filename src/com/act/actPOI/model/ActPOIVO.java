@@ -1,24 +1,20 @@
 package com.act.actPOI.model;
 
-import com.act.act.model.Act_VO;
-import com.poi.model.POIVO;
 
 public class ActPOIVO implements java.io.Serializable  {
-	
-	private Act_VO actVO;
-	private POIVO POIVO;
-	
-	public Act_VO getActVO() {
-		return actVO;
+	private Integer actID;
+	private Integer POIID;
+	public Integer getActID() {
+		return actID;
 	}
-	public void setActVO(Act_VO actVO) {
-		this.actVO = actVO;
+	public void setActID(Integer actID) {
+		this.actID = actID;
 	}
-	public POIVO getPOIVO() {
-		return POIVO;
+	public Integer getPOIID() {
+		return POIID;
 	}
-	public void setPOIVO(POIVO pOIVO) {
-		POIVO = pOIVO;
+	public void setPOIID(Integer pOIID) {
+		POIID = pOIID;
 	}
 	
 }

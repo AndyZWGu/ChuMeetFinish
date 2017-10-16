@@ -2,7 +2,7 @@
   <title>ChuMeet!</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <link rel="shortcut icon" href="chumeet_icon.ico">
+  <link rel="shortcut icon" href="<%=request.getContextPath()%>/HTML/chumeet_icon.ico">
 
   <!-- Fonts START -->
   <!--  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">-->

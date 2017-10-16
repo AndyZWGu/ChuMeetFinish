@@ -3,15 +3,16 @@ package com.act.model;
 import java.sql.Timestamp;
 
 public class ActMBVO {
-	private String actMBID;
+	private Integer actMBID;
 	private Integer actID;
 	private Integer memID;
 	private String actMBContent;
 	private Timestamp actMBDate;
-	public String getActMBID() {
+	
+	public Integer getActMBID() {
 		return actMBID;
 	}
-	public void setActMBID(String actMBID) {
+	public void setActMBID(Integer actMBID) {
 		this.actMBID = actMBID;
 	}
 	public Integer getActID() {

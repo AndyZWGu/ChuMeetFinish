@@ -18,7 +18,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import com.act.act.model.Act_VO;
+import com.act.act.model.ActVO;
 import com.act.actPOI.model.ActPOIVO;
 import com.gen.tool.tools;
 import com.google.gson.*;
@@ -34,7 +34,7 @@ public class actJSON {
 
 	public static void main(String args[]) {
 		int startat = 1;
-		int maxQuery=20;
+		int maxQuery=30;
 		// skip 9 10 14 12 plz
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@localhost:1521:XE";
@@ -43,6 +43,7 @@ public class actJSON {
 		String INSERT_STMT = "insert into act(actType, actID, memID, actCreateDate, actName, actStatus, actPriID, actStartDate, actEndDate, actImg, actContent, actLong, actLat, actLocName, actAdr, actUID, actShowUnit, actMasterUnit, actWebSales, actSourceWebName, actOnSale, actPrice, actPost)"
 				+ " values (2, act_seq.nextval, 0, systimestamp, ?, 1, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String POISQL = "insert into actPOI values (?,?)";
+		String WAT="select DISTINCT actUID from ACT";
 
 		// Create a trust manager that does not validate certificate chains
 		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
@@ -69,7 +70,25 @@ public class actJSON {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt3 = null;
+		ResultSet rss=null;
 		Timestamp ts = tools.nowTimestamp();
+		
+//		List<String> UIDs=new ArrayList<String>();
+//		try {
+//			pstmt3 = con.prepareStatement(WAT);
+//			rss = pstmt.executeQuery();
+//			while(rss.next()){
+//				UIDs.add(rss.getString("actUID"));
+//			}
+//		} catch (SQLException e2) {
+//			// TODO Auto-generated catch block
+//			e2.printStackTrace();
+//		}
+
+		
+		
+		
 
 		try {
 			Class.forName(driver);
@@ -107,6 +126,11 @@ public class actJSON {
 								JsonElement obj = Jarray.get(j);
 								System.out.println("start a new obj: j=" + j+", q="+q+", Jarray.size()="+Jarray.size());
 								actGVO actg = (actGVO) gson.fromJson(obj, actGVO.class);
+								
+//								if(UIDs.contains(actg.getUID())){
+//									continue;
+//								} else{
+								
 								Timestamp tsact = tools.strToTimestampGsonDO(actg.getStartDate());
 								System.out.println("obj date: " + tsact);
 //								System.out.println("nowadate: " + ts);
@@ -222,6 +246,7 @@ public class actJSON {
 									}
 									q++;
 								} // end of if		//成功進入判斷+DB
+//								}
 								j++;						//有進迴圈的總數
 							} catch (Exception e) {
 								j++;						//有exception我也要next

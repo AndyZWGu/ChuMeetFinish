@@ -2,47 +2,28 @@ package com.act.actMem.model;
 
 import java.sql.Timestamp;
 
-import com.act.act.model.Act_VO;
-import com.member.model.MemberHVO;
-
 public class ActMemVO implements java.io.Serializable{
 	
-	private Act_VO actVO;
-	private MemberHVO memberHVO;
-	
+	private Integer memID;
+	private Integer actID;
 	private Integer actMemStatus;
 	private Timestamp actJoinDate;
 	private Integer actStar;
 	private Timestamp actStarDate;
 	private Integer QRStatus;
 
-public ActMemVO(){}	
-	
-public ActMemVO(Act_VO actVO, MemberHVO memberHVO, Integer actMemStatus, Timestamp actJoinDate, Integer actStar,
-			Timestamp actStarDate) {
-		super();
-		this.actVO = actVO;
-		this.memberHVO = memberHVO;
-		this.actMemStatus = actMemStatus;
-		this.actJoinDate = actJoinDate;
-		this.actStar = actStar;
-		this.actStarDate = actStarDate;
+	public Integer getMemID() {
+		return memID;
 	}
-
-//	查多時，帶出一
-	public MemberHVO getMemberHVO() {
-		return memberHVO;
+	public void setMemID(Integer memID) {
+		this.memID = memID;
 	}
-	public void setMemberHVO(MemberHVO memberHVO) {
-		this.memberHVO = memberHVO;
+	public Integer getActID() {
+		return actID;
 	}
-	public Act_VO getActVO() {
-		return actVO;
+	public void setActID(Integer actID) {
+		this.actID = actID;
 	}
-	public void setActVO(Act_VO actVO) {
-		this.actVO = actVO;
-	}
-
 	public Integer getActMemStatus() {
 		return actMemStatus;
 	}

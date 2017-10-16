@@ -232,7 +232,7 @@ public class FAQDAO implements FAQDAO_interface{
 					faqVO.setFAQID(rs.getInt("faqID"));
 					faqVO.setFAQTitle(rs.getString("faqTitle"));
 					faqVO.setFAQContent(rs.getString("faqContent"));
-					faqVO.setFAQDate(rs.getTimestamp("faqDate"));				
+					faqVO.setFAQDate(rs.getTimestamp("faqDate"));
 					list.add(faqVO); // Store the row in the list
 					
 

@@ -238,6 +238,22 @@ public class tools {
 	        }
 	        return new java.sql.Timestamp(utDate.getTime());
 	    }
+	    
+	    
+	    public static java.sql.Timestamp strHTML5ToTimestamp(String strDate) {
+	        java.util.Date utDate;
+	        try {
+	            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	            sdf.setLenient(false);
+	            utDate = sdf.parse(strDate);
+	        } catch (Exception e) {
+	            return null;
+	        }
+	        return new java.sql.Timestamp(utDate.getTime());
+	    }
+	    
+	    
+	    
 
 	    public static java.sql.Timestamp strToTimestampGson(String strDate) {
 	        java.util.Date utDate;

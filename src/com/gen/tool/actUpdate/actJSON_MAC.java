@@ -18,7 +18,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import com.act.act.model.Act_VO;
 import com.act.actPOI.model.ActPOIVO;
 import com.gen.tool.tools;
 import com.google.gson.*;

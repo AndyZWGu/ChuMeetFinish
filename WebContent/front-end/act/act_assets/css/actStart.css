@@ -183,22 +183,8 @@ input, label, span{
 	outline: none!important;
 }
 
-input[type="file"] {
-    display: none;
-}
-.custom-file-upload {
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-}
-.custom-file-upload:hover {
-    color: #444;
-    background: #F7D4DE;
-    border-color: #F7D4DE;
-    text-decoration: none;
-	cursor: pointer;
-}
+
+
 
 /**/
       .cropit-preview {
@@ -233,6 +219,7 @@ input[type="file"] {
         text-overflow: ellipsis;
         word-wrap: break-word;
       }
+/*
 
 input[type=range].cropit-image-zoom-input{
 	transform: rotate(-90deg);  
@@ -324,7 +311,8 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: #D2E366;
 }
-/**/
+*/
+
 
 
 .warningText{

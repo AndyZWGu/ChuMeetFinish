@@ -12,25 +12,25 @@ public class FAQVO implements java.io.Serializable {
 		return FAQID;
 	}
 	public void setFAQID(Integer fAQID) {
-		FAQID = fAQID;
+		this.FAQID = fAQID;
 	}
 	public String getFAQTitle() {
 		return FAQTitle;
 	}
 	public void setFAQTitle(String fAQTitle) {
-		FAQTitle = fAQTitle;
+		this.FAQTitle = fAQTitle;
 	}
 	public String getFAQContent() {
 		return FAQContent;
 	}
-	public void setFAQContent(String fAQComtent) {
-		FAQContent = fAQComtent;
+	public void setFAQContent(String fAQContent) {
+		this.FAQContent = fAQContent;
 	}
 	public Timestamp getFAQDate() {
 		return FAQDate;
 	}
 	public void setFAQDate(Timestamp fAQdate) {
-		FAQDate = fAQdate;
+		this.FAQDate = fAQdate;
 	}
 	
 	

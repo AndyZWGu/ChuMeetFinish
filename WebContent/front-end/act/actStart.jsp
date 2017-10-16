@@ -7,7 +7,7 @@
 <%@ page import="com.act.actPOI.model.*"%>
 <%@ page import="java.util.*"%>
 
-<html lang="en"><head>
+<html><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,8 +70,7 @@
 <div class="center-block" style="max-width: 1150px; text-align: center;">
 <!-- BEGIN CONTENT -->
 <!-- MultiStep Form -->
-
-        <form id="msform" action="<%=request.getContextPath()%>/front-end/act/act.do" method="get">
+<form id="msform"   action="<%=request.getContextPath()%>/front-end/act/act.do?action=insert" method="post" enctype="multipart/form-data">
             <!-- progressbar -->
             <ul id="progressbar">
                 <li class="active">基本資料</li>
@@ -101,7 +100,7 @@
 						<div class="wrapper inputSp">
 								<div class="group">
 
-							  	<input class="is" type="text" required="required" id="aName"/>
+							  	<input class="is" type="text"  id="aName"/>
 								<span class="highlight"></span><span class="bar"></span>
 							  	<label class="la"><i class="fa fa-caret-right pull-left" aria-hidden="true"></i>活動主題是...</label>
 								</div>
@@ -154,7 +153,7 @@
 													
 								<div class="group margin-bottom-20">
 
-							  	<input id="showAddress" class="is hns" type="text" required="required"/>
+							  	<input id="showAddress" class="is hns" type="text"/>
 								<span class="highlight"></span><span class="bar"></span>
 							  	<label class="la"><i class="fa fa-caret-right pull-left" aria-hidden="true"></i>舉辦地點為...</label>
 							  	
@@ -228,7 +227,7 @@
 						   	<br>
 						   									<div class="group">
 
-							  	<input id="showpois" class="is hns" type="textarea" required="required" />
+							  	<input id="showpois" class="is hns" type="textarea"/>
 							  	<div id="poiappend" class="event-tags" style="text-align: left; margin-top: 0"></div>
 							  								  	
 								<span class="highlight"></span><span class="bar"></span>
@@ -451,7 +450,8 @@
                 <h3 class="fs-subtitle">揪咪是一個熱情友善的網站。請同意我們的使用條款</h3>
       			<input id="ckfinal" type="checkbox"> 我同意<a href="#"> 《使用條款》 </a><p />
                 <input type="button" name="previous" class="previous action-button-previous" value="上一步"/>
-                <button type="submit" name="submit" class="action-button">建立活動</button>
+                <input  class="btn btn-submit" type="submit" id="actSubmit" value="建立活動">
+<!--                 <button  class="btn btn-submit" type="submit" id="actSubmit">建立活動</button> -->
 
             </fieldset>
            

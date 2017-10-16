@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
-import com.act.act.model.Act_VO;
 import com.act.act.model.Act_interface;
 import com.gen.tool.tools;
 
@@ -235,7 +234,7 @@ public class Uploads_JDBC_WIN {
 
 		// UPLOAD IMG	ok
 		for (int i=1; i<14; i++){
-		String path = "/Users/zhongwei/CloudStation/DB_BLOB_CLOB/actBLOB/act"+i+".jpg";
+		String path = "E://DB/actBLOB/act"+i+".jpg";
 		System.out.println(path);
 		int actID=i;
 		dao.updateIMG(path, actID);
@@ -243,7 +242,7 @@ public class Uploads_JDBC_WIN {
 		
 		// UPLOAD CLOB ok
 		for (int i=1; i<14; i++){
-		String path = "/Users/zhongwei/CloudStation/DB_BLOB_CLOB/actCLOB/act"+i+".txt";
+		String path = "E://DB/actCLOB/act"+i+".txt";
 		System.out.println(path);
 		int actID=i;
 		dao.updateCnt(path, actID);
@@ -252,7 +251,7 @@ public class Uploads_JDBC_WIN {
 		
 		// UPLOAD mem	ok
 		for (int i=1; i<13; i++){
-		String path = "/Users/zhongwei/CloudStation/DB_BLOB_CLOB/memBLOB/"+i+".jpg";
+		String path = "E://DB/memBLOB/"+i+".jpg";
 		System.out.println(path);
 		int memID=i;
 		dao.updateMemIMG(path, memID);
@@ -260,7 +259,7 @@ public class Uploads_JDBC_WIN {
 
 		// UPLOAD POI	ok
 		for (int i=1; i<=25; i++){
-		String path = "/Users/zhongwei/CloudStation/DB_BLOB_CLOB/POIBLOB/"+i+".jpg";
+		String path = "E://DB/POIBLOB/"+i+".jpg";
 		System.out.println(path);
 		int poiID=i;
 		dao.updatePOIIMG(path, poiID);

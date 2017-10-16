@@ -5,15 +5,10 @@ import java.util.List;
 
 public interface ActMem_Interface {
 
-    public List<ActMemVO> myActList1(Integer memID);
-    public List<ActMemVO> myActList2(Integer memID);
-    public List<ActMemVO> myActList5(Integer memID);
-
-    void update(ActMemVO actmVO);
-	void insert(ActMemVO actmVO);
-	void delete(ActMemVO actMemVO);
-	public ActMemVO getOne(Integer actID, Integer memID);
-	List<ActMemVO> myActListAll(Integer memID);
+	void insert(Integer actID,Integer memID,Integer stat);
+	void delete(Integer actID,Integer memID);
+	List<AmFaceVO> whosIn(Integer actID);
+	List<AmFaceVO> whosT(Integer actID);
 
 
 }

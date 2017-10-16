@@ -2,26 +2,28 @@ package com.act.act.model;
 
 import java.sql.Timestamp;
 import java.util.*;
-
-import com.act.act.model.Act_VO;
 import com.act.actMem.model.ActMemVO;
 import com.act.actPOI.model.ActPOIVO;
 
 
 public interface Act_interface {
-    public Integer insert(Act_VO actVO);
-    public void update(Act_VO actVO);
+    public Integer insert(ActVO actVO);
+    public void update(ActVO actVO);
 
-    public List<Act_VO> getAll();
-    public ActFiestaVO getOne(Integer actID);
-    
-    public Set<ActMemVO> whosin(Integer actID);
-    public Set<ActPOIVO> showthetags(Integer actID);
-        
-    public List<ActFiestaVO> getActByPOIID(Integer POIID);
-    public List<ActFiestaVO> getActByDate(Timestamp actDate);
-    public List<ActFiestaVO> getActByWks();
+    public List<ActFVO> getAll();
+    public ActFVO getOne(Integer actID);
+
+    public List<ActFVO> getActByPOIID(Integer POIID);
+    public List<ActFVO> getActByDate(Timestamp actDate);
+    public List<ActFVO> getActByWks();
 //    public List<ActVO> getActByDist(Integer Dist);
-    public List<ActFiestaVO> getActByClub(Integer clubID);
-	public List<ActFiestaVO> getAllFromNow();
+    public List<ActFVO> getActByClub(Integer clubID);
+	public List<ActFVO> getAllWithPast();
+	
+	public List<ActFVO> getMemActs(Integer memID, Integer stat);
+		public List<ActFVO> getMemActs12(Integer memID);
+		public List<ActFVO> getx2ByPOIID(Integer pOIID);
+		public List<ActFVO> getRDx2ByPOIID();
+		
+
 }

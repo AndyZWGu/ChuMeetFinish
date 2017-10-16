@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>ChuMeet</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -36,14 +36,14 @@
     <location>/ExceptionHandler</location>
   </error-page> -->
   <!-- **********共用filter********** -->
-  <filter>
+ <filter>
     <filter-name>EncodingFilter</filter-name>
     <filter-class>filters.EncodingFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>EncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
-  </filter-mapping>
+  </filter-mapping> 
   <!-- /////////////////////////////////////////////////////////////////////////// -->
    <!-- **********會員filter********** -->
   <filter>
@@ -63,6 +63,26 @@
     <filter-name>PrivFilter</filter-name>
     <url-pattern>/front-end/member/guestHome.do</url-pattern>
   </filter-mapping>
+  <!-- /////////////////////////////////////////////////////////////////////////// -->
+  <!-- **********網站資訊********** -->
+    <!-- 廣告 -->
+   <servlet>
+    <servlet-name>AdServlet</servlet-name>
+    <servlet-class>com.ad.controller.AdDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdServlet</servlet-name>
+    <url-pattern>/front-end/info/ad.do</url-pattern>
+  </servlet-mapping>  
+   <!-- 廣告圖片 -->
+   <servlet>
+    <servlet-name>AdImgServlet</servlet-name>
+    <servlet-class>com.ad.controller.AdImgServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdImgServlet</servlet-name>
+    <url-pattern>/front-end/info/ad/adImg.do</url-pattern>
+  </servlet-mapping>  
   <!-- /////////////////////////////////////////////////////////////////////////// -->
   <!-- **********會員登入登出註冊********** -->
   <!-- 會員驗證信箱 -->
@@ -494,4 +514,14 @@
     <servlet-name>ActcontrollerServlet</servlet-name>
     <url-pattern>/back-end/act.do</url-pattern>
   </servlet-mapping>
+  <!-- ********************ActMB Start************************* -->
+  	<servlet>
+		<servlet-name>ActMBServlet</servlet-name>
+		<servlet-class>com.act.act.controller.ActMBServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ActMBServlet</servlet-name>
+		<url-pattern>/front-end/act/actmb.do</url-pattern>
+	</servlet-mapping>
+<!-- ********************ActMB END************************* -->
 </web-app>

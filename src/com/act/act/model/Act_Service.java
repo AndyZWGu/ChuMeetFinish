@@ -3,65 +3,90 @@ package com.act.act.model;
 import java.sql.*;
 import java.util.*;
 
-import com.act.act.model.Act_VO;
 import com.act.actMem.model.ActMemVO;
 import com.act.actPOI.model.ActPOIVO;
 
-public class Act_Service implements Act_interface{
+public class Act_Service implements Act_interface {
 	private Act_interface dao;
-
-	public Act_Service() {
-		dao = new Act_DAO();
+		public Act_Service() {
+		dao = new Act_DAO_JNDI();
 	}
 
-	public List<Act_VO> getAll() {
+	public void update(ActVO actVO) {
+		dao.update(actVO);
+	};
+
+	@Override
+	public Integer insert(ActVO actVO) {
+		return dao.insert(actVO);
+	}
+	
+	
+	
+	public List<ActFVO> getx2ByPOIID(Integer POIID) {
+		return dao.getx2ByPOIID(POIID);
+	}
+	
+
+	@Override
+	public ActFVO getOne(Integer actID) {
+		return dao.getOne(actID);
+	}
+
+	@Override
+	public List<ActFVO> getMemActs(Integer memID, Integer stat) {
+		// TODO Auto-generated method stub
+		return dao.getMemActs(memID, stat);
+	}
+
+	@Override
+	public List<ActFVO> getMemActs12(Integer memID) {
+		// TODO Auto-generated method stub
+		return dao.getMemActs12(memID);
+	}
+
+	@Override
+	public List<ActFVO> getAll() {
+		// TODO Auto-generated method stub
 		return dao.getAll();
 	}
 
-	public List<ActFiestaVO> getAllFromNow() {
-		return dao.getAllFromNow();
+	@Override
+	public List<ActFVO> getActByPOIID(Integer POIID) {
+		// TODO Auto-generated method stub
+		return dao.getActByPOIID(POIID);
 	}
 
-	public Integer insert(Act_VO Act_VO) {
-		return dao.insert(Act_VO);
-	};
-
-	public void update(Act_VO Act_VO) {
-	};
-
-	public ActFiestaVO getOne(Integer actID) {
-		return dao.getOne(actID);
-	};
-
-	public List<ActFiestaVO> getActByDate(Timestamp actDate) {
+	@Override
+	public List<ActFVO> getActByDate(Timestamp actDate) {
+		// TODO Auto-generated method stub
 		return null;
-	};
+	}
 
-	public List<ActFiestaVO> getActByWks() {
+	@Override
+	public List<ActFVO> getActByWks() {
+		// TODO Auto-generated method stub
 		return dao.getActByWks();
-	};
-
-
-	public List<ActFiestaVO> getActByClub(Integer clubID) {
-		return null;
 	}
 
 	@Override
-	public Set<ActMemVO> whosin(Integer actID) {
+	public List<ActFVO> getActByClub(Integer clubID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Set<ActPOIVO> showthetags(Integer actID) {
+	public List<ActFVO> getAllWithPast() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ActFiestaVO> getActByPOIID(Integer POIID) {
+	public List<ActFVO> getRDx2ByPOIID() {
 		// TODO Auto-generated method stub
-		return null;
-	};
+		return dao.getRDx2ByPOIID();
+	}
+
+
 
 }

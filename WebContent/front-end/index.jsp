@@ -159,15 +159,15 @@
 			<div class="row service-box margin-bottom-40">
 				<div class="col-md-4 col-sm-4">
 					<div class="service-box-heading">
-						<em><i class="fa fa-check blue"></i></em> <span>會員動態&搜尋好友</span>
+						<em><i class="fa fa-check blue"></i></em> <span>會員動態&各種通訊</span>
 					</div>
-					<p>您可以找朋友,發布動態,建立您屬於您的社交圈喔!</p>
+					<p>您可以找朋友,發布動態,傳站內信,私人聊天室,建立您屬於您的社交圈!</p>
 				</div>
 				<div class="col-md-4 col-sm-4">
 					<div class="service-box-heading">
-						<em><i class="fa fa-location-arrow red"></i></em> <span>出遊地圖定位&打卡</span>
+						<em><i class="fa fa-location-arrow red"></i></em> <span>活動通知&出遊打卡</span>
 					</div>
-					<p>不管您是開揪還是參與者，好的地圖查詢與打卡簽到都是不可少的功能。</p>
+					<p>不管您是開揪還是參與者，好的活動通知與打卡簽到都是不可少的功能。</p>
 				</div>
 				<div class="col-md-4 col-sm-4">
 					<div class="service-box-heading">

@@ -13,17 +13,8 @@ public class POIVO {
 	private String POIAbr;
 	private Integer POIStatus;
 	private byte[] POIImg;
-	private Set<ActPOIVO> actPOIs = new HashSet<ActPOIVO>();
- 
 	
-	
-	public Set<ActPOIVO> getActPOIs() {
-		return actPOIs;
-	}
-	public void setActPOIs(Set<ActPOIVO> actPOIs) {
-		this.actPOIs = actPOIs;
-	}
-	
+
 	public Integer getPOIID() {
 		return POIID;
 	}
