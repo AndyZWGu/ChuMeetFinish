@@ -53,6 +53,7 @@ encoding//src/com/clubNews/model/ClubNewsVO.java=UTF-8
 encoding//src/com/gen/tool=UTF-8
 encoding//src/com/gen/tool/actCodeTrans.java=UTF-8
 encoding//src/com/gen/tool/actUpdate/actJSON.java=UTF-8
+encoding//src/com/gen/tool/actUpdate/actJSON_MAC.java=UTF-8
 encoding//src/com/gen/tool/bytesToImg.java=UTF-8
 encoding//src/com/member/controller/GuestHomeServlet.java=UTF-8
 encoding//src/com/member/controller/GuestNFServlet.java=UTF-8

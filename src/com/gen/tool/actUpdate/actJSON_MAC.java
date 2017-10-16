@@ -117,7 +117,7 @@ public class actJSON_MAC {
 									for (int i = 0; i < showCount; i++) {
 										String subtitle;
 										if (showCount > 1) {
-											subtitle = "锛嶇" + (i + 1) + "鍫达紙鍏�" + showCount + "鍫达級";
+											subtitle = "－第" + (i + 1) + "場（共" + showCount + "場）";
 										} else {
 											subtitle = "";
 										}
