@@ -11,7 +11,6 @@
 AdService ad = new AdService();
 List <AdVO> adList = (List<AdVO>)ad.getAll();
 pageContext.setAttribute("adList", adList);
-AdVO adVO = (AdVO)request.getAttribute("adVO");
 
 %>
 <!-- Head BEGIN -->
@@ -61,21 +60,22 @@ AdVO adVO = (AdVO)request.getAttribute("adVO");
             <ul class="list-group margin-bottom-25 sidebar-menu">
             <c:forEach items="${adList}" var="adList">
             	<li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i>${adList.adName}</a></li>
+            	
+            	<h1>${adList.adName}</h1>
+            <div class="content-page">
+              <p>${adVO.adContent}</p>
+              <h3>廣告加入時間:<fmt:formatDate value="${adVO.adDate}" pattern="yyyy/MM/dd hh:mm" /></h3>
+            </div>
+            
+            
             </c:forEach>
             </ul>
           </div>
           <!-- END SIDEBAR -->
 
           <!-- BEGIN CONTENT -->
-			          <div class="col-md-9 col-sm-9">
-            <h1>${adVO.adName}</h1>
-            <div class="content-page">
-              <img
-					src="<%=request.getContextPath()%>/front-end/info/ad/adImg.do?adID=1"
-					class="img-responsive" alt="">
-              <p>${adVO.adContent}</p>
-              <h3>廣告加入時間:<fmt:formatDate value="${adVO.adDate}" pattern="yyyy/MM/dd hh:mm" /></h3>
-            </div>
+			<div class="col-md-9 col-sm-9">
+            <img src="<%=request.getContextPath()%>/front-end/info/adImg.do?adID=1" class="img-responsive" alt="">
           </div>
           <!-- END CONTENT -->
         </div>

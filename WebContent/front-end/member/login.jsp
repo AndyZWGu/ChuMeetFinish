@@ -71,8 +71,8 @@
 					</form>
 					<div class="">
 						<input type="button" class="btn btn-sm" id="mem1" value="Master">
-						<input type="button" class="btn btn-sm" id="mem2" value="健生中醫">
-						<input type="button" class="btn btn-sm"  id="mem3" value="裕彰哥">
+						<input type="button" class="btn btn-sm" id="mem2" value="裕彰哥">
+						<input type="button" class="btn btn-sm"  id="mem3" value="健生中醫">
 						<input type="button" class="btn btn-sm"  id="mem4" value="路過的阿顧">
 						<input type="button" class="btn btn-sm"  id="mem5" value="小敏">
 						<input type="button" class="btn btn-sm"  id="mem6" value="猛男">

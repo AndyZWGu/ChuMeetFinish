@@ -66,14 +66,7 @@
   <!-- /////////////////////////////////////////////////////////////////////////// -->
   <!-- **********網站資訊********** -->
     <!-- 廣告 -->
-   <servlet>
-    <servlet-name>AdServlet</servlet-name>
-    <servlet-class>com.ad.controller.AdDetailServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdServlet</servlet-name>
-    <url-pattern>/front-end/info/ad.do</url-pattern>
-  </servlet-mapping>  
+
    <!-- 廣告圖片 -->
    <servlet>
     <servlet-name>AdImgServlet</servlet-name>
@@ -81,7 +74,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AdImgServlet</servlet-name>
-    <url-pattern>/front-end/info/ad/adImg.do</url-pattern>
+    <url-pattern>/front-end/info/adImg.do</url-pattern>
   </servlet-mapping>  
   <!-- /////////////////////////////////////////////////////////////////////////// -->
   <!-- **********會員登入登出註冊********** -->

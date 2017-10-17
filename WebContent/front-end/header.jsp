@@ -33,20 +33,26 @@
           </li>
           <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="<%=request.getContextPath()%>/act/act.html"> 活動廣場 </a>
             <ul class="dropdown-menu">
-              <li><a href="<%=request.getContextPath()%>/front-end/act/MemAllAct.jsp">我的活動</a></li>
               <li><a href="<%=request.getContextPath()%>/front-end/act/actList.jsp">揪咪推薦</a></li>
               <li><a href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryWks">周末特調</a></li>
+         <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="<%=request.getContextPath()%>/act/act.html"> 我的活動 </a>
+            <ul class="dropdown-menu">
+              <li><a href="<%=request.getContextPath()%>/front-end/act/act.do?action=getMyAct2">參加中</a></li>
+              <li><a href="<%=request.getContextPath()%>/front-end/act/act.do?action=getMyAct1">我舉辦的活動</a></li>
+              <li><a href="<%=request.getContextPath()%>/front-end/act/act.do?action=getMyAct5">追蹤中</a></li>
+            </ul>
+          </li>
             </ul>
           </li>
           <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="<%=request.getContextPath()%>/club/club_ALL.html"> 社團大廳 </a>
             <ul class="dropdown-menu">
-            <c:if test="${memVO!=null}">
+              <li><a href="<%=request.getContextPath()%>/front-end/club/ClubAll.jsp">社團推薦</a></li>
+                          <c:if test="${memVO!=null}">
               <li><a href="<%=request.getContextPath()%>/front-end/club/clubMem.do?memID=${memVO.memID}&action=listAllJoinClub">我的社團</a></li>
             </c:if>
             <c:if test="${memVO==null}">
               <li><a href="<%=request.getContextPath()%>/front-end/club/MemAllClub.jsp">我的社團</a></li>
             </c:if>
-              <li><a href="<%=request.getContextPath()%>/front-end/club/ClubAll.jsp">社團推薦</a></li>
             </ul>
 
           </li>

@@ -61,7 +61,10 @@ System.out.println("從社團list跳轉到單一社團頁面memID"+memID);
 				req.setAttribute("clubVO", clubVO); 		
 				req.setAttribute("clubMBlist", clubMBlist); 
 				req.setAttribute("clubNewslist", clubNewslist);
-				req.setAttribute("clubMemlist", clubMemlist); 	
+				req.setAttribute("clubMemlist", clubMemlist);
+				HttpSession session = req.getSession();
+				session.setAttribute("clubMemlist", clubMemlist);
+				session.setAttribute("clubVO", clubVO); 		
 				if(clubMemVO==null){
 					clubMemVO=clubMemSvc.getOneClubMem(0,0);// 社團成員資料庫建一個0,0的無值選項
 				};

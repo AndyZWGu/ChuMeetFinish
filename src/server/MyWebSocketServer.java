@@ -56,16 +56,49 @@ public class MyWebSocketServer {
 					String memID =session.getPathParameters().get("memID");
 					System.out.println("session擁有者"+memID);
 					System.out.println("拿訊息的人"+receiverID);
+					String roomName = chatMem.getUserName();
 					//收訊息人拿到訊息
-					if(memID.trim().equals(receiverID.trim())){
+					if(!"club".equals(roomName.trim())&&memID.trim().equals(receiverID.trim())){
 						session.getAsyncRemote().sendText(message);
+						System.out.println("私人Message received: " + message);
 					}
 					
 					
 					//receiverSession.getAsyncRemote().sendText(message);
 			}
 		}
-		System.out.println("Message received: " + message);
+		
+		
+		// 社團聊
+		for (Session session : connectedSessions) {
+			if (session.isOpen()){
+					System.out.println("當前session參數"+session.getPathParameters());
+					//System.out.println(session.getRequestParameterMap().get("receiver"));
+					Map<String,String> user = session.getPathParameters();
+					Gson gson = new Gson();
+					ChatMem chatMem = gson.fromJson(message, ChatMem.class);
+//					System.out.println(chatMem.getMessage());
+//					System.out.println(chatMem.getReceiverID());
+//					System.out.println(chatMem.getUserID());
+//					System.out.println(chatMem.getUserName());
+					String receiverID = chatMem.getReceiverID();
+					String userID = chatMem.getUserID();
+					String memID =session.getPathParameters().get("memID");
+					String userName =session.getPathParameters().get("userName");
+					System.out.println("session擁有者"+memID);
+					System.out.println("拿訊息的人"+receiverID);
+					String roomName = chatMem.getUserName();
+					//收訊息人拿到訊息
+					if("club".equals(roomName.trim())&&!(receiverID.trim().equals(memID))){
+						session.getAsyncRemote().sendText(message);
+						System.out.println("社團Message received: " + message);
+					}
+					
+					
+					//receiverSession.getAsyncRemote().sendText(message);
+			}
+			
+		}
 	}
 
 	@OnError

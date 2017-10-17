@@ -23,7 +23,7 @@ public class AnnDAO implements AnnDAO_interface{
 	private static final String INSERT_STMT = 
 			"INSERT INTO ann (annID,adminID,annName,annContent,annDate) VALUES (annID_seq.NEXTVAL, ?, ?, ?, ?)";
 		private static final String GET_ALL_STMT = 
-			"SELECT annID,adminID,annName,annContent,to_char(annDate,'yyyy-mm-dd hh:mm:ss')annDate FROM ann order by annID";
+			"SELECT annID,adminID,annName,annContent,to_char(annDate,'yyyy-mm-dd hh:mm:ss')annDate FROM ann order by annID Desc";
 		private static final String GET_ONE_STMT = 
 			"SELECT annID,adminID,annName,annContent,to_char(annDate,'yyyy-mm-dd hh:mm:ss')annDate FROM ann where annID = ?";
 		private static final String DELETE = 

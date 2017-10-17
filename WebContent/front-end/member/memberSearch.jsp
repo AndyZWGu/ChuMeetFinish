@@ -232,7 +232,7 @@
 											<p>${memSearch.memInt}</p>
 											<hr>
 											<p>登入次數:${memSearch.memLoginNum}</p>
-											<p>加入揪咪時間:${memSearch.memJoinDate}</p>
+											<p>加入揪咪時間:<fmt:formatDate value="${memSearch.memJoinDate}" pattern="yyyy/MM/dd hh:mm" /></p>
 									</h4>
 								</div>
 							</div>

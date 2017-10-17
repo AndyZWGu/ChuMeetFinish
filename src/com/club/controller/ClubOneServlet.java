@@ -129,8 +129,13 @@ System.out.println("導回首業拿到的clubID"+clubID);
 				req.setAttribute("clubVO", clubVO); 
 				req.setAttribute("clubMBlist", clubMBlist); 
 				req.setAttribute("clubNewslist", clubNewslist); 
-				req.setAttribute("clubMemlist", clubMemlist); 
+				req.setAttribute("clubMemlist", clubMemlist);
+				
 				req.setAttribute("clubMemVO", clubMemVO); // 單一社員資料
+				
+				HttpSession session = req.getSession();
+				session.setAttribute("clubMemlist", clubMemlist);
+				session.setAttribute("clubMemVO", clubMemVO);
 				//單一社團成員
 				if(clubMemVO==null){
 					clubMemVO=clubMemSvc.getOneClubMem(0,0);// 社團成員資料庫建一個0,0的無值選項

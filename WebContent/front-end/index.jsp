@@ -435,7 +435,7 @@
 		<!-- TABS -->
 		<div class=" col-xs-offset-1 col-xs-5 col-md-7 tab-style-1">
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#tab-1" data-toggle="tab">公告</a></li>
+				<li class="active"><a href="#tab-1" data-toggle="tab">最新公告</a></li>
 				<li><a href="#tab-2" data-toggle="tab">廣告優惠</a></li>
 			</ul>
 			<div class="tab-content">
@@ -466,7 +466,7 @@
 
 						</div>
 						<div class="col-md-12 col-sm-12 text-right">
-							<a class="btn btn-info" href="#">更多公告資訊</a>
+							<a class="btn btn-info" href="<%=request.getContextPath()%>/front-end/info/ann.jsp">更多公告資訊</a>
 						</div>
 					</div>
 				</div>

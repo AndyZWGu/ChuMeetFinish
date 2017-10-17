@@ -4,18 +4,24 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="javax.servlet.http.HttpSession"%>
 <%@ page import="com.member.model.*"%>
+<%@ page import="com.club.model.*"%>
+<%@ page import="com.clubMem.model.*"%>
 <%@ page import="java.util.*"%>
 <%
 	MemberVO memVO = (MemberVO) session.getAttribute("memVO");
-	//好友
-	List<FriendsVO> isFriList = (List<FriendsVO>)request.getAttribute("isFriList");
-	List<MemberVO> isFriMemNameList = (List<MemberVO>)request.getAttribute("isFriMemNameList");
-	if(request.getAttribute("guestID")!=null){
-		String guestID = (String) request.getAttribute("guestID");
+	ClubVO clubVO = (ClubVO) session.getAttribute("clubVO");
+	
+	//找社團會員
+	ClubMemService clubMemSvc = new ClubMemService();
+	List<ClubMemVO> clubMemlist = (List) session.getAttribute("clubMemlist");
+	pageContext.setAttribute("clubMemlist",clubMemlist);
+	// 找會員名字
+	MemberService memSvc=new MemberService();
+	List<MemberVO> mbMemNameList=new ArrayList<MemberVO>();
+	for(ClubMemVO list:clubMemlist){
+		mbMemNameList.add(memSvc.getOneMember(list.getMemID()));
 	}
-	if(request.getAttribute("guestName")!=null){
-		String guestName = (String) request.getAttribute("guestName");
-	}
+	request.setAttribute("mbMemNameList",mbMemNameList);
 %>
 
 <html>
@@ -42,12 +48,12 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.0/sweetalert2.min.css"
 	rel="stylesheet">
 	
-		<style>
+	<style>
 .mymessage {
     background-color:#b8f693;
 }
 </style>
-
+	
 </head>
 
 <body class="chumeet">
@@ -59,14 +65,14 @@
 	</c:import>
 	<div class="main">
 		<div class="container">
-			<div class="row profile">
-			<c:import url="/front-end/member/memberHomeSidebar.jsp">
-				</c:import>
-<div class="col-md-9">
+			<div class="row">
+<div class="col-md-12">
 	<div class="row profile-content blog-item">
 			<ul class="breadcrumb">
 			<li><a href="<%=request.getContextPath()%>/front-end/member/memberHome.do">首頁</a></li>
-			<li class="active">聊天室</li>
+			<li><a href="<%=request.getContextPath()%>/front-end/club/ClubAll.jsp">社團推薦</a></li>
+			<li>${clubVO.clubName}</li>
+			<li class="active">社團專屬聊天室</li>
 		</ul>
 	<hr class="colorgraph">
 <script src="https://use.fontawesome.com/45e03a14ce.js"></script>
@@ -74,7 +80,7 @@
    <div class="container">
       <div class="chat_container">
 		 
-         <div class="col-sm-6 message_section">
+         <div class="col-sm-9 message_section">
 		 <div class="row">
 		 <div class="new_message_head">
 		 <div class="pull-left"><button><i class="fa fa-plus-square-o" aria-hidden="true"></i>
@@ -101,18 +107,16 @@
 		 <ul class="list-unstyled" id="messageContent" onload="connect();" onunload="disconnect();">
 		 	<input id="userName" class="text-field" type="hidden" placeholder="使用者名稱" value="${memVO.memName}"/>
 		    <input id="userID" class="text-field" type="hidden" placeholder="使用者ID" value="${memVO.memID}"/>
-		    <input id="guestID" class="text-field" type="hidden" placeholder="對方ID" value="${guestID}"/>
-		    <input id="guestName" class="text-field" type="hidden" placeholder="對方名稱" value="${guestName}"/>
+		    <input id="guestID" class="text-field" type="hidden" placeholder="對方ID" value="${memVO.memID}"/>
+		    <input id="guestName" class="text-field" type="hidden" placeholder="對方名稱" value="1"/>
 		    <input type="button" id="connect"  class="hidden" value="連線" onclick="connect();"/>
 		    <input type="button" id="disconnect"  class="hidden" value="離線" onclick="disconnect();"/>		 
 		 
 		 </ul>
 		 </div><!--chat_area-->
           <div class="message_write">
-          <c:if test="${guestName!=null}">
     	 <textarea rows="5" class="form-control" rows="1" cols="50" placeholder="輸入訊息" id="message"></textarea>
     	 <a href="#" class="pull-right btn btn-success" id="sendMessage" onclick="sendMessage();">送出</a>
-    	</c:if>
 		 </div>
 		 </div>
          </div> <!--message_section-->
@@ -130,25 +134,20 @@
             <div class="dropdown all_conversation">
                <button class="dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <i class="fa fa-weixin" aria-hidden="true"></i>
-               好友列表
+               社團成員列表
                <span class="caret pull-right"></span>
                </button>
             </div>
-            <div class="member_list">
+                        <div class="member_list">
                <ul class="list-unstyled">
-               		<c:forEach items="${isFriList}" var="isFriList" varStatus="status">
+               		<c:forEach items="${clubMemlist}" var="clubMemlist" varStatus="status">
                   	<li class="left clearfix">
                      	<span class="chat-img pull-left">
-                     	<img src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${isFriList.friMem2}" alt="User Avatar" class="img-circle">
+                     	<img src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${clubMemlist.memID}" alt="User Avatar" class="img-circle">
                      	</span>
                      	<div class="chat-body clearfix">
                         	<div class="header_sec">
-                           <form action="<%=request.getContextPath()%>/front-end/member/memberChatRoomContent.do" method="post">
-            					<input type="submit" value="${isFriMemNameList[status.index].memName}" class="btn-link">
-								<input type="hidden" name="action" value="changeRoom">
-								<input type="hidden" name="guestID" value="${isFriList.friMem2}"> 
-            				</form>
-                           		
+                        	<p>${mbMemNameList[status.index].memName}<p id="${clubMemlist.memID}"></p></p>
                         	</div>                        	
                      	</div>
                   	</li>
@@ -207,6 +206,7 @@
 		
 		webSocket.onopen = function(event) {
 			firstMessage();
+			
 			updateStatus("WebSocket 成功連線");
 			document.getElementById('sendMessage').disabled = false;
 			document.getElementById('connect').disabled = true;
@@ -255,11 +255,17 @@
 			li.appendChild(div); 
 			messageContent.appendChild(li);
 			messageContent.scrollTop = messageContent.scrollHeight;
+			
+			//上線狀態
+			
 	        
 		};
 
 		webSocket.onclose = function(event) {
 			updateStatus("WebSocket 已離線");
+			//下線狀態
+			
+			
 		};
 			
 	}
@@ -296,7 +302,7 @@
 	        /* alert ("訊息請勿空白!"); */
 	        inputMessage.focus();	
 	    }else{
-	        var jsonObj = {"userID" : userID, "receiverID" : receiverID, "userName" : userName, "message" : message};
+	        var jsonObj = {"userID" : userID, "receiverID" : receiverID, "userName" : "club", "message" : message};
 	        webSocket.send(JSON.stringify(jsonObj));
 	        inputMessage.value = "";
 	        inputMessage.focus();
@@ -305,7 +311,7 @@
 	}
 	
 	function firstMessage(){
-		/* alert("加入私人聊天室"); */
+		alert("加入社團專屬聊天室");
 		var userID = inputUserID.value.trim();
 		var receiverID = inputReceiverID.value.trim();
 	    var userName = inputUserName.value.trim();
@@ -329,7 +335,7 @@
 	        alert ("訊息請勿空白!");
 	        inputMessage.focus();	
 	    }else{
-	        var jsonObj = {"userID" : userID, "receiverID" : receiverID, "userName" : userName, "message" : message};
+	        var jsonObj = {"userID" : userID, "receiverID" : receiverID, "userName" : "club", "message" : message};
 	        webSocket.send(JSON.stringify(jsonObj));
 	        inputMessage.value = "";
 	        inputMessage.focus();
@@ -361,7 +367,7 @@
 	        alert ("訊息請勿空白!");
 	        inputMessage.focus();	
 	    }else{
-	        var jsonObj = {"userID" : userID, "receiverID" : receiverID, "userName" : userName, "message" : message};
+	        var jsonObj = {"userID" : userID, "receiverID" : receiverID, "userName" : "club", "message" : message};
 	        webSocket.send(JSON.stringify(jsonObj));
 	        inputMessage.value = "";
 	        inputMessage.focus();
@@ -421,15 +427,16 @@
 		  /* alert("gg"); */
 		  connect();
 		  /* 加入聊天 */
-		  /* alert(document.getElementById("guestID").value); */
-		  if(document.getElementById("guestID").value.trim()!="")
-		  	myMessage("您已加入聊天室");
+		 myMessage("您已加入聊天室");
+			//上線狀態
+			
 		  /* firstMessage(); */
 		};
 		
 	window.onbeforeunload = function(){
 		quitMessage();
-		disconnect();
+		webSocket.close();
+		/* disconnect(); */
 	};
 		
 </script>
