@@ -63,6 +63,25 @@ public class ClubTicketService {
 		return dao.getAll();
 	}
 
+	public ClubTicketVO changeOneClubTkStatID(Integer clubTkID,Integer clubTkStatID) {
+		System.out.println("SERVICE0");	
+		ClubTicketVO clubTicketVO = new ClubTicketVO();
+//clubTkID,reporter,clubID,clubTkMsg,clubTkStatID,clubTkDate,clubTkCat
+		clubTicketVO.setClubTkID(clubTkID);
+		clubTicketVO.setClubTkStatID(clubTkStatID);
+		System.out.println("SERVICE1");	
+		dao.changeOneClubTkStatID(clubTicketVO);
+System.out.println("SERVICE2");
+		return dao.findByPrimaryKey(clubTkID);
+	}
+	
+	
+
+	
+	
+	
+
+	
 
 }
 	

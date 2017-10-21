@@ -12,7 +12,7 @@
 <!-- Google Fonts -->
 <link
 	href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900'
-	rel='stylesheet' type='text/css'>
+	rel='styzlesheet' type='text/css'>
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/HTML/BackEnd/assets/css/animate.css">

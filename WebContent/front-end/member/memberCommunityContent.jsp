@@ -80,7 +80,11 @@
     <tbody>
     <c:forEach items="${isFriList}" var="isFriList" varStatus="status">
       <tr onclick="window.document.location='<%=request.getContextPath()%>/front-end/member/guestHome.do?memID=${isFriList.friMem2}';">
-        <td>${isFriMemNameList[status.index].memName}</td>
+        <td>${isFriMemNameList[status.index].memName}
+        <img
+					src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${isFriList.friMem2}"
+					class="img-responsive thumbnail" alt="">
+					</td>
         <td><fmt:formatDate value="${isFriList.friendDate}" pattern="yyyy/MM/dd" /></td>
         <td>
             <form action="<%=request.getContextPath()%>/front-end/member/memberCommunity.do">
@@ -91,7 +95,6 @@
         	</form>        	
         </td>
         <td>
-        	<a href="<%=request.getContextPath()%>/front-end/member/guestHome.do?memID=${isFriList.friMem2}" class="btn btn-success">開啟聊天</a>
         	<a href="<%=request.getContextPath()%>/front-end/member/guestHome.do?memID=${isFriList.friMem2}" class="btn btn-primary">前往好友小屋</a>
         </td>
       </tr>

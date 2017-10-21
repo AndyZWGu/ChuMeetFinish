@@ -141,9 +141,9 @@ session.setAttribute("page", "admin");
 
 								<c:forEach var="admPrilVO" items="${list}">
 									<tr>
-										<td>${admPrilTypeSvc.getOneAdmPrilType(admPrilVO.admPrilID).admPrilTypeName}</td>
+										<td><h6>${admPrilTypeSvc.getOneAdmPrilType(admPrilVO.admPrilID).admPrilTypeName}</h6></td>
 
-										<td>${adminSvc.getOneAdmin(admPrilVO.adminID).adminName}</td>
+										<td><h6>${adminSvc.getOneAdmin(admPrilVO.adminID).adminName}</h6></td>
 
 									</tr>
 								</c:forEach>

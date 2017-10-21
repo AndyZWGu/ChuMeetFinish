@@ -20,7 +20,7 @@
 	
 	poiRDx2lists=actS.getRDx2ByPOIID();
 	
-	if (request.getParameter("action") == null) {
+	if (request.getParameter("action") == null || (request.getParameter("action") .equals("ori"))) {
 		pageName = "ori";
 	} else {
 		pageName = request.getParameter("action");
@@ -48,8 +48,16 @@
 	MemberVO memVO = (MemberVO)session.getAttribute("memVO");
 %>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@ -->
-<c:set var="memVO.memID" value="${memVO.memID}" scope="session" />
-<%Integer memNow=memVO.getMemID();%>
+<%
+Integer memNow=999999;
+
+if(memVO!=null){
+	memNow=memVO.getMemID();
+	}	
+
+
+%>
+
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@ -->
 
 
@@ -64,7 +72,16 @@
 <link
 	href="<%=request.getContextPath()%>/front-end/act/act_assets/css/actMain.css"
 	rel="stylesheet">
+<style>
+.btn-is-disabled {
+  pointer-events: none;
+  /* Disables the button completely. Better than just cursor: default; */
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+}
 
+
+</style>
 </head>
 <!-- Head END -->
 
@@ -123,16 +140,16 @@
 								<h1>揪咪推薦</h1>
 								<h1></h1>
 							</div>
-							<div class="col-md-4 padding-top-10">
-								<div class="actFilter pull-right">
-									<select>
-										<option>依距離排列</option>
-										<option selected>依時間排列</option>
-										<!-- 						<option>依人數排列</option> -->
-										<!-- 						<option>依熱門度排列</option> -->
-									</select>
-								</div>
-							</div>
+<!-- 							<div class="col-md-4 padding-top-10"> -->
+<!-- 								<div class="actFilter pull-right"> -->
+<!-- 									<select> -->
+<!-- 										<option>依距離排列</option> -->
+<!-- 										<option selected>依時間排列</option> -->
+<!-- 																<option>依人數排列</option> -->
+<!-- 																<option>依熱門度排列</option> -->
+<!-- 									</select> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
 						</div>
 
 						<div class="content-page">
@@ -144,18 +161,18 @@
 									<ul class="tabbable actl-tabbable">
 										<li><a href="<%=request.getContextPath()%>/front-end/act/actStart2.jsp" data-toggle="tab">開個揪揪團</a></li>
 										<li data-toggle="collapse" data-target="#myAct"
-											class="collapsed"><a href="#tab_1" data-toggle="tab">我的活動
+											class="collapsed"><a <%if (memNow>9999){ %>class="btn-is-disabled" <%} %>href="#tab_1" data-toggle="tab">我的活動
 												<span class="arrow collapsed"></span>
-										</a></li>
+										</a></li> 
 										<ul class="sub-menu <%
 												System.out.println("left Menu Start");
 										if(!pageName.equals("getMyAct2") && !pageName.equals("getMyAct5") && !pageName.equals("getMyAct1")){ %> collapse<%} %>" id="myAct">
 											<li <%if(pageName.equals("getMyAct2")){%> class="active" <%} %>>
-											<a href="<%=request.getContextPath()%>/front-end/act/act.do?action=getMyAct2">參加中</a></li>
+											<a <%if (memNow>9999){ %>class="btn-is-disabled" <%} %> href="<%=request.getContextPath()%>/front-end/act/act.do?action=getMyAct2">參加中</a></li>
 											<li <%if(pageName.equals("getMyAct1")){%> class="active" <%} %>>
-											<a href="<%=request.getContextPath()%>/front-end/act/act.do?action=getMyAct1">我舉辦的活動</a></li>
+											<a <%if (memNow>9999){ %>class="btn-is-disabled" <%}%> href="<%=request.getContextPath()%>/front-end/act/act.do?action=getMyAct1">我舉辦的活動</a></li>
 											<li <%if(pageName.equals("getMyAct5")){%> class="active" <%} %>>
-											<a href="<%=request.getContextPath()%>/front-end/act/act.do?action=getMyAct5">追蹤中</a></li>
+											<a <%if (memNow>9999){ %>class="btn-is-disabled" <%}%> href="<%=request.getContextPath()%>/front-end/act/act.do?action=getMyAct5">追蹤中</a></li>
 											<!-- 								<li><a href="#">邀請中</a></li> -->
 											<!-- 								<li><a href="#">社團活動</a></li> -->
 											<!-- 								<li><a href="#">好友活動</a></li> -->
@@ -187,8 +204,10 @@
 												href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryPOI&poiID=7">講座</a></li>
 											<li <%if (poiIDPage == 8) {%> class="active" <%}%>><a
 												href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryPOI&poiID=8">電影</a></li>
+											<li <%if (poiIDPage == 8) {%> class="active" <%}%>><a
+												href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryPOI&poiID=24">寵物</a></li>
 											<li><a
-												href="<%=request.getContextPath()%>/front-end/act/actPOIs.jsp">其他</a></li>
+												href="<%=request.getContextPath()%>/front-end/act/actPOI.jsp">其他</a></li>
 												<%												System.out.println("left Menu END"); %>
 										</ul>
 										<!-- 					<li><a href="#tab_2" data-toggle="tab">揪揪地圖</a></li> -->
@@ -229,12 +248,16 @@
 								</div>
 								<!-- BEGIN LEFT SIDEBAR -->
 								<div class="col-md-9 col-sm-9 event-posts margin-bottom-50">
-
+	<%@ include file="pages/page1.file" %> 
 
 									<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 									<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-<%												System.out.println("ACT FOR Start"); %>
-									<%for (ActFVO afVO:list){ 
+<%								System.out.println("ACT FOR Start"); %>
+<%								System.out.println("pageIndex="+pageIndex+", rowsPerPage="+rowsPerPage); %>
+									<%for (int i=pageIndex; (i<=pageIndex+rowsPerPage-1) && i<list.size() ;i++){
+										System.out.println("list.size()="+list.size());
+										System.out.println("i="+i);
+										ActFVO afVO=list.get(i); 
 										System.out.println("FOR Start");
 									%>
 										<!--      1st card          -->
@@ -247,39 +270,6 @@
 														class="img-responsive img-rounded"
 														src="<%=request.getContextPath()%>/img/showIMG?colName=actIMG&table=ACT&pk=actID&imgFrom=<%=afVO.getActVO().getActID()%>">
 													</a>
-													<%
-														ActMemService ams = new ActMemService();
-														Set<Integer> whosInNo=new HashSet<Integer>();
-														Set<Integer> whosTNo=new HashSet<Integer>();
-														// System.out.println("actID="+(Integer.parseInt(request.getParameter("actID"))));
-														List<AmFaceVO> whosinList = new ArrayList<AmFaceVO> ();
-														List<AmFaceVO> whosTList= new ArrayList<AmFaceVO> ();
-														if(request.getParameter("actID")!=null){
-															whosinList=ams.whosIn(Integer.parseInt(request.getParameter("actID")));
-															whosTList=ams.whosT(Integer.parseInt(request.getParameter("actID")));
-														};
-														pageContext.setAttribute("whosinList", whosinList);
-														if(whosinList!=null){
-															for (AmFaceVO amf:whosinList){
-																System.out.println("add "+amf.getMemID());
-																whosInNo.add(amf.getMemID());
-															}
-														}
-														pageContext.setAttribute("whosTList", whosTList);
-														if(whosTList!=null){
-															for (AmFaceVO amf:whosTList){
-																whosTNo.add(amf.getMemID());
-															}
-														}
-														
-														%>
-													<%if(whosInNo.contains(memNow)){%>
-														<span class="label label-info"><i
-															class="fa fa-star" aria-hidden="true"></i> 已參加</span>
-													<%} else if(whosTNo.contains(memNow)){ %>
-														<span class="label label-info"><i
-															class="fa fa-star" aria-hidden="true"></i> 已追蹤</span>
-													<%} %>
 
 												</div>
 												<div class="col-md-8 col-sm-8">
@@ -337,6 +327,12 @@
 										<!--  end of 1st card         -->
 										<hr class="event-post-sep">
 <%} %>
+
+<%-- <span>rowNumber=<%=rowNumber%></span> --%>
+<%-- <span>pageNumber=<%=pageNumber%></span> --%>
+<%-- <span>pageName=<%=pageName%></span> --%>
+<%-- <span>pageStat=<%=pageName.equals("ori")%></span> --%>
+<%@ include file="pages/page2.file" %>
 
 								</div>
 

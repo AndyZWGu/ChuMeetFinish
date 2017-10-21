@@ -28,7 +28,8 @@ public class ClubTicketJDBCDAO implements ClubTicketDAO_interface{
 	private static final String UPDATE = 
 		"UPDATE clubTicket set reporter=?,clubID=?,clubTkMsg=?,clubTkStatID=?,clubTkDate=?,clubTkCat=?  where clubTkID = ?";
 
-	
+	private static final String UPDATE2 = 
+			"UPDATE clubTicket set reporter=?,clubID=?,clubTkMsg=?,clubTkStatID=?,clubTkDate=?,clubTkCat=?  where clubTkID = ?";
 	
 	@Override
 	public void insert(ClubTicketVO clubTicketVO) {
@@ -360,6 +361,12 @@ public class ClubTicketJDBCDAO implements ClubTicketDAO_interface{
 			System.out.print(aClubTicket.getClubTkCat() + ",");
 			System.out.println();
 		}
+	}
+
+	@Override
+	public void changeOneClubTkStatID(ClubTicketVO clubTicketVO) {
+		// TODO Auto-generated method stub
+		
 	}
 	}
 	

@@ -64,7 +64,7 @@
       <div class="wd80">
 
       
-<form  action="<%=request.getContextPath()%>/front-end/act/act.do?action=insert" method="post" enctype="multipart/form-data">
+<form  action="<%=request.getContextPath()%>/front-end/act/act.do?action=insert" method="get" enctype="multipart/form-data">
    <input type="hidden" value="insert" name="action">
 <!--     		start of row-->
 <!--     		======================actName HERE-->

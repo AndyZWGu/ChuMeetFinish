@@ -60,11 +60,14 @@ public class RegisterServlet extends HttpServlet {
 				System.out.println(memBD);
 				Integer memGender = Integer.parseInt(req.getParameter("memGender"));
 				String memInt = req.getParameter("memInt");
+				String adminNameReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,10}$";
 				if (memEmail == null || (memEmail.trim()).length() == 0) {
 					errorMsgs.add("請輸入會員帳號");
 				}
 				if (memPw == null || (memPw.trim()).length() == 0) {
 					errorMsgs.add("請輸入會員密碼");
+				} else if (!memPw.trim().matches(adminNameReg)) {
+					errorMsgs.add("密碼:只能是中、英文字母、數字和_ , 且長度必需在2到10之間");
 				}
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req.getRequestDispatcher("register.jsp");

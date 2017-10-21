@@ -101,7 +101,7 @@ session.setAttribute("page", "admin");
 				<ul class="nav nav-tabs">
 					<li class="active"><a data-toggle="tab" href="#actMain">管理員資料</a>
 					</li>
-					<li><a data-toggle="tab" href="#actTemp">管理員權限</a></li>
+					
 				</ul>
 				<form class="navbar-form navbar-right" role="search">
 					<div class="form-group  is-empty">
@@ -141,7 +141,7 @@ session.setAttribute("page", "admin");
 										<td><input type="TEXT" name="adminMail" size="45"
 											value="<%=adminVO.getAdminMail()%>"></td>
 						
-										<td><input type="TEXT" name="adminPW" size="45"
+										<td><input type="password" name="adminPW" size="45"
 											value="<%=adminVO.getAdminPW()%>"></td>
 									
 										<td><input type="TEXT" name="adminEmail" size="45"

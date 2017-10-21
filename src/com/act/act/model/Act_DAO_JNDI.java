@@ -34,7 +34,7 @@ private static final String UPDATE = "update act set values"
 
 private static final String GET_ONE="select * from act where actID=? order by actStartDate";
 private static final String GET_ALL="select * from act where systimestamp < actStartDate order by actStartDate";
-private static final String GET_BY_WKS="SELECT * FROM act WHERE  systimestamp < actStartDate AND MOD(TO_CHAR(sysdate, 'J'), 7) + 1 IN (6, 7)";
+private static final String GET_BY_WKS="SELECT * FROM act WHERE  systimestamp < actStartDate AND MOD(TO_CHAR(sysdate, 'J'), 7) + 1 IN (6, 7) AND ACTSTATUS=1";
 private static final String GET_BY_MEM ="select "
 		+ "act.actType as actType, act.actid as actID, "
 		+ "act.actName as actName, act.memid as memID, "
@@ -47,7 +47,7 @@ private static final String GET_BY_MEM ="select "
 		+ "act.actWebSales as actWebSales, act.actSourceWebName as actSourceWebName, "
 		+ "act.actOnSale as actOnSale, act.actPrice as actPrice "
 		+ "from ACT join actmem on act.actID=actmem.actID join member on actmem.memid=member.memID "
-		+ "where actmem.memid=? and actmem.actmemStatus=? AND systimestamp <= actStartDate  order by act.actStartDate";
+		+ "where actmem.memid=? and actmem.actmemStatus=? AND systimestamp <= act.actStartDate  AND act.ACTSTATUS=1 order by act.actStartDate ";
 
 private static final String GET_BY_MEM_PAST ="select "
 		+ "act.actType as actType, act.actid as actID, "
@@ -61,9 +61,9 @@ private static final String GET_BY_MEM_PAST ="select "
 		+ "act.actWebSales as actWebSales, act.actSourceWebName as actSourceWebName, "
 		+ "act.actOnSale as actOnSale, act.actPrice as actPrice "
 		+ "from ACT join actmem on act.actID=actmem.actID join member on actmem.memid=member.memID "
-		+ "where actmem.memid=? and actmem.actmemStatus=? AND systimestamp > actStartDate  order by act.actStartDate";
+		+ "where actmem.memid=? and actmem.actmemStatus=? AND systimestamp > actStartDate  order by act.actStartDate AND act.ACTSTATUS=1";
 
-private static final String GET_BY_MEM12="select * from actmem join act on actmem.actid=act.actid where actmem.memID=?  where actmem.actmemStatus in (1,2) order by actStartDate";
+private static final String GET_BY_MEM12="select * from actmem join act on actmem.actid=act.actid where actmem.memID=? and act.actStartDate>systimestamp and actmem.actmemStatus in (1,2) and act.ACTSTATUS=1 order by actStartDate";
 private static final String GET_BY_POI="select "
 		+ "act.actType as actType, act.actid as actID, "
 		+ "act.actName as actName, act.memid as memID, "
@@ -76,7 +76,7 @@ private static final String GET_BY_POI="select "
 		+ "act.actWebSales as actWebSales, act.actSourceWebName as actSourceWebName, "
 		+ "act.actOnSale as actOnSale, act.actPrice as actPrice "
 		+" from ACT join actpoi on act.actid=actpoi.actid "
-		+ "where actpoi.poiid=? AND systimestamp < actStartDate ";
+		+ "where actpoi.poiid=? AND systimestamp < actStartDate  AND act.ACTSTATUS=1";
 
 private static final String GETx2_BY_POI="select "
 		+ "act.actType as actType, act.actid as actID, "
@@ -89,11 +89,11 @@ private static final String GETx2_BY_POI="select "
 		+ "act.actShowUnit as actShowUnit, act.actMasterUnit as actMasterUnit, "
 		+ "act.actWebSales as actWebSales, act.actSourceWebName as actSourceWebName, "
 		+ "act.actOnSale as actOnSale, act.actPrice as actPrice "
-		+" from ACT join actpoi on act.actid=actpoi.actid where actpoi.poiid=? AND  systimestamp < actStartDate ";
+		+" from ACT join actpoi on act.actid=actpoi.actid where actpoi.poiid=? AND  systimestamp < actStartDate  AND act.ACTSTATUS=1";
 
-private static final String GET_BY_DATE="select * from act where to_char(actStartDate,'yyyy/mm/dd') in to_char(?,'yyyy/mm/dd')";
+private static final String GET_BY_DATE="select * from act where to_char(actStartDate,'yyyy/mm/dd') in to_char(?,'yyyy/mm/dd') AND act.ACTSTATUS=1";
 private static final String GET_ACT_BY_CLUBID="select * from act join actclub on act.actID=actClub.actID join club on actClub.ClubID=Club.ClubID"
-+"where actClub (actClub.ClubID!=0) AND actClub.ClubID=?";
++"where actClub (actClub.ClubID!=0) AND actClub.ClubID=? AND act.ACTSTATUS=1";
 
 
 	@Override
@@ -120,6 +120,8 @@ private static final String GET_ACT_BY_CLUBID="select * from act join actclub on
 			pstmt.setInt(9, actVO.getActPost());
 			pstmt.setString(10, actVO.getActLocName());
 			pstmt.setString(11, actVO.getActAdr());
+
+			
 
 			pstmt.executeUpdate();
 			System.out.println("insert act DAO END...");
@@ -900,7 +902,6 @@ private static final String GET_ACT_BY_CLUBID="select * from act join actclub on
 	@Override
 	public List<ActFVO> getMemActs12(Integer memID) {
 			List<ActFVO> list = new ArrayList<ActFVO>();
-			ActVO ActVO = null;
 
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -908,12 +909,11 @@ private static final String GET_ACT_BY_CLUBID="select * from act join actclub on
 
 			try {
 				con = ds.getConnection();
-				pstmt = con.prepareStatement("GET_BY_MEM12");
+				pstmt = con.prepareStatement(GET_BY_MEM12);
 				pstmt.setInt(1, memID);
-				pstmt.setInt(2, 1);
-				
+				System.out.println("memID="+memID);
 				rs = pstmt.executeQuery();
-
+				System.out.println("endQuery");
 				while (rs.next()) {
 
 					ActVO actvo= new ActVO();

@@ -46,6 +46,7 @@
 	<!--主頁面要修改的都在這下面-->
 	<c:if test="${memVO!=null}">
 		<div class="main">
+		<div class="content">
 			<div class="container">
 				<ul class="breadcrumb">
 					<li><a
@@ -65,7 +66,7 @@
 
 							<c:forEach var="clubVO" items="${list}" begin="<%=pageIndex%>"
 								end="<%=pageIndex+rowsPerPage-1%>" varStatus="status">
-								<c:if test="${status.index!=0}">
+								<c:if test="${status.index!=0&&clubVO.clubStatus!=0}">
 									<div class="col-sm-6 col-md-4 column">
 										<div class="mix-inner">
 
@@ -141,6 +142,7 @@
 
 
 				</div>
+			</div>
 			</div>
 		</div>
 	</c:if>

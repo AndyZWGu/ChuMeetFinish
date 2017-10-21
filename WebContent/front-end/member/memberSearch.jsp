@@ -54,8 +54,7 @@
 					<h1>搜尋會員</h1>
 				</div>
 				<!-- BEGIN CONTENT -->
-				<div class="col-md-4 wow fadeInLeft" data-wow-delay=".05s"
-					data-wow-duration=".1">
+				<div class="col-md-4" >
 					<div class="content-page">
 						<form
 							action="<%=request.getContextPath()%>/front-end/member/memberSearch.do"
@@ -202,14 +201,13 @@
 						<c:forEach items="${memSearchList}" var="memSearch"
 							begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>"
 							varStatus="status">
-
+						<c:if test="${memSearch.memID!=0 && memSearch.memID != memVO.memID}">
 							<div class="search-result-item col-sm-12 col-md-12">
 								<div class="col-sm-3 col-md-3">
 									<img
 										src="<%=request.getContextPath()%>/front-end/member/memberSearch/avatar.do?memID=${memSearch.memID}"
 										class="thumbnail" alt="Cinque Terre" width="100" height="100">
 											<c:if test="${memSearch.memID == memVO.memID && memVO!=null}">
-											<h1>本人!!</h1>
 												<a class="btn btn-primary" href="<%=request.getContextPath()%>/front-end/member/memberHome.do">我家的小屋</a>
 											</c:if>
 											<c:if test="${memSearch.memID != memVO.memID && memVO!=null}">
@@ -236,6 +234,7 @@
 									</h4>
 								</div>
 							</div>
+							</c:if>
 						</c:forEach>
 					</div>
 				</div>

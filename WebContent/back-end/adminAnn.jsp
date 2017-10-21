@@ -111,24 +111,14 @@
 				<div class="container">
 
 					<ul class="nav nav-tabs">
-						<li><a  href="info.jsp">網站資訊</a></li>
-						<li class="active"><a  href="adminAnn.jsp">公告管理</a>
-						</li>
+						<li class="active"><a  href="adminAnn.jsp">公告管理</a></li>
+						<li><a  href="adminInfo.jsp">網站資訊</a></li>
+					
 						<li><a  href="adminAd.jsp">廣告管理</a></li>
 					</ul>
 					<div class="tab-content">
 
-						<form class="navbar-form navbar-right" role="search">
-							<div class="form-group  is-empty">
-								<input type="text" class="form-control" placeholder="搜索">
-								<span class="material-input"></span>
-							</div>
-							<button type="submit"
-								class="btn btn-white btn-round btn-just-icon">
-								<i class="material-icons">search</i>
-								<div class="ripple-container"></div>
-							</button>
-						</form>
+<br><br>
 						<div class="tab-content">
 							<div class="tab-pane fade in active" id="actMain">
 
@@ -143,18 +133,40 @@
 											<th class="col-md-1">公告內容</th>
 												<th></th>	
 											<th class="col-md-1">公告日期</th>
-												<th></th>	
+	
 											<th class="col-md-1">狀態</th>
 										</tr>
 									</thead>
 									<tbody>
+									
+								<FORM  METHOD="post"
+										ACTION="<%=request.getContextPath()%>/back-end/ann.do">
+											<tr>
+												<td>自增流水號</td>
+												<td>${errorMsgs.adminID}</td>
+
+												<td><input type="TEXT" name="annName" size="25"/></td>
+												<td>${errorMsgs.annName}</td>
+
+												<td><textarea rows="4" cols="50" name="annContent" >
+
+														</textarea></td>
+												<td>${errorMsgs.annContent}</td>
+												<td>當前時間</td>
+												<td>	
+												<input type="hidden" name="adminID" value="${adminVO.adminID}">
+												<input type="hidden" name="action" value="insert">
+												<input type="submit" value="新增" class="btn btn-sm btn-success">
+												</td>
+											</tr>
+										</FORM>
 										<c:forEach var="annVO" items="${list}">
 											<tr>
 												<td>${annVO.adminID}</td>
 												<td></td>
 												<td>${annVO.annName}</td>
 												<td></td>
-												<td>${annVO.annContent}</td>
+												<td><h6>${annVO.annContent}</h6></td>
 												<td></td>
 												<td>${annVO.annDate}</td>
 
@@ -184,25 +196,7 @@
 										</c:forEach>
 										
 										
-										<FORM  METHOD="post"
-										ACTION="<%=request.getContextPath()%>/back-end/ann.do">
-											<tr>
-												<td>自增流水號</td>
-												<td>${errorMsgs.adminID}</td>
 
-												<td><input type="TEXT" name="annName" size="25"/></td>
-												<td>${errorMsgs.annName}</td>
-
-												<td><input type="TEXT" name="annContent" size="25"/></td>
-												<td>${errorMsgs.annContent}</td>
-												<td>當前時間</td>
-												<td>	
-												<input type="hidden" name="adminID" value="${adminVO.adminID}">
-												<input type="hidden" name="action" value="insert">
-												<input type="submit" value="新增" class="btn btn-success">
-												</td>
-											</tr>
-										</FORM>
 												
 											
 									</tbody>

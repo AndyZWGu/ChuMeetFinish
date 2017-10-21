@@ -2,11 +2,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.admin.model.*"%>
+<%@ page import="com.member.model.*"%>
 <%@ page import="com.admPril.model.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
 <% session.setAttribute("page", "member"); %>
+<%
+	MemberService memberSvc = new MemberService();
+	List<MemberVO> list = memberSvc.getAll();
+	pageContext.setAttribute("list", list);
+%>
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="<%=request.getContextPath()%>/HTML/BackEnd/assets/img/apple-icon.png" />
@@ -81,7 +87,11 @@
             <!--/////////////////////////////////////////////////////////////////////////////-->
             <div class="container">
 
-           
+             <ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#actMain">會員管理</a>
+					</li>
+					
+				</ul>
                
                 <div class="tab-content">
                     <div id="home" class="tab-pane fade in active">
@@ -99,37 +109,63 @@
                      
                         <table class="table table-hove">
                             <thead>
+                            
                                 <tr class="bg-danger">
-                                    <th class="col-md-1">姓名</th>
+                                    <th class="col-md-1">編號</th>
+                                    <th class="col-md-1">名稱</th>
                                     <th class="col-md-1">性別</th>
                                     <th class="col-md-1">信箱</th>
-                                    <th class="col-md-1">生日</th>
-                                    <th class="col-md-1">日期</th>
-                                    <th class="col-md-1">狀態</th>
+                                    <th class="col-md-1">大頭貼</th>
+                                    <th class="col-md-1">電話</th>
+                                    <th class="col-md-1">變更狀態</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            <c:forEach var="memberVO" items="${list}">
+                            <c:if test="${memberVO.memID!=0}">
                                 <tr>
-                                    <td>徐敏道</td>
-                                    <td>女</td>
-                                    <td>@gmail.com</td>
-                                    <td>2017.09.10</td>
-                                    <td>2017.09.10</td>
-                                    <td>
-                                        <span class="btn-group">
-                        <button type="button" class="btn btn-danger btn-sm statbtn" name="actStatID" value="5">停權</button>                     
-                               </span>
-                                        <button class="btn btn-sm btn-warning">暫停</button>
-                                    </td>
+                                    <td>${memberVO.memID}</td>
+                                    <td>${memberVO.memName}</td>
+                                    
+                                    <c:if test="${memberVO.memGender==1}">
+                                    <td>男生</td>
+                                    </c:if>
+                                    <c:if test="${memberVO.memGender==0}">
+                                    <td>女生</td>
+                                    </c:if>
+                                    
+                                    
+                                    <td>${memberVO.memEmail}</td>
+                                    <td><img style="width:100px; margin-left:auto; margin-right:auto;"
+														class="img-responsive img-rounded"
+														src="<%=request.getContextPath()%>/img/showIMG?colName=memAvatar&table=Member&pk=memID&imgFrom=${memberVO.memID}"></td></td>
+                                    <td>${memberVO.memPhone}</td>
+									<td>
+										
+										<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/member/member.do">
+											<input type="submit" value="修改" class="btn btn-sm btn btn-info">
+											<input type="hidden"name="action" value="toUpdateMem"> 
+											<input type="hidden"name="memID" value="${memberVO.memID}"> 						
+										</FORM>
+										
+										<c:if test="${memberVO.memStatus==1}">
+										<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/member/member.do">
+											<input type="submit" value="暫停"class="btn btn-sm btn-warning">
+											<input type="hidden"name="action" value="pause"> 
+											<input type="hidden"name="memID" value="${memberVO.memID}"> 
+										</FORM>
+										</c:if>
+										<c:if test="${memberVO.memStatus==0}">
+										<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/member/member.do">
+											<input type="submit" value="恢復"class="btn btn-sm btn-success">
+											<input type="hidden"name="action" value="ok"> 
+											<input type="hidden"name="memID" value="${memberVO.memID}"> 
+										</FORM>
+										</c:if>
+									</td>
                                 </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                </c:if>
+                                </c:forEach>
                             </tbody>
                         </table>
                         

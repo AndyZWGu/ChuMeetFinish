@@ -12,7 +12,7 @@ import com.member.controller.JdbcUtil_CompositeQuery_Member;
 
 public class MemNFDAO implements MemNFDAO_interface {
 
-	// 一個應用程式中,針對一個資料庫 ,共用一個DataSource即可
+	// 涓�鍊嬫噳鐢ㄧ▼寮忎腑,閲濆皪涓�鍊嬭硣鏂欏韩 ,鍏辩敤涓�鍊婦ataSource鍗冲彲
 	private static DataSource ds = null;
 	static {
 		try {
@@ -344,7 +344,7 @@ public class MemNFDAO implements MemNFDAO_interface {
 		          + JdbcUtil_CompositeQuery_Member.get_WhereCondition("MemNF", map)
 		          ;
 			pstmt = con.prepareStatement(finalSQL);
-			System.out.println("〈〈finalSQL(by DAO) = "+finalSQL);
+			System.out.println("銆堛�坒inalSQL(by DAO) = "+finalSQL);
 			rs = pstmt.executeQuery();
 	
 			while (rs.next()) {

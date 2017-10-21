@@ -107,7 +107,8 @@ public class GuestHomeServlet extends HttpServlet {
 		String action = req.getParameter("action");
 		if ("comment".equals(action)) {
 			System.out.println("留言");
-			String comment = req.getParameter("comment");
+			String comment2 = req.getParameter("comment");
+			String comment = new String(comment2.getBytes("ISO-8859-1"),"UTF-8");
 			// String comment2 = new
 			// String(comment.getBytes("ISO-8859-1"),"UTF-8");
 			if (comment == null || (comment.trim()).length() == 0) {
@@ -151,9 +152,11 @@ public class GuestHomeServlet extends HttpServlet {
 		}
 		if ("addMail".equals(action)) {
 			System.out.println("加寄一封站內信！！！");
-			String mailTitle = req.getParameter("mailTitle");
+			String mailTitle2 = req.getParameter("mailTitle");
+			String mailTitle = new String(mailTitle2.getBytes("ISO-8859-1"),"UTF-8");
 			//System.out.println("郵件標題"+mailTitle);
-			String mailContent = req.getParameter("mailContent");
+			String mailContent2 = req.getParameter("mailContent");
+			String mailContent = new String(mailContent2.getBytes("ISO-8859-1"),"UTF-8");
 			//System.out.println("郵件內容"+mailContent);
 			MemMailService mailSvc = new MemMailService();
 			String receiver = req.getParameter("receiver");

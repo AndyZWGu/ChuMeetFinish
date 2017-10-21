@@ -83,16 +83,12 @@ session.setAttribute("page", "club");
 			<!--/////////////////////////////////////////////////////////////////////////////-->
 			<!--/////////////////////////////////////////////////////////////////////////////-->
 			<div class="container">
-				<form class="navbar-form navbar-right" role="search">
-					<div class="form-group  is-empty">
-						<input type="text" class="form-control" placeholder="搜索">
-						<span class="material-input"></span>
-					</div>
-					<button type="submit" class="btn btn-white btn-round btn-just-icon">
-						<i class="material-icons">search</i>
-						<div class="ripple-container"></div>
-					</button>
-				</form>
+			<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#actMain">活動管理</a>
+					</li>
+					
+				</ul>
+			
 				<div class="tab-content">
 					<div class="tab-pane fade in active">
 						
@@ -100,38 +96,56 @@ session.setAttribute("page", "club");
 							<thead>
 								<tr class="bg-danger">
 									<th class="col-md-1">編號</th>
-									<th class="col-md-1">名稱</th>
-									<th class="col-md-1">內容</th>
-									<th class="col-md-1">日期</th>
-									<th class="col-md-1">狀態</th>
+									<th class="col-md-1">社團名稱</th>
+									<th class="col-md-6">介紹內容</th>
+									<th class="col-md-2">建立日期</th>
+									<th class="col-md-1">社團狀態</th>
+									<th class="col-md-1">變更狀態</th>
 								</tr>
 							</thead>
 							<tbody>
 
 								<c:forEach var="clubVO" items="${list}">
-								<c:if test="${clubVO.clubStatus==1}">
+								<c:if test="${clubVO.clubID!=0}">
 									<tr>
-										<td>${clubVO.clubmemID}</td>
-										<td>${clubVO.clubName}</td>
-										<td>${clubVO.clubContent}</td>
+										<td>${clubVO.clubID}</td>
+										<td><H6>${clubVO.clubName}</H6></td>
+										<td><H6>${clubVO.clubContent}</H6></td>
 										<td>${clubVO.clubStartDate}</td>
-									<td>
-										<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/club.do">
-											<input type="submit" value="暫停"class="btn btn-sm btn-warning">
-											<input type="hidden"name="action" value="ststus1"> 
-											
-										</FORM>
-										<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/club.do">
-											<input type="submit" value="恢復"class="btn btn-sm btn-success">
-											<input type="hidden"name="action" value="ststus1"> 
 										
+										<c:if test="${clubVO.clubStatus==0}">
+										<td>停權</td>
+										</c:if>
+										<c:if test="${clubVO.clubStatus==1}">
+										<td>正常</td>
+										</c:if>
+										
+										
+										
+									<td>
+										
+<%-- 										<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/club/club.do"> --%>
+<!-- 											<input type="submit" value="修改" class="btn btn-sm btn btn-info"> -->
+<!-- 											<input type="hidden"name="action" value="toUpdateClub">  -->
+<%-- 											<input type="hidden"name="clubID" value="${clubVO.clubID}"> 						 --%>
+<!-- 										</FORM> -->
+										
+										<c:if test="${clubVO.clubStatus==1}">
+										<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/club/club.do">
+											<input type="submit" value="停權"class="btn btn-sm btn-warning">
+											<input type="hidden"name="action" value="pause"> 
+											<input type="hidden"name="clubID" value="${clubVO.clubID}"> 
 										</FORM>
-										<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/club.do">
-											<input type="submit" value="禁止"class="btn btn-danger btn-sm statbtn"> 
-											<input type="hidden" name="action" value="ststus1">
-									
+										</c:if>
+										<c:if test="${clubVO.clubStatus==0}">
+										<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/club/club.do">
+											<input type="submit" value="恢復"class="btn btn-sm btn-success">
+											<input type="hidden"name="action" value="ok"> 
+											<input type="hidden"name="clubID" value="${clubVO.clubID}"> 
 										</FORM>
-										</td>
+										</c:if>
+									</td>
+										
 									</tr>
 									</c:if>
 								</c:forEach>
@@ -183,4 +197,4 @@ session.setAttribute("page", "club");
 	});
 </script>
 
-</html>ml>
+</html>

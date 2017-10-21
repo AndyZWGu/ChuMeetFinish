@@ -53,6 +53,7 @@ public class ActServlet extends HttpServlet {
 			HttpSession session = req.getSession();
 			MemberVO memVO =	 (MemberVO)session.getAttribute("memVO");
 			Integer memID = memVO.getMemID(); //@@@@@@@@@@@@@@@@@@@@@@@@
+
 			Timestamp actCreateDate = tools.strToTimestamp(req.getParameter("actCreateDate"));
 			String actName = req.getParameter("actName");
 			Integer actStatus = 1;
@@ -69,17 +70,18 @@ public class ActServlet extends HttpServlet {
 
 			String actContent = req.getParameter("actContent");
 			Integer actIsHot = 0;
-			Double actLong = Double.parseDouble(req.getParameter("lng"));
-			Double actLat = Double.parseDouble(req.getParameter("lat"));
-			Integer actPost = Integer.parseInt(req.getParameter("postal_code"));
-			String actLocName = req.getParameter("name");
-			String actAdr = req.getParameter("formatted_address");
+			Double actLong = Double.parseDouble(req.getParameter("actLong"));
+			Double actLat = Double.parseDouble(req.getParameter("actLat"));
+			Integer actPost = Integer.parseInt(req.getParameter("actPost"));
+			String actLocName = req.getParameter("actLocName");
+			String actAdr = req.getParameter("actAdr");
 
-			 String[] values=req.getParameter("pois").split(", ");
-			 List<String> hs = new ArrayList<String>(Arrays.asList(values));
+			 String[] values=req.getParameter("actPOIs").split(", ");
+
 				 Set<Integer> poiincome= new HashSet<>();
-				 for(int i=0; i<hs.size();i++) {
-				 poiincome.add(Integer.parseInt(hs.get(i)));
+				 for(String str: values) {
+				 poiincome.add(actCodeTrans.strtoPOI(str));
+				 System.out.println(str);
 			 }
 
 			// 為了回傳用的
@@ -115,10 +117,13 @@ public class ActServlet extends HttpServlet {
 			ActMemService ams=new ActMemService();
 			ams.insert(actIDNo, memID, 1);
 			ActPOIService apS=new ActPOIService();
-				for(Integer POIID: poiincome){
-					apS.insert(actIDNo, POIID);
-					System.out.println("POI insert: "+POIID+" done.");
-				}
+			System.out.println(poiincome);
+
+					
+					apS.insert(actIDNo, 23);
+					apS.insert(actIDNo, 24);
+					
+	
 			
 			/***************************
 			 * 3.新增完成,準備轉交(Send the Success view)
@@ -143,7 +148,99 @@ public class ActServlet extends HttpServlet {
 			// failureView.forward(req, res);
 			// }
 		}
+		
+		
+		
+		
+		if ("update".equals(action)) { // 來自actStart.jsp的請求
 
+			Map<String, String> errorMsgs = new LinkedHashMap<String, String>();
+			req.setAttribute("errorMsgs", errorMsgs);
+
+//			 try {
+			System.out.println(" Retrieving Update Data...");
+			Integer actID = Integer.parseInt(req.getParameter("actID"));
+			byte[] actIMG = null;
+			String actName = req.getParameter("actName");
+			Timestamp actStartDate = tools.strHTML5ToTimestamp(req.getParameter("actStartDate").replace("T", " "));
+			Timestamp actEndDate = tools.strHTML5ToTimestamp(req.getParameter("actEndDate").replace("T", " "));
+			InputStream in = req.getPart("actIMG").getInputStream();
+			actIMG = new byte[in.available()];
+			in.read(actIMG);
+			in.close();
+
+			String actContent = req.getParameter("actContent");
+			Double actLong = Double.parseDouble(req.getParameter("lng"));
+			Double actLat = Double.parseDouble(req.getParameter("lat"));
+			Integer actPost = Integer.parseInt(req.getParameter("postal_code"));
+
+			String actLocName = req.getParameter("name");
+			String actAdr = req.getParameter("formatted_address");
+			
+			 String[] values=req.getParameterValues("pois");
+			 List<String> hs = new ArrayList<String>(Arrays.asList(values));
+				 Set<Integer> poiincome= new HashSet<>();
+				 for(int i=0; i<hs.size();i++) {
+				 poiincome.add(Integer.parseInt(hs.get(i)));
+			 }
+
+			// 為了回傳用的
+			System.out.println("Create VO...");
+			ActVO actVO = new ActVO();
+
+			actVO.setActName(actName);
+			actVO.setActStartDate(actStartDate);
+			actVO.setActEndDate(actEndDate);
+			actVO.setActIMG(actIMG);
+			actVO.setActContent(actContent);
+			actVO.setActLong(actLong);
+			actVO.setActLat(actLat);
+			actVO.setActPost(actPost);
+			actVO.setActLocName(actLocName);
+			actVO.setActAdr(actAdr);
+			actVO.setActID(actID);
+
+			// Send the use back to the form, if there were errors
+			if (!errorMsgs.isEmpty()) {
+				RequestDispatcher failureView = req.getRequestDispatcher("/act/actUpdate.jsp");
+				failureView.forward(req, res);
+				return;
+			}
+			System.out.println("update act start...");
+			/*************************** 2.開始新增資料 ***************************************/
+
+			Act_Service actSrv = new Act_Service();
+			actSrv.update(actVO);
+			System.out.println("act Update done");
+			System.out.println("Start POI Update...");
+			ActPOIService apS=new ActPOIService();
+			apS.delete(actID);
+			for(Integer POIID: poiincome){
+					apS.insert(actID, POIID);
+					System.out.println("POI update: "+POIID+" done.");
+				}
+			System.out.println("POI Update done");
+			/***************************
+			 * 3.新增完成,準備轉交(Send the Success view)
+			 ***********/
+			ActFVO actfVO=actSrv.getOne(actID);
+			System.out.println("Start sending");
+			req.setAttribute("actfVO", actfVO); // 資料庫取出的act_VO物件,存入req
+			req.setAttribute("memNow", 1); // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+			String url = "/front-end/act/actItem.jsp?actID="+actID;
+			System.out.println(url);
+			RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllEmp.jsp
+			successView.forward(req, res);
+
+			/*************************** 其他可能的錯誤處理 **********************************/
+			// } catch (Exception e) {
+			// errorMsgs.put("Exception",e.getMessage());
+			// RequestDispatcher failureView = req
+			// .getRequestDispatcher("/emp/addEmp.jsp");
+			// failureView.forward(req, res);
+			// }
+		}
 		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		// @@@@@@@@@@@@@@@@ ShowOne @@@@@@@@@@@@@@@@@@@@@
 		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -163,7 +260,6 @@ public class ActServlet extends HttpServlet {
 			/*************************** 2.開始查詢資料 *****************************************/
 			Act_Service actSvc = new Act_Service();
 			ActFVO actfVO = actSvc.getOne(actID);
-			Integer memNow = 1; // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 			if (actfVO == null) {
 				errorMsgs.add("查無資料");
 			}
@@ -178,8 +274,6 @@ public class ActServlet extends HttpServlet {
 			 * 3.查詢完成,準備轉交(Send the Success view)
 			 *************/
 			req.setAttribute("actfVO", actfVO); // 資料庫取出的act_VO物件,存入req
-			req.setAttribute("memNow", memNow); // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
 			String url = "/front-end/act/actItem.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url);
 			successView.forward(req, res);
@@ -192,7 +286,47 @@ public class ActServlet extends HttpServlet {
 			// failureView.forward(req, res);
 			// }
 		}
+		
+		if ("ori".equals(action)) { // 來自actListjsp的請求
+			List<String> errorMsgs = new LinkedList<String>();
+			// Store this set in the request scope, in case we need to
+			// send the ErrorPage view.
+			req.setAttribute("errorMsgs", errorMsgs);
 
+			// try {
+			/***************************
+			 * 1.接收請求參數 - 輸入格式的錯誤處理
+			 **********************/
+			/*************************** 2.開始查詢資料 *****************************************/
+			List<ActFVO> list=new ArrayList<ActFVO> (); 
+			Act_Service actSvc = new Act_Service();
+			list = actSvc.getAll();
+			if (list == null) {
+				errorMsgs.add("查無資料");
+			}
+			// Send the use back to the form, if there were errors
+			if (!errorMsgs.isEmpty()) {
+				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/act/actListopps.jsp");
+				failureView.forward(req, res);
+				return;// 程式中斷
+			}
+
+			/***************************
+			 * 3.查詢完成,準備轉交(Send the Success view)
+			 *************/
+			req.setAttribute("list", list); // 資料庫取出的act_VO物件,存入req
+			String url = "/front-end/act/actList.jsp";
+			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交listOneEmp.jsp
+			successView.forward(req, res);
+
+			/*************************** 其他可能的錯誤處理 *************************************/
+			// } catch (Exception e) {
+			// errorMsgs.add("無法取得資料:" + e.getMessage());
+			// RequestDispatcher failureView = req
+			// .getRequestDispatcher("/error2");
+			// failureView.forward(req, res);
+			// }
+		}
 		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 		// @@@@@@@@@@@@@@@
@@ -212,8 +346,6 @@ public class ActServlet extends HttpServlet {
 			/*************************** 2.開始查詢資料 *****************************************/
 			Act_Service act_Svc = new Act_Service();
 			List<ActFVO> list = act_Svc.getActByWks();
-
-			Integer memNow = 1; // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 			if (list.size() == 0) {
 				errorMsgs.add("查無資料");
 			}

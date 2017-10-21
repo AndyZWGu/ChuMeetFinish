@@ -151,11 +151,11 @@
 								<c:forEach var="adminVO" items="${list}">
 									<tr>
 
-										<td>${adminVO.adminID}</td>
-										<td>${adminVO.adminName}</td>
-										<td>${adminVO.adminMail}</td>
-										<td>${adminVO.adminEmail}</td>
-										<td>${adminVO.adminDate}</td>
+										<td><h6>${adminVO.adminID}</h6></td>
+										<td><h6>${adminVO.adminName}</h6></td>
+										<td><h6>${adminVO.adminMail}</h6></td>
+										<td><h6>${adminVO.adminEmail}</h6></td>
+										<td><h6>${adminVO.adminDate}</h6></td>
 
 
 										<td>

@@ -33,8 +33,9 @@ public class ClubTicketDAO implements ClubTicketDAO_interface{
 			"DELETE FROM clubTicket where memTkID = ?";
 		private static final String UPDATE = 
 			"UPDATE clubTicket set reporter=?,clubID=?,clubTkMsg=?,clubTkStatID=?,clubTkDate=?,clubTkCat=?  where clubTkID = ?";
+		private static final String Change_One_ClubTkStatID= 
+				"UPDATE clubTicket set clubTkStatID=? where clubTkID = ?";
 
-		
 		
 		@Override
 		public void insert(ClubTicketVO clubTicketVO) {
@@ -194,7 +195,7 @@ public class ClubTicketDAO implements ClubTicketDAO_interface{
 					clubTicketVO.setClubTkStatID(rs.getInt("clubTkStatID"));
 					clubTicketVO.setClubTkDate(rs.getTimestamp("clubTkDate"));
 					clubTicketVO.setClubTkCat(rs.getInt("clubTkCat"));
-					
+					System.out.println("A");
 				}
 
 				// Handle any driver errors
@@ -225,6 +226,7 @@ public class ClubTicketDAO implements ClubTicketDAO_interface{
 					}
 				}
 			}
+			System.out.println("B");
 			return clubTicketVO;
 		}
 		@Override
@@ -287,6 +289,61 @@ public class ClubTicketDAO implements ClubTicketDAO_interface{
 			}
 			return list;
 		}
+		
+		@Override
+		public void changeOneClubTkStatID(ClubTicketVO clubTicketVO) {
+			// TODO Auto-generated method stub
+			Connection con = null;
+			PreparedStatement pstmt = null;
+
+			try {
+
+				con = ds.getConnection();
+				pstmt = con.prepareStatement(Change_One_ClubTkStatID);
+				
+		
+				pstmt.setInt(1, clubTicketVO.getClubTkStatID());
+				pstmt.setInt(2, clubTicketVO.getClubTkID());
+		//		"UPDATE memTicket set reporter=?,memTkMsg=?,memTkStatID=?,memTkDate=?,memTkCat=?  where memTkID = 
+
+				pstmt.executeUpdate();
+
+				// Handle any driver errors
+			} catch (SQLException se) {
+				throw new RuntimeException("A database error occured. "
+						+ se.getMessage());
+				// Clean up JDBC resources
+			} finally {
+				if (pstmt != null) {
+					try {
+						pstmt.close();
+					} catch (SQLException se) {
+						se.printStackTrace(System.err);
+					}
+				}
+				if (con != null) {
+					try {
+						con.close();
+					} catch (Exception e) {
+						e.printStackTrace(System.err);
+					}
+				}
+			}
+
+		}
+		
+		
+
+		
+		
+
+		
+		
+		
+		
+		
+		
+		
 
 		public static void main(String[] args) {
 

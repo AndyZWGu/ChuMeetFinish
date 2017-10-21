@@ -21,7 +21,7 @@
     box-sizing: border-box;
     width: 90%;
     margin: 0 5% 5%;
-	height: 750px;
+
 
     /*stacking fieldsets above each other*/
     position: relative;
@@ -165,7 +165,7 @@
 
 
 /* inputsp */
-
+/* 
 .btn span.glyphicon {    			
 	opacity: 0;				
 }
@@ -201,7 +201,7 @@
   border-radius: 0;
   border-width:0;
   border-color: white;
-/*  border-bottom: 1px solid #c6c6c6;*/
+
 }
 .inputSp input.is :focus,
 .inputSp textarea.is :focus {
@@ -219,9 +219,11 @@
 .inputSp textarea:focus ~ .bar:before {
   background-color: #FCB0B3;
   width: 100%;
-/*	@@@@@@@@@@@@@@@@@@@@@@@@@@*/
-}
+	
 
+}
+*/
+/*
 .inputSp input[type="password"] {
   letter-spacing: 0.3em;
 }
@@ -256,3 +258,4 @@
   left: 0%;
 }
 
+*/

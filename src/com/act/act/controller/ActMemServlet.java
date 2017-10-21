@@ -80,7 +80,7 @@ public class ActMemServlet extends HttpServlet{
 					ActMemService actmSvc = new ActMemService();
 					actmSvc.delete(actID, memID);
 					actmSvc.insert(actID, memID, 2);
-					
+					res.sendRedirect(req.getContextPath()+"/front-end/act/act.do?actID="+actID+"&action=showOne");
 					/***************************其他可能的錯誤處理************************************/
 				} catch (Exception e) {
 					errorMsgs.add("修改資料取出時失敗:"+e.getMessage());

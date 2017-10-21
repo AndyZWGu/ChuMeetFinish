@@ -97,12 +97,13 @@
 
 					
 					<ul class="nav nav-tabs">
-						 <li >
-                        <a href="info.jsp">網站資訊</a>
-                    </li>
-                    <li>
+					<li>
                         <a href="adminAnn.jsp">公告管理</a>
                     </li>
+						 <li >
+                        <a href="adminInfo.jsp">網站資訊</a>
+                    </li>
+                    
                     <li class="active">
                         <a  href="adminAd.jsp">廣告管理</a>
                     </li>

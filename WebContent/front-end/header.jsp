@@ -7,14 +7,15 @@
  <% 
  	MemberVO memVO = (MemberVO) session.getAttribute("memVO");
  %>
+
  <!-- BEGIN HEADER -->
   <div class="header">
     <div class="container">
-      <a class="site-logo" href="<%=request.getContextPath()%>/front-end/index.jsp"><img src="<%=request.getContextPath()%>/HTML/assets/LOGO/ChuMeet_NavLogo_25.png" alt="ChuMeet"></a>
+      <a class="site-logo" href="<%=request.getContextPath()%>/front-end/index.jsp">
+      <img src="<%=request.getContextPath()%>/HTML/assets/LOGO/ChuMeet_NavLogo_25.png" alt="ChuMeet">     
+      </a>
 
       <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
-
-
       <!-- BEGIN NAVIGATION -->
       <div class="header-navigation pull-right font-transform-inherit">
         <ul>
@@ -35,6 +36,7 @@
             <ul class="dropdown-menu">
               <li><a href="<%=request.getContextPath()%>/front-end/act/actList.jsp">揪咪推薦</a></li>
               <li><a href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryWks">周末特調</a></li>
+ 	    <c:if test="${memVO!=null}">   
          <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="<%=request.getContextPath()%>/act/act.html"> 我的活動 </a>
             <ul class="dropdown-menu">
               <li><a href="<%=request.getContextPath()%>/front-end/act/act.do?action=getMyAct2">參加中</a></li>
@@ -42,12 +44,13 @@
               <li><a href="<%=request.getContextPath()%>/front-end/act/act.do?action=getMyAct5">追蹤中</a></li>
             </ul>
           </li>
+          </c:if>
             </ul>
           </li>
           <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="<%=request.getContextPath()%>/club/club_ALL.html"> 社團大廳 </a>
             <ul class="dropdown-menu">
               <li><a href="<%=request.getContextPath()%>/front-end/club/ClubAll.jsp">社團推薦</a></li>
-                          <c:if test="${memVO!=null}">
+            <c:if test="${memVO!=null}">
               <li><a href="<%=request.getContextPath()%>/front-end/club/clubMem.do?memID=${memVO.memID}&action=listAllJoinClub">我的社團</a></li>
             </c:if>
             <c:if test="${memVO==null}">

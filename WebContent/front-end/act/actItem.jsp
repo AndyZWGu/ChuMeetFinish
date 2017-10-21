@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="com.act.actMem.model.*"%>
 <%@ page import="com.act.model.*"%>
-<%@ page import="com.act.controller.*"%>
+<%-- <%@ page import="com.act.controller.*"%> --%>
 <%@ page import="com.act.actMem.model.AmFaceVO"%>
 <%@ page import="com.act.act.model.*"%>
 <%@ page import="com.act.actPOI.model.*"%>
@@ -12,10 +12,9 @@
 <%@ page import="java.util.*"%>
 
 <%
-
 	ActFVO actfVO = (ActFVO) request.getAttribute("actfVO");
-	System.out.println("getActID="+actfVO.getActVO().getActID());
-	System.out.println("req ActID="+request.getAttribute("actID"));
+// 	System.out.println("getActID=" + actfVO.getActVO().getActID());
+// 	System.out.println("req ActID=" + request.getAttribute("actID"));
 	Act_Service actS = new Act_Service();
 	ActPOIService apS = new ActPOIService();
 	List<Integer> pois = apS.getPOIByActID(actfVO.getActVO().getActID());
@@ -48,14 +47,16 @@
 			whosTNo.add(amf.getMemID());
 		}
 	}
-	MemberVO memVO = (MemberVO)session.getAttribute("memVO");
-	Integer memNow = (Integer)memVO.getMemID();
-	System.out.println(whosInNo.contains(memNow));
+	MemberVO memVO = (MemberVO) session.getAttribute("memVO");
 %>
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@ -->
+<%
+	Integer memNow = 999999;
 
-<c:set var="holder" value="${actfVO.actVO.memID}" />
-<c:set var="memNow" value="${memVO.memID}" scope="session" />
-
+	if (memVO != null) {
+		memNow = memVO.getMemID();
+	}
+%>
 
 
 <html>
@@ -132,13 +133,11 @@
 												<th>我的狀態</th>
 												<td><span> <%
  	if (memNow == actfVO.getActVO().getMemID()) {
- %>
-														活動發起人 <%
+ %> 活動發起人 <%
  	} else if (whosInNo.contains(memNow)) {
  %>已參加 <%
  	} else if (whosTNo.contains(memNow)) {
- %>已追蹤
-														<%
+ %>已追蹤 <%
  	} else {
  %>尚未參加<%
  	}
@@ -157,7 +156,15 @@
 											<tr>
 												<th class="text-danger topstat"><i class="fa fa-user"></i></th>
 												<th>活動發起人</th>
-												<td><span>${transman.whoRU(actfVO.actVO.memID)}</span></td>
+												<td>
+											<c:if test="${memVO.memID!=actfVO.actVO.memID}">
+											<a href="<%=request.getContextPath()%>/front-end/member/guestHome.do?memID=${actfVO.actVO.memID}"> 
+											</c:if>
+											<c:if test="${memVO.memID==actfVO.actVO.memID}">
+											<a href="<%=request.getContextPath()%>/front-end/member/memberHome.do"> 
+											</c:if>
+												
+												<span>${transman.whoRU(actfVO.actVO.memID)}</span></a></td>
 											</tr>
 											<tr>
 												<th class="text-danger topstat"><i
@@ -331,10 +338,10 @@
 										<%
 											} else {
 										%>
-										<button type="submit" name="action" value="insert2"
+										<button type="submit" name="action" value="insert2" <%if (memNow>9999){%> disabled<%} %>
 											<c:if test="${toolman.nowTimestamp() > actfVO.actVO.actEndDate}"> disabled </c:if>
 											class="btn btn-block btn-primary">我要參加</button>
-										<button type="submit" name="action" value="insert5"
+										<button type="submit" name="action" value="insert5" <%if (memNow>9999){%> disabled<%} %>
 											<c:if test="${toolman.nowTimestamp() > actfVO.actVO.actEndDate}"> disabled </c:if>
 											class="btn btn-block btn-success">追蹤活動</button>
 										<%
@@ -384,7 +391,15 @@
 									<h2>已參加的成員</h2>
 									<ul class="list-unstyled">
 										<c:forEach var="whosinList" items="${whosinList}">
-											<li><a href="#"> <img
+											<li>
+											<c:if test="${memVO.memID!=whosinList.memID}">
+											<a href="<%=request.getContextPath()%>/front-end/member/guestHome.do?memID=${whosinList.memID}"> 
+											</c:if>
+											<c:if test="${memVO.memID==whosinList.memID}">
+											<a href="<%=request.getContextPath()%>/front-end/member/memberHome.do"> 
+											</c:if>
+											
+											<img
 													src="<%=request.getContextPath()%>/img/showIMG?colName=MEMAVATAR&table=MEMBER&pk=MEMID&imgFrom=${whosinList.memID}"
 													title="${whosinList.memName}">
 											</a></li>

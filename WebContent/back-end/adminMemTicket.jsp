@@ -98,11 +98,10 @@ session.setAttribute("page", "ticket");
 
             
                 <ul class="nav nav-tabs">
-                    <li class="active"><a  href="adminMemTicket.jsp">會員檢舉管理</a></li>
+                   <li><a  href="actClubTicket.jsp">活動/社團檢舉管理</a></li>
                     <li><a  href="adminmbImgTicket.jsp">留言/相片檢舉管理</a></li>
                     <li><a  href="adminAlbumTicket.jsp">相簿檢舉管理</a></li>
-                    <li><a  href="actClubTicket.jsp">活動/社團檢舉管理</a></li>
-                                      
+                     <li class="active"><a  href="adminMemTicket.jsp">會員檢舉管理</a></li>                  
                 </ul>
 
 

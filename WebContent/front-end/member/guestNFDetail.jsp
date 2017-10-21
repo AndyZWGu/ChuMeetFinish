@@ -35,6 +35,12 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.0/sweetalert2.min.css"
 	rel="stylesheet">
 
+<style>
+.img{
+	height:30px;
+	width:30px;
+}
+</style>
 </head>
 <!-- Head END -->
 
@@ -192,8 +198,8 @@
 								<div class="col-md-12 col-sm-12 memNFDetail">
 									<h1>${memNFVO.nfTitle}</h1>
 									<img
-										src="<%=request.getContextPath()%>/front-end/member/memberNFSearch/avatar.do?memID=${memVO.memID}"
-										alt="" class="thumbnail">
+										src="<%=request.getContextPath()%>/front-end/member/memberNFSearch/avatar.do?memID=${guestVO.memID}&memNFID=${memNFVO.memNFID}"
+										alt="" class="img thumbnail">
 									<p>${memNFVO.nfContent}</p>
 									<h4 class="text-right">
 										<fmt:formatDate value="${memNFVO.nfDate}"

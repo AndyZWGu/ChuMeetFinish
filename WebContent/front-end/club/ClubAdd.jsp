@@ -73,7 +73,7 @@ ClubVO clubVO = (ClubVO) request.getAttribute("clubVO");
                                 <div class="form-group col-md-12 col-sm-12">
                                     <label for="clubName">社團名稱*</label>
                                     <input type="text" class="form-control input-sm" id="clubName" name="clubName" 
-                                    value="${clubVO.ClubName}" /> 
+                                    value="${clubVO.clubName}" /> 
                                 </div>
                                 
                                 

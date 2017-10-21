@@ -91,12 +91,14 @@ session.setAttribute("page", "info");
             <div class="container">
              
                 <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a href="info.jsp">網站資訊</a>
-                    </li>
                     <li>
+                    
                         <a href="adminAnn.jsp">公告管理</a>
                     </li>
+                      <li class="active">
+                        <a href="adminInfo.jsp">網站資訊</a>
+                    </li>
+                  
                     <li>
                         <a  href="adminAd.jsp">廣告管理</a>
                     </li>
@@ -128,7 +130,7 @@ session.setAttribute("page", "info");
                                     <tr>
                                     <td>${infoVO.infoID}</td>
                                     <td>${infoVO.infoName}</td>
-                                    <td>${infoVO.infoContent}</td>  
+                                    <td><h6>${infoVO.infoContent}</h6></td>  
                                     </tr>                                
                                     </c:forEach>
                                 </tbody>

@@ -5,6 +5,7 @@
 <%@ page import="javax.servlet.http.HttpSession"%>
 <%@ page import="com.member.model.*"%>
 <%@ page import="com.club.model.*"%>
+<%@ page import="com.act.act.model.*"%>
 <%@ page import="com.clubMem.model.*"%>
 <%@ page import="java.util.*"%>
 <%
@@ -83,17 +84,17 @@
 							<div
 								class="col-md-4 user-pad text-center glyphicon glyphicon-star-empty">
 								<h5>跟隨</h5>
-								<h4>9,527</h4>
+								<h4>0</h4>
 							</div>
 							<div
 								class="col-md-4 user-pad text-center glyphicon glyphicon-user">
 								<h5>好友數</h5>
-								<h4>486</h4>
+								<h4>0</h4>
 							</div>
 							<div
 								class="col-md-4 user-pad text-center glyphicon glyphicon-thumbs-up">
 								<h5>評分數</h5>
-								<h4>6,666</h4>
+								<h4>0</h4>
 							</div>
 						</div>
 						<!-- END SIDEBAR USER TITLE -->
@@ -116,6 +117,14 @@
 										<h3>會員專屬</h3>
 										<div class="form-group">
 											<a
+												href="<%=request.getContextPath()%>/front-end/member/guestHome.do?memID=${guestVO.memID}">
+												<input type="button"
+												class="form-control btn btn-primary btn-sm" value="回首頁"
+												></input>
+											</a>
+										</div>
+										<div class="form-group">
+											<a
 												href="<%=request.getContextPath()%>/front-end/member/guestNF.do?memID=${guestVO.memID}">
 												<input type="button"
 												class="form-control btn btn-primary btn-sm" value="查看動態"
@@ -132,19 +141,19 @@
 										</div>
 										<c:if test="${memPriv==1}">
 										<div class="form-group">
-											<input class="btn btn-success btn-sm" value="已成為好友"  disabled/>
+											<input class="form-control btn btn-success btn-sm" value="好友"  disabled/>
 										</div>
 										</c:if>
 										<c:if test="${memPriv==2}">
 										<div class="form-group">
-											<input class="btn btn-success btn-sm" value="送出申請中"  disabled/>
+											<input class="form-control btn btn-success btn-sm" value="申請中"  disabled/>
 										</div>
 										</c:if>
 										<c:if test="${memPriv==0}">
 										<div class="form-group">
 											<form id="addFriend" method="post">
 											<input id="friend" type="button"
-												class="form-control btn btn-success btn-sm" value="加好友"
+												class="form-control btn btn-success btn-sm" value="邀請好友"
 												name="friends"/>
 												<input type="hidden" name="action" value="addFriend"/>
 												<input type="hidden" name="friMem1" value="${guestVO.memID}"/>
@@ -186,7 +195,7 @@
 					</div>
 				</div>
 				<!--**************************隱私權判斷範圍(不開)**************************-->
-				<c:if test="${guestVO.memPriv==0 || memPriv==0 || memPriv==2}">
+				<c:if test="${guestVO.memPriv==0}">
 					<div class="col-md-9 wow fadeInRight" data-wow-delay=".05s"
 						data-wow-duration=".1">
 						<div class="row profile-content blog-item text-center">
@@ -221,28 +230,40 @@
 									<div id="act" class="tab-pane fade in active">
 										<div class="container-fluid bg-3 text-center reward">
 											<div class="row">
-												<div class="col-sm-4">
-													<img
-														src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${memVO.memID}"
-														alt="Image" class="img-responsive thumbnail">
-													<p>Lorem ipsum..</p>
-												</div>
-												<div class="col-sm-4">
-													<img
-														src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${memVO.memID}"
-														alt="Image" class="img-responsive thumbnail">
-													<p>Lorem ipsum..</p>
-												</div>
-												<div class="col-sm-4">
-													<img
-														src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${memVO.memID}"
-														alt="Image" class="img-responsive thumbnail">
-													<p>Lorem ipsum..</p>
-												</div>
-												<div class="row">
-													<a href="http://www.google.com"><input type="button"
-														class="btn btn-primary" value="看更多"></a>
-												</div>
+<% Act_Service actS = new Act_Service();
+Integer memPage=Integer.parseInt(request.getParameter("memID"));
+System.out.println("memPage="+memPage);
+List<ActFVO> list=new ArrayList<ActFVO> ();
+int len;
+if(actS.getMemActs12(memPage)!=null && actS.getMemActs12(memPage).size()!=0){
+		list=actS.getMemActs12(memPage);
+		if(list.size()>=3){
+			len=3;
+		}else{
+			len=list.size();
+		}
+for(int i=0;i<len;i++){
+	ActFVO actf=list.get(i);
+	System.out.println(actf.getActVO().getActName());
+%>
+
+	<div class="col-sm-4">
+<div style="margin-top:-70px;">
+	<a href="<%=request.getContextPath()%>/front-end/act/act.do?action=showOne&actID=<%=actf.getActVO().getActID()%>">
+	
+	<img style="max-height:100px; margin-left:auto; margin-right: auto;"
+			class="img-responsive img-rounded"
+			src="<%=request.getContextPath()%>/img/showIMG?colName=actIMG&table=ACT&pk=actID&imgFrom=<%=actf.getActVO().getActID()%>">
+	<p><%=actf.getActVO().getActName() %></p></a>
+	</div>
+</div>
+
+<%}%>
+<%}%>
+
+	
+
+
 											</div>
 										</div>
 									</div>
@@ -457,10 +478,8 @@
 									function(result) {
 										swal.resetDefaults()
 										swal({
-											title : '您已寄信成功!',
-											html : 'Your answers: <pre>'
-													+ JSON.stringify(result)
-													+ '</pre>',
+											title : '寄送',
+											html : '您已寄信成功',
 											confirmButtonText : '完成'
 										})
 										mail = result;

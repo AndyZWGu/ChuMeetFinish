@@ -52,11 +52,11 @@ public class ActMBServlet extends HttpServlet{
 				Integer memID = memVO.getMemID(); //@@@@@@@@@@@@@@@@@@@@@@@@
 				Integer actID=Integer.parseInt(req.getParameter("actID"));
 				String actMBContent=req.getParameter("actMBContent");
-
+				String actMBContentc=new String(actMBContent.getBytes("ISO-8859-1"),"UTF-8");
 				/***************************2.開始new資料***************************************/
 				ActMBService ambS = new ActMBService();
-				System.out.println("actID="+actID+", memID="+memID+actMBContent);
-				 ambS.insert(actID, memID, actMBContent);
+//				System.out.println("actID="+actID+", memID="+memID+actMBContent);
+				 ambS.insert(actID, memID, actMBContentc);
 			
 				/***************************3.new完成,準備轉接***********/
 				

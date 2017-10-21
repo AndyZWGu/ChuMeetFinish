@@ -33,7 +33,7 @@ public class bytesToImg extends HttpServlet {
 				String hello=req.getParameter("imgFrom");
 				
 				String stat="SELECT "+colName+" FROM " +table +" WHERE "+pk+"="+hello;
-				System.out.println(stat);
+//				System.out.println(stat);
 				
 				ResultSet rs = stmt.executeQuery(stat);
 

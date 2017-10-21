@@ -3,6 +3,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.admin.model.*"%>
 <%@ page import="com.admPril.model.*"%>
+<%@ page import="com.poi.model.*"%>
 <%
 session.setAttribute("page", "poi");
  %>
@@ -66,14 +67,12 @@ session.setAttribute("page", "poi");
             <!--/////////////////////////////////////////////////////////////////////////////-->
             <!--/////////////////////////////////////////////////////////////////////////////-->
             <div class="container">
-                <form class="navbar-form navbar-right" role="search">
-                    <div class="form-group  is-empty">
-                        <input type="text" class="form-control" placeholder="搜索">
-                        <span class="material-input"></span> </div>
-                    <button type="submit" class="btn btn-white btn-round btn-just-icon"> <i class="material-icons">search</i>
-                        <div class="ripple-container"></div>
-                    </button>
-                </form>
+              <ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#actMain">社團活動分類</a>
+					</li>
+					
+				</ul>
+              
                 <div class="tab-content">
                     <div class="tab-pane fade in active">
                        
@@ -82,17 +81,21 @@ session.setAttribute("page", "poi");
                                 <tr class="bg-danger">
                                     <th class="col-md-1">分類</th>
                                     <th class="col-md-1">圖片</th>
-                                    <th class="col-md-1">名稱</th>
-                                    <th class="col-md-1">時間</th>
                                     <th class="col-md-1">狀態</th>
                                 </tr>
                             </thead>
                             <tbody>
+                         <% POI_service pois=new POI_service();
+                            List<POIVO> poivos=pois.getAll();
+                            
+                            for (POIVO poivo:poivos){
+                            %>
+                            
                                 <tr>
-                                    <td>運動Sports</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><%=poivo.getPOINameC() %></td>
+                                    <td>	<img style="width:100px; margin-left:auto; margin-right:auto;"
+														class="img-responsive img-rounded"
+														src="<%=request.getContextPath()%>/img/showIMG?colName=POIIMG&table=POI&pk=POIID&imgFrom=<%=poivo.getPOIID() %>"></td>
                                     <td>
                                         <span class="btn-group">
                         <button type="button" class="btn btn-danger btn-sm statbtn" name="actStatID" value="5">暫停</button>                     
@@ -100,162 +103,9 @@ session.setAttribute("page", "poi");
                                         <button class="btn btn-sm btn-success">恢復</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>手作Crafts</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <span class="btn-group">
-                                            <button type="button" class="btn btn-danger btn-sm statbtn" name="actStatID" value="5">暫停</button>
-                                            </span>
-                                            <button class="btn btn-sm btn-success">恢復</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>學習Learning</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <span class="btn-group">
-                                            <button type="button" class="btn btn-danger btn-sm statbtn" name="actStatID" value="5">暫停</button>
-                                            </span>
-                                            <button class="btn btn-sm btn-success">恢復</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>餐聚Food and Drink</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <span class="btn-group">
-                        <button type="button" class="btn btn-danger btn-sm statbtn" name="actStatID" value="5">暫停</button>                     
-                               </span>
-                                        <button class="btn btn-sm btn-success">恢復</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>藝文活動Arts</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <span class="btn-group">
-                        <button type="button" class="btn btn-danger btn-sm statbtn" name="actStatID" value="5">暫停</button>                     
-                               </span>
-                                        <button class="btn btn-sm btn-success">恢復</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>電影Moive</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <span class="btn-group">
-                        <button type="button" class="btn btn-danger btn-sm statbtn" name="actStatID" value="5">暫停</button>                     
-                               </span>
-                                        <button class="btn btn-sm btn-success">恢復</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>電動遊戲Game</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <span class="btn-group">
-                        <button type="button" class="btn btn-danger btn-sm statbtn" name="actStatID" value="5">暫停</button>                     
-                               </span>
-                                        <button class="btn btn-sm btn-success">恢復</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>線上活動Online</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <span class="btn-group">
-                        <button type="button" class="btn btn-danger btn-sm statbtn" name="actStatID" value="5">暫停</button>                     
-                               </span>
-                                        <button class="btn btn-sm btn-success">恢復</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>戶外Outdoors</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <span class="btn-group">
-                        <button type="button" class="btn btn-danger btn-sm statbtn" name="actStatID" value="5">暫停</button>                     
-                               </span>
-                                        <button class="btn btn-sm btn-success">恢復</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>寵物Pets</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <span class="btn-group">
-                        <button type="button" class="btn btn-danger btn-sm statbtn" name="actStatID" value="5">暫停</button>                     
-                               </span>
-                                        <button class="btn btn-sm btn-success">恢復</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>兒童Kids</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <span class="btn-group">
-                        <button type="button" class="btn btn-danger btn-sm statbtn" name="actStatID" value="5">暫停</button>                     
-                               </span>
-                                        <button class="btn btn-sm btn-success">恢復</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>展覽Exhibition</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <span class="btn-group">
-                        <button type="button" class="btn btn-danger btn-sm statbtn" name="actStatID" value="5">暫停</button>                     
-                               </span>
-                                        <button class="btn btn-sm btn-success">恢復</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>讀書會Reading group</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <span class="btn-group">
-                        <button type="button" class="btn btn-danger btn-sm statbtn" name="actStatID" value="5">暫停</button>                     
-                               </span>
-                                        <button class="btn btn-sm btn-success">恢復</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>其它Others</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <span class="btn-group">
-                        <button type="button" class="btn btn-danger btn-sm statbtn" name="actStatID" value="5">暫停</button>                     
-                               </span>
-                                        <button class="btn btn-sm btn-success">恢復</button>
-                                    </td>
-                                </tr>
+
+
+							<%} %>
                             </tbody>
                         </table>
                        

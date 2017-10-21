@@ -148,8 +148,41 @@ default:
 return Str;
 }
 	
-	
-	
+public static Integer strtoPOI(String poic){
+	Integer poiID=1;
+
+		switch(poic){
+		case "音樂":poiID=1;break;
+		case "戲劇":poiID=2;break;
+		case "舞蹈":poiID=3;break;
+		case "親子":poiID=4;break;
+		case "獨立音樂":poiID=5;break;
+		case "展覽":poiID=6;break;
+		case "講座":poiID=7;break;
+		case "電影":poiID=8;break;
+		case "運動":poiID=9;break;
+		case "手作":poiID=10;break;
+		case "綜藝":poiID=11;break;
+		case "學習":poiID=12;break;
+		case "競賽":poiID=13;break;
+		case "徵選":poiID=14;break;
+		case "其他":poiID=15;break;
+		case "未知分類":poiID=16;break;
+		case "演唱會":poiID=17;break;
+		case "餐聚":poiID=18;break;
+		case "研習課程":poiID=19;break;
+		case "藝文":poiID=20;break;
+		case "電競":poiID=21;break;
+		case "線上活動":poiID=22;break;
+		case "戶外":poiID=23;break;
+		case "寵物":poiID=24;break;
+		case "讀書會":poiID=25;break;
+		default: 
+		    System.out.println("????"); 
+		}
+		return poiID;
+		}
+			
 	
 	
 	

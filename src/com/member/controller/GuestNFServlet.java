@@ -96,7 +96,8 @@ public class GuestNFServlet extends HttpServlet {
 			String action = req.getParameter("action");
 			if ("comment".equals(action)) {
 				System.out.println("留言");
-				String comment = req.getParameter("comment");
+				String comment2 = req.getParameter("comment");
+				String comment = new String(comment2.getBytes("ISO-8859-1"),"UTF-8");
 				// String comment2 = new
 				// String(comment.getBytes("ISO-8859-1"),"UTF-8");
 				if (comment == null || (comment.trim()).length() == 0) {

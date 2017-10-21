@@ -62,10 +62,10 @@ public class AdminServlet extends HttpServlet {
 				System.out.println(pw);
 				AdminMailService mailService = new AdminMailService();
 				// UUID
-//				mailService.sendMail("ChuMeetService@gmail.com", "揪咪管理員ChuMeet 密碼確認信",
-//						"<img src=\"https://i.imgur.com/IN3wmJe.png\"><h2>親愛的 " + adminName
-//								+ " 您好:</h2><br><p>歡迎您成為揪咪ChuMeet管理員。密碼為</p><br><strong>" + pw
-//								+ "</strong><br><p>ChuMeet將會提供您更多的服務資訊與內容。 </p><br><h5>ChuMeet歡迎您的加入! ChuMeet服務團隊</h5><br><h4>如有任何問題歡迎來信ChuMeet客服信箱: chuMeetService@gmail.com</h4>");
+				mailService.sendMail("ChuMeetService@gmail.com", "揪咪管理員ChuMeet 密碼確認信",
+						"<img src=\"https://i.imgur.com/IN3wmJe.png\"><h2>親愛的 " + adminName
+								+ " 您好:</h2><br><p>歡迎您成為揪咪ChuMeet管理員。密碼為</p><br><strong>" + pw
+								+ "</strong><br><p>ChuMeet將會提供您更多的服務資訊與內容。 </p><br><h5>ChuMeet歡迎您的加入! ChuMeet服務團隊</h5><br><h4>如有任何問題歡迎來信ChuMeet客服信箱: chuMeetService@gmail.com</h4>");
 				// 開始新增資料
 				AdminService adminSvc = new AdminService();
 				adminSvc.addAdmin(adminName, adminMail, pw, adminEmail, nowTimestamp(), 1);
@@ -213,7 +213,7 @@ public class AdminServlet extends HttpServlet {
 				/***************************
 				 * 3.修改完成,準備轉交(Send the Success view)
 				 *************/
-				String url = "/back-end/admin.jsp";
+				String url = "/back-end/index.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
 				successView.forward(req, res);
 

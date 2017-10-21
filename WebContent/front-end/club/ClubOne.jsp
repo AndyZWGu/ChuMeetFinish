@@ -66,7 +66,9 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
   <link href="<%=request.getContextPath()%>/HTML/assets/pages/css/slider.css" rel="stylesheet">
   <link href="<%=request.getContextPath()%>/HTML/src/club/css/clubfirst.css" rel="stylesheet">
 <link href="<%=request.getContextPath()%>/HTML/src/club/css/act.css" rel="stylesheet">
-     
+     <link
+	href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.0/sweetalert2.min.css"
+	rel="stylesheet">
 </head>
 <!-- Head END -->
 
@@ -108,7 +110,7 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
                 <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubMem">社團成員</a></li>
                 <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubAlbum">社團相簿</a></li>
                 <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=toClubNews">社團公告</a></li>
-                <li><a href="<%=request.getContextPath()%>/front-end/club/clubRoomContent.jsp">社團活動</a></li>
+                <li><a href="<%=request.getContextPath()%>/front-end/club/clubRoomContent.jsp">社團專屬聊天室</a></li>
                 <%if(  clubMemVO.getClubMemType()==3&&clubMemVO.getClubMemStatus()==1   ){%>   
                 <li><a href="<%=request.getContextPath()%>/front-end/club/clubOne.do?memID=${memVO.memID}&clubID=${clubVO.clubID}&action=updateClub" >管理社團</a></li>
                 <%}%> 
@@ -292,9 +294,10 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
                   
          
                   <div class="recent-news margin-bottom-10">
-<%if(  (clubMemVO.getClubMemType()==1||clubMemVO.getClubMemType()==2||clubMemVO.getClubMemType()==3)&&clubMemVO.getClubMemStatus()==1   ){%>                  
+<%if(  (clubMemVO.getClubMemType()==1||clubMemVO.getClubMemType()==2||clubMemVO.getClubMemType()==3)){%>                  
            <h2>社團公告</h2>
-           <c:forEach var="clubNewsVO" items="${clubNewslist}" varStatus="status" >   
+           <c:forEach var="clubNewsVO" items="${clubNewslist}" varStatus="status" > 
+           <c:if test="${clubNewsVO.clubNewsStatus==1 }">  
                     <div class="row margin-bottom-10">
           
                       <div class="col-md-3">
@@ -310,6 +313,7 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
                       </div> 
                                              
                     </div>
+                    </c:if>
           </c:forEach>
           
           			<div class="col-md-12">
@@ -319,6 +323,8 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
 					</div>  
           
 <%}%>
+
+<input id="report" type="button" class=" btn btn-danger btn-sm" value="檢舉"></input>
 
                     
                     
@@ -393,8 +399,44 @@ ClubMemVO clubMemVO = (ClubMemVO) request.getAttribute("clubMemVO");
 	$('#myModal').modal('toggle')
 	
 </script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.0/sweetalert2.min.js"
+		type="text/javascript"></script>
 
+	<script type="text/javascript">
+	$('#report').on(
+			'click',
+			function() {
+				swal.setDefaults({
+					input : 'text',
+					confirmButtonText : 'Next &rarr;',
+					showCancelButton : true,
+					confirmButtonColor : '#ff0000',
+					animation : false,
+					progressSteps : [ '1', '2' ]
+				})
 
+				var steps = [ {
+					title : '檢舉',
+					text : '請輸入檢舉標題'
+				}, '請輸入檢舉內容' ]
+
+				swal.queue(steps)
+						.then(
+								function(result) {
+									swal.resetDefaults()
+									swal({
+										title : '檢舉!',
+										html : '您已檢舉成功',
+										confirmButtonText : '完成'
+									})
+									report = result;
+									resuit("report");
+								}, function() {
+									swal.resetDefaults()
+								})
+			})
+</script>
 </body>
 <!-- END BODY -->
 </html></html>

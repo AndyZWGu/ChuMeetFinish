@@ -198,6 +198,51 @@ public class tools {
 
 	  }
 	  
+	
+		//Timestamp轉String
+	  public static String tstoUpdate(Timestamp timestamp){
+		  	  if(timestamp==null){
+			  return "null";
+		  }else{
+			  String str1=timestampToD(timestamp);
+			  String str2=timestampToH(timestamp);
+			  String str3=str1+"T"+str2;
+				  System.out.println(str3); 
+			        return str3;
+		  }
+
+	  }
+	  
+	  	  
+	  static String timestampToD(Timestamp timestamp){
+		  if(timestamp==null){
+			  return "null";
+		  }else{
+			  SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");// 
+				 // Timestamp now = new Timestamp(System.currentTimeMillis());/ 
+				  String str = df.format(timestamp); 
+//				  System.out.println(str); 
+			        return str;
+		  }
+
+	  }
+	  
+	  static String timestampToH(Timestamp timestamp){
+		  
+		  if(timestamp==null){
+			  return "null";
+		  }else{
+			  SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");// 
+				 // Timestamp now = new Timestamp(System.currentTimeMillis());/ 
+				  String str = df.format(timestamp); 
+//				  System.out.println(str); 
+			        return str;
+		  }
+
+	  }
+	  
+	  
+	  
 		//Timestamp轉String@Act
 	  public static String tsToActStr(Timestamp timestamp){
 		  
@@ -207,7 +252,7 @@ public class tools {
 			  SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");// 
 				 // Timestamp now = new Timestamp(System.currentTimeMillis());/ 
 				  String str = df.format(timestamp); 
-				  System.out.println(str); 
+//				  System.out.println(str); 
 			        return str;
 		  }
 
@@ -221,7 +266,7 @@ public class tools {
 			  SimpleDateFormat df = new SimpleDateFormat("HH:mm");// 
 				 // Timestamp now = new Timestamp(System.currentTimeMillis());/ 
 				  String str = df.format(timestamp); 
-				  System.out.println(str); 
+//				  System.out.println(str); 
 			        return str;
 		  }
 

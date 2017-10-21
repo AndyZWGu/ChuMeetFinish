@@ -23,27 +23,27 @@
     <servlet-name>HelloServlet</servlet-name>
     <url-pattern>/TestServlet</url-pattern>
   </servlet-mapping>
-<!--   <error-page>
+   <error-page>
     <error-code>404</error-code>
-    <location>/error.jsp</location>
+    <location>/front-end/error.jsp</location>
   </error-page>
   <error-page>
     <error-code>500</error-code>
-    <location>/error.jsp</location>
+    <location>/front-end/error.jsp</location>
   </error-page>
   <error-page>
     <exception-type>java.lang.Throwable</exception-type>
-    <location>/ExceptionHandler</location>
-  </error-page> -->
+    <location>/front-end/error.jsp</location>
+  </error-page> 
   <!-- **********共用filter********** -->
- <filter>
+ <!-- <filter>
     <filter-name>EncodingFilter</filter-name>
     <filter-class>filters.EncodingFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>EncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
-  </filter-mapping> 
+  </filter-mapping>  -->
   <!-- /////////////////////////////////////////////////////////////////////////// -->
    <!-- **********會員filter********** -->
   <filter>
@@ -517,4 +517,33 @@
 		<url-pattern>/front-end/act/actmb.do</url-pattern>
 	</servlet-mapping>
 <!-- ********************ActMB END************************* -->
+	<!-- **********社團後端變更改社團(未做)********** -->
+	
+	<servlet>
+		<servlet-name>ClubUpdateServlet</servlet-name>
+		<servlet-class>com.clubBackground.controller.ClubUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ClubUpdateServlet</servlet-name>
+		<url-pattern>/back-end/club/club.do</url-pattern>
+	</servlet-mapping>
+	<!-- **********會員後端更改會員狀態********** -->
+	<servlet>
+		<servlet-name>MemberBackgroundUpdateServlet</servlet-name>
+		<servlet-class>com.memberBackground.controller.MemberBackgroundUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MemberBackgroundUpdateServlet</servlet-name>
+		<url-pattern>/back-end/member/member.do</url-pattern>
+	</servlet-mapping>
+<!-- **********社團後端檢舉內容********** -->
+	<servlet>
+		<servlet-name>ClubTKServlet</servlet-name>
+		<servlet-class>com.clubBackground.controller.ClubTKServlet</servlet-class>
+	</servlet>
+
+		<servlet-mapping>
+		<servlet-name>ClubTKServlet</servlet-name>
+		<url-pattern>/back-end/club/clubTK.do</url-pattern>
+	</servlet-mapping>
 </web-app>

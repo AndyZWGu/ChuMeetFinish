@@ -3,7 +3,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.admin.model.*"%>
 <%@ page import="com.admPril.model.*"%>
-<div class="sidebar" data-color="purple"
+<div class="sidebar" data-color="purple" style="overflow:hidden;"
 	data-image="<%=request.getContextPath()%>/HTML/BackEnd/assets/img/sidebar-1.jpg">
 	<!--
             Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
@@ -62,7 +62,7 @@
 							<li>
 						</c:otherwise>
 					</c:choose>
-					<a href="<%=request.getContextPath()%>/back-end/adminInfo.jsp"><i
+					<a href="<%=request.getContextPath()%>/back-end/adminAnn.jsp"><i
 						class="material-icons">person</i>
 						<p>
 							<strong>網站管理</strong>
@@ -127,7 +127,7 @@
 							<li>
 						</c:otherwise>
 					</c:choose>
-					<a href="<%=request.getContextPath()%>/back-end/adminMemTicket.jsp"><i
+					<a href="<%=request.getContextPath()%>/back-end/actClubTicket.jsp"><i
 						class="material-icons">library_books</i>
 						<p>
 							<strong>檢舉管理</strong>

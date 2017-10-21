@@ -20,6 +20,7 @@
 	String memMBNum = (String) request.getAttribute("memMBNum");
 %>
 <div class="col-md-3">
+<span class="border border-primary">
 	<div class="profile-sidebar">
 		<!-- SIDEBAR USERPIC -->
 		<div class="profile-userpic">
@@ -39,16 +40,16 @@
 			<div
 				class="col-md-4 user-pad text-center glyphicon glyphicon-star-empty">
 				<h5>跟隨</h5>
-				<h4>${followNum}</h4>
+				<h4>3</h4>
 			</div>
 			<div class="col-md-4 user-pad text-center glyphicon glyphicon-user">
 				<h5>好友數</h5>
-				<h4>${friNum}</h4>
+				<h4>1</h4>
 			</div>
 			<div
 				class="col-md-4 user-pad text-center glyphicon glyphicon-thumbs-up">
 				<h5>評分數</h5>
-				<h4>${memStar}</h4>
+				<h4>15</h4>
 			</div>
 		</div>
 		<!-- END SIDEBAR USER TITLE -->
@@ -72,6 +73,18 @@
 					href="<%=request.getContextPath()%>/front-end/member/memberHome.do">
 						<i class="fa fa-home" aria-hidden="true"></i> 首頁
 				</a></li>
+				<li>
+				<a
+					href="<%=request.getContextPath()%>/front-end/act/act.do?action=getMyAct1">
+						<i class="fa fa-bicycle" aria-hidden="true"></i> 我的活動
+				</a>
+				</li>
+				<li>
+				<a
+					href="<%=request.getContextPath()%>/front-end/club/MemAllClub.jsp">
+						<i class="fa fa-child" aria-hidden="true"></i> 我的社團
+				</a>
+				</li>
 				<%-- <c:choose>
 					<c:when test="${checkedSidbar == 'memCalendar'}">
 						<li class="active">
@@ -215,4 +228,5 @@
 		</div>
 		<!-- END MENU -->
 	</div>
+	</span>
 </div>

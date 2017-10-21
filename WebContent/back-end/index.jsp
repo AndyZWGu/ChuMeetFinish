@@ -3,6 +3,8 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.admin.model.*"%>
 <%@ page import="com.admPril.model.*"%>
+<%@ page import="com.act.act.model.*"%>
+
 
 <%
 session.setAttribute("page", "index");
@@ -55,10 +57,14 @@ session.setAttribute("page", "index");
               <div class="card-header" data-background-color="orange"> <i class="material-icons">content_copy</i> </div>
               <div class="card-content">
                 <p class="category">活動</p>
-                <h3 class="title">23/170<small></small></h3>
+                <h3 class="title"><% Act_Service actS=new Act_Service(); 
+                List<ActFVO> list233= actS.getAll();
+                %>
+                <%=list233.size() %>
+                </h3>
               </div>
               <div class="card-footer">
-                <div class="stats"> <i class="material-icons text-danger">warning</i></div>
+                <div class="stats"> </div>
               </div>
             </div>
           </div>
@@ -67,10 +73,10 @@ session.setAttribute("page", "index");
               <div class="card-header" data-background-color="green"> <i class="material-icons">store</i> </div>
               <div class="card-content">
                 <p class="category">社團</p>
-                <h3 class="title">15/20</h3>
+                <h3 class="title">12</h3>
               </div>
               <div class="card-footer">
-                <div class="stats"> <i class="material-icons">date_range</i> Last 24 Hours </div>
+                <div class="stats">  </div>
               </div>
             </div>
           </div>
@@ -79,10 +85,10 @@ session.setAttribute("page", "index");
               <div class="card-header" data-background-color="red"> <i class="material-icons">info_outline</i> </div>
               <div class="card-content">
                 <p class="category">檢舉</p>
-                <h3 class="title">13/150</h3>
+                <h3 class="title">4</h3>
               </div>
               <div class="card-footer">
-                <div class="stats"> <i class="material-icons">local_offer</i> Tracked from Github </div>
+                <div class="stats"></div>
               </div>
             </div>
           </div>
@@ -91,10 +97,10 @@ session.setAttribute("page", "index");
               <div class="card-header" data-background-color="blue"> <i class="fa fa-twitter"></i> </div>
               <div class="card-content">
                 <p class="category">會員</p>
-                <h3 class="title">+20</h3>
+                <h3 class="title">324</h3>
               </div>
               <div class="card-footer">
-                <div class="stats"> <i class="material-icons">update</i> Just Updated </div>
+                <div class="stats"></div>
               </div>
             </div>
           </div>

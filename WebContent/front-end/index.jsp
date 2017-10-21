@@ -1,11 +1,23 @@
 <!DOCTYPE html>
+<%@page import="com.gen.tool.tools"%>
+<%@page import="com.gen.tool.actCodeTrans"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="com.Ann.model.*"%>
+<%@ page import="com.act.act.model.*"%>
+<%@ page import="com.act.actPOI.model.*"%>
 <%@ page import="com.member.model.*"%>
 <%@ page import="java.util.*"%>
 <html>
+<%
+	Act_Service actS = new Act_Service();
+	ActPOIService apS = new ActPOIService();
+	List<ActFVO> poix2lists = actS.getx2ByPOIID(1);
+	List<ActFVO> poix2lists2 = actS.getx2ByPOIID(3);
+	actCodeTrans transman = new actCodeTrans();
+	tools toolman = new tools();
+%>
 <%
 	//公告
 	AnnService ann = new AnnService();
@@ -190,13 +202,16 @@
 
 			<div class="row">
 				<div class="col-sm-3 col-md-3">
-					<div class="menu-images ">
-						<img src="../HTML/src/index/img/menu/hot-drinks.png"
-							alt="Hot Drinks">
-					</div>
-					<div class="menu-titles">
-						<h1 class="">運動</h1>
-					</div>
+					<a
+						href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryPOI&poiID=9">
+						<div class="menu-images ">
+							<img class="img-responsive img-rounded"
+							src="<%=request.getContextPath()%>/img/showIMG?colName=POIIMG&table=POI&pk=POIID&imgFrom=9">
+						</div>
+						<div class="menu-titles">
+							<h1 class="">運動</h1>
+						</div>
+					</a>
 					<div class="menu-items ">
 						<ul>
 							<li>路跑</li>
@@ -208,143 +223,176 @@
 					</div>
 				</div>
 				<div class="col-sm-3 col-md-3">
-					<div class="menu-images ">
-						<img src="../HTML/src/index/img/menu/ice-drinks.png"
-							alt="Ice Drinks">
-					</div>
-					<div class="menu-titles">
-						<h1 class="">學習</h1>
-					</div>
+					<a
+						href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryPOI&poiID=2">
+						<div class="menu-images ">
+							<img class="img-responsive img-rounded"
+							src="<%=request.getContextPath()%>/img/showIMG?colName=POIIMG&table=POI&pk=POIID&imgFrom=2">
+
+						</div>
+						<div class="menu-titles">
+
+							<h1 class="">戲劇</h1>
+						</div>
+					</a>
 					<div class="menu-items ">
 						<ul>
-							<li>語言研習</li>
-							<li>文化文學</li>
-							<li>企管行銷</li>
-							<li>資訊科技</li>
-							<li>藝術設計</li>
-							<li>電影實務</li>
-							<li>健身課程</li>
-							<li>心靈成長</li>
-							<li>技能培養</li>
-							<li>生活綜合</li>
+							<li></li>
+							<li>舞台表演</li>
+							<li>開放空間</li>
+							<li>專業劇情</li>
+							<li>售票活動</li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-sm-3 col-md-3">
 					<div class="menu-images ">
-						<img src="../HTML/src/index/img/menu/smoothies.png"
-							alt="Smoothies">
+						<a
+							href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryPOI&poiID=8">
+							<img class="img-responsive img-rounded"
+							src="<%=request.getContextPath()%>/img/showIMG?colName=POIIMG&table=POI&pk=POIID&imgFrom=8">
+
 					</div>
 					<div class="menu-titles">
-						<h1 class="">餐聚</h1>
+						<h1>電影
+						</h1>
 					</div>
+					</a>
 					<div class="menu-items ">
 						<ul>
-							<li>生態賞析</li>
-							<li>主題活動</li>
-							<li>民俗節慶</li>
+							<li>超級英雄</li>
+							<li>科幻迷幻</li>
+							<li>國片</li>
+							<li>編劇教學</li>
+							<li>金馬影展</li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-sm-3 col-md-3">
-					<div class="menu-images ">
-						<img src="../HTML/src/index/img/menu/deserts.png" alt="Deserts">
-					</div>
-					<div class="menu-titles">
-						<h1 class="">藝文活動</h1>
-					</div>
+					<a
+						href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryPOI&poiID=20">
+						<div class="menu-images ">
+							<img class="img-responsive img-rounded"
+							src="<%=request.getContextPath()%>/img/showIMG?colName=POIIMG&table=POI&pk=POIID&imgFrom=20">
+
+						</div>
+						<div class="menu-titles">
+
+							<h1 class="">藝文</h1>
+
+						</div>
+					</a>
 					<div class="menu-items ">
 						<ul>
 							<li>戲劇表演</li>
 							<li>舞蹈表演</li>
 							<li>特技表演</li>
-							<li>演唱會</li>
-							<li>音樂會</li>
-							<li>Live Band</li>
 						</ul>
 					</div>
 				</div>
 			</div>
-
+<br>
 			<div class="row">
 				<div class="col-sm-3 col-md-3">
-					<div class="menu-images ">
-						<img src="../HTML/src/index/img/menu/cocktails.png"
-							alt="Hot Drinks">
-					</div>
-					<div class="menu-titles">
-						<h1 class="">電影</h1>
-					</div>
-					<div class="menu-items ">
-						<ul>
-							<li>電影快訊</li>
-							<li>主題影展</li>
-							<li>電視廣播</li>
-							<li>追星活動</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-3 col-md-3">
-					<div class="menu-images ">
-						<img src="../HTML/src/index/img/menu/beer.png" alt="Ice Drinks">
-					</div>
-					<div class="menu-titles">
-						<h1 class="">電競</h1>
-					</div>
-					<div class="menu-items ">
-						<ul>
-							<li>英雄聯盟</li>
-							<li>鬥陣特工</li>
-							<li>爐石</li>
-							<li>其他</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-3 col-md-3">
-					<div class="menu-images ">
-						<img src="../HTML/src/index/img/menu/wine.png" alt="Smoothies">
-					</div>
-					<div class="menu-titles">
-						<h1 class="">寵物</h1>
-					</div>
-					<div class="menu-items ">
-						<ul>
-							<li>貓咪</li>
-							<li>小狗</li>
-							<li>鳥類</li>
-							<li>其他</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-3 col-md-3">
-					<div class="menu-images ">
-						<img src="../HTML/src/index/img/menu/sprites.png" alt="Deserts">
-					</div>
-					<div class="menu-titles">
-						<h1 class="">其他</h1>
-					</div>
-					<div class="menu-items ">
-						<ul>
-							<li>親子</li>
-							<li>校園</li>
-							<li>比賽</li>
-							<li>展覽</li>
-							<li>其他</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12 col-md-12 poi-btn">
-					<a class="btn btn-primary btn-lg"
-						href="<%=request.getContextPath()%>/front-end/act/actList.jsp"
-						data-animation="animated fadeInUp">看更多</a>
-				</div>
-			</div>
+					<a
+						href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryPOI&poiID=7">
+							<div class="menu-images ">
 
+							<img class="img-responsive img-rounded"
+							src="<%=request.getContextPath()%>/img/showIMG?colName=POIIMG&table=POI&pk=POIID&imgFrom=7">
+
+							</div>
+							<div class="menu-titles"><h1>講座
+						</h1>
+				</div>
+				</a>
+				<div class="menu-items ">
+					<ul>
+						<li>各種專業</li>
+						<li>政策推廣</li>
+						<li>節稅教學</li>
+						<li>股票技術</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-3">
+				<div class="menu-images ">
+					<a
+						href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryPOI&poiID=21">
+														<img class="img-responsive img-rounded"
+							src="<%=request.getContextPath()%>/img/showIMG?colName=POIIMG&table=POI&pk=POIID&imgFrom=21">
+
+				</div>
+				<div class="menu-titles">
+					<h1>電競	</h1>
+
+				</div>
+				</a>
+				<div class="menu-items ">
+					<ul>
+						<li>英雄聯盟</li>
+						<li>鬥陣特工</li>
+						<li>爐石</li>
+						<li>其他</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-3">
+				<a
+					href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryPOI&poiID=24">
+
+						<div class="menu-images ">
+							<img class="img-responsive img-rounded"
+							src="<%=request.getContextPath()%>/img/showIMG?colName=POIIMG&table=POI&pk=POIID&imgFrom=24">
+
+						</div>
+						<div class="menu-titles"><h1>寵物
+					</h1>
+			</div>
+			</a>
+			<div class="menu-items ">
+				<ul>
+					<li>貓咪</li>
+					<li>小狗</li>
+					<li>鳥類</li>
+					<li>其他</li>
+				</ul>
+			</div>
 		</div>
-		<!-- /.container -->
-		<section class="ss-style-bottom"></section>
+		<div class="col-sm-3 col-md-3">
+			<a href="<%=request.getContextPath()%>/front-end/act/actList.jsp">
+
+					<div class="menu-images ">
+							<img class="img-responsive img-rounded"
+							src="<%=request.getContextPath()%>/img/showIMG?colName=POIIMG&table=POI&pk=POIID&imgFrom=15">
+
+					</div>
+					<div class="menu-titles"><h1>其他
+				</h1>
+		</div>
+		</a>
+		<div class="menu-items ">
+			<ul>
+				<li>親子</li>
+				<li>校園</li>
+				<li>比賽</li>
+				<li>展覽</li>
+				<li>其他</li>
+			</ul>
+		</div>
+	</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 col-md-12 poi-btn">
+			<a class="btn btn-primary btn-lg"
+				href="<%=request.getContextPath()%>/front-end/act/actList.jsp"
+				data-animation="animated fadeInUp">看更多</a>
+		</div>
+	</div>
+
+	</div>
+	<!-- /.container -->
+	<section class="ss-style-bottom"></section>
 	</div>
 	<!--/#food-menu-->
 	<!--======================================================================================================-->
@@ -357,64 +405,87 @@
 		<div class="container inner">
 			<h2 class="section-title text-center">熱門活動</h2>
 			<p class="lead text-center">看看現在熱門的活動有什麼吧！</p>
-			<!-- item -->
-			<div class="col-md-3">
-				<div class="">
-					<div class="recent-work-item menu-images">
-						<em> <img src="../HTML/src/index/500x314-exactly.jpg"
-							alt="Amazing Project" class="img-responsive">
-						</em> <a class="recent-work-description" href="javascript:;">
-							<h4>♥義賣跳蚤市場▲塔羅占卜▲vintage▲手作甜點..一起幫助流浪兔!Holiday ya二手市集</h4> <b>《Holiday
-								ya二手市集》 台灣第一個以社會企業模式打造的市集！ 再生x愛兔x歡樂 愛心義賣跳蚤市場x交換書/CD
-								x創意市集x手作甜點x古著</b>
+<br><br>
+			<div>
+				<%
+					for (ActFVO actfforpoi : poix2lists) {
+				%>
+				<div class="col-md-3">
+					<div class="card">
+						<a
+							href="<%=request.getContextPath()%>/front-end/act/act.do?action=showOne&actID=<%=actfforpoi.getActVO().getActID()%>">
+							<img class="img-responsive img-rounded"
+							src="<%=request.getContextPath()%>/img/showIMG?colName=actIMG&table=ACT&pk=actID&imgFrom=<%=actfforpoi.getActVO().getActID()%>">
 						</a>
+						<div class="card-block">
+							<h4 class="card-title"><%=actfforpoi.getActVO().getActName()%></h4>
+							<small style="color: gray;"> <i class="fa fa-map-marker"></i><%=transman.actPosttoString(actfforpoi.getActVO().getActPost())%>
+								<i class="fa fa-calendar"></i><%=toolman.tsToActStr(actfforpoi.getActVO().getActStartDate())%></small>
+							<%
+								Integer limit = 0;
+							%>
+							<%
+								if (actfforpoi.getActCnt().length() < 70) {
+										limit = actfforpoi.getActCnt().length();
+									} else {
+										limit = 70;
+									}
+							%>
+							<span class="card-text margin-top-10" style=""><%=actfforpoi.getActCnt().substring(0, limit)%>...</span>
+							<div class="card-text cardmore">
+								<a
+									href="<%=request.getContextPath()%>/front-end/act/act.do?action=showOne&actID=<%=actfforpoi.getActVO().getActID()%>"
+									class="btn btn-sm btn-default">詳細資訊</a>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-			<!-- item -->
-			<!-- item -->
-			<div class="col-md-3">
-				<div class="">
-					<div class="recent-work-item menu-images">
-						<em> <img src="../HTML/src/index/500x314-music.jpg"
-							alt="Amazing Project" class="img-responsive">
 
-						</em> <a class="recent-work-description" href="javascript:;">
-							<h4>臺中爵士音樂節 2017 Jazz Green Land 綺響花園 市民廣場/草悟道</h4> <b>「萬種風情」是臺中這一座魅力城市的代名詞，飲食文化、山海風景、人文藝術…處處皆不經意流瀉臺中市民對這塊土地的情感，而邁入第十五個</b>
-						</a>
-					</div>
 				</div>
+				<%
+					}
+				%>
 			</div>
-			<!-- item -->
-			<!-- item -->
-			<div class="col-md-3">
-				<div class="">
-					<div class="recent-work-item menu-images">
-						<em> <img src="../HTML/src/index/img_2/500x300.jpg"
-							alt="Amazing Project" class="img-responsive">
 
-						</em> <a class="recent-work-description" href="javascript:;">
-							<h4>九死一生的上班旅程【一日系列第三十集 - 玉山篇】</h4> <b>主持人：邰智源、KID木柏昇 木曜四超玩
-								每周四晚上9點：http://bit.ly/2iIbNns 本節目合作提案請洽cbpm@walkgame.com</b>
+			<div>
+				<%
+					for (ActFVO actfforpoi : poix2lists2) {
+				%>
+				<div class="col-md-3">
+					<div class="card">
+						<a
+							href="<%=request.getContextPath()%>/front-end/act/act.do?action=showOne&actID=<%=actfforpoi.getActVO().getActID()%>">
+							<img class="img-responsive img-rounded"
+							src="<%=request.getContextPath()%>/img/showIMG?colName=actIMG&table=ACT&pk=actID&imgFrom=<%=actfforpoi.getActVO().getActID()%>">
 						</a>
+						<div class="card-block">
+							<h4 class="card-title"><%=actfforpoi.getActVO().getActName()%></h4>
+							<small style="color: gray;"> <i class="fa fa-map-marker"></i><%=transman.actPosttoString(actfforpoi.getActVO().getActPost())%>
+								<i class="fa fa-calendar"></i><%=toolman.tsToActStr(actfforpoi.getActVO().getActStartDate())%></small>
+							<%
+								Integer limit = 0;
+							%>
+							<%
+								if (actfforpoi.getActCnt().length() < 70) {
+										limit = actfforpoi.getActCnt().length();
+									} else {
+										limit = 70;
+									}
+							%>
+							<span class="card-text margin-top-10" style=""><%=actfforpoi.getActCnt().substring(0, limit)%>...</span>
+							<div class="card-text cardmore">
+								<a
+									href="<%=request.getContextPath()%>/front-end/act/act.do?action=showOne&actID=<%=actfforpoi.getActVO().getActID()%>"
+									class="btn btn-sm btn-default">詳細資訊</a>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-			<!-- item -->
-			<!-- item -->
-			<div class="col-md-3">
-				<div class="">
-					<div class="recent-work-item menu-images">
-						<em> <img src="../HTML/src/index/fisu.jpg"
-							alt="Amazing Project" class="img-responsive">
 
-						</em> <a class="recent-work-description" href="javascript:;">
-							<h4>世界大學運動會2017</h4> <b>2017夏季世界大學運動會將在臺北市舉辦，這將是臺灣有史以來最大及層級最高的國際運動賽會。我一直期望臺北是一個健康、活力的城市。</b>
-						</a>
-					</div>
 				</div>
+				<%
+					}
+				%>
 			</div>
-			<!-- item -->
+
 			<div class="row">
 				<div class="col-sm-12 col-md-12 poi-btn">
 					<a class="btn btn-primary btn-lg"
@@ -435,7 +506,7 @@
 		<!-- TABS -->
 		<div class=" col-xs-offset-1 col-xs-5 col-md-7 tab-style-1">
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#tab-1" data-toggle="tab">最新公告</a></li>
+				<li class="active"><a href="#tab-1" data-toggle="tab">公告</a></li>
 				<li><a href="#tab-2" data-toggle="tab">廣告優惠</a></li>
 			</ul>
 			<div class="tab-content">
@@ -466,7 +537,7 @@
 
 						</div>
 						<div class="col-md-12 col-sm-12 text-right">
-							<a class="btn btn-info" href="<%=request.getContextPath()%>/front-end/info/ann.jsp">更多公告資訊</a>
+							<a class="btn btn-info" href="#">更多公告資訊</a>
 						</div>
 					</div>
 				</div>
@@ -513,18 +584,19 @@
 		</div>
 		<!--**********************************MODAL**********************************-->
 		<div class="photo-stream ">
-			
+
 			<div class="col-sm-12 col-xs-6 col-md-4">
-			<h1>活躍揪友</h1>
-				<div class="row" style="margin:10px; padding:10px;">
-				<c:forEach items="${hotMemList}" var="hotMemList" begin="1" end="9">
-					<div class=" col-xs-4 col-md-4 menu-images">
-						<a href="javascript:; ">
-							<img alt=" " src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${hotMemList.memID}" class="img-responsive ">
-						</a>
-					</div>
-				</c:forEach>
-				
+				<h1>活躍揪友</h1>
+				<div class="row" style="margin: 10px; padding: 10px;">
+					<c:forEach items="${hotMemList}" var="hotMemList" begin="1" end="9">
+						<div class=" col-xs-4 col-md-4 menu-images">
+							<a href="javascript:; "> <img alt=" "
+								src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${hotMemList.memID}"
+								class="img-responsive ">
+							</a>
+						</div>
+					</c:forEach>
+
 				</div>
 				<div class="row">
 					<div class="col-sm-12 col-md-4 col-md-offset-8">

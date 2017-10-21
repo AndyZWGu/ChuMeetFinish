@@ -73,6 +73,12 @@ session.setAttribute("page", "admin");
     .cclabel:active:after {
         width: 20px;
     }
+    .div{
+    border-radius:10px
+}
+th{
+ text-align: left;
+}
     </style>
 </head>
 
@@ -99,70 +105,38 @@ session.setAttribute("page", "admin");
             <div class="container">
 				
 				<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="#actMain">管理員資料</a>
+					<li class="active"><a data-toggle="tab" href="#actMain">管理員新增</a>
 					</li>
-					<li><a data-toggle="tab" href="#actTemp">管理員權限</a></li>
+					
 				</ul>
-				<form class="navbar-form navbar-right" role="search">
-					<div class="form-group  is-empty">
-						<input type="text" class="form-control" placeholder="搜索">
-						<span class="material-input"></span>
-					</div>
-					<button type="submit" class="btn btn-white btn-round btn-just-icon">
-						<i class="material-icons">search</i>
-						<div class="ripple-container"></div>
-					</button>
-				</form>
-                <div class="tab-content">
+
+				<div style="margin-left:auto; margin-right-auto; width: 80%">
+                <div class="tab-content" >
                     <div class="tab-pane fade in active">
-                        
-                        
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr class="bg-danger">
-                                           <th class="col-md-1">姓名</th>
-                                        <th></th>                                       
-                                        <th class="col-md-1">帳號</th>
-                                          <th></th>
-                                        <th class="col-md-1">信箱</th>
-                                          <th></th>
-                                      
-                                    </tr>
-                                </thead>
-                                <FORM METHOD="post"
-										ACTION="<%=request.getContextPath()%>/back-end/admin.do">
-                                <tbody>
-                                     <tr>
-								
-									<td><input type="TEXT" name="adminName" size="25"></td>
-									<td>${errorMsgs.adminName}</td>
 
-
-
-									<td><input type="TEXT" name="adminMail" size="25"></td>
-									<td>${errorMsgs.adminMail}</td>
-
-									<td><input type="TEXT" name="adminEmail" size="25"></td>
-									<td>${errorMsgs.adminEmail}</td>
-
-								</tr>
-								</tbody>
-                               </table>     
-                                    
+                    <FORM METHOD="post"
+							ACTION="<%=request.getContextPath()%>/back-end/admin.do">
+							<div class="col-md-6">
+                        <table class="table">
+                        <tr><th>姓名</th><td><td><input type="TEXT" name="adminName" size="25"></td></td></tr>
+                        <tr><th>帳號</th><td><td><input type="TEXT" name="adminMail" size="25"></td></td></tr>
+                        <tr><th>信箱</th><td><td><input type="TEXT" name="adminEmail" size="25"></td></td></tr> 
+                        </table>
+                        </div>
+        
+<div class="col-md-8">
                                 <table  class="table table-hover">
                                 <thead>
                                     <tr class="bg-danger">
-                                           <th class="col-md-1">編號</th>                                     
-                                        <th class="col-md-1">權限管理</th>                                 
-                                        <th class="col-md-1">權限</th>
+                                        <th>權限管理</th>                                 
+                                        <th><span class="pull-left">權限</span></th>
                                     </tr>
                                 </thead>
                                 <tbody>
 											 <tr>
-                                                <td>NO.1</td>
                                                 <td>管理員管理</td>
                                                 <td>
-                                                    <div class="checkbox">
+                                                    <div class="checkbox" style="text-align: center">
                                                         <label>
                                                             <input type="checkbox" name="adminPrivCheckbox">
                                                         </label>
@@ -170,7 +144,7 @@ session.setAttribute("page", "admin");
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>NO.2</td>
+
                                                 <td>網站管理</td>
 
                                                 <td>
@@ -182,7 +156,7 @@ session.setAttribute("page", "admin");
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>NO.3</td>
+
                                                 <td>App推播管理</td>
 
                                                 <td>
@@ -194,7 +168,7 @@ session.setAttribute("page", "admin");
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>NO.4</td>
+
                                                 <td>會員管理</td>
 
                                                 <td>
@@ -206,7 +180,7 @@ session.setAttribute("page", "admin");
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>NO.5</td>
+
                                                 <td>成就與獎賞管理</td>
 
                                                 <td>
@@ -218,7 +192,7 @@ session.setAttribute("page", "admin");
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>NO.6</td>
+
                                                 <td>檢舉管理</td>
 
                                                 <td>
@@ -230,7 +204,7 @@ session.setAttribute("page", "admin");
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>NO.7</td>
+
                                                 <td>活動社團分類管理</td>
 
                                                 <td>
@@ -242,7 +216,7 @@ session.setAttribute("page", "admin");
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>NO.8</td>
+
                                                 <td>活動管理</td>
 
                                                 <td>
@@ -254,7 +228,7 @@ session.setAttribute("page", "admin");
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>NO.9</td>
+
                                                 <td>社團管理</td>
 
                                                 <td>
@@ -270,9 +244,13 @@ session.setAttribute("page", "admin");
                                     
                                 </tbody>
                             </table>
+                            <span class="text-center" style="margin-left:auto; margin-right: auto">
                             <input type="hidden" name="action" value="insert"> <input
 							type="submit" value="新增" class="btn btn-success">
+							</span>
+							</div>
 						</FORM>
+                        </div>
                         </div>
                     </div>
                 </div>

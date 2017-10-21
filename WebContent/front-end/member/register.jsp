@@ -188,13 +188,13 @@
   	        <!-- 傳說小按鈕 -->
         <script type="text/javascript">
         function magic() {
-            document.getElementById('Email').value = 'ChuMeet123@gmail.com';
-            document.getElementById('Name').value = '揪咪123';
-            document.getElementById('Pw').value = 'ChuMeet123';
-            document.getElementById('Pw2').value = 'ChuMeet123';
+            document.getElementById('Email').value = 'AGu@gmail.com';
+            document.getElementById('Name').value = '顧宅';
+            document.getElementById('Pw').value = 'Agu531328';
+            document.getElementById('Pw2').value = 'Agu531328';
             document.getElementById('Phone').value = '0988666666';
-            document.getElementById('BD').value = '2017-09-05';
-            document.getElementById('memInt').value = '馬克·艾略特·祖克柏（英語：Mark Elliot Zuckerberg，1984年5月14日－）出生於美國紐約州白原市，是知名的社群網站Facebook的創始人、董事長兼執行長，同時也是一名軟體設計師。Facebook是由他和哈佛大學的同學達斯汀·莫斯科維茲、愛德華多·薩維林、克里斯·休斯於2004年共同創立，被譽爲Facebook教主[5][6]。2010年12月，祖克柏被《時代雜誌》評選為「2010年年度風雲人物」[7]。2014年10月24日，他以352億美元成功打入富比士全球富豪榜2014的世界第10大富豪，成為歷史上最年輕打入世界前10大的億萬富豪。2016年5月27日，他以516億美元成功打入富比士全球富豪榜2016的世界第5大富豪，成為歷史上最年輕打入世界前5大的億萬富豪。祖克柏持有400萬股Facebook公司的A股，另有4.223億股B股。B股控股權為前者十倍；兩者合共佔Facebook控股權54%';
+            document.getElementById('BD').value = '1993-09-05';
+            document.getElementById('memInt').value = '第一次加入啾咪,希望可以認識大家呀！';
         }
 
         function check() {

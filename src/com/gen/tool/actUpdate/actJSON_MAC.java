@@ -33,7 +33,7 @@ public class actJSON_MAC {
 
 	public static void main(String args[]) {
 		int startat = 1;
-		int maxQuery=20;
+		int maxQuery=10;
 		// skip 9 10 14 12 plz
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@localhost:1521:XE";
@@ -42,7 +42,9 @@ public class actJSON_MAC {
 		String INSERT_STMT = "insert into act(actType, actID, memID, actCreateDate, actName, actStatus, actPriID, actStartDate, actEndDate, actImg, actContent, actLong, actLat, actLocName, actAdr, actUID, actShowUnit, actMasterUnit, actWebSales, actSourceWebName, actOnSale, actPrice, actPost)"
 				+ " values (2, act_seq.nextval, 0, systimestamp, ?, 1, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String POISQL = "insert into actPOI values (?,?)";
-
+		String MEMSQL = "insert into actmem "
+				+ "(actID, memID, actMemStatus, actJoinDate) "
+				+ " values (?,?,?,sysTimeStamp)";
 		// Create a trust manager that does not validate certificate chains
 		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
 			public X509Certificate[] getAcceptedIssuers() {
@@ -68,7 +70,8 @@ public class actJSON_MAC {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
-		Timestamp ts = tools.nowTimestamp();
+		PreparedStatement pstmt3 = null;
+		Timestamp ts = java.sql.Timestamp.valueOf("2017-10-21 00:00:00.0");
 
 		try {
 			Class.forName(driver);
@@ -211,9 +214,13 @@ public class actJSON_MAC {
 										keys.next();
 										Integer actIDgen = Integer.parseInt(keys.getString(1));
 
-										pstmt2.setInt(1, actIDgen);
+									pstmt2.setInt(1, actIDgen);
 										pstmt2.setInt(2, Integer.parseInt(actg.getCategory()));
 										pstmt2.executeUpdate();
+										pstmt3.setInt(1, actIDgen);
+										pstmt3.setInt(2, 1);
+										pstmt3.setInt(3, 1);
+										pstmt3.executeUpdate();
 										con.commit();
 										System.out.println(actg.getTitle() + subtitle
 												+ " data commited===================================");

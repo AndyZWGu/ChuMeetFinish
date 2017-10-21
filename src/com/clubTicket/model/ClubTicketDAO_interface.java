@@ -14,4 +14,6 @@ public interface ClubTicketDAO_interface {
 	
 	public List<ClubTicketVO> getAll();
 	
+	public void changeOneClubTkStatID(ClubTicketVO clubTicketVO);
+
 }

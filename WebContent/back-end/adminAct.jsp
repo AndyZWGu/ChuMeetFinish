@@ -120,7 +120,11 @@ session.setAttribute("page", "act");
             <!--/////////////////////////////////////////////////////////////////////////////-->
             <!--/////////////////////////////////////////////////////////////////////////////-->
             <div class="container">
-             
+             <ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#actMain">活動管理</a>
+					</li>
+					
+				</ul>
                
                 <div class="tab-content">
                     <div id="home" class="tab-pane fade in active">

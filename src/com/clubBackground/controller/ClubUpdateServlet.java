@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.*;
 
+import com.admin.controller.AdminMailService;
 import com.club.model.*;
 
 
@@ -153,7 +154,12 @@ System.out.println("pause");
 				ClubVO clubVO = new ClubVO();
 				Integer clubStatus=0;
 				clubVO.setClubStatus(clubStatus);
-
+				//寄信
+				AdminMailService mailService = new AdminMailService();
+				mailService.sendMail("@gmail.com", "揪咪管理員ChuMeet通知,檢舉確認信",
+						"<img src=\"https://i.imgur.com/IN3wmJe.png\"><h2>親愛的  印帥  您好:</h2><br><p>您的社團:鬼氏企業,已遭檢舉!</p><br><strong></strong><br><p>經查證,揪咪ChuMeet管理員已將該社團停權。</p><br><h5>ChuMeet服務團隊</h5><br><h4>如有任何問題歡迎來信ChuMeet客服信箱: chuMeetService@gmail.com</h4>");
+				
+				
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("clubVO", clubVO); // 含有輸入格式錯誤的empVO物件,也存入req

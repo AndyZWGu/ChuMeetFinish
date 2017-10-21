@@ -5,6 +5,7 @@
 <%@ page import="com.act.actMem.model.*"%>
 <%@ page import="com.act.act.model.*"%>
 <%@ page import="com.act.actPOI.model.*"%>
+<%@ page import="com.poi.model.*"%>
 <%@ page import="com.member.model.*"%>
 <%@ page import="java.util.*"%>
 <%
@@ -15,16 +16,35 @@
 
 	Integer poiIDPage = (Objects.isNull(request.getAttribute("poiID"))) ? 0 : (Integer) (request.getAttribute("poiID")); //POI款
 			System.out.println("poiIDPage="+poiIDPage);
-	String pageName="";
+	String pageName;
+
 	
 	poiRDx2lists=actS.getRDx2ByPOIID();
 	
+	if (request.getParameter("action") == null || (request.getParameter("action") .equals("ori"))) {
+		pageName = "ori";
+	} else {
+		pageName = request.getParameter("action");
+	}
+
+	System.out.println("pageName=" + pageName);
+	if (pageName.equals("ori")) {
+		list = actS.getAll();
+		pageContext.setAttribute("list", list); //基本款
+	} else {
+			list = (List<ActFVO>) request.getAttribute("list");
+			pageContext.setAttribute("list", list);
+	}
+	
+
 	if (Objects.isNull(list) || list.size() == 0) { //拿不到東西怎辦 
 
 	}
+
 	com.gen.tool.tools toolman=new com.gen.tool.tools();
 	com.gen.tool.actCodeTrans transman=new com.gen.tool.actCodeTrans();
 	
+	System.out.println("HI! list.size="+list.size());
 	
 	MemberVO memVO = (MemberVO)session.getAttribute("memVO");
 %>
@@ -185,6 +205,8 @@ if(memVO!=null){
 												href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryPOI&poiID=7">講座</a></li>
 											<li <%if (poiIDPage == 8) {%> class="active" <%}%>><a
 												href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryPOI&poiID=8">電影</a></li>
+											<li <%if (poiIDPage == 8) {%> class="active" <%}%>><a
+												href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryPOI&poiID=24">寵物</a></li>
 											<li><a
 												href="<%=request.getContextPath()%>/front-end/act/actPOIs.jsp">其他</a></li>
 												<%												System.out.println("left Menu END"); %>
@@ -227,11 +249,27 @@ if(memVO!=null){
 								</div>
 								<!-- BEGIN LEFT SIDEBAR -->
 								<div class="col-md-9 col-sm-9 event-posts margin-bottom-50">
-
-								<h2>Opps!</h2>
-								<p>似乎沒有結果</p>
-								<p>請嘗試另一種搜尋條件</p>
-
+								<% POI_service pois=new POI_service();
+								List<POIVO> listp=pois.getAll();
+								for(POIVO poiv:listp){
+									if(poiv.getPOIID()!=16){
+								%>
+						                    <div class="col-md-3">
+											<div class="POI">
+												<div class="cef">
+												<a
+												href="<%=request.getContextPath()%>/front-end/act/act.do?action=QueryPOI&poiID=<%=poiv.getPOIID()%>">
+												  	<p>
+												  	<img class="img-responsive img-rounded"
+														src="<%=request.getContextPath()%>/img/showIMG?colName=POIIMG&table=POI&pk=POIID&imgFrom=<%=poiv.getPOIID()%>">
+												  	
+												  	</p>
+													<p class="h3"><%=poiv.getPOINameC() %></p>
+												</a>
+												</div>
+										   </div>
+					                    	</div>
+					                    	<%} }%>
 								</div>
 
 								<!-- END LEFT SIDEBAR -->

@@ -1,12 +1,27 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="javax.servlet.http.HttpSession"%>
 <%@ page import="com.member.model.*"%>
 <%
-String account = (String)session.getAttribute("account"); //登入帳號
+
 MemberVO memVO= (MemberVO)session.getAttribute("memVO"); //登入帳號的所有會員資訊
 %>
+<style>
+ .mem1{
+ 	color:red;
+ }
+ .mem2{
+ 	color:blue;
+ }
+ .mem3{
+ 	color:green;
+ }
+ 	.memImg{
+ 		height:20px;
+ 		width:35px;
+ 	}
+</style>
 <!-- Start TOP BAR 2-->
 <div class="pre-header">
     <div class="container">
@@ -16,7 +31,8 @@ MemberVO memVO= (MemberVO)session.getAttribute("memVO"); //登入帳號的所有
           <ul class="list-unstyled list-inline">
             <li><span><strong>ChuMeet</strong></span></li>
             <li><span>Nice to meet you <i class="fa fa-smile-o" aria-hidden="true"></i></span> </li>
-            <c:if test="${account!=null}" var="loginStatus2" scope="session" > 
+            <c:if test="${memVO!=null}" var="loginStatus2" scope="session" > 
+            <img src="<%=request.getContextPath()%>/front-end/member/memberHome/avatar.do?memID=${memVO.memID}" class="memImg">
             	<li><a href="<%=request.getContextPath()%>/front-end/act/actStart.jsp"><span class="topst"> 開始揪團吧！ </span></a></li>
             </c:if>
           </ul>
@@ -26,12 +42,27 @@ MemberVO memVO= (MemberVO)session.getAttribute("memVO"); //登入帳號的所有
         <!-- END TOP BAR LEFT PART -->
 
 <!--依據使用者是否登入改變 -->
-<c:if test="${account!=null}" var="loginStatus" scope="session" > 
+<c:if test="${memVO!=null}" var="loginStatus" scope="session" > 
         <!-- 登入時 -->
         <!-- BEGIN TOP BAR MENU -->
         <div class="col-md-6 col-sm-6 additional-nav">
           <ul class="list-unstyled list-inline pull-right">
-            <li><span>哈囉，${memVO.memName}</span> <a href="<%=request.getContextPath()%>/front-end/member/memberHome.do"><i class="fa fa-home" aria-hidden="true"></i>會員首頁</a></li>
+            <li>
+            <c:choose>
+            	<c:when test = "${memVO.memID==24}">
+            		<span class="mem1">
+            	</c:when>
+            	<c:when test = "${memVO.memID==6}">
+            		<span class="mem2">
+            	</c:when>
+            	<c:when test = "${memVO.memID==5}">
+            		<span class="mem3">
+            	</c:when>
+            	<c:otherwise>
+            		<span  class="mem3">
+            	</c:otherwise>
+            </c:choose>
+            ${memVO.memName}</span> <a href="<%=request.getContextPath()%>/front-end/member/memberHome.do"><i class="fa fa-home" aria-hidden="true"></i>會員首頁</a></li>
             <li><a href="<%=request.getContextPath()%>/front-end/member/memberLogout.do"><i class="fa fa-sign-out" aria-hidden="true"></i>登出</a></li>
             <!--  偽裝CSS請用btn-link-->
 <%--             <li>
@@ -40,13 +71,13 @@ MemberVO memVO= (MemberVO)session.getAttribute("memVO"); //登入帳號的所有
 				<input type="hidden" name="action" value="logout"> 
             	</form>
             </li> --%>
-            <li><a href="<%=request.getContextPath()%>/front-end/member/mail.jsp"><i class="fa fa-envelope-o" aria-hidden="true"></i>消息</a></li>
+            <li><a href="<%=request.getContextPath()%>/front-end/member/memberMail.do"><i class="fa fa-envelope-o" aria-hidden="true"></i>消息</a></li>
           </ul>
         </div>
         <!-- END TOP BAR MENU -->
 </c:if>
 <!--依據使用者是否登入改變 -->  
-<c:if test="${account==null}" var="loginStatus2" scope="session" > 
+<c:if test="${memVO==null}" var="loginStatus2" scope="session" > 
         <!-- 訪客時 -->
         <div class="col-md-6 col-sm-6 additional-nav">
           <ul class="list-unstyled list-inline pull-right">
